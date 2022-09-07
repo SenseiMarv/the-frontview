@@ -16,6 +16,7 @@ module.exports = {
     "plugin:import/recommended",
     "plugin:promise/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:tailwindcss/recommended",
     "standard-with-typescript",
     "prettier", // Has to be set last!
   ],
@@ -41,6 +42,7 @@ module.exports = {
     "import",
     "promise",
     "jsx-a11y",
+    "tailwindcss",
     "simple-import-sort",
     "prettier",
   ],

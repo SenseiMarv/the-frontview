@@ -47,18 +47,19 @@ module.exports = {
     "prettier",
   ],
   rules: {
+    "react/no-unknown-property": "off", // Has to be disabled because otherwise autofix would break some properties (e.g. convert `class` to `className`, breaking styling)
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "prettier/prettier": [
       "error",
       {
         endOfLine: "auto",
       },
     ],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "import/first": "error",
-    "import/newline-after-import": "error",
-    "import/no-duplicates": "error",
-    "@typescript-eslint/triple-slash-reference": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
   },
 };

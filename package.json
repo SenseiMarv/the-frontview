@@ -13,7 +13,7 @@
     "fixlint": "npm-run-all --parallel fix:*",
     "fix:eslint": "yarn eslint src/ --fix;",
     "fix:prettier": "yarn prettier --write .",
-    "build": "astro check && tsc && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky install"

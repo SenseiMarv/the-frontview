@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   env: {
     browser: true,
     es2021: true,
@@ -9,8 +9,6 @@ module.exports = {
     },
   },
   extends: [
-    "plugin:astro/recommended",
-    "plugin:astro/jsx-a11y-recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:import/recommended",
@@ -20,18 +18,7 @@ module.exports = {
     "standard-with-typescript",
     "prettier", // Has to be set last!
   ],
-  overrides: [
-    {
-      files: ["*.astro"],
-      parser: "astro-eslint-parser",
-      parserOptions: {
-        parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".astro"],
-        project: "./tsconfig.json",
-      },
-      rules: {},
-    },
-  ],
+  overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -47,7 +34,7 @@ module.exports = {
     "prettier",
   ],
   rules: {
-    "react/no-unknown-property": "off", // Has to be disabled because otherwise autofix would break some properties (e.g. convert `class` to `className`, breaking styling)
+    "tailwindcss/no-custom-classname": "off", // Has to be disabled because the usage of tailwindcss plugins triggers this rule
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
@@ -63,3 +50,29 @@ module.exports = {
     ],
   },
 };
+
+config.overrides.push({
+  files: ["*.astro"],
+  extends: [
+    ...config.extends,
+    "plugin:astro/recommended",
+    "plugin:astro/jsx-a11y-recommended",
+  ],
+  parser: "astro-eslint-parser",
+  parserOptions: {
+    parser: "@typescript-eslint/parser",
+    extraFileExtensions: [".astro"],
+    project: "./tsconfig.json",
+  },
+  rules: {
+    ...config.rules,
+    "react/no-unknown-property": "off", // Has to be disabled because otherwise autofix would break some properties (e.g. convert `class` to `className`, breaking styling)
+  },
+});
+
+config.overrides.push({
+  files: ["*.mdx"],
+  extends: [...config.extends, "plugin:mdx/recommended"],
+});
+
+module.exports = config;

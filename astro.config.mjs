@@ -12,6 +12,11 @@ import compress from "astro-compress";
 export default defineConfig({
   output: "server",
   adapter: vercel(),
+  markdown: {
+    shikiConfig: {
+      theme: "one-dark-pro",
+    },
+  },
   integrations: [
     react(),
     image(),

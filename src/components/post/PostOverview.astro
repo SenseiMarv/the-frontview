@@ -1,0 +1,28 @@
+---
+import type { Post } from "../../typings/Post";
+import PostCard from "./PostCard.astro";
+
+export interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="mt-4 grid justify-items-center gap-8 p-4 md:grid-cols-3 lg:gap-16">
+  {
+    posts.map((post, index) => (
+      <>
+        <li>
+          <PostCard
+            title={post.frontmatter.title}
+            imgUrl={post.frontmatter.imgUrl}
+            date={post.frontmatter.date}
+            url={post.url ? post.url : ""}
+            headings={post.getHeadings()}
+          />
+        </li>
+      </>
+    ))
+  }
+</ul>

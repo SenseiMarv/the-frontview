@@ -5,6 +5,9 @@ import "@fontsource/source-code-pro";
 
 import defaultTheme from "tailwindcss/defaultTheme";
 
+import Footer from "../components/footer/Footer.astro";
+import Header from "../components/header/Header.astro";
+
 export interface Props {
   title: string;
 }
@@ -24,25 +27,33 @@ const headingFontFamily = [
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="A small personal blog about everything around tech and programming. Author: Marvin Stickel"
+    />
     <title>{title}</title>
   </head>
-  <body>
-    <slot />
-    <style>
-      body {
-        margin: 0;
-      }
-    </style>
+  <body class="container mx-auto max-w-xl bg-gray-800 text-white md:max-w-5xl">
+    <Header />
+    <main class="px-3 md:px-6">
+      <slot />
+      <style>
+        body {
+          margin: 0;
+        }
+      </style>
 
-    <style is:global define:vars={{ headingFontFamily }}>
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: var(--headingFontFamily);
-      }
-    </style>
+      <style is:global define:vars={{ headingFontFamily }}>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: var(--headingFontFamily);
+        }
+      </style>
+    </main>
+    <Footer />
   </body>
 </html>

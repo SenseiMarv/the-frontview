@@ -1,0 +1,26 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import GitHubIcon from "../../../assets/icons/GitHub.png";
+import ExternalLink from "../utils/ExternalLink.astro";
+import NavLink from "./NavLink.astro";
+---
+
+<header class="p-3 pt-8 md:px-6">
+  <div class="mb-3">
+    <a href="/" class="text-4xl font-bold md:text-6xl"
+      ><h1>The Frontview</h1>
+    </a>
+  </div>
+  <div class="flex gap-4 text-lg">
+    <NavLink href="/">Home</NavLink>
+    <NavLink href="/posts">All Posts</NavLink>
+    <NavLink href="/tags" classString="mr-auto">Tags</NavLink>
+    <ExternalLink href="https://github.com/SenseiMarv/the-frontview">
+      <div class="w-6">
+        <Image src={GitHubIcon} width={50} alt="GitHub" />
+      </div>
+    </ExternalLink>
+  </div>
+  <div class="mt-4 border-t border-gray-600"></div>
+</header>

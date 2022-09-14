@@ -1,0 +1,12 @@
+---
+import PostOverview from "../../components/post/PostOverview.astro";
+import { sortPostsByDate } from "../../components/utils/sortedPosts";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = sortPostsByDate(await Astro.glob("./**/*.mdx"));
+---
+
+<Layout title="The Frontview - All Posts">
+  <h1 class="mt-24 mb-16 text-6xl">All posts</h1>
+  <PostOverview posts={posts} />
+</Layout>

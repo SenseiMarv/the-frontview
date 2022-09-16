@@ -12,6 +12,7 @@ import compress from "astro-compress";
 export default defineConfig({
   output: "server",
   adapter: vercel(),
+  site: "https://the-frontview.vercel.app",
   vite: {
     ssr: {
       external: ["svgo"],

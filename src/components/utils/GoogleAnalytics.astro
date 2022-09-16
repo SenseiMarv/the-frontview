@@ -1,15 +1,13 @@
----
-const trackingId = "G-YQTFM2JGDK";
-const scriptSrc = "https://www.googletagmanager.com/gtag/js?id=" + trackingId;
----
-
-<script type="text/partytown" src={scriptSrc}></script>
+<script
+  type="text/partytown"
+  src="https://www.googletagmanager.com/gtag/js?id=G-YQTFM2JGDK"
+></script>
 <script type="text/partytown">
   window.dataLayer = window.dataLayer || [];
   function gtag() {
-    window.dataLayer.push(arguments);
+    dataLayer.push(arguments);
   }
   gtag("js", new Date());
 
-  gtag("config", { trackingId });
+  gtag("config", "G-YQTFM2JGDK");
 </script>

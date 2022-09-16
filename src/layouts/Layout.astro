@@ -7,6 +7,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 import Footer from "../components/footer/Footer.astro";
 import Header from "../components/header/Header.astro";
+import GoogleAnalytics from "../components/utils/GoogleAnalytics.astro";
 
 export interface Props {
   title: string;
@@ -31,6 +32,7 @@ const headingFontFamily = [
       name="description"
       content="A small personal blog about everything around tech and programming. Author: Marvin Stickel"
     />
+    <GoogleAnalytics client:idle />
     <title>{title}</title>
   </head>
   <body class="container mx-auto max-w-xl bg-gray-800 text-white md:max-w-5xl">

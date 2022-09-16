@@ -23,6 +23,7 @@
     "@fontsource/quicksand": "^4.5.10",
     "@fontsource/source-code-pro": "^4.5.12",
     "astro": "^1.2.3",
+    "astro-icon": "^0.7.3",
     "date-fns": "^2.29.3"
   },
   "devDependencies": {

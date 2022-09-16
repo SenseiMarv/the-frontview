@@ -12,6 +12,11 @@ import compress from "astro-compress";
 export default defineConfig({
   output: "server",
   adapter: vercel(),
+  vite: {
+    ssr: {
+      external: ["svgo"],
+    },
+  },
   markdown: {
     shikiConfig: {
       theme: "one-dark-pro",
@@ -24,7 +29,7 @@ export default defineConfig({
     tailwind(),
     compress(),
     prefetch(),
-    partytown(),
+    partytown({ config: { forward: ["dataLayer.push"] } }),
     sitemap(),
   ],
 });

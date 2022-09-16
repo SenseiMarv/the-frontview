@@ -9,10 +9,12 @@ import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 
+const hostedSiteUrl = "https://the-frontview.vercel.app";
+
 export default defineConfig({
   output: "server",
   adapter: vercel(),
-  site: "https://the-frontview.vercel.app",
+  site: hostedSiteUrl,
   vite: {
     ssr: {
       external: ["svgo"],
@@ -31,6 +33,8 @@ export default defineConfig({
     compress(),
     prefetch(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
-    sitemap(),
+    sitemap({
+      customPages: [`${hostedSiteUrl}/posts`, `${hostedSiteUrl}/tags`], // Custom sitemap generation currently doesn't work with SSR, so the pages have to be defined manually: https://github.com/withastro/astro/issues/3682
+    }),
   ],
 });

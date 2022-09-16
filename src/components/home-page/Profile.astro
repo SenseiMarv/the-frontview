@@ -1,0 +1,41 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import ProfilePictureIcon from "../../../assets/icons/ProfilePicture.jpg";
+import ExternalLink from "../utils/ExternalLink.astro";
+---
+
+<div class="flex flex-col items-center justify-center gap-8 md:flex-row">
+  <div class="w-40">
+    <Image
+      src={ProfilePictureIcon}
+      width={1000}
+      alt="GitHub"
+      class="rounded-full"
+    />
+  </div>
+  <div>
+    <div class="flex">
+      Hi there<div class="w-6">
+        <Image
+          src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
+          height={50}
+          aspectRatio={1 / 1}
+          alt="Waving hand"
+          class="mx-1"
+        />
+      </div>, I am Marvin Stickel.
+    </div>
+    <p>
+      I&apos;m a Junior Software Developer working at
+      <ExternalLink href="https://epages.com/en/">epages</ExternalLink>
+      in <ExternalLink href="https://goo.gl/maps/FjHhzhpnCxg4z4FF6"
+        >Jena, Germany</ExternalLink
+      >.
+    </p>
+    <p>
+      This is my small personal blog about everything around tech and
+      programming.
+    </p>
+  </div>
+</div>

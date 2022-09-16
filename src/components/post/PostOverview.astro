@@ -9,7 +9,7 @@ export interface Props {
 const { posts } = Astro.props;
 ---
 
-<ul class="mt-4 grid justify-items-center gap-8 p-4 md:grid-cols-3 lg:gap-16">
+<ul class="grid justify-items-center gap-8 p-4 md:grid-cols-3 lg:gap-16">
   {
     posts.map((post, index) => (
       <>

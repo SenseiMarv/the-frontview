@@ -1,10 +1,18 @@
 ---
+import PostHeader from "../components/post/PostHeader.astro";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
-  <h1>{frontmatter.title}</h1>
+  <div class="mt-12 md:mt-24">
+    <PostHeader
+      title={frontmatter.title}
+      imgUrl={frontmatter.imgUrl}
+      date={frontmatter.date}
+    />
+  </div>
+  <div class="mt-8 mb-4 border-t border-gray-600 md:mt-16 md:mb-8"></div>
   <slot />
 </Layout>

@@ -1,0 +1,33 @@
+---
+import { Image } from "@astrojs/image/components";
+
+export interface Props {
+  title: string;
+  imgUrl: string;
+  date: string;
+}
+
+const { title, imgUrl, date } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString(undefined, {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+---
+
+<div class="flex flex-col items-center">
+  <h1 class="text-5xl leading-snug md:text-6xl">
+    {title}
+  </h1>
+  <div class="mt-4 text-lg leading-snug text-gray-400 md:mt-6 md:text-xl">
+    {formattedDate}
+  </div>
+  <Image
+    src={imgUrl}
+    width={600}
+    aspectRatio={16 / 9}
+    alt="Blogpost cover"
+    class="mt-8 md:mt-10"
+  />
+</div>

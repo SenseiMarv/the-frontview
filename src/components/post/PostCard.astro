@@ -10,15 +10,21 @@ export interface Props {
 }
 
 const { title, imgUrl, date, url, headings } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString(undefined, {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
 ---
 
 <a href={url}>
   <div
     class="min-h-[17.5rem] max-w-[17rem] overflow-hidden rounded-xl shadow-lg outline outline-2 outline-gray-600 duration-200 hover:scale-105 hover:shadow-xl hover:outline-4 hover:outline-offset-8 hover:outline-teal-500"
   >
-    <Image src={imgUrl} width={600} aspectRatio={16 / 9} alt="plant" />
+    <Image src={imgUrl} width={600} aspectRatio={16 / 9} alt="Blogpost cover" />
     <div class="p-5">
-      <h3 class="text-gray-400">{date}</h3>
+      <h3 class="text-gray-400">{formattedDate}</h3>
       <h2 class="line-clamp-2 mt-1 text-xl">{title}</h2>
     </div>
   </div>

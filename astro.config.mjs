@@ -9,6 +9,8 @@ import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 
+import { postFrontmatterRemarkPlugin } from "./plugins/postFrontmatterRemarkPlugin.mjs";
+
 const hostedSiteUrl = "https://the-frontview.vercel.app";
 
 export default defineConfig({
@@ -28,7 +30,7 @@ export default defineConfig({
   integrations: [
     react(),
     image(),
-    mdx(),
+    mdx({ remarkPlugins: [postFrontmatterRemarkPlugin] }),
     tailwind(),
     compress(),
     prefetch(),

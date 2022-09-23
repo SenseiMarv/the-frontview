@@ -1,6 +1,8 @@
 ---
 import { Image } from "@astrojs/image/components";
 
+import { formatDateToLocaleDate } from "../utils/formatDates";
+
 export interface Props {
   title: string;
   imgUrl: string;
@@ -9,11 +11,7 @@ export interface Props {
 
 const { title, imgUrl, date } = Astro.props;
 
-const formattedDate = new Date(date).toLocaleDateString(undefined, {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-});
+const formattedDate = formatDateToLocaleDate(new Date(date));
 ---
 
 <div class="flex flex-col items-center">
@@ -28,6 +26,6 @@ const formattedDate = new Date(date).toLocaleDateString(undefined, {
     width={600}
     aspectRatio={16 / 9}
     alt="Blogpost cover"
-    class="mt-8 md:mt-10"
+    class="mt-8 shadow-xl md:mt-10"
   />
 </div>

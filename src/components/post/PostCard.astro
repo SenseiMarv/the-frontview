@@ -1,6 +1,8 @@
 ---
 import { Image } from "@astrojs/image/components";
 
+import { formatDateToLocaleDate } from "../utils/formatDates";
+
 export interface Props {
   title: string;
   imgUrl: string;
@@ -11,11 +13,7 @@ export interface Props {
 
 const { title, imgUrl, date, url, headings } = Astro.props;
 
-const formattedDate = new Date(date).toLocaleDateString(undefined, {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-});
+const formattedDate = formatDateToLocaleDate(new Date(date));
 ---
 
 <a href={url}>

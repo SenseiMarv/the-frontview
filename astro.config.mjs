@@ -7,6 +7,9 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
+import { s } from "hastscript";
+import rehypeAddClasses from "rehype-add-classes";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkToc from "remark-toc";
 
 import { postFrontmatterPlugin } from "./plugins/remarkPlugins.mjs";
@@ -29,7 +32,22 @@ export default defineConfig({
   },
   integrations: [
     image(),
-    mdx({ remarkPlugins: [postFrontmatterPlugin, remarkToc] }),
+    mdx({
+      rehypePlugins: [
+        [
+          rehypeAutolinkHeadings,
+          {
+            content: s(
+              `svg`,
+              { width: 30, height: 30, viewBox: `0 0 30 30` },
+              s(`use`, { href: `#link-icon` })
+            ),
+          },
+        ],
+        [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
+      ],
+      remarkPlugins: [postFrontmatterPlugin, remarkToc],
+    }),
     tailwind(),
     compress(),
     prefetch(),

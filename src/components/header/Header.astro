@@ -2,6 +2,7 @@
 import { Image } from "@astrojs/image/components";
 
 import GitHubIcon from "../../../assets/icons/GitHub.png";
+import Divider from "../utils/Divider.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
 import NavLink from "./NavLink.astro";
 ---
@@ -22,5 +23,7 @@ import NavLink from "./NavLink.astro";
       </div>
     </ExternalLink>
   </div>
-  <div class="mt-2 border-t border-gray-600 md:mt-4"></div>
+  <div class="mt-2 md:mt-4">
+    <Divider />
+  </div>
 </header>

@@ -1,5 +1,6 @@
 ---
-import PostHeader from "../components/post/PostHeader.astro";
+import Header from "../components/post/Header.astro";
+import Divider from "../components/utils/Divider.astro";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
@@ -7,12 +8,14 @@ const { frontmatter } = Astro.props;
 
 <Layout title={frontmatter.title}>
   <div class="mt-12 md:mt-24">
-    <PostHeader
+    <Header
       title={frontmatter.title}
       imgUrl={frontmatter.imgUrl}
       date={frontmatter.date}
     />
   </div>
-  <div class="mt-8 mb-4 border-t border-gray-600 md:mt-16 md:mb-8"></div>
+  <div class="mt-8 mb-4 md:mt-16 md:mb-8">
+    <Divider />
+  </div>
   <slot />
 </Layout>

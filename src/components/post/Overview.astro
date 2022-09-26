@@ -1,6 +1,6 @@
 ---
 import type { Post } from "../../typings/Post";
-import PostCard from "./PostCard.astro";
+import Card from "./Card.astro";
 
 export interface Props {
   posts: Post[];
@@ -14,7 +14,7 @@ const { posts } = Astro.props;
     posts.map((post, index) => (
       <>
         <li>
-          <PostCard
+          <Card
             title={post.frontmatter.title}
             imgUrl={post.frontmatter.imgUrl}
             date={post.frontmatter.date}

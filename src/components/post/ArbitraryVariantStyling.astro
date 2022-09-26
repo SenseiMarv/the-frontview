@@ -1,0 +1,10 @@
+---
+// Some MDX components cannot be overridden at the time because they would then lose remark/rehype additions or modifications (e.g. automatic addition of links to headings no longer works).
+// To accomodate this, https://tailwindcss.com/docs/hover-focus-and-other-states#using-arbitrary-variants should be utilized until this issue get's resolved.
+---
+
+<div
+  class="[&>h6]:text-md [&>h2:first-child]:mb-4 [&_a]:text-teal-300 [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-teal-500 [&_a:hover]:underline [&_a:hover]:underline-offset-2 [&>h6]:mt-2 [&>h5]:mt-4 [&>h5]:text-lg [&>h4]:mt-6 [&>h4]:mb-1 [&>h4]:text-xl [&>h3]:mb-2 [&>h3]:mt-8 [&>h3]:text-2xl [&>h2]:mb-4 [&>h2]:mt-10 [&>h2]:text-3xl [&>h1]:mt-12 [&>h1]:mb-6 [&>h1]:text-4xl"
+>
+  <slot />
+</div>

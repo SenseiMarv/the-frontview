@@ -24,7 +24,8 @@
     "@fontsource/source-code-pro": "^4.5.12",
     "astro": "^1.2.3",
     "astro-icon": "^0.7.3",
-    "date-fns": "^2.29.3"
+    "date-fns": "^2.29.3",
+    "remark-toc": "^8.0.1"
   },
   "devDependencies": {
     "@astrojs/image": "^0.7.0",

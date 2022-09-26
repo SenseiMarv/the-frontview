@@ -8,8 +8,9 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
+import remarkToc from "remark-toc";
 
-import { postFrontmatterRemarkPlugin } from "./plugins/postFrontmatterRemarkPlugin.mjs";
+import { postFrontmatterPlugin } from "./plugins/remarkPlugins.mjs";
 
 const hostedSiteUrl = "https://the-frontview.vercel.app";
 
@@ -30,7 +31,7 @@ export default defineConfig({
   integrations: [
     react(),
     image(),
-    mdx({ remarkPlugins: [postFrontmatterRemarkPlugin] }),
+    mdx({ remarkPlugins: [postFrontmatterPlugin, remarkToc] }),
     tailwind(),
     compress(),
     prefetch(),

@@ -1,9 +1,9 @@
 ---
 import { Image } from "@astrojs/image/components";
 
-import GitHubIcon from "../../../assets/icons/GitHub.png";
 import Divider from "../utils/Divider.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
+import GitHubIcon from "./GitHubIcon.astro";
 import NavLink from "./NavLink.astro";
 ---
 
@@ -18,8 +18,10 @@ import NavLink from "./NavLink.astro";
     <NavLink href="/posts">All Posts</NavLink>
     <NavLink href="/tags" classString="mr-auto">Tags</NavLink>
     <ExternalLink href="https://github.com/SenseiMarv/the-frontview">
-      <div class="w-6">
-        <Image src={GitHubIcon} width={50} alt="GitHub" />
+      <div
+        class="w-6 fill-white transition-colors duration-300 hover:fill-teal-500"
+      >
+        <GitHubIcon />
       </div>
     </ExternalLink>
   </div>

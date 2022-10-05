@@ -31,7 +31,9 @@ export default defineConfig({
     },
   },
   integrations: [
-    image(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
     mdx({
       rehypePlugins: [
         [

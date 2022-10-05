@@ -2,6 +2,7 @@
 import HeadingLinkSvg from "../components/markdown/HeadingLinkSvg.astro";
 import Header from "../components/post/Header.astro";
 import Divider from "../components/utils/Divider.astro";
+import Giscus from "../components/utils/scripts/Giscus.astro";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
@@ -19,6 +20,12 @@ const { frontmatter } = Astro.props;
     <Divider />
   </div>
   <slot />
+  <div class="mt-8 mb-4 md:mt-16 md:mb-8">
+    <Divider />
+  </div>
+  <div class="mt-8">
+    <Giscus is:inline />
+  </div>
   <HeadingLinkSvg />
   <style is:global>
     @tailwind base;

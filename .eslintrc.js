@@ -3,14 +3,7 @@ const config = {
     browser: true,
     es2021: true,
   },
-  settings: {
-    react: {
-      version: "detect",
-    },
-  },
   extends: [
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
     "plugin:import/recommended",
     "plugin:promise/recommended",
     "plugin:jsx-a11y/recommended",
@@ -25,7 +18,6 @@ const config = {
     project: "./tsconfig.json",
   },
   plugins: [
-    "react",
     "import",
     "promise",
     "jsx-a11y",
@@ -63,10 +55,6 @@ config.overrides.push({
     parser: "@typescript-eslint/parser",
     extraFileExtensions: [".astro"],
     project: "./tsconfig.json",
-  },
-  rules: {
-    ...config.rules,
-    "react/no-unknown-property": "off", // Has to be disabled because otherwise autofix would break some properties (e.g. convert `class` to `className`, breaking styling)
   },
 });
 

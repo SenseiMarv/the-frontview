@@ -1,0 +1,22 @@
+<div
+  id="scroll-progress"
+  class="fixed top-0 left-0 w-0 h-1 z-50 ease-linear bg-teal-500 transition-all duration-75"
+>
+</div>
+<script>
+  const scrollProgress = document.getElementById("scroll-progress");
+
+  if (scrollProgress) {
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+
+    window.addEventListener("scroll", () => {
+      const scrollTop =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const scrollAmount =
+        (scrollTop / height) * 100 > 100 ? 100 : (scrollTop / height) * 100;
+      scrollProgress.style.width = `${scrollAmount}%`;
+    });
+  }
+</script>

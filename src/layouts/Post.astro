@@ -1,6 +1,7 @@
 ---
 import HeadingLinkSvg from "../components/markdown/HeadingLinkSvg.astro";
 import Header from "../components/post/Header.astro";
+import ScrollBar from "../components/post/ScrollBar.astro";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/scripts/Giscus.astro";
 import Layout from "./Layout.astro";
@@ -9,6 +10,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
+  <ScrollBar />
   <div class="mt-12 md:mt-24">
     <Header
       title={frontmatter.title}

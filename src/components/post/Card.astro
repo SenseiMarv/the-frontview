@@ -7,11 +7,12 @@ export interface Props {
   title: string;
   imgUrl: string;
   date: string;
+  readingTime: string;
   url: string;
   headings: { depth: number; slug: string; text: string }[];
 }
 
-const { title, imgUrl, date, url, headings } = Astro.props;
+const { title, imgUrl, date, readingTime, url, headings } = Astro.props;
 
 const formattedDate = formatDateToLocaleDate(new Date(date));
 ---
@@ -22,7 +23,7 @@ const formattedDate = formatDateToLocaleDate(new Date(date));
   >
     <Image src={imgUrl} width={600} aspectRatio={16 / 9} alt="Blogpost cover" />
     <div class="p-5">
-      <h3 class="text-gray-400">{formattedDate}</h3>
+      <h3 class="text-gray-400">{formattedDate} | {readingTime} min read</h3>
       <h2 class="line-clamp-2 mt-1 text-xl">{title}</h2>
     </div>
   </div>

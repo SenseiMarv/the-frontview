@@ -12,7 +12,10 @@ import rehypeAddClasses from "rehype-add-classes";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkToc from "remark-toc";
 
-import { postFrontmatterPlugin } from "./plugins/remarkPlugins.mjs";
+import {
+  postFrontmatterPlugin,
+  postReadingTimePlugin,
+} from "./plugins/remarkPlugins.mjs";
 
 const hostedSiteUrl = "https://the-frontview.vercel.app";
 
@@ -48,7 +51,7 @@ export default defineConfig({
         ],
         [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
       ],
-      remarkPlugins: [postFrontmatterPlugin, remarkToc],
+      remarkPlugins: [postFrontmatterPlugin, postReadingTimePlugin, remarkToc],
     }),
     tailwind(),
     compress(),

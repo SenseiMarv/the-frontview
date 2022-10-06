@@ -5570,6 +5570,11 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
+reading-time@2.0.0-1:
+  version "2.0.0-1"
+  resolved "https://registry.yarnpkg.com/reading-time/-/reading-time-2.0.0-1.tgz#fe7a94e1d9199700f166b744925681cdb8851d06"
+  integrity sha512-5Eoo17ZGqH2L0jmMZUNKARiGAX3NCC0LR+mDHTX+nMPqFSRwMQrsxhI9NOSEfzH8E1W5vGAKFcyQAk3Rla1WuA==
+
 recast@^0.20.5:
   version "0.20.5"
   resolved "https://registry.yarnpkg.com/recast/-/recast-0.20.5.tgz#8e2c6c96827a1b339c634dd232957d230553ceae"

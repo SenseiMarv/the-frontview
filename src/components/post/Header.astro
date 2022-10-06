@@ -7,9 +7,10 @@ export interface Props {
   title: string;
   imgUrl: string;
   date: string;
+  readingTime: string;
 }
 
-const { title, imgUrl, date } = Astro.props;
+const { title, imgUrl, date, readingTime } = Astro.props;
 
 const formattedDate = formatDateToLocaleDate(new Date(date));
 ---
@@ -19,7 +20,7 @@ const formattedDate = formatDateToLocaleDate(new Date(date));
     {title}
   </h1>
   <div class="mt-4 text-lg leading-snug text-gray-400 md:mt-6 md:text-xl">
-    {formattedDate}
+    {formattedDate} | {readingTime} min read
   </div>
   <Image
     src={imgUrl}

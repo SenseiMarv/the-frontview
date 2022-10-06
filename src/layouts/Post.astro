@@ -1,9 +1,9 @@
 ---
 import HeadingLinkSvg from "../components/markdown/HeadingLinkSvg.astro";
 import Header from "../components/post/Header.astro";
-import ScrollBar from "../components/post/ScrollBar.astro";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/scripts/Giscus.astro";
+import ScrollBar from "../components/utils/ScrollBar.astro";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
@@ -16,6 +16,7 @@ const { frontmatter } = Astro.props;
       title={frontmatter.title}
       imgUrl={frontmatter.imgUrl}
       date={frontmatter.date}
+      readingTime={frontmatter.readingTime}
     />
   </div>
   <div class="mt-8 mb-4 md:mt-16 md:mb-8">

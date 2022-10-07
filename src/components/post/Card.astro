@@ -9,14 +9,15 @@ export interface Props {
   date: string;
   readingTime: string;
   url: string;
+  prefetch: boolean;
 }
 
-const { title, imgUrl, date, readingTime, url } = Astro.props;
+const { title, imgUrl, date, readingTime, url, prefetch } = Astro.props;
 
 const formattedDate = formatDateToLocaleDate(new Date(date));
 ---
 
-<a href={url}>
+<a href={url} rel={prefetch ? "prefetch" : ""}>
   <div
     class="min-h-[17.5rem] max-w-[17rem] overflow-hidden rounded-xl shadow-lg outline outline-2 outline-gray-600 duration-200 hover:scale-105 hover:shadow-xl hover:outline-4 hover:outline-offset-8 hover:outline-teal-500"
   >

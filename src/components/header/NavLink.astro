@@ -9,6 +9,7 @@ const { href, classString } = Astro.props;
 
 <a
   href={href}
+  rel="prefetch"
   class={classString +
     " hover:text-teal-500 hover:underline hover:underline-offset-2 transition-colors duration-300"}
   ><slot />

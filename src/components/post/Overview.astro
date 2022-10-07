@@ -4,9 +4,10 @@ import Card from "./Card.astro";
 
 export interface Props {
   posts: Post[];
+  prefetch?: boolean;
 }
 
-const { posts } = Astro.props;
+const { posts, prefetch = false } = Astro.props;
 ---
 
 <ul class="grid justify-items-center gap-8 p-4 md:grid-cols-3 lg:gap-16">
@@ -20,6 +21,7 @@ const { posts } = Astro.props;
             date={post.frontmatter.date}
             readingTime={post.frontmatter.readingTime}
             url={post.url ? post.url : ""}
+            prefetch={prefetch}
           />
         </li>
       </>

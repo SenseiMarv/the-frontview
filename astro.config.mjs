@@ -10,6 +10,8 @@ import compress from "astro-compress";
 import { s } from "hastscript";
 import rehypeAddClasses from "rehype-add-classes";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkHint from "remark-hint";
+import shikiTwoslash from "remark-shiki-twoslash";
 import remarkToc from "remark-toc";
 
 import {
@@ -29,9 +31,7 @@ export default defineConfig({
     },
   },
   markdown: {
-    shikiConfig: {
-      theme: "one-dark-pro",
-    },
+    syntaxHighlight: false,
   },
   integrations: [
     image({
@@ -51,7 +51,13 @@ export default defineConfig({
         ],
         [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
       ],
-      remarkPlugins: [postFrontmatterPlugin, postReadingTimePlugin, remarkToc],
+      remarkPlugins: [
+        postFrontmatterPlugin,
+        postReadingTimePlugin,
+        remarkToc,
+        [shikiTwoslash.default, { theme: "one-dark-pro" }],
+        remarkHint,
+      ],
     }),
     tailwind(),
     compress(),

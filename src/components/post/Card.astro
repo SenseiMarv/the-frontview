@@ -9,10 +9,9 @@ export interface Props {
   date: string;
   readingTime: string;
   url: string;
-  headings: { depth: number; slug: string; text: string }[];
 }
 
-const { title, imgUrl, date, readingTime, url, headings } = Astro.props;
+const { title, imgUrl, date, readingTime, url } = Astro.props;
 
 const formattedDate = formatDateToLocaleDate(new Date(date));
 ---

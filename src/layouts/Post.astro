@@ -1,6 +1,6 @@
 ---
-import HeadingLinkSvg from "../components/markdown/HeadingLinkSvg.astro";
 import Header from "../components/post/Header.astro";
+import HeadingLinkSvg from "../components/post/HeadingLinkSvg.astro";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/scripts/Giscus.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
@@ -38,7 +38,7 @@ const { frontmatter } = Astro.props;
     @layer components {
       /* Some MDX components cannot be overridden at the time because they would then lose remark/rehype additions or modifications (e.g. automatic addition of links to headings no longer works). */
 
-      /* Styling of the headings */
+      /* Styling of headings */
 
       h1.heading {
         @apply mt-12 mb-6 text-4xl;
@@ -59,7 +59,7 @@ const { frontmatter } = Astro.props;
         @apply mt-2 text-lg;
       }
 
-      /* Styling of the heading links */
+      /* Styling of heading links */
 
       .heading {
         @apply flex items-center;
@@ -75,10 +75,107 @@ const { frontmatter } = Astro.props;
         @apply hidden;
       }
 
-      /* Styling of the toc links */
+      /* Styling of toc links */
 
       #table-of-contents + ul a {
         @apply text-teal-300 transition-colors duration-300 hover:text-teal-500 hover:underline hover:underline-offset-2;
+      }
+
+      /* Styling of ul components */
+
+      ul {
+        @apply list-disc px-6;
+      }
+
+      /* Styling of blockquote components */
+
+      blockquote {
+        @apply my-4 flex flex-col rounded-xl bg-gray-900 p-4 md:flex-row;
+      }
+      blockquote > span {
+        @apply text-4xl text-gray-500;
+      }
+      blockquote > div {
+        @apply md:ml-4 md:mt-2;
+      }
+
+      /* Styling of tasklist components */
+      ul.contains-task-list {
+        @apply my-4 list-none p-0;
+      }
+      li.task-list-item {
+        @apply flex items-center gap-3;
+      }
+      li.task-list-item > input {
+        @apply h-4 w-4 appearance-none rounded bg-gray-400 checked:bg-teal-500;
+      }
+
+      /* Styling of code components (specific to shiki twoslash) */
+
+      :not(.code-container) > code {
+        @apply rounded-md bg-gray-900 py-1 px-2;
+      }
+
+      /* Styling of code block components (specific to shiki twoslash) */
+
+      pre {
+        @apply my-4 grid grid-cols-1 content-around rounded-xl !bg-gray-900 md:grid-cols-2;
+        grid-template-areas:
+          "column-1"
+          "column-2";
+      }
+      .code-title {
+        @apply ml-4 mt-2 justify-self-start rounded-lg bg-gray-700 p-1 px-3 text-white md:mt-0 md:mr-4 md:justify-self-end md:rounded-t-none;
+        grid-area: column-2;
+      }
+      .language-id {
+        @apply col-span-2 ml-4 justify-self-start rounded-b-lg bg-teal-700 p-1 px-3 text-white;
+        grid-area: column-1;
+      }
+      .code-title + .language-id {
+        @apply col-span-1;
+      }
+      .code-container {
+        @apply col-span-2 overflow-auto p-4;
+      }
+      .line {
+        @apply min-h-[1.5rem];
+      }
+      .line.highlight {
+        @apply bg-gray-800 outline outline-2 outline-gray-800;
+      }
+      /* md */
+      @media (min-width: 768px) {
+        pre {
+          grid-template-areas: "column-1 column-2";
+        }
+      }
+
+      /* Styling of panel components */
+
+      .hint {
+        @apply my-4 rounded-xl p-4;
+      }
+      .hint.tip {
+        @apply bg-sky-900;
+      }
+      .hint.warn {
+        @apply bg-yellow-900;
+      }
+      .hint.error {
+        @apply bg-red-900;
+      }
+
+      /* Styling of table components */
+
+      table {
+        @apply my-4;
+      }
+      th {
+        @apply bg-gray-700 px-3 py-2 uppercase;
+      }
+      td {
+        @apply min-w-[7rem] whitespace-nowrap bg-gray-900 px-3 py-2;
       }
     }
   </style>

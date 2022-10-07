@@ -13,14 +13,13 @@ const { posts } = Astro.props;
   {
     posts.map((post, index) => (
       <>
-        <li>
+        <li class="list-none">
           <Card
             title={post.frontmatter.title}
             imgUrl={post.frontmatter.imgUrl}
             date={post.frontmatter.date}
             readingTime={post.frontmatter.readingTime}
             url={post.url ? post.url : ""}
-            headings={post.getHeadings()}
           />
         </li>
       </>

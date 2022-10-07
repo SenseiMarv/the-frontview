@@ -4,10 +4,79 @@ date: "2022-09-10"
 imgUrl: "https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/JavaScript-code.jpg?itok=1Wia7hH0"
 ---
 
-import UL from "../../../components/markdown/UL.astro";
-export const components = { ul: UL };
+import Blockquote from "../../../components/markdown/Blockquote.astro";
+export const components = { blockquote: Blockquote };
 
 ## Table of contents
+
+# List
+
+- Item 1
+  - Item 2
+- Item 3
+- Item 4
+
+# Blockquote
+
+> Blockquote
+
+# Inline code
+
+Lorem, ipsum `const t = {}` consectetur adipisicing elit.
+
+# Code block
+
+```typescript title="examples/index.ts" {1-3,6}
+export function absolute(num: number) {
+  if (num < 0) return num * -1;
+  return num;
+}
+const value = absolute(-1);
+
+export function absolute(num: number) {
+  if (num < 0) return num * -1;
+  return num;
+}
+const value = absolute(-1);
+```
+
+```typescript
+export function absolute(num: number) {
+  if (num < 0) return num * -1;
+  return num;
+}
+const value = absolute(-1);
+```
+
+```
+export function absolute(num: number) {
+  if (num < 0) return num * -1;
+  return num;
+}
+const value = absolute(-1);
+```
+
+# Tasklist
+
+- [x] List item 1
+- [x] List item 2
+- [ ] List item 3
+
+# Panel
+
+!> Here is a tip.
+
+?> And a warning.
+
+x> Or an error.
+
+# Table
+
+| a      | b      |      c |
+| ------ | :----- | -----: |
+| item a | item b | item c |
+| item a | item b | item c |
+| item a | item b | item c |
 
 # H1
 

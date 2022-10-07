@@ -1,1 +1,13 @@
-<div class="border-t border-gray-600"></div>
+---
+export interface Props {
+  noSpacing?: boolean;
+}
+
+const { noSpacing } = Astro.props;
+
+const styling = noSpacing
+  ? "border-t border-gray-600"
+  : "my-8 border-t border-gray-600";
+---
+
+<div class={styling}></div>

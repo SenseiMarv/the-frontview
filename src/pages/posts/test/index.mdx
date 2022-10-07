@@ -7,6 +7,9 @@ imgUrl: "https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_fe
 import Blockquote from "../../../components/markdown/Blockquote.astro";
 export const components = { blockquote: Blockquote };
 
+import Divider from "../../../components/utils/Divider.astro";
+import ExternalLink from "../../../components/utils/ExternalLink.astro";
+
 ## Table of contents
 
 # List
@@ -77,6 +80,12 @@ x> Or an error.
 | item a | item b | item c |
 | item a | item b | item c |
 | item a | item b | item c |
+
+<Divider />
+
+<ExternalLink href="https://tailwindcss.com/" favicon>
+  TailwindCSS
+</ExternalLink>
 
 # H1
 

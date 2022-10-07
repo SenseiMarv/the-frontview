@@ -13,7 +13,7 @@ const posts = sortPostsByDate(await Astro.glob("./posts/**/*.mdx"));
     <Profile />
     <h2 class="mt-12 text-2xl md:mt-24 md:text-4xl">Recent posts</h2>
     <div class="mt-2 md:mt-4">
-      <Divider />
+      <Divider noSpacing />
     </div>
     <div class="mt-2 md:mt-4">
       <Overview posts={posts.slice(undefined, 9)} prefetch />

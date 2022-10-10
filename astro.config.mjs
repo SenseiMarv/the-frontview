@@ -32,33 +32,33 @@ export default defineConfig({
   },
   markdown: {
     syntaxHighlight: false,
+    rehypePlugins: [
+      [
+        rehypeAutolinkHeadings,
+        {
+          content: s(
+            `svg`,
+            { width: 30, height: 30, viewBox: `0 0 30 30` },
+            s(`use`, { href: `#link-icon` })
+          ),
+        },
+      ],
+      [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
+    ],
+    remarkPlugins: [
+      postFrontmatterPlugin,
+      postReadingTimePlugin,
+      remarkToc,
+      [shikiTwoslash.default, { theme: "one-dark-pro" }],
+      remarkHint,
+    ],
+    extendDefaultPlugins: true,
   },
   integrations: [
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
-    mdx({
-      rehypePlugins: [
-        [
-          rehypeAutolinkHeadings,
-          {
-            content: s(
-              `svg`,
-              { width: 30, height: 30, viewBox: `0 0 30 30` },
-              s(`use`, { href: `#link-icon` })
-            ),
-          },
-        ],
-        [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
-      ],
-      remarkPlugins: [
-        postFrontmatterPlugin,
-        postReadingTimePlugin,
-        remarkToc,
-        [shikiTwoslash.default, { theme: "one-dark-pro" }],
-        remarkHint,
-      ],
-    }),
+    mdx(),
     tailwind(),
     compress(),
     prefetch(),

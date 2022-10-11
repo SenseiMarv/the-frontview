@@ -1,6 +1,7 @@
 ---
 title: "My first Blog Post"
 date: "2022-09-10"
+tags: "blog, post, first"
 imgUrl: "https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/JavaScript-code.jpg?itok=1Wia7hH0"
 ---
 
@@ -19,15 +20,39 @@ import ExternalLink from "../../../components/utils/ExternalLink.astro";
 - Item 3
 - Item 4
 
+# Tasklist
+
+- [x] List item 1
+- [x] List item 2
+- [ ] List item 3
+
 # Blockquote
 
 > Blockquote
+
+# Panel
+
+!> Here is a tip.
+
+?> And a warning.
+
+x> Or an error.
+
+# Table
+
+| a      |   b    | c      |      d |
+| ------ | :----: | :----- | -----: |
+| item a | item b | item c | item d |
+| item a | item b | item c | item d |
+| item a | item b | item c | item d |
 
 # Inline code
 
 Lorem, ipsum `const t = {}` consectetur adipisicing elit.
 
 # Code block
+
+## With language, title and highlighting
 
 ```typescript title="examples/index.ts" {1-3,6}
 export function absolute(num: number) {
@@ -43,6 +68,8 @@ export function absolute(num: number) {
 const value = absolute(-1);
 ```
 
+## With language, without title or highlighting
+
 ```typescript
 export function absolute(num: number) {
   if (num < 0) return num * -1;
@@ -51,6 +78,8 @@ export function absolute(num: number) {
 const value = absolute(-1);
 ```
 
+## Without language, title or highlighting
+
 ```
 export function absolute(num: number) {
   if (num < 0) return num * -1;
@@ -59,29 +88,17 @@ export function absolute(num: number) {
 const value = absolute(-1);
 ```
 
-# Tasklist
+# Footnotes
 
-- [x] List item 1
-- [x] List item 2
-- [ ] List item 3
+Note 1[^1]
 
-# Panel
+Note 2[^2]
 
-!> Here is a tip.
-
-?> And a warning.
-
-x> Or an error.
-
-# Table
-
-| a      | b      |      c |
-| ------ | :----- | -----: |
-| item a | item b | item c |
-| item a | item b | item c |
-| item a | item b | item c |
+# Divider
 
 <Divider />
+
+# External link with favicon
 
 <ExternalLink href="https://tailwindcss.com/" favicon>
   TailwindCSS
@@ -110,3 +127,6 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione,
 ###### H6
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
+
+[^1]: Footnote 1
+[^2]: Footnote 2

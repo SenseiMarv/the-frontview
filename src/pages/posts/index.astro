@@ -1,6 +1,6 @@
 ---
 import Overview from "../../components/post/Overview.astro";
-import { sortPostsByDate } from "../../components/utils/sortPosts";
+import { sortPostsByDate } from "../../components/post/sortPosts";
 import Layout from "../../layouts/Layout.astro";
 
 const posts = sortPostsByDate(await Astro.glob("./**/*.mdx"));

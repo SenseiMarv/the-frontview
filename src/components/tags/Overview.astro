@@ -1,0 +1,28 @@
+---
+import type { SortedTags } from "../../typings/Tag";
+import NavLink from "../utils/NavLink.astro";
+
+export interface Props {
+  tags: SortedTags;
+  prefetch?: boolean;
+}
+
+const { tags, prefetch = false } = Astro.props;
+---
+
+<ul class="flex flex-col gap-3 pl-0 text-xl">
+  {
+    tags.map((tag) => (
+      <li class="list-none">
+        <NavLink
+          href={`/tags/${tag[0]}`}
+          prefetch={prefetch}
+          classString="!inline"
+        >
+          {tag[0]}
+          <div class="ml-2 inline-block text-gray-400">({tag[1]})</div>
+        </NavLink>
+      </li>
+    ))
+  }
+</ul>

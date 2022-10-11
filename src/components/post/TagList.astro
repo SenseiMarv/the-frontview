@@ -1,0 +1,21 @@
+---
+import { getTags } from "../tags/sortTags";
+import NavLink from "../utils/NavLink.astro";
+
+export interface Props {
+  tags: string;
+}
+
+const { tags } = Astro.props;
+
+const tagList = getTags(tags);
+---
+
+{
+  tagList.map((tag, index) => (
+    <>
+      <NavLink href={`/tags/${tag}`}>{tag}</NavLink>
+      {tagList[index + 1] !== undefined && <>, </>}
+    </>
+  ))
+}

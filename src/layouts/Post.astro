@@ -16,6 +16,7 @@ const { frontmatter } = Astro.props;
       title={frontmatter.title}
       imgUrl={frontmatter.imgUrl}
       date={frontmatter.date}
+      tags={frontmatter.tags}
       readingTime={frontmatter.readingTime}
     />
   </div>
@@ -69,10 +70,6 @@ const { frontmatter } = Astro.props;
       }
       .heading a {
         @apply absolute -ml-4 w-full max-w-xl cursor-pointer no-underline opacity-0 hover:opacity-100 md:max-w-5xl lg:-ml-6;
-      }
-      /* The first heading is the table of contents, where a link isn't necessary */
-      .heading:first-child a {
-        @apply hidden;
       }
 
       /* Styling of toc links */

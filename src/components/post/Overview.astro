@@ -12,7 +12,7 @@ const { posts, prefetch = false } = Astro.props;
 
 <ul class="grid justify-items-center gap-8 p-4 md:grid-cols-3 lg:gap-16">
   {
-    posts.map((post, index) => (
+    posts.map((post) => (
       <>
         <li class="list-none">
           <Card
@@ -20,7 +20,7 @@ const { posts, prefetch = false } = Astro.props;
             imgUrl={post.frontmatter.imgUrl}
             date={post.frontmatter.date}
             readingTime={post.frontmatter.readingTime}
-            url={post.url ? post.url : ""}
+            url={post.url || ""}
             prefetch={prefetch}
           />
         </li>

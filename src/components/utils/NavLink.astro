@@ -1,0 +1,17 @@
+---
+export interface Props {
+  href: string;
+  prefetch?: boolean;
+  classString?: string;
+}
+
+const { href, prefetch, classString } = Astro.props;
+---
+
+<a
+  href={href}
+  rel={prefetch ? "prefetch" : ""}
+  class={classString +
+    " inline-flex hover:text-teal-500 hover:underline hover:underline-offset-2 transition-colors duration-300"}
+  ><slot />
+</a>

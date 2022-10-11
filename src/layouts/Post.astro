@@ -9,7 +9,7 @@ import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={`${frontmatter.title} - The Frontview`}>
   <ScrollBar />
   <div class="mt-12 md:mt-24">
     <Header

@@ -1,0 +1,11 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<Icon name={`fluent-emoji:${name}`} class="inline-flex w-6" />

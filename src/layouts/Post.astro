@@ -1,15 +1,32 @@
 ---
 import Header from "../components/post/Header.astro";
 import HeadingLinkSvg from "../components/post/HeadingLinkSvg.astro";
+import { getTags } from "../components/tags/sortTags";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/scripts/Giscus.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
+
+const date = new Date(frontmatter.date).toISOString();
+const tags = getTags(frontmatter.tags);
+const defaultOpenGraphType = "article";
+const defaultOpenGraphImageAlt = "Blogpost cover";
+const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
 ---
 
-<Layout title={`${frontmatter.title} - The Frontview`}>
+<Layout
+  title={`${frontmatter.title} - The Frontview`}
+  description={frontmatter.description}
+  openGraphType={defaultOpenGraphType}
+  openGraphImage={frontmatter.imgUrl}
+  openGraphImageAlt={defaultOpenGraphImageAlt}
+  openGraphArticlePublishedTime={date}
+  openGraphArticleAuthor={defaultOpenGraphArticleAuthor}
+  openGraphArticleSection={tags[0]}
+  openGraphArticleTags={tags}
+>
   <ScrollBar />
   <div class="mt-12 md:mt-24">
     <Header

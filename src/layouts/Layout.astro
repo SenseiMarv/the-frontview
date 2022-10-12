@@ -3,6 +3,7 @@ import "@fontsource/quicksand";
 import "@fontsource/inter";
 import "@fontsource/source-code-pro";
 
+import { SEO } from "astro-seo";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 import Footer from "../components/footer/Footer.astro";
@@ -11,9 +12,69 @@ import GoogleAnalytics from "../components/utils/scripts/GoogleAnalytics.astro";
 
 export interface Props {
   title: string;
+  description?: string;
+  openGraphType?: string;
+  openGraphImage?: string;
+  openGraphImageAlt?: string;
+  openGraphArticlePublishedTime?: string;
+  openGraphArticleAuthor?: string[];
+  openGraphArticleSection?: string;
+  openGraphArticleTags?: string[];
 }
 
-const { title } = Astro.props;
+const defaultDescription =
+  "A small personal blog about everything around tech and programming. Author: Marvin Stickel";
+const defaultOpenGraphType = "website";
+const defaultOpenGraphImage = "/public/favicon.svg";
+const defaultOpenGraphImageAlt = "Website Icon";
+const defaultOpenGraphSiteName = "The Frontview";
+const defaultOpenGraphTwitterCard = "summary_large_image";
+
+const {
+  title,
+  description = defaultDescription,
+  openGraphType = defaultOpenGraphType,
+  openGraphImage = defaultOpenGraphImage,
+  openGraphImageAlt = defaultOpenGraphImageAlt,
+  openGraphArticlePublishedTime,
+  openGraphArticleAuthor,
+  openGraphArticleSection,
+  openGraphArticleTags,
+} = Astro.props;
+
+let openGraph: any = {
+  basic: {
+    title, // It is intentional to use the same title here and as page title
+    type: openGraphType,
+    image: openGraphImage,
+  },
+  optional: {
+    description,
+    siteName: defaultOpenGraphSiteName,
+  },
+  image: {
+    alt: openGraphImageAlt,
+  },
+  twitter: {
+    card: defaultOpenGraphTwitterCard,
+  },
+};
+if (
+  openGraphArticlePublishedTime ||
+  openGraphArticleAuthor ||
+  openGraphArticleSection ||
+  openGraphArticleTags
+) {
+  openGraph = {
+    ...openGraph,
+    article: {
+      publishedTime: openGraphArticlePublishedTime,
+      author: openGraphArticleAuthor,
+      section: openGraphArticleSection,
+      tags: openGraphArticleTags,
+    },
+  };
+}
 
 const headingFontFamily = [
   "Quicksand",
@@ -28,13 +89,8 @@ const headingFontFamily = [
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="A small personal blog about everything around tech and programming. Author: Marvin Stickel"
-    />
-    <meta name="robots" content="index, follow" />
     <GoogleAnalytics />
-    <title>{title}</title>
+    <SEO title={title} description={description} openGraph={openGraph} />
   </head>
   <body class="container mx-auto max-w-xl bg-gray-800 text-white md:max-w-5xl">
     <Header />

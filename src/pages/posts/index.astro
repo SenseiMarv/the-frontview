@@ -6,7 +6,10 @@ import Layout from "../../layouts/Layout.astro";
 const posts = sortPostsByDate(await Astro.glob("./**/*.mdx"));
 ---
 
-<Layout title="All Posts - The Frontview">
+<Layout
+  title="All Posts - The Frontview"
+  description="A list of all blog posts of my personal blog. Author: Marvin Stickel"
+>
   <h1 class="mt-12 mb-8 text-6xl md:mt-24 md:mb-16">All posts</h1>
   <div class="mt-4">
     <Overview posts={posts} />

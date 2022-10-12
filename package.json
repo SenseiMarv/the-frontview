@@ -50,6 +50,7 @@
     "astro-eslint-parser": "^0.6.2",
     "astro-icon": "https://gitpkg.now.sh/stramel/astro-icon/packages/core?main",
     "astro-robots-txt": "^0.3.10",
+    "astro-seo": "^0.6.0",
     "autoprefixer": "^10.4.12",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",

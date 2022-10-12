@@ -32,12 +32,14 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
     <Header
       title={frontmatter.title}
       imgUrl={frontmatter.imgUrl}
+      imgAuthor={frontmatter.imgAuthor}
+      imgAuthorUrl={frontmatter.imgAuthorUrl}
       pubDate={frontmatter.pubDate}
       tags={frontmatter.tags}
       readingTime={frontmatter.readingTime}
     />
   </div>
-  <div class="mt-8 mb-4 md:mt-16 md:mb-8">
+  <div class="mt-6 mb-4 md:mt-14 md:mb-8">
     <Divider noSpacing />
   </div>
   <slot />

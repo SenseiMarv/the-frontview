@@ -1234,6 +1234,15 @@ astro-icon@^0.7.3:
     resolve-pkg "^2.0.0"
     svgo "^2.8.0"
 
+astro-robots-txt@^0.3.10:
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/astro-robots-txt/-/astro-robots-txt-0.3.10.tgz#a54323670ee5943487c4b2698502cf330e7d88aa"
+  integrity sha512-fVQOdiVFPgMJEILUFBpNsup3q/RBvYiiecQVyPeWo3Ss+CzjMCkbWBflbFr86+9tTkiX0q1dufNem03QnorJ/w==
+  dependencies:
+    deepmerge "^4.2.2"
+    valid-filename "^4.0.0"
+    zod "^3.19.1"
+
 astro@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/astro/-/astro-1.4.4.tgz#c64ee6087c0ebf27c24c38a57d2f4f43fd1263f5"
@@ -2904,6 +2913,11 @@ file-uri-to-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
   integrity sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==
+
+filename-reserved-regex@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/filename-reserved-regex/-/filename-reserved-regex-3.0.0.tgz#3d5dd6d4e2d73a3fed2ebc4cd0b3448869a081f7"
+  integrity sha512-hn4cQfU6GOT/7cFHXBqeBg2TbrMBgdD0kcjLhvSQYYwm3s4B6cjvBfb7nBALJLAXqmU5xajSa7X2NnUud/VCdw==
 
 fill-range@^7.0.1:
   version "7.0.1"
@@ -6914,6 +6928,13 @@ uvu@^0.5.0, uvu@^0.5.6:
     kleur "^4.0.3"
     sade "^1.7.3"
 
+valid-filename@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/valid-filename/-/valid-filename-4.0.0.tgz#64f1528cffa0725491de84bf1a65733c6125ab06"
+  integrity sha512-VEYTpTVPMgO799f2wI7zWf0x2C54bPX6NAfbZ2Z8kZn76p+3rEYCTYVYzMUcVSMvakxMQTriBf24s3+WeXJtEg==
+  dependencies:
+    filename-reserved-regex "^3.0.0"
+
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/validate-npm-package-license/-/validate-npm-package-license-3.0.4.tgz#fc91f6b9c7ba15c857f4cb2c5defeec39d4f410a"
@@ -7194,7 +7215,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zod@^3.17.3:
+zod@^3.17.3, zod@^3.19.1:
   version "3.19.1"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.19.1.tgz#112f074a97b50bfc4772d4ad1576814bd8ac4473"
   integrity sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==

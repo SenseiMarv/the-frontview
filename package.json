@@ -48,6 +48,7 @@
     "@typescript-eslint/parser": "^5.39.0",
     "astro-compress": "^1.0.10",
     "astro-eslint-parser": "^0.6.2",
+    "astro-robots-txt": "^0.3.10",
     "autoprefixer": "^10.4.12",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",

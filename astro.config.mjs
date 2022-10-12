@@ -1,3 +1,5 @@
+import { readdirSync } from "node:fs";
+
 import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
@@ -7,6 +9,7 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
+import robotsTxt from "astro-robots-txt";
 import { s } from "hastscript";
 import rehypeAddClasses from "rehype-add-classes";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -20,6 +23,11 @@ import {
 } from "./plugins/remarkPlugins.mjs";
 
 const hostedSiteUrl = "https://the-frontview.vercel.app";
+
+const getSubdirectories = (source) =>
+  readdirSync(source, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => `${hostedSiteUrl}/posts/${dirent.name}`);
 
 export default defineConfig({
   output: "server",
@@ -64,7 +72,15 @@ export default defineConfig({
     prefetch(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
     sitemap({
-      customPages: [`${hostedSiteUrl}/posts`, `${hostedSiteUrl}/tags`], // Custom sitemap generation currently doesn't work with SSR, so the pages have to be defined manually: https://github.com/withastro/astro/issues/3682
+      // Custom sitemap generation currently doesn't work with SSR, so the pages have to be defined
+      // manually (tags pages are missing at the moment): https://github.com/withastro/astro/issues/3682
+      customPages: [
+        hostedSiteUrl,
+        `${hostedSiteUrl}/posts`,
+        `${hostedSiteUrl}/tags`,
+        ...getSubdirectories("./src/pages/posts"),
+      ],
     }),
+    robotsTxt(),
   ],
 });

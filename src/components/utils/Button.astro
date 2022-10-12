@@ -1,0 +1,16 @@
+---
+export interface Props {
+  href: string;
+  prefetch?: boolean;
+  classString?: string;
+}
+
+const { href, prefetch, classString = "" } = Astro.props;
+---
+
+<a
+  href={href}
+  rel={prefetch ? "prefetch" : undefined}
+  class={`${classString} inline-flex items-center rounded-lg bg-gray-700 px-3 py-2 text-center text-white transition-colors duration-300 hover:bg-teal-700 dark:bg-gray-600 dark:hover:bg-teal-500`}
+  ><slot />
+</a>

@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon";
 
+import ThemeToggle from "../theme/ThemeToggle.astro";
 import Divider from "../utils/Divider.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
 import NavLink from "../utils/NavLink.astro";
@@ -20,6 +21,7 @@ import GitHubIcon from "./GitHubIcon.astro";
       <NavLink href="/tags" prefetch>Tags</NavLink>
     </div>
     <div class="ml-auto flex gap-4 text-lg">
+      <ThemeToggle />
       <NavLink href="/rss.xml" newTab>
         <Icon
           name="material-symbols:rss-feed-rounded"
@@ -28,7 +30,7 @@ import GitHubIcon from "./GitHubIcon.astro";
       </NavLink>
       <ExternalLink href="https://github.com/SenseiMarv/the-frontview">
         <div
-          class="w-6 fill-white transition-colors duration-300 hover:fill-teal-500"
+          class="w-6 transition-colors duration-300 hover:fill-teal-700 dark:fill-white dark:hover:fill-teal-500"
         >
           <GitHubIcon />
         </div>

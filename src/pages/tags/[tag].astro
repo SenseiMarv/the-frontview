@@ -2,6 +2,7 @@
 import Overview from "../../components/post/Overview.astro";
 import { sortPostsByDate } from "../../components/post/sortPosts";
 import { getTags } from "../../components/tags/sortTags";
+import Button from "../../components/utils/Button.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const posts = sortPostsByDate(await Astro.glob("../posts/**/*.mdx"));
@@ -27,11 +28,6 @@ if (postsWithTag.length === 0) {
     <Overview posts={postsWithTag} prefetch />
   </div>
   <div class="mt-4 flex justify-center md:mt-8 lg:mt-16">
-    <a
-      href="/tags"
-      rel="prefetch"
-      class="inline-flex items-center rounded-lg bg-gray-600 px-3 py-2 text-center transition-colors duration-300 hover:bg-teal-500"
-      >Back to tags</a
-    >
+    <Button href="/tags" prefetch>Back to tags</Button>
   </div>
 </Layout>

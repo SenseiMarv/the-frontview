@@ -1,18 +1,16 @@
 ---
+import Button from "../components/utils/Button.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="404 - The Frontview" description="Not found error page.">
   <div class="mt-12 text-center md:mt-24">
     <h1 class="text-6xl">404</h1>
-    <h2 class="mt-4 text-4xl text-gray-400 md:mt-8">Not found</h2>
+    <h2 class="mt-4 text-4xl text-gray-500 dark:text-gray-400 md:mt-8">
+      Not found
+    </h2>
   </div>
   <div class="mt-8 flex justify-center md:mt-16">
-    <a
-      href="/"
-      rel="prefetch"
-      class="inline-flex items-center rounded-lg bg-gray-600 px-3 py-2 text-center transition-colors duration-300 hover:bg-teal-500"
-      >Back to home</a
-    >
+    <Button href="/" prefetch>Back to home</Button>
   </div>
 </Layout>

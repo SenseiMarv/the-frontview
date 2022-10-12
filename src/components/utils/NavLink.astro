@@ -19,7 +19,7 @@ const { href, prefetch, newTab, classString = "" } = Astro.props;
     : newTab
     ? "noopener, noreferrer"
     : undefined}
-  class={`${classString} inline-flex transition-colors duration-300 hover:text-teal-500 hover:underline hover:underline-offset-2`}
+  class={`${classString} inline-flex transition-colors duration-300 hover:text-teal-700 hover:underline hover:underline-offset-2 dark:hover:text-teal-500`}
 >
   <slot />
 </a>

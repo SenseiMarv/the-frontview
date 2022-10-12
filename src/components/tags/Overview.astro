@@ -20,7 +20,9 @@ const { tags, prefetch = false } = Astro.props;
           classString="!inline"
         >
           {tag[0]}
-          <div class="ml-2 inline-block text-gray-400">({tag[1]})</div>
+          <div class="ml-2 inline-block text-gray-500 dark:text-gray-400">
+            ({tag[1]})
+          </div>
         </NavLink>
       </li>
     ))

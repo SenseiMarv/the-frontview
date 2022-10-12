@@ -94,7 +94,7 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       /* Styling of toc links */
 
       #table-of-contents + ul a {
-        @apply text-teal-300 transition-colors duration-300 hover:text-teal-500 hover:underline hover:underline-offset-2;
+        @apply text-teal-700 transition-colors duration-300 hover:text-teal-500 hover:underline hover:underline-offset-2 dark:text-teal-300 dark:hover:text-teal-500;
       }
 
       /* Styling of ul components */
@@ -106,10 +106,10 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       /* Styling of blockquote components */
 
       blockquote {
-        @apply my-4 flex flex-col rounded-xl bg-gray-900 p-4 md:flex-row;
+        @apply my-4 flex flex-col rounded-xl bg-gray-300 p-4 dark:bg-gray-900 md:flex-row;
       }
       blockquote > span {
-        @apply text-4xl text-gray-500;
+        @apply text-4xl text-gray-600 dark:text-gray-500;
       }
       blockquote > div {
         @apply md:ml-4 md:mt-2;
@@ -123,25 +123,25 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
         @apply flex items-center gap-3;
       }
       li.task-list-item > input {
-        @apply h-4 w-4 appearance-none rounded bg-gray-400 checked:bg-teal-500;
+        @apply h-4 w-4 appearance-none rounded bg-gray-400 checked:bg-teal-700 dark:checked:bg-teal-500;
       }
 
       /* Styling of code components (specific to shiki twoslash) */
 
       :not(.code-container) > code {
-        @apply rounded-md bg-gray-900 py-1 px-2;
+        @apply rounded-md bg-gray-800 py-1 px-2 text-white dark:bg-gray-900;
       }
 
       /* Styling of code block components (specific to shiki twoslash) */
 
       pre {
-        @apply my-4 grid grid-cols-1 content-around rounded-xl !bg-gray-900 md:grid-cols-2;
+        @apply my-4 grid grid-cols-1 content-around rounded-xl !bg-gray-800 dark:!bg-gray-900 md:grid-cols-2;
         grid-template-areas:
           "column-1"
           "column-2";
       }
       .code-title {
-        @apply ml-4 mt-2 justify-self-start rounded-lg bg-gray-700 p-1 px-3 text-white md:mt-0 md:mr-4 md:justify-self-end md:rounded-t-none;
+        @apply ml-4 mt-2 justify-self-start rounded-lg bg-gray-500 p-1 px-3 text-white dark:bg-gray-700 md:mt-0 md:mr-4 md:justify-self-end md:rounded-t-none;
         grid-area: column-2;
       }
       .language-id {
@@ -158,7 +158,7 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
         @apply min-h-[1.5rem];
       }
       .line.highlight {
-        @apply bg-gray-800 outline outline-2 outline-gray-800;
+        @apply bg-gray-700 outline outline-2 outline-gray-700 dark:bg-gray-800 dark:outline-gray-800;
       }
       /* md */
       @media (min-width: 768px) {
@@ -173,13 +173,13 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
         @apply my-4 rounded-xl p-4;
       }
       .hint.tip {
-        @apply bg-sky-900;
+        @apply bg-sky-300 dark:bg-sky-900;
       }
       .hint.warn {
-        @apply bg-yellow-900;
+        @apply bg-yellow-300 dark:bg-yellow-900;
       }
       .hint.error {
-        @apply bg-red-900;
+        @apply bg-red-300 dark:bg-red-900;
       }
 
       /* Styling of table components */
@@ -188,10 +188,10 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
         @apply my-4;
       }
       th {
-        @apply bg-gray-700 px-3 py-2 uppercase;
+        @apply bg-gray-400 px-3 py-2 uppercase dark:bg-gray-700;
       }
       td {
-        @apply min-w-[7rem] whitespace-nowrap bg-gray-900 px-3 py-2;
+        @apply min-w-[7rem] whitespace-nowrap bg-gray-300 px-3 py-2 dark:bg-gray-900;
       }
     }
   </style>

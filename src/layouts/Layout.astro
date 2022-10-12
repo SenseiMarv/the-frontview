@@ -8,6 +8,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 import Footer from "../components/footer/Footer.astro";
 import Header from "../components/header/Header.astro";
+import Theme from "../components/theme/Theme.astro";
 import GoogleAnalytics from "../components/utils/scripts/GoogleAnalytics.astro";
 
 export interface Props {
@@ -91,8 +92,11 @@ const headingFontFamily = [
     <meta name="generator" content={Astro.generator} />
     <GoogleAnalytics />
     <SEO title={title} description={description} openGraph={openGraph} />
+    <Theme />
   </head>
-  <body class="container mx-auto max-w-xl bg-gray-800 text-white md:max-w-5xl">
+  <body
+    class="container mx-auto max-w-xl bg-gray-50 dark:bg-gray-800 dark:text-white md:max-w-5xl"
+  >
     <Header />
     <main class="px-3 md:px-6">
       <slot />

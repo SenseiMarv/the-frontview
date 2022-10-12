@@ -2,6 +2,7 @@
 import Profile from "../components/home-page/Profile.astro";
 import Overview from "../components/post/Overview.astro";
 import { sortPostsByDate } from "../components/post/sortPosts";
+import Button from "../components/utils/Button.astro";
 import Divider from "../components/utils/Divider.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -19,12 +20,7 @@ const posts = sortPostsByDate(await Astro.glob("./posts/**/*.mdx"));
       <Overview posts={posts.slice(undefined, 9)} prefetch />
     </div>
     <div class="mt-4 flex justify-center md:mt-8 lg:mt-16">
-      <a
-        href="/posts"
-        rel="prefetch"
-        class="inline-flex items-center rounded-lg bg-gray-600 px-3 py-2 text-center transition-colors duration-300 hover:bg-teal-500"
-        >See all posts</a
-      >
+      <Button href="/posts" prefetch>See all posts</Button>
     </div>
   </div>
 </Layout>

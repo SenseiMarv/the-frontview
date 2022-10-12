@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 
+import Emoji from "../utils/Emoji.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
 import { formatDateToLocaleDate } from "../utils/formatDates";
 import TagList from "./TagList.astro";
@@ -27,7 +28,22 @@ const formattedReadingTime = `${readingTime} min read`;
     {title}
   </h1>
   <div class="mt-4 text-lg leading-snug text-gray-400 md:mt-6 md:text-xl">
-    {formattedDate} | {formattedReadingTime} | <TagList tags={tags} />
+    <Emoji
+      iconSet="fluent-emoji-high-contrast"
+      name="tear-off-calendar"
+      classString="align-top top-1 relative w-5"
+    />
+    {formattedDate} | <Emoji
+      iconSet="fluent-emoji-high-contrast"
+      name="eight-oclock"
+      classString="align-top top-1 relative w-5"
+    />
+    {formattedReadingTime} | <Emoji
+      iconSet="fluent-emoji-high-contrast"
+      name="keycap-hashtag"
+      classString="align-top top-1 relative w-5"
+    />
+    <TagList tags={tags} />
   </div>
   <Image
     src={imgUrl}

@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 
+import Emoji from "../utils/Emoji.astro";
 import { formatDateToLocaleDate } from "../utils/formatDates";
 
 export interface Props {
@@ -15,6 +16,7 @@ export interface Props {
 const { title, imgUrl, pubDate, readingTime, url, prefetch } = Astro.props;
 
 const formattedDate = formatDateToLocaleDate(new Date(pubDate));
+const formattedReadingTime = `${readingTime} min read`;
 ---
 
 <a href={url} rel={prefetch ? "prefetch" : ""}>
@@ -23,7 +25,19 @@ const formattedDate = formatDateToLocaleDate(new Date(pubDate));
   >
     <Image src={imgUrl} width={600} aspectRatio={16 / 9} alt="Blogpost cover" />
     <div class="p-5">
-      <h3 class="text-gray-400">{formattedDate} | {readingTime} min read</h3>
+      <h3 class="text-gray-400">
+        <Emoji
+          iconSet="fluent-emoji-high-contrast"
+          name="tear-off-calendar"
+          classString="align-top top-1 relative !w-4"
+        />
+        {formattedDate} | <Emoji
+          iconSet="fluent-emoji-high-contrast"
+          name="eight-oclock"
+          classString="align-top top-1 relative !w-4"
+        />
+        {formattedReadingTime}
+      </h3>
       <h2 class="line-clamp-2 mt-1 text-xl">{title}</h2>
     </div>
   </div>

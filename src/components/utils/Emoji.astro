@@ -2,10 +2,12 @@
 import { Icon } from "astro-icon";
 
 export interface Props {
+  iconSet?: string;
   name: string;
+  classString?: string;
 }
 
-const { name } = Astro.props;
+const { iconSet = "fluent-emoji", name, classString = "" } = Astro.props;
 ---
 
-<Icon name={`fluent-emoji:${name}`} class="inline-flex w-6" />
+<Icon name={`${iconSet}:${name}`} class={`${classString} inline-flex w-6`} />

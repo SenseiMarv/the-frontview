@@ -16,6 +16,7 @@ export const sortTagsByUsage = (posts: Post[]): SortedTags => {
   });
 
   return Object.entries(tags).sort(
-    (a: CountedTag, b: CountedTag) => b[1] - a[1]
+    (lessUsedTag: CountedTag, moreUsedTag: CountedTag) =>
+      moreUsedTag[1] - lessUsedTag[1]
   ) as SortedTags;
 };

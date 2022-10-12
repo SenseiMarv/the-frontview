@@ -6,15 +6,15 @@ import { formatDateToLocaleDate } from "../utils/formatDates";
 export interface Props {
   title: string;
   imgUrl: string;
-  date: string;
+  pubDate: string;
   readingTime: string;
   url: string;
   prefetch: boolean;
 }
 
-const { title, imgUrl, date, readingTime, url, prefetch } = Astro.props;
+const { title, imgUrl, pubDate, readingTime, url, prefetch } = Astro.props;
 
-const formattedDate = formatDateToLocaleDate(new Date(date));
+const formattedDate = formatDateToLocaleDate(new Date(pubDate));
 ---
 
 <a href={url} rel={prefetch ? "prefetch" : ""}>

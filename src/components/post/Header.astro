@@ -7,14 +7,14 @@ import TagList from "./TagList.astro";
 export interface Props {
   title: string;
   imgUrl: string;
-  date: string;
+  pubDate: string;
   tags: string;
   readingTime: string;
 }
 
-const { title, imgUrl, date, tags, readingTime } = Astro.props;
+const { title, imgUrl, pubDate, tags, readingTime } = Astro.props;
 
-const formattedDate = formatDateToLocaleDate(new Date(date));
+const formattedDate = formatDateToLocaleDate(new Date(pubDate));
 const formattedReadingTime = `${readingTime} min read`;
 ---
 

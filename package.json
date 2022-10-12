@@ -19,6 +19,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@astrojs/rss": "^1.0.2",
     "@fontsource/inter": "^4.5.13",
     "@fontsource/quicksand": "^4.5.11",
     "@fontsource/source-code-pro": "^4.5.12",

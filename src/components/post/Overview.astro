@@ -18,7 +18,7 @@ const { posts, prefetch = false } = Astro.props;
           <Card
             title={post.frontmatter.title}
             imgUrl={post.frontmatter.imgUrl}
-            date={post.frontmatter.date}
+            pubDate={post.frontmatter.pubDate}
             readingTime={post.frontmatter.readingTime}
             url={post.url || ""}
             prefetch={prefetch}

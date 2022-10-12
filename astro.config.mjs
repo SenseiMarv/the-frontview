@@ -78,6 +78,7 @@ export default defineConfig({
         hostedSiteUrl,
         `${hostedSiteUrl}/posts`,
         `${hostedSiteUrl}/tags`,
+        `${hostedSiteUrl}/rss.xml`,
         ...getSubdirectories("./src/pages/posts"),
       ],
     }),

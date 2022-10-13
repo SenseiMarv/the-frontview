@@ -715,6 +715,15 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@senseimarv/astro-icon@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@senseimarv/astro-icon/-/astro-icon-0.8.0.tgz#87253405923f7abe8e324a88f57088f2a73be9c5"
+  integrity sha512-1XnT/+8ChvhfCaQeeR3Ohl+hb/ZUSx2P14GqcaSzAndcwiofWKxZzUdoUBDnE1V0R8Cov1tR2yT7be7ewwgQrQ==
+  dependencies:
+    "@iconify/utils" "^2.0.1"
+    resolve-pkg "^2.0.0"
+    svgo "^2.8.0"
+
 "@tailwindcss/line-clamp@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/line-clamp/-/line-clamp-0.4.2.tgz#f353c5a8ab2c939c6267ac5b907f012e5ee130f9"
@@ -1269,14 +1278,6 @@ astro-eslint-parser@^0.6.0, astro-eslint-parser@^0.6.2:
     debug "^4.3.4"
     eslint-visitor-keys "^3.0.0"
     espree "^9.0.0"
-
-"astro-icon@https://gitpkg.now.sh/stramel/astro-icon/packages/core?main":
-  version "0.7.3"
-  resolved "https://gitpkg.now.sh/stramel/astro-icon/packages/core?main#cfd60ed5c677458eb2919f438a68859a50d8e958"
-  dependencies:
-    "@iconify/utils" "^2.0.1"
-    resolve-pkg "^2.0.0"
-    svgo "^2.8.0"
 
 astro-robots-txt@^0.3.10:
   version "0.3.10"

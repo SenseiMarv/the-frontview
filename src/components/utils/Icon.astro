@@ -1,6 +1,4 @@
 ---
-import { Icon } from "@senseimarv/astro-icon";
-
 export interface Props {
   iconSet?: string;
   name: string;
@@ -10,4 +8,7 @@ export interface Props {
 const { iconSet = "fluent-emoji", name, classString = "" } = Astro.props;
 ---
 
-<Icon name={`${iconSet}:${name}`} class={`${classString} inline-flex w-6`} />
+<iconify-icon
+  icon={`${iconSet}:${name}`}
+  class={`${classString} inline-flex align-bottom text-2xl`}
+/>

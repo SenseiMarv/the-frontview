@@ -1,9 +1,8 @@
 ---
-import { Icon } from "@senseimarv/astro-icon";
-
 import ThemeToggle from "../theme/ThemeToggle.astro";
 import Divider from "../utils/Divider.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
+import Icon from "../utils/Icon.astro";
 import NavLink from "../utils/NavLink.astro";
 import GitHubIcon from "./GitHubIcon.astro";
 ---
@@ -24,8 +23,8 @@ import GitHubIcon from "./GitHubIcon.astro";
       <ThemeToggle />
       <NavLink href="/rss.xml" newTab>
         <Icon
-          name="material-symbols:rss-feed-rounded"
-          class="inline-flex w-6"
+          iconSet="material-symbols"
+          name="rss-feed-rounded"
           aria-label="RSS feed"
         />
       </NavLink>

@@ -1,8 +1,8 @@
 ---
 import { Image } from "@astrojs/image/components";
 
-import Emoji from "../utils/Emoji.astro";
 import { formatDateToLocaleDate } from "../utils/formatDates";
+import Icon from "../utils/Icon.astro";
 
 export interface Props {
   title: string;
@@ -26,15 +26,15 @@ const formattedReadingTime = `${readingTime} min read`;
     <Image src={imgUrl} width={600} aspectRatio={16 / 9} alt="Blogpost cover" />
     <div class="p-5">
       <h3 class="text-gray-500 dark:text-gray-400">
-        <Emoji
+        <Icon
           iconSet="fluent-emoji-high-contrast"
           name="tear-off-calendar"
-          classString="align-top top-1 relative !w-4"
+          classString="!align-top !w-4 !h-4"
         />
-        {formattedDate} | <Emoji
+        {formattedDate} | <Icon
           iconSet="fluent-emoji-high-contrast"
           name="eight-oclock"
-          classString="align-top top-1 relative !w-4"
+          classString="!align-top !w-4 !h-4"
         />
         {formattedReadingTime}
       </h3>

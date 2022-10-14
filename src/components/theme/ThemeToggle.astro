@@ -1,5 +1,5 @@
 ---
-import Emoji from "../utils/Emoji.astro";
+import Icon from "../utils/Icon.astro";
 ---
 
 <button
@@ -8,9 +8,9 @@ import Emoji from "../utils/Emoji.astro";
   class="transition-colors duration-300 hover:text-teal-700 dark:hover:text-teal-500"
   aria-label="Toggle light/dark theme"
 >
-  <Emoji
+  <Icon
     iconSet="fluent-emoji-high-contrast"
     name="first-quarter-moon"
-    classString="hover:fill-teal-500"
+    classString="hover:fill-teal-500 !align-top"
   />
 </button>

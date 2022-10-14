@@ -90,9 +90,12 @@ const headingFontFamily = [
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <GoogleAnalytics />
-    <SEO title={title} description={description} openGraph={openGraph} />
+    <script
+      src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"
+    ></script>
     <Theme />
+    <SEO title={title} description={description} openGraph={openGraph} />
+    <GoogleAnalytics />
   </head>
   <body
     class="container mx-auto max-w-xl bg-gray-50 dark:bg-gray-800 dark:text-white md:max-w-5xl"

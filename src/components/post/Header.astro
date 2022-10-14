@@ -1,9 +1,9 @@
 ---
 import { Image } from "@astrojs/image/components";
 
-import Emoji from "../utils/Emoji.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
 import { formatDateToLocaleDate } from "../utils/formatDates";
+import Icon from "../utils/Icon.astro";
 import TagList from "./TagList.astro";
 
 export interface Props {
@@ -30,20 +30,20 @@ const formattedReadingTime = `${readingTime} min read`;
   <div
     class="mt-4 text-lg leading-snug text-gray-500 dark:text-gray-400 md:mt-6 md:text-xl"
   >
-    <Emoji
+    <Icon
       iconSet="fluent-emoji-high-contrast"
       name="tear-off-calendar"
-      classString="align-top top-1 relative w-5"
+      classString="align-text-top w-5 h-5"
     />
-    {formattedDate} | <Emoji
+    {formattedDate} | <Icon
       iconSet="fluent-emoji-high-contrast"
       name="eight-oclock"
-      classString="align-top top-1 relative w-5"
+      classString="align-text-top w-5 h-5"
     />
-    {formattedReadingTime} | <Emoji
+    {formattedReadingTime} | <Icon
       iconSet="fluent-emoji-high-contrast"
       name="keycap-hashtag"
-      classString="align-top top-1 relative w-5"
+      classString="align-text-top w-5 h-5"
     />
     <TagList tags={tags} />
   </div>

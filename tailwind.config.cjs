@@ -1,8 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-
 const defaultTheme = require("tailwindcss/defaultTheme");
 
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+const config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}"],
   theme: {
     extend: {
@@ -15,3 +14,5 @@ module.exports = {
   darkMode: ["class", '[data-theme="dark"]'],
   plugins: [require("@tailwindcss/line-clamp")],
 };
+
+module.exports = config;

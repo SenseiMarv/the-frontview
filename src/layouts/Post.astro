@@ -1,7 +1,8 @@
 ---
 import Header from "../components/post/Header.astro";
 import HeadingLinkSvg from "../components/post/HeadingLinkSvg.astro";
-import { getTags } from "../components/tags/sortTags";
+// eslint-disable-next-line import/no-unresolved
+import { getTags } from "../components/tag/sortTags";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/scripts/Giscus.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
@@ -19,6 +20,7 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
 <Layout
   title={`${frontmatter.title} - The Frontview`}
   description={frontmatter.description}
+  openGraphTitle={frontmatter.title}
   openGraphType={defaultOpenGraphType}
   openGraphImage={frontmatter.imgUrl}
   openGraphImageAlt={defaultOpenGraphImageAlt}

@@ -10,10 +10,11 @@
     "lint:eslint": "yarn eslint src/",
     "lint:prettier": "yarn prettier --list-different .",
     "lint:types": "tsc",
+    "lint:astro": "astro check",
     "fixlint": "npm-run-all --parallel fix:*",
     "fix:eslint": "yarn eslint src/ --fix;",
     "fix:prettier": "yarn prettier --write .",
-    "build": "tsc && astro build",
+    "build": "astro check && tsc && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky install"

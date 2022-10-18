@@ -3,17 +3,19 @@ import "@fontsource/quicksand";
 import "@fontsource/inter";
 import "@fontsource/source-code-pro";
 
+// eslint-disable-next-line import/no-unresolved
 import { SEO } from "astro-seo";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 import Footer from "../components/footer/Footer.astro";
 import Header from "../components/header/Header.astro";
-import Theme from "../components/theme/Theme.astro";
 import GoogleAnalytics from "../components/utils/scripts/GoogleAnalytics.astro";
+import Theme from "../components/utils/scripts/Theme.astro";
 
 export interface Props {
   title: string;
-  description?: string;
+  description: string;
+  openGraphTitle?: string;
   openGraphType?: string;
   openGraphImage?: string;
   openGraphImageAlt?: string;
@@ -23,8 +25,6 @@ export interface Props {
   openGraphArticleTags?: string[];
 }
 
-const defaultDescription =
-  "A small personal blog about everything around tech and programming. Author: Marvin Stickel";
 const defaultOpenGraphType = "website";
 const defaultOpenGraphImage = "/public/favicon.svg";
 const defaultOpenGraphImageAlt = "Website Icon";
@@ -33,7 +33,8 @@ const defaultOpenGraphTwitterCard = "summary_large_image";
 
 const {
   title,
-  description = defaultDescription,
+  description,
+  openGraphTitle = title,
   openGraphType = defaultOpenGraphType,
   openGraphImage = defaultOpenGraphImage,
   openGraphImageAlt = defaultOpenGraphImageAlt,
@@ -45,7 +46,7 @@ const {
 
 let openGraph: any = {
   basic: {
-    title, // It is intentional to use the same title here and as page title
+    title: openGraphTitle,
     type: openGraphType,
     image: openGraphImage,
   },

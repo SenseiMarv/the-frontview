@@ -1,5 +1,6 @@
 ---
-import { getTags } from "../tags/sortTags";
+// eslint-disable-next-line import/no-unresolved
+import { getTags } from "../tag/sortTags";
 import NavLink from "../utils/NavLink.astro";
 
 export interface Props {
@@ -12,7 +13,7 @@ const tagList = getTags(tags);
 ---
 
 {
-  tagList.map((tag, index) => (
+  tagList.map((tag: string, index: number) => (
     <>
       <NavLink href={`/tags/${tag}`}>{tag}</NavLink>
       {tagList[index + 1] !== undefined && <>, </>}

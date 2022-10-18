@@ -1,6 +1,6 @@
 ---
-import Overview from "../../components/tags/Overview.astro";
-import { sortTagsByUsage } from "../../components/tags/sortTags";
+import Overview from "../../components/tag/Overview.astro";
+import { sortTagsByUsage } from "../../components/tag/sortTags";
 import Layout from "../../layouts/Layout.astro";
 
 const sortedTags = sortTagsByUsage(await Astro.glob("../posts/**/*.mdx"));

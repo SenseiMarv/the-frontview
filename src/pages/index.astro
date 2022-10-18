@@ -1,6 +1,7 @@
 ---
 import Profile from "../components/home-page/Profile.astro";
 import Overview from "../components/post/Overview.astro";
+// eslint-disable-next-line import/no-unresolved
 import { sortPostsByDate } from "../components/post/sortPosts";
 import Button from "../components/utils/Button.astro";
 import Divider from "../components/utils/Divider.astro";
@@ -9,7 +10,10 @@ import Layout from "../layouts/Layout.astro";
 const posts = sortPostsByDate(await Astro.glob("./posts/**/*.mdx"));
 ---
 
-<Layout title="The Frontview">
+<Layout
+  title="The Frontview"
+  description="A small personal blog about everything around tech and programming. Author: Marvin Stickel"
+>
   <div class="mt-12 md:mt-24">
     <Profile />
     <h2 class="mt-12 text-2xl md:mt-24 md:text-4xl">Recent posts</h2>

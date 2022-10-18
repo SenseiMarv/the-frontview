@@ -139,16 +139,16 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       pre {
         @apply my-4 grid grid-cols-1 content-around rounded-xl !bg-gray-800 dark:!bg-gray-900 md:grid-cols-2;
         grid-template-areas:
-          "column-1"
-          "column-2";
+          "column-language-id"
+          "column-code-title";
       }
       .code-title {
-        @apply ml-4 mt-2 justify-self-start rounded-lg bg-gray-500 p-1 px-3 text-white dark:bg-gray-700 md:mt-0 md:mr-4 md:justify-self-end md:rounded-t-none;
-        grid-area: column-2;
+        @apply mt-2 justify-self-start rounded-r-lg bg-gray-500 p-1 px-3 text-white dark:bg-gray-700 md:mt-0 md:mr-4 md:justify-self-end md:rounded-b-lg md:rounded-tr-none;
+        grid-area: column-code-title;
       }
       .language-id {
-        @apply col-span-2 ml-4 justify-self-start rounded-b-lg bg-teal-700 p-1 px-3 text-white;
-        grid-area: column-1;
+        @apply col-span-2 mt-4 justify-self-start rounded-r-lg bg-teal-700 p-1 px-3 text-white md:mt-0 md:ml-4 md:rounded-b-lg md:rounded-tr-none;
+        grid-area: column-language-id;
       }
       .code-title + .language-id {
         @apply col-span-1;
@@ -165,7 +165,7 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       /* md */
       @media (min-width: 768px) {
         pre {
-          grid-template-areas: "column-1 column-2";
+          grid-template-areas: "column-language-id column-code-title";
         }
       }
 

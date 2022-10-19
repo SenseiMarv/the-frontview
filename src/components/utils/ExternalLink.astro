@@ -5,9 +5,10 @@ import { Image } from "@astrojs/image/components";
 export interface Props {
   href: string;
   favicon?: boolean;
+  classString?: string;
 }
 
-const { href, favicon } = Astro.props;
+const { href, favicon, classString = "" } = Astro.props;
 
 const faviconHeight = 18;
 ---
@@ -16,7 +17,7 @@ const faviconHeight = 18;
   href={href}
   target="_blank"
   rel="noopener, noreferrer"
-  class="inline-flex items-baseline gap-1 text-teal-700 transition-colors duration-300 hover:text-teal-500 dark:text-teal-300 dark:hover:text-teal-500"
+  class={`${classString} inline-flex items-baseline gap-1 text-teal-700 transition-colors duration-300 hover:text-teal-500 dark:text-teal-300 dark:hover:text-teal-500`}
 >
   {
     favicon && (

@@ -3,10 +3,17 @@ export interface Props {
   href: string;
   prefetch?: boolean;
   newTab?: boolean;
+  ariaLabel?: string;
   classString?: string;
 }
 
-const { href, prefetch, newTab, classString = "" } = Astro.props;
+const {
+  href,
+  prefetch,
+  newTab,
+  ariaLabel = undefined,
+  classString = "",
+} = Astro.props;
 ---
 
 <a
@@ -19,6 +26,7 @@ const { href, prefetch, newTab, classString = "" } = Astro.props;
     : newTab
     ? "noopener, noreferrer"
     : undefined}
+  aria-label={ariaLabel}
   class={`${classString} inline-flex transition-colors duration-300 hover:text-teal-700 hover:underline hover:underline-offset-2 dark:hover:text-teal-500`}
 >
   <slot />

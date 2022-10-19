@@ -21,12 +21,8 @@ import GitHubIcon from "./GitHubIcon.astro";
     </div>
     <div class="ml-auto flex gap-4 text-lg">
       <ThemeToggle />
-      <NavLink href="/rss.xml" newTab>
-        <Icon
-          iconSet="material-symbols"
-          name="rss-feed-rounded"
-          aria-label="RSS feed"
-        />
+      <NavLink href="/rss.xml" newTab ariaLabel="RSS feed">
+        <Icon iconSet="material-symbols" name="rss-feed-rounded" />
       </NavLink>
       <ExternalLink href="https://github.com/SenseiMarv/the-frontview">
         <div

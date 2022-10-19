@@ -107,13 +107,13 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
 
       /* Styling of blockquote components */
 
-      blockquote {
+      blockquote:not(.tweet-card) {
         @apply my-4 flex flex-col rounded-xl bg-gray-300 p-4 dark:bg-gray-900 md:flex-row;
       }
-      blockquote > span {
+      blockquote:not(.tweet-card) > span {
         @apply text-4xl text-gray-600 dark:text-gray-500;
       }
-      blockquote > div {
+      blockquote:not(.tweet-card) > div {
         @apply md:ml-4 md:mt-2;
       }
 
@@ -194,6 +194,18 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       }
       td {
         @apply min-w-[7rem] whitespace-nowrap bg-gray-300 px-3 py-2 dark:bg-gray-900;
+      }
+
+      /* Styling of embedded youtube components */
+
+      lite-youtube {
+        @apply m-auto shadow-xl;
+      }
+
+      /* Styling of embedded twitter components */
+
+      .tweet-card {
+        @apply m-auto max-w-md shadow-xl;
       }
     }
   </style>

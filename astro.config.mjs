@@ -17,6 +17,8 @@ import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 // eslint-disable-next-line import/no-unresolved
+import embed from "astro-embed/integration";
+// eslint-disable-next-line import/no-unresolved
 import robotsTxt from "astro-robots-txt";
 import { s } from "hastscript";
 import rehypeAddClasses from "rehype-add-classes";
@@ -74,6 +76,7 @@ export default defineConfig({
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
+    embed(),
     mdx(),
     tailwind(),
     compress(),

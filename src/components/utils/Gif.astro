@@ -1,0 +1,33 @@
+---
+// eslint-disable-next-line import/no-unresolved
+import { Image } from "@astrojs/image/components";
+
+export interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  aspectRatio?: number;
+  format?: string;
+}
+
+const defaultWidth = 500;
+const defaultAspectRatio = 4 / 3;
+const defaultFormat = "webp";
+
+const {
+  src,
+  alt,
+  width = defaultWidth,
+  aspectRatio = defaultAspectRatio,
+  format = defaultFormat,
+} = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  width={width}
+  aspectRatio={aspectRatio}
+  format={format}
+  class="m-auto shadow-xl"
+/>

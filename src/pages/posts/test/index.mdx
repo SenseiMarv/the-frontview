@@ -14,6 +14,9 @@ export const components = { blockquote: Blockquote };
 import Divider from "../../../components/utils/Divider.astro";
 import ExternalLink from "../../../components/utils/ExternalLink.astro";
 import Icon from "../../../components/utils/Icon.astro";
+import Gif from "../../../components/utils/Gif.astro";
+
+import { Tweet, YouTube } from "astro-embed";
 
 ## Table of contents
 
@@ -111,6 +114,20 @@ Note 2[^2]
 # Icon
 
 Lorem, ipsum <Icon name="smiling-face-with-smiling-eyes" /> consectetur adipisicing elit.
+
+# Embedded content
+
+## Gif
+
+<Gif src={"https://media.giphy.com/media/oYtVHSxngR3lC/giphy.gif"} alt="Wow" />
+
+## Youtube
+
+<YouTube id="https://www.youtube.com/watch?v=gxBkghlglTg" />
+
+## Twitter
+
+<Tweet id="https://twitter.com/astrodotbuild/status/1557049466401632256" />
 
 # H1
 

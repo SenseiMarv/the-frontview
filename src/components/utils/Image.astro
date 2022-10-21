@@ -5,6 +5,7 @@ import { Image } from "@astrojs/image/components";
 export interface Props {
   src: string;
   alt: string;
+  gif?: boolean;
   width?: number;
   aspectRatio?: number;
   format?: string;
@@ -12,22 +13,28 @@ export interface Props {
 
 const defaultWidth = 500;
 const defaultAspectRatio = 4 / 3;
-const defaultFormat = "webp";
+const defaultGifFormat = "webp";
 
 const {
   src,
   alt,
+  gif,
   width = defaultWidth,
   aspectRatio = defaultAspectRatio,
-  format = defaultFormat,
+  format = gif ? defaultGifFormat : undefined,
 } = Astro.props;
 ---
 
-<Image
-  src={src}
-  alt={alt}
-  width={width}
-  aspectRatio={aspectRatio}
-  format={format}
-  class="m-auto shadow-xl"
-/>
+<div class="image-component flex flex-col items-center">
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    aspectRatio={aspectRatio}
+    format={format}
+    class="shadow-xl"
+  />
+  <div class="mt-4">
+    <slot />
+  </div>
+</div>

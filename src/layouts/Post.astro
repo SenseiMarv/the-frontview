@@ -1,8 +1,8 @@
 ---
-import Header from "../components/post/Header.astro";
-import HeadingLinkSvg from "../components/post/HeadingLinkSvg.astro";
+import Header from "../components/posts/Header.astro";
+import HeadingLinkSvg from "../components/posts/HeadingLinkSvg.astro";
 // eslint-disable-next-line import/no-unresolved
-import { getTags } from "../components/tag/sortTags";
+import { getTags } from "../components/tags/sortTags";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/scripts/Giscus.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
@@ -208,16 +208,22 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
         @apply p-1 text-teal-700 transition-colors duration-300 hover:text-teal-500 dark:text-teal-300 dark:hover:text-teal-500;
       }
 
+      /* Styling of image components */
+
+      .image-component {
+        @apply my-4;
+      }
+
       /* Styling of embedded youtube components */
 
       lite-youtube {
-        @apply m-auto shadow-xl;
+        @apply m-auto my-4 shadow-xl;
       }
 
       /* Styling of embedded twitter components */
 
       .tweet-card {
-        @apply m-auto max-w-md shadow-xl;
+        @apply m-auto my-4 max-w-md shadow-xl;
       }
     }
   </style>

@@ -156,6 +156,9 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       .code-container {
         @apply col-span-2 overflow-auto py-4;
       }
+      .code-container > code {
+        @apply flex flex-col flex-wrap;
+      }
       .line {
         @apply min-h-[1.5rem] px-4;
       }
@@ -186,14 +189,23 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
 
       /* Styling of table components */
 
-      table {
-        @apply my-4;
+      .table-container {
+        @apply my-4 max-w-fit overflow-x-auto rounded-xl;
       }
       th {
         @apply bg-gray-400 px-3 py-2 uppercase dark:bg-gray-700;
       }
+      tr {
+        @apply odd:bg-gray-300 even:bg-gray-200  dark:odd:bg-gray-900 dark:even:bg-gray-800;
+      }
       td {
-        @apply min-w-[7rem] whitespace-nowrap bg-gray-300 px-3 py-2 dark:bg-gray-900;
+        @apply min-w-[7rem] whitespace-nowrap px-3 py-2;
+      }
+
+      /* Styling of footnote components */
+
+      sup > a {
+        @apply p-1 text-teal-700 transition-colors duration-300 hover:text-teal-500 dark:text-teal-300 dark:hover:text-teal-500;
       }
 
       /* Styling of embedded youtube components */

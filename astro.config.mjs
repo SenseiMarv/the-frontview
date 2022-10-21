@@ -23,6 +23,7 @@ import robotsTxt from "astro-robots-txt";
 import { s } from "hastscript";
 import rehypeAddClasses from "rehype-add-classes";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeWrap from "rehype-wrap";
 import remarkHint from "remark-hint";
 import shikiTwoslash from "remark-shiki-twoslash";
 import remarkToc from "remark-toc";
@@ -62,6 +63,7 @@ export default defineConfig({
         },
       ],
       [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
+      [rehypeWrap, { selector: "table", wrapper: "div.table-container" }],
     ],
     remarkPlugins: [
       postFrontmatterPlugin,

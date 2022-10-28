@@ -44,11 +44,6 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   site: hostedSiteUrl,
-  vite: {
-    ssr: {
-      external: ["svgo"],
-    },
-  },
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [

@@ -175,16 +175,16 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       /* Styling of panel components */
 
       .hint {
-        @apply my-4 rounded-xl p-4;
+        @apply my-4 flex flex-col rounded-xl p-4 before:mb-2 before:ml-1 sm:flex-row sm:before:mr-4;
       }
       .hint.tip {
-        @apply bg-sky-300 dark:bg-sky-900;
+        @apply bg-sky-300 before:content-['ℹ️'] dark:bg-sky-900;
       }
       .hint.warn {
-        @apply bg-yellow-300 dark:bg-yellow-900;
+        @apply bg-yellow-300 before:content-['❗'] dark:bg-yellow-900;
       }
       .hint.error {
-        @apply bg-red-300 dark:bg-red-900;
+        @apply bg-red-300 before:content-['❌'] dark:bg-red-900;
       }
 
       /* Styling of table components */

@@ -59,8 +59,29 @@ config.overrides.push({
 });
 
 config.overrides.push({
+  files: ["**/*.astro/*.js", "*.astro/*.js"],
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  parserOptions: {
+    sourceType: "module",
+  },
+  rules: {
+    // No Prettier formatting needed inside <script> as it will be formatted as a `.astro` file.
+    "prettier/prettier": "off",
+  },
+});
+
+config.overrides.push({
   files: ["*.mdx"],
   extends: [...config.extends, "plugin:mdx/recommended"],
+  rules: {
+    // Not all imported components are always used in the posts
+    "no-unused-vars": "off",
+    // Disable a false-positive error in the astro-embed plugin
+    "import/namespace": "off",
+  },
 });
 
 module.exports = config;

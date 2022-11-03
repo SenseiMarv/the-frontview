@@ -1,4 +1,8 @@
 ---
+// eslint-disable-next-line import/no-unresolved
+import { Image } from "@astrojs/image/components";
+
+import TheFrontviewIcon from "../../../assets/icons/TheFrontview-Icon.png";
 import Divider from "../utils/Divider.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
 import Icon from "../utils/Icon.astro";
@@ -9,8 +13,14 @@ import GitHubIcon from "./GitHubIcon.astro";
 
 <header class="p-3 pt-4 md:px-6 md:pt-8">
   <div class="mb-3">
-    <a href="/" rel="prefetch" class="text-4xl font-bold md:text-6xl"
-      ><h1>The Frontview</h1>
+    <a
+      href="/"
+      rel="prefetch"
+      class="text-4xl font-bold md:text-6xl flex items-center"
+    >
+      <div class="w-10 md:w-16 mr-2 md:mr-4">
+        <Image src={TheFrontviewIcon} width={64} alt="The Frontview Icon" />
+      </div><h1>The Frontview</h1>
     </a>
   </div>
   <div class="flex">

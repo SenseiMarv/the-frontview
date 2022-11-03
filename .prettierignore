@@ -2,3 +2,4 @@ dist
 .output
 .vercel
 coverage
+site.webmanifest

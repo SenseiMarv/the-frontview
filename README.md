@@ -1,48 +1,218 @@
-# Welcome to [Astro](https://astro.build)
+# The Frontview
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+> A small personal blog about everything around tech and programming.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[Vercel](https://vercel.com/senseimarv/the-frontview) | [Checkly](https://app.checklyhq.com/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a/) | [Google Search Insights](https://search.google.com/search-console/insights) | [Google Analytics](https://analytics.google.com/analytics/web/?authuser=1#/p332303830/reports/intelligenthome?params=_u..nav%3Dmaui) | [Google Search Console](https://search.google.com/search-console?resource_id=https%3A%2F%2Fthe-frontview.vercel.app%2F) | [Ahref Webmaster Tools](https://app.ahrefs.com/dashboard)
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## Requirements
 
-## 🚀 Project Structure
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install)
 
-Inside of your Astro project, you'll see the following folders and files:
+## Getting started
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+From the root of the project, from a terminal:
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. Run `yarn` to install the required dependencies
+2. Run `yarn start` to start a local dev server
+3. Access the local dev server at http://localhost:3000
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+| Command        | Action                                                               |
+| :------------- | :------------------------------------------------------------------- |
+| `yarn start`   | Starts local dev server at [`localhost:3000`](http://localhost:3000) |
+| `yarn lint`    | Runs all linters, showing problems                                   |
+| `yarn fixlint` | Runs all linters, trying to fix auto-solvable problems               |
+| `yarn build`   | Builds the production site                                           |
+| `yarn preview` | Previews the build locally, before deploying                         |
+| `yarn prepare` | Installs git hooks                                                   |
 
-## 👀 Want to learn more?
+## Blog posts
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+New blog posts can be created by adding a new directory in `./src/pages/posts` and then adding a `index.mdx` inside. The directory name will be the URL path to the new blog post.
+
+A blog post requires the following frontmatter:
+
+```mdx
+---
+title: "The title of the blog post"
+description: "A description of the content of the blog post."
+pubDate: "The date the blog post was created (in the format YYYY-MM-DD)"
+tags: "A comma-separated list of tags that describe the content of the blog post (preferably 3)"
+imgUrl: "A URL leading to an image to be used as the cover of the blog post (can also be a local file)"
+imgAuthor: "The name of the author of the image used in the header of the blog post"
+imgAuthorUrl: "A URL leading to the source of the image used in the header of the blog post"
+---
+```
+
+### Blog components
+
+The following components can be used in MDX files:
+
+````mdx
+import { Tweet, YouTube } from "astro-embed";
+
+import Divider from "../../../components/utils/Divider.astro";
+import ExternalLink from "../../../components/utils/ExternalLink.astro";
+import Icon from "../../../components/utils/Icon.astro";
+import Image from "../../../components/utils/Image.astro";
+
+## Table of contents
+
+# List
+
+- Item 1
+  - Item 2
+- Item 3
+- Item 4
+
+# Tasklist
+
+- [x] List item 1
+- [x] List item 2
+- [ ] List item 3
+
+# Blockquote
+
+> Blockquote
+
+# Panel
+
+!> Here is a tip.
+
+?> And a warning.
+
+x> Or an error.
+
+# Table
+
+| a      |   b    | c      |      d |
+| ------ | :----: | :----- | -----: |
+| item a | item b | item c | item d |
+| item a | item b | item c | item d |
+| item a | item b | item c | item d |
+
+# Inline code
+
+Lorem, ipsum `const t = {}` consectetur adipisicing elit.
+
+# Code block
+
+## With language, title and highlighting
+
+```typescript title="examples/index.ts" {1-3,6}
+export function absolute(num: number) {
+if (num < 0) return num \* -1;
+return num;
+}
+const value = absolute(-1);
+
+export function absolute(num: number) {
+  if (num < 0) return num * -1;
+  return num;
+}
+const value = absolute(-1);
+```
+
+## With language, without title or highlighting
+
+```typescript
+export function absolute(num: number) {
+if (num < 0) return num \* -1;
+return num;
+}
+const value = absolute(-1);
+```
+
+## Without language, title or highlighting
+
+```
+export function absolute(num: number) {
+if (num < 0) return num \* -1;
+return num;
+}
+const value = absolute(-1);
+```
+
+# Footnotes
+
+Note 1[^1]
+
+Note 2[^2]
+
+# Divider
+
+<Divider />
+
+# External link with favicon
+
+<ExternalLink href="https://tailwindcss.com/" favicon>
+  TailwindCSS
+</ExternalLink>
+
+# Icon
+
+Lorem, ipsum <Icon name="smiling-face-with-smiling-eyes" /> consectetur adipisicing elit.
+
+# Embedded content
+
+## Image
+
+<Image src="https://source.unsplash.com/FCHlYvR5gJI" alt="Programmer">
+  Description with support for any `component`
+</Image>
+
+## Gif
+
+<Image
+  src="https://media.giphy.com/media/oYtVHSxngR3lC/giphy.gif"
+  alt="Wow"
+  gif
+/>
+
+## Youtube
+
+<YouTube id="https://www.youtube.com/watch?v=gxBkghlglTg" />
+
+## Twitter
+
+<Tweet id="https://twitter.com/astrodotbuild/status/1557049466401632256" />
+
+# H1
+
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
+
+## H2
+
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
+
+### H3
+
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
+
+#### H4
+
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
+
+##### H5
+
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
+
+###### H6
+
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
+
+[^1]: Footnote 1
+[^2]: Footnote 2
+````
+
+## Author
+
+- Marvin Stickel
+
+## Licence
+
+[MIT Licence](/LICENCE)

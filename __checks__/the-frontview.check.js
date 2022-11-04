@@ -4,7 +4,9 @@ const targetUrl = process.env.ENVIRONMENT_URL || "https://the-frontview.dev";
 
 test.describe("home page", () => {
   test("renders", async ({ page }) => {
-    const response = await page.goto(targetUrl);
+    const response = await page.goto(targetUrl, {
+      waitUntil: "domcontentloaded",
+    });
 
     if (response.status() > 399) {
       throw new Error(`Failed with response code ${response.status()}`);
@@ -16,7 +18,7 @@ test.describe("home page", () => {
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator('header [href="/"]').count()).toBe(2);
     expect(await page.locator('header [href="/posts"]')).toBeVisible();
@@ -31,7 +33,7 @@ test.describe("home page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator("footer")).toBeVisible();
   });
@@ -39,7 +41,9 @@ test.describe("home page", () => {
 
 test.describe("all posts page", () => {
   test("renders", async ({ page }) => {
-    const response = await page.goto(`${targetUrl}/posts`);
+    const response = await page.goto(`${targetUrl}/posts`, {
+      waitUntil: "domcontentloaded",
+    });
 
     if (response.status() > 399) {
       throw new Error(`Failed with response code ${response.status()}`);
@@ -51,7 +55,7 @@ test.describe("all posts page", () => {
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator('header [href="/"]').count()).toBe(2);
     expect(await page.locator('header [href="/posts"]')).toBeVisible();
@@ -66,7 +70,7 @@ test.describe("all posts page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator("footer")).toBeVisible();
   });
@@ -74,20 +78,24 @@ test.describe("all posts page", () => {
 
 test.describe("post page", () => {
   test("renders", async ({ page }) => {
-    const response = await page.goto(targetUrl);
+    const response = await page.goto(targetUrl, {
+      waitUntil: "domcontentloaded",
+    });
 
     if (response.status() > 399) {
       throw new Error(`Failed with response code ${response.status()}`);
     }
 
     await page.locator("li a").first().click();
+    await page.waitForLoadState("domcontentloaded");
 
     await page.screenshot({ path: "post.png", fullPage: true });
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
     await page.locator("li a").first().click();
+    await page.waitForLoadState("domcontentloaded");
 
     expect(await page.locator('header [href="/"]').count()).toBe(2);
     expect(await page.locator('header [href="/posts"]')).toBeVisible();
@@ -102,8 +110,9 @@ test.describe("post page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
     await page.locator("li a").first().click();
+    await page.waitForLoadState("domcontentloaded");
 
     expect(await page.locator("footer")).toBeVisible();
   });
@@ -111,7 +120,9 @@ test.describe("post page", () => {
 
 test.describe("tags page", () => {
   test("renders", async ({ page }) => {
-    const response = await page.goto(`${targetUrl}/tags`);
+    const response = await page.goto(`${targetUrl}/tags`, {
+      waitUntil: "domcontentloaded",
+    });
 
     if (response.status() > 399) {
       throw new Error(`Failed with response code ${response.status()}`);
@@ -123,10 +134,11 @@ test.describe("tags page", () => {
   });
 
   test("renders tag overview", async ({ page }) => {
-    await page.goto(`${targetUrl}/tags`);
+    await page.goto(`${targetUrl}/tags`, { waitUntil: "domcontentloaded" });
 
     const firstTagName = (await page.innerText("li a")).replace(/\(.*\)/, "");
     await page.locator("li a").first().click();
+    await page.waitForLoadState("domcontentloaded");
 
     expect(await page.innerText("main h1")).toBe(`Tag ${firstTagName}`);
     expect(await page.locator("main ul")).toBeVisible();
@@ -135,7 +147,7 @@ test.describe("tags page", () => {
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator('header [href="/"]').count()).toBe(2);
     expect(await page.locator('header [href="/posts"]')).toBeVisible();
@@ -150,7 +162,7 @@ test.describe("tags page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator("footer")).toBeVisible();
   });
@@ -158,7 +170,9 @@ test.describe("tags page", () => {
 
 test.describe("rss page", () => {
   test("renders", async ({ page }) => {
-    const response = await page.goto(`${targetUrl}/rss.xml`);
+    const response = await page.goto(`${targetUrl}/rss.xml`, {
+      waitUntil: "domcontentloaded",
+    });
 
     if (response.status() > 399) {
       throw new Error(`Failed with response code ${response.status()}`);

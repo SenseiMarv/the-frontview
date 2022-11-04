@@ -1,0 +1,47 @@
+---
+import Icon from "../utils/Icon.astro";
+import FacebookIcon from "./FacebookIcon.astro";
+import LinkedInIcon from "./LinkedInIcon.astro";
+import TwitterIcon from "./TwitterIcon.astro";
+import XingIcon from "./XingIcon.astro";
+---
+
+<div class="flex gap-2">
+  <Icon
+    iconSet="fluent"
+    name="share-24-filled"
+    classString="w-5 h-5 mr-1 text-gray-500 dark:text-gray-400"
+  />
+  <a
+    href={`https://www.addtoany.com/add_to/twitter?linkurl=${Astro.url.href}`}
+    target="_blank"
+    rel="noopener, noreferrer"
+    class="transition-colors duration-300 hover:fill-teal-700 dark:hover:fill-teal-500 fill-gray-500 dark:fill-gray-400"
+  >
+    <TwitterIcon />
+  </a>
+  <a
+    href={`https://www.addtoany.com/add_to/facebook?linkurl=${Astro.url.href}`}
+    target="_blank"
+    rel="noopener, noreferrer"
+    class="transition-colors duration-300 hover:fill-teal-700 dark:hover:fill-teal-500 fill-gray-500 dark:fill-gray-400"
+  >
+    <FacebookIcon />
+  </a>
+  <a
+    href={`https://www.addtoany.com/add_to/linkedin?linkurl=${Astro.url.href}`}
+    target="_blank"
+    rel="noopener, noreferrer"
+    class="transition-colors duration-300 hover:fill-teal-700 dark:hover:fill-teal-500 fill-gray-500 dark:fill-gray-400"
+  >
+    <LinkedInIcon />
+  </a>
+  <a
+    href={`https://www.addtoany.com/add_to/xing?linkurl=${Astro.url.href}`}
+    target="_blank"
+    rel="noopener, noreferrer"
+    class="transition-colors duration-300 hover:fill-teal-700 dark:hover:fill-teal-500 fill-gray-500 dark:fill-gray-400"
+  >
+    <XingIcon />
+  </a>
+</div>

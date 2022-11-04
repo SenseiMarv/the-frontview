@@ -1,6 +1,7 @@
 ---
 import Header from "../components/posts/Header.astro";
 import HeadingLinkSvg from "../components/posts/HeadingLinkSvg.astro";
+import Share from "../components/posts/Share.astro";
 // eslint-disable-next-line import/no-unresolved
 import { getTags } from "../components/tags/sortTags";
 import Divider from "../components/utils/Divider.astro";
@@ -41,14 +42,17 @@ const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
       readingTime={frontmatter.readingTime}
     />
   </div>
-  <div class="mt-6 mb-4 md:mt-14 md:mb-8">
+  <div class="my-4 md:my-8">
     <Divider noSpacing />
   </div>
   <slot />
   <div class="mt-8 mb-4 md:mt-16 md:mb-8">
     <Divider noSpacing />
   </div>
-  <div class="mt-8">
+  <div class="justify-center flex">
+    <Share />
+  </div>
+  <div class="mt-6">
     <Giscus />
   </div>
   <HeadingLinkSvg />

@@ -1,7 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
-const targetUrl =
-  process.env.ENVIRONMENT_URL || "https://the-frontview.vercel.app";
+const targetUrl = process.env.ENVIRONMENT_URL || "https://the-frontview.dev";
 
 test.describe("home page", () => {
   test("renders", async ({ page }) => {

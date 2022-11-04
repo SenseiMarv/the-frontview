@@ -23,13 +23,14 @@ export interface Props {
   openGraphArticleAuthor?: string[];
   openGraphArticleSection?: string;
   openGraphArticleTags?: string[];
+  openGraphTwitterCard?: string;
 }
 
 const defaultOpenGraphType = "website";
 const defaultOpenGraphImage = "/android-chrome-512x512.png";
 const defaultOpenGraphImageAlt = "Website Icon";
 const defaultOpenGraphSiteName = "The Frontview";
-const defaultOpenGraphTwitterCard = "summary_large_image";
+const defaultOpenGraphTwitterCard = "summary";
 
 const {
   title,
@@ -42,6 +43,7 @@ const {
   openGraphArticleAuthor,
   openGraphArticleSection,
   openGraphArticleTags,
+  openGraphTwitterCard = defaultOpenGraphTwitterCard,
 } = Astro.props;
 
 let openGraph: any = {
@@ -58,7 +60,7 @@ let openGraph: any = {
     alt: openGraphImageAlt,
   },
   twitter: {
-    card: defaultOpenGraphTwitterCard,
+    card: openGraphTwitterCard,
   },
 };
 if (

@@ -5,7 +5,7 @@ const targetUrl = process.env.ENVIRONMENT_URL || "https://the-frontview.dev";
 test.describe("home page", () => {
   test("renders", async ({ page }) => {
     const response = await page.goto(targetUrl, {
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
 
     if (response.status() > 399) {
@@ -18,7 +18,7 @@ test.describe("home page", () => {
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator('header [href="/"]').count()).toBe(2);
     expect(await page.locator('header [href="/posts"]')).toBeVisible();
@@ -33,7 +33,7 @@ test.describe("home page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator("footer")).toBeVisible();
   });
@@ -42,7 +42,7 @@ test.describe("home page", () => {
 test.describe("all posts page", () => {
   test("renders", async ({ page }) => {
     const response = await page.goto(`${targetUrl}/posts`, {
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
 
     if (response.status() > 399) {
@@ -55,7 +55,7 @@ test.describe("all posts page", () => {
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator('header [href="/"]').count()).toBe(2);
     expect(await page.locator('header [href="/posts"]')).toBeVisible();
@@ -70,7 +70,7 @@ test.describe("all posts page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator("footer")).toBeVisible();
   });
@@ -79,7 +79,7 @@ test.describe("all posts page", () => {
 test.describe("post page", () => {
   test("renders", async ({ page }) => {
     const response = await page.goto(targetUrl, {
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
 
     if (response.status() > 399) {
@@ -87,7 +87,7 @@ test.describe("post page", () => {
     }
 
     const navigationPromise = page.waitForNavigation({
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
     await page.locator("li a").first().click();
     await navigationPromise;
@@ -96,9 +96,9 @@ test.describe("post page", () => {
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
     const navigationPromise = page.waitForNavigation({
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
     await page.locator("li a").first().click();
     await navigationPromise;
@@ -116,9 +116,9 @@ test.describe("post page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
     const navigationPromise = page.waitForNavigation({
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
     await page.locator("li a").first().click();
     await navigationPromise;
@@ -130,7 +130,7 @@ test.describe("post page", () => {
 test.describe("tags page", () => {
   test("renders", async ({ page }) => {
     const response = await page.goto(`${targetUrl}/tags`, {
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
 
     if (response.status() > 399) {
@@ -143,11 +143,11 @@ test.describe("tags page", () => {
   });
 
   test("renders tag overview", async ({ page }) => {
-    await page.goto(`${targetUrl}/tags`, { waitUntil: "networkidle" });
+    await page.goto(`${targetUrl}/tags`, { waitUntil: "domcontentloaded" });
 
     const firstTagName = (await page.innerText("li a")).replace(/\(.*\)/, "");
     const navigationPromise = page.waitForNavigation({
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
     await page.locator("li a").first().click();
     await navigationPromise;
@@ -159,7 +159,7 @@ test.describe("tags page", () => {
   });
 
   test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator('header [href="/"]').count()).toBe(2);
     expect(await page.locator('header [href="/posts"]')).toBeVisible();
@@ -174,7 +174,7 @@ test.describe("tags page", () => {
   });
 
   test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
 
     expect(await page.locator("footer")).toBeVisible();
   });
@@ -183,7 +183,7 @@ test.describe("tags page", () => {
 test.describe("rss page", () => {
   test("renders", async ({ page }) => {
     const response = await page.goto(`${targetUrl}/rss.xml`, {
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
 
     if (response.status() > 399) {

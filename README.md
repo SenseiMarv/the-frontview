@@ -4,7 +4,7 @@
 
 > A small personal blog about everything around tech and programming.
 
-[Vercel](https://vercel.com/senseimarv/the-frontview) | [Checkly](https://app.checklyhq.com/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a/) | [Google Search Insights](https://search.google.com/search-console/insights/u/1/?resource_id=sc-domain%3Athe-frontview.dev&hl=de) | [Google Analytics](https://analytics.google.com/analytics/web/?authuser=1#/p332303830/reports/intelligenthome?params=_u..nav%3Dmaui) | [Google Search Console](https://search.google.com/u/1/search-console?resource_id=sc-domain:the-frontview.dev) | [Ahref Webmaster Tools](https://app.ahrefs.com/dashboard) | [Google Domains](https://domains.google.com/registrar/the-frontview.dev?hl=de)
+[Vercel](https://vercel.com/senseimarv/the-frontview) | [Checkly](https://app.checklyhq.com/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a/) | [Google Search Insights](https://search.google.com/search-console/insights/u/1/?resource_id=sc-domain%3Athe-frontview.dev&hl=de) | [Google Search Console](https://search.google.com/u/1/search-console?resource_id=sc-domain:the-frontview.dev) | [Ahref Webmaster Tools](https://app.ahrefs.com/dashboard) | [Google Domains](https://domains.google.com/registrar/the-frontview.dev?hl=de)
 
 ## Requirements
 

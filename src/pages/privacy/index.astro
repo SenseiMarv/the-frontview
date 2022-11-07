@@ -1,0 +1,24 @@
+---
+import ExternalLink from "../../components/utils/ExternalLink.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Privacy Policy | The Frontview"
+  description="The privacy policy of this website. Author: Marvin Stickel"
+>
+  <div class="mt-12 md:mt-24">
+    <h1 class="mt-12 mb-8 text-6xl md:mt-24 md:mb-16">Privacy policy</h1>
+    <h2 class="mb-4 text-4xl md:mb-8">Tracking</h2>
+    <p>
+      This website is using <ExternalLink href="https://plausible.io/">
+        Plausible Analytics
+      </ExternalLink> to collect tracking data. This tool is GDPR, CCPA and cookie
+      law compliant and will not collect any personal data. Since it is also self-hosted
+      on a server in Frankfurt, Germany, no data will leave the EU. The purpose of
+      the analytics is to show general information about the usage of the website,
+      like popular posts, commonly used devices from which site access took place
+      or countries from which site access took place.
+    </p>
+  </div>
+</Layout>

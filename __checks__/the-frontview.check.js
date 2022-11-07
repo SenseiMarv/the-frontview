@@ -180,6 +180,20 @@ test.describe("tags page", () => {
   });
 });
 
+test.describe("privacy policy page", () => {
+  test("renders", async ({ page }) => {
+    const response = await page.goto(`${targetUrl}/privacy`, {
+      waitUntil: "domcontentloaded",
+    });
+
+    if (response.status() > 399) {
+      throw new Error(`Failed with response code ${response.status()}`);
+    }
+
+    await page.screenshot({ path: "privacy.png", fullPage: true });
+  });
+});
+
 test.describe("rss page", () => {
   test("renders", async ({ page }) => {
     const response = await page.goto(`${targetUrl}/rss.xml`, {

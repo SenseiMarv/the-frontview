@@ -23,14 +23,14 @@ export interface Props {
   openGraphArticleAuthor?: string[];
   openGraphArticleSection?: string;
   openGraphArticleTags?: string[];
-  openGraphTwitterCard?: string;
+  twitterCard?: string;
 }
 
 const defaultOpenGraphType = "website";
 const defaultOpenGraphImage = "/android-chrome-512x512.png";
 const defaultOpenGraphImageAlt = "Website Icon";
 const defaultOpenGraphSiteName = "The Frontview";
-const defaultOpenGraphTwitterCard = "summary";
+const defaultTwitterCard = "summary";
 
 const {
   title,
@@ -43,7 +43,7 @@ const {
   openGraphArticleAuthor,
   openGraphArticleSection,
   openGraphArticleTags,
-  openGraphTwitterCard = defaultOpenGraphTwitterCard,
+  twitterCard = defaultTwitterCard,
 } = Astro.props;
 
 let openGraph: any = {
@@ -58,9 +58,6 @@ let openGraph: any = {
   },
   image: {
     alt: openGraphImageAlt,
-  },
-  twitter: {
-    card: openGraphTwitterCard,
   },
 };
 if (
@@ -77,6 +74,15 @@ if (
       section: openGraphArticleSection,
       tags: openGraphArticleTags,
     },
+  };
+}
+let twitter: any = {
+  card: defaultTwitterCard,
+};
+if (twitterCard) {
+  twitter = {
+    ...twitter,
+    card: twitterCard,
   };
 }
 
@@ -103,7 +109,12 @@ const headingFontFamily = [
       src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"
     ></script>
     <Theme />
-    <SEO title={title} description={description} openGraph={openGraph} />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={openGraph}
+      twitter={twitter}
+    />
     <Analytics />
   </head>
   <body

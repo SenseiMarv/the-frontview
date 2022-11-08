@@ -16,7 +16,7 @@ const tags = getTags(frontmatter.tags);
 const defaultOpenGraphType = "article";
 const defaultOpenGraphImageAlt = "Blogpost cover";
 const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
-const defaultOpenGraphTwitterCard = "summary_large_image";
+const defaultTwitterCard = "summary_large_image";
 ---
 
 <Layout
@@ -30,7 +30,7 @@ const defaultOpenGraphTwitterCard = "summary_large_image";
   openGraphArticleAuthor={defaultOpenGraphArticleAuthor}
   openGraphArticleSection={tags[0]}
   openGraphArticleTags={tags}
-  openGraphTwitterCard={defaultOpenGraphTwitterCard}
+  twitterCard={defaultTwitterCard}
 >
   <ScrollBar />
   <div class="mt-12 md:mt-24">

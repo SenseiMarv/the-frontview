@@ -2,208 +2,153 @@ const { test, expect } = require("@playwright/test");
 
 const targetUrl = process.env.ENVIRONMENT_URL || "https://the-frontview.dev";
 
-test.describe("home page", () => {
-  test("renders", async ({ page }) => {
-    const response = await page.goto(targetUrl, {
-      waitUntil: "domcontentloaded",
-    });
+const checkHeader = async (page) => {
+  expect(await page.locator("header")).toBeVisible();
+  expect(await page.locator('header [href="/"]').count()).toBe(2);
+  expect(await page.locator('header [href="/posts"]')).toBeVisible();
+  expect(await page.locator('header [href="/tags"]')).toBeVisible();
+  expect(await page.locator('header [href="/rss.xml"]')).toBeVisible();
+  expect(await page.locator("header button")).toBeVisible();
+  expect(
+    await page.locator(
+      'header [href="https://github.com/SenseiMarv/the-frontview"]'
+    )
+  ).toBeVisible();
+};
 
-    if (response.status() > 399) {
-      throw new Error(`Failed with response code ${response.status()}`);
-    }
+const checkFooter = async (page) => {
+  expect(await page.locator("footer")).toBeVisible();
+  expect(await page.locator("footer a")).toBeVisible();
+};
 
-    expect(await page.locator("main ul")).toBeVisible();
-
-    await page.screenshot({ path: "home.png", fullPage: true });
+test("home page", async ({ page }) => {
+  const response = await page.goto(targetUrl, {
+    waitUntil: "domcontentloaded",
   });
 
-  test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
+  if (response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
 
-    expect(await page.locator('header [href="/"]').count()).toBe(2);
-    expect(await page.locator('header [href="/posts"]')).toBeVisible();
-    expect(await page.locator('header [href="/tags"]')).toBeVisible();
-    expect(await page.locator('header [href="/rss.xml"]')).toBeVisible();
-    expect(await page.locator("header button")).toBeVisible();
-    expect(
-      await page.locator(
-        'header [href="https://github.com/SenseiMarv/the-frontview"]'
-      )
-    ).toBeVisible();
-  });
+  await checkHeader(page);
+  await checkFooter(page);
 
-  test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
+  /* Home page content */
+  // Multiple h2s are on the page, but `innerText` will only select the first
+  expect(await page.innerText("main h2")).toBe("Recent posts");
+  expect(await page.locator("main ul")).toBeVisible();
+  expect(await page.locator("main a").count()).toBe(9);
 
-    expect(await page.locator("footer")).toBeVisible();
-  });
+  await page.screenshot({ path: "home.png", fullPage: true });
 });
 
-test.describe("all posts page", () => {
-  test("renders", async ({ page }) => {
-    const response = await page.goto(`${targetUrl}/posts`, {
-      waitUntil: "domcontentloaded",
-    });
-
-    if (response.status() > 399) {
-      throw new Error(`Failed with response code ${response.status()}`);
-    }
-
-    expect(await page.locator("main ul")).toBeVisible();
-
-    await page.screenshot({ path: "allPosts.png", fullPage: true });
+test("all posts page", async ({ page }) => {
+  const response = await page.goto(`${targetUrl}/posts`, {
+    waitUntil: "domcontentloaded",
   });
 
-  test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
+  if (response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
 
-    expect(await page.locator('header [href="/"]').count()).toBe(2);
-    expect(await page.locator('header [href="/posts"]')).toBeVisible();
-    expect(await page.locator('header [href="/tags"]')).toBeVisible();
-    expect(await page.locator('header [href="/rss.xml"]')).toBeVisible();
-    expect(await page.locator("header button")).toBeVisible();
-    expect(
-      await page.locator(
-        'header [href="https://github.com/SenseiMarv/the-frontview"]'
-      )
-    ).toBeVisible();
-  });
+  await checkHeader(page);
+  await checkFooter(page);
 
-  test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
+  /* All posts page content */
+  expect(await page.innerText("main h1")).toBe("All posts");
+  expect(await page.locator("main ul")).toBeVisible();
 
-    expect(await page.locator("footer")).toBeVisible();
-  });
+  await page.screenshot({ path: "allPosts.png", fullPage: true });
 });
 
-test.describe("post page", () => {
-  test("renders", async ({ page }) => {
-    const response = await page.goto(targetUrl, {
-      waitUntil: "domcontentloaded",
-    });
-
-    if (response.status() > 399) {
-      throw new Error(`Failed with response code ${response.status()}`);
-    }
-
-    const navigationPromise = page.waitForNavigation({
-      waitUntil: "domcontentloaded",
-    });
-    await page.locator("li a").first().click();
-    await navigationPromise;
-
-    await page.screenshot({ path: "post.png", fullPage: true });
+test("post page", async ({ page }) => {
+  const response = await page.goto(targetUrl, {
+    waitUntil: "domcontentloaded",
   });
 
-  test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
-    const navigationPromise = page.waitForNavigation({
-      waitUntil: "domcontentloaded",
-    });
-    await page.locator("li a").first().click();
-    await navigationPromise;
+  if (response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
 
-    expect(await page.locator('header [href="/"]').count()).toBe(2);
-    expect(await page.locator('header [href="/posts"]')).toBeVisible();
-    expect(await page.locator('header [href="/tags"]')).toBeVisible();
-    expect(await page.locator('header [href="/rss.xml"]')).toBeVisible();
-    expect(await page.locator("header button")).toBeVisible();
-    expect(
-      await page.locator(
-        'header [href="https://github.com/SenseiMarv/the-frontview"]'
-      )
-    ).toBeVisible();
+  const navigationPromise = page.waitForNavigation({
+    waitUntil: "domcontentloaded",
   });
+  await page.locator("li a").first().click();
+  await navigationPromise;
 
-  test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
-    const navigationPromise = page.waitForNavigation({
-      waitUntil: "domcontentloaded",
-    });
-    await page.locator("li a").first().click();
-    await navigationPromise;
+  await checkHeader(page);
+  await checkFooter(page);
 
-    expect(await page.locator("footer")).toBeVisible();
-  });
+  await page.screenshot({ path: "post.png", fullPage: true });
 });
 
-test.describe("tags page", () => {
-  test("renders", async ({ page }) => {
-    const response = await page.goto(`${targetUrl}/tags`, {
-      waitUntil: "domcontentloaded",
-    });
-
-    if (response.status() > 399) {
-      throw new Error(`Failed with response code ${response.status()}`);
-    }
-
-    expect(await page.locator("main ul")).toBeVisible();
-
-    await page.screenshot({ path: "tags.png", fullPage: true });
+test("tags page", async ({ page }) => {
+  const response = await page.goto(`${targetUrl}/tags`, {
+    waitUntil: "domcontentloaded",
   });
 
-  test("renders tag overview", async ({ page }) => {
-    await page.goto(`${targetUrl}/tags`, { waitUntil: "domcontentloaded" });
+  if (response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
 
-    const firstTagName = (await page.innerText("li a")).replace(/\(.*\)/, "");
-    const navigationPromise = page.waitForNavigation({
-      waitUntil: "domcontentloaded",
-    });
-    await page.locator("li a").first().click();
-    await navigationPromise;
+  await checkHeader(page);
+  await checkFooter(page);
 
-    expect(await page.innerText("main h1")).toBe(`Tag ${firstTagName}`);
-    expect(await page.locator("main ul")).toBeVisible();
+  /* Tags page content */
+  expect(await page.innerText("main h1")).toBe("Tags");
+  expect(await page.locator("main ul")).toBeVisible();
 
-    await page.screenshot({ path: "tagsFirst.png", fullPage: true });
-  });
-
-  test("contains header", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
-
-    expect(await page.locator('header [href="/"]').count()).toBe(2);
-    expect(await page.locator('header [href="/posts"]')).toBeVisible();
-    expect(await page.locator('header [href="/tags"]')).toBeVisible();
-    expect(await page.locator('header [href="/rss.xml"]')).toBeVisible();
-    expect(await page.locator("header button")).toBeVisible();
-    expect(
-      await page.locator(
-        'header [href="https://github.com/SenseiMarv/the-frontview"]'
-      )
-    ).toBeVisible();
-  });
-
-  test("contains footer", async ({ page }) => {
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
-
-    expect(await page.locator("footer")).toBeVisible();
-  });
+  await page.screenshot({ path: "tags.png", fullPage: true });
 });
 
-test.describe("privacy policy page", () => {
-  test("renders", async ({ page }) => {
-    const response = await page.goto(`${targetUrl}/privacy`, {
-      waitUntil: "domcontentloaded",
-    });
+test("tag overview page", async ({ page }) => {
+  await page.goto(`${targetUrl}/tags`, { waitUntil: "domcontentloaded" });
 
-    if (response.status() > 399) {
-      throw new Error(`Failed with response code ${response.status()}`);
-    }
-
-    await page.screenshot({ path: "privacy.png", fullPage: true });
+  const firstTagName = (await page.innerText("li a")).replace(/\(.*\)/, "");
+  const navigationPromise = page.waitForNavigation({
+    waitUntil: "domcontentloaded",
   });
+  await page.locator("li a").first().click();
+  await navigationPromise;
+
+  await checkHeader(page);
+  await checkFooter(page);
+
+  /* Tag posts page content */
+  expect(await page.innerText("main h1")).toBe(`Tag ${firstTagName}`);
+  expect(await page.locator("main ul")).toBeVisible();
+
+  await page.screenshot({ path: "tagsFirst.png", fullPage: true });
 });
 
-test.describe("rss page", () => {
-  test("renders", async ({ page }) => {
-    const response = await page.goto(`${targetUrl}/rss.xml`, {
-      waitUntil: "domcontentloaded",
-    });
-
-    if (response.status() > 399) {
-      throw new Error(`Failed with response code ${response.status()}`);
-    }
-
-    await page.screenshot({ path: "rss.png", fullPage: true });
+test("privacy policy page", async ({ page }) => {
+  const response = await page.goto(`${targetUrl}/privacy`, {
+    waitUntil: "domcontentloaded",
   });
+
+  if (response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
+
+  await checkHeader(page);
+  await checkFooter(page);
+
+  /* Privacy policy page content */
+  expect(await page.innerText("main h1")).toBe("Privacy policy");
+  expect(await page.innerText("main h2")).toBe("Tracking");
+  expect(await page.locator("main p").count()).toBe(1);
+
+  await page.screenshot({ path: "privacy.png", fullPage: true });
+});
+
+test("rss page", async ({ page }) => {
+  const response = await page.goto(`${targetUrl}/rss.xml`, {
+    waitUntil: "domcontentloaded",
+  });
+
+  if (response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
+
+  await page.screenshot({ path: "rss.png", fullPage: true });
 });

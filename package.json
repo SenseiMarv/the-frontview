@@ -40,7 +40,7 @@
     "theme-change": "2.2.0"
   },
   "devDependencies": {
-    "@astrojs/image": "0.11.1",
+    "@astrojs/image": "0.11.2",
     "@astrojs/mdx": "0.11.5",
     "@astrojs/partytown": "1.0.1",
     "@astrojs/prefetch": "0.1.1",

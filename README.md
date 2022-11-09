@@ -1,6 +1,6 @@
 # The Frontview
 
-![Vercel](https://vercelbadge.vercel.app/api/SenseiMarv/the-frontview?style=for-the-badge) ![Checkly](https://api.checklyhq.com/v1/badges/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a?style=for-the-badge&theme=default)
+[![Vercel](https://vercelbadge.vercel.app/api/SenseiMarv/the-frontview?style=for-the-badge)](https://vercel.com/senseimarv/the-frontview) [![Checkly](https://api.checklyhq.com/v1/badges/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a?style=for-the-badge&theme=default)](https://app.checklyhq.com/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a/)
 
 > A small personal blog about everything around tech and programming.
 

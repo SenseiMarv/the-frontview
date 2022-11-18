@@ -6,12 +6,12 @@
   "private": true,
   "scripts": {
     "start": "astro dev",
-    "lint": "concurrently -c 'auto' 'npm:lint:*'",
+    "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "yarn eslint src/",
     "lint:prettier": "yarn prettier --list-different .",
     "lint:types": "tsc",
     "lint:astro": "astro check",
-    "fixlint": "concurrently -c 'auto' 'npm:fix:*'",
+    "fixlint": "npm-run-all --parallel fix:*",
     "fix:eslint": "yarn eslint src/ --fix;",
     "fix:prettier": "yarn prettier --write .",
     "build": "astro check && tsc && astro build",
@@ -55,7 +55,6 @@
     "astro-robots-txt": "0.3.10",
     "astro-seo": "0.6.0",
     "autoprefixer": "10.4.13",
-    "concurrently": "^7.5.0",
     "eslint": "8.27.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-standard-with-typescript": "23.0.0",
@@ -70,6 +69,7 @@
     "eslint-plugin-tailwindcss": "3.7.0",
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
+    "npm-run-all": "4.1.5",
     "postcss": "8.4.19",
     "prettier": "2.7.1",
     "prettier-plugin-astro": "0.7.0",
@@ -77,10 +77,6 @@
     "rollup": "3.3.0",
     "tailwindcss": "3.2.4",
     "typescript": "4.8.4"
-  },
-  "engines": {
-    "node": ">=18.0.0",
-    "yarn": ">=1.22.19"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",

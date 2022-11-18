@@ -8,8 +8,8 @@
 
 ## Requirements
 
-- [Node.js 18](https://nodejs.org/)
-- [Yarn 1 (Classic)](https://classic.yarnpkg.com/en/docs/install)
+- [Node.js 16](https://nodejs.org/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install)
 
 ## Getting started
 

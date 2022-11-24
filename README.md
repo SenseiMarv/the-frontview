@@ -4,7 +4,7 @@
 
 > A small personal blog about everything around tech and programming.
 
-[The Frontview](https://the-frontview.dev) | [Google Search Insights](https://search.google.com/search-console/insights/?resource_id=sc-domain%3Athe-frontview.dev&hl=de) | [Plausible](https://analytics.the-frontview.dev/the-frontview.dev) | [Google Search Console](https://search.google.com/search-console?resource_id=sc-domain:the-frontview.dev) | [Ahref Webmaster Tools](https://app.ahrefs.com/dashboard) | [Vercel](https://vercel.com/senseimarv/the-frontview) | [Checkly](https://app.checklyhq.com/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a/) | [DigitalOcean](https://cloud.digitalocean.com/projects/890d1937-03d2-412c-abce-d5207c3d1195/resources?i=defe27) | [Google Domains](https://domains.google.com/registrar/the-frontview.dev?hl=de)
+[The Frontview](https://the-frontview.dev) | [Google Search Insights](https://search.google.com/search-console/insights/?resource_id=sc-domain%3Athe-frontview.dev&hl=de) | [Plausible](https://analytics.the-frontview.dev/the-frontview.dev) | [Google Search Console](https://search.google.com/search-console?resource_id=sc-domain:the-frontview.dev) | [Ahref Webmaster Tools](https://app.ahrefs.com/dashboard) | [Vercel](https://vercel.com/senseimarv/the-frontview) | [Checkly](https://app.checklyhq.com/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a/) | [Axiom](https://cloud.axiom.co/the-frontview-njlg) | [DigitalOcean](https://cloud.digitalocean.com/projects/890d1937-03d2-412c-abce-d5207c3d1195/resources?i=defe27) | [Google Domains](https://domains.google.com/registrar/the-frontview.dev?hl=de)
 
 ## Requirements
 

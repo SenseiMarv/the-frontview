@@ -54,6 +54,19 @@ imgAuthorUrl: "A URL leading to the source of the image used in the header of th
 
 The following components can be used in MDX files:
 
+<details><summary>How to use Twitter embedded content</summary>
+
+If you want to use the embedded Twitter card, a API token is required:
+
+1. Create a new file `.env` in the root of the project
+2. Add a valid Twitter API token to the newly created file:
+
+```
+SECRET_TWITTER_TOKEN=bearer-token-for-the-twitter-api
+```
+
+</details>
+
 ````mdx
 import { Tweet, YouTube } from "astro-embed";
 

@@ -48,7 +48,7 @@
     "@astrojs/tailwind": "2.1.2",
     "@astrojs/vercel": "2.3.4",
     "@tailwindcss/line-clamp": "0.4.2",
-    "@typescript-eslint/eslint-plugin": "5.44.0",
+    "@typescript-eslint/eslint-plugin": "5.45.0",
     "@typescript-eslint/parser": "5.44.0",
     "astro-compress": "1.1.10",
     "astro-eslint-parser": "0.9.0",

@@ -6,10 +6,6 @@ dist/
 # dependencies
 node_modules/
 
-# logs
-yarn-debug.log*
-yarn-error.log*
-
 # environment variables
 .env
 .env.production

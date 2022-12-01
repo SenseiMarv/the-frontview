@@ -7,13 +7,13 @@
   "scripts": {
     "start": "astro dev",
     "lint": "concurrently -c 'auto' 'npm:lint:*'",
-    "lint:eslint": "yarn eslint src/",
-    "lint:prettier": "yarn prettier --list-different .",
+    "lint:eslint": "pnpm eslint src/",
+    "lint:prettier": "pnpm prettier --list-different --plugin-search-dir=. .",
     "lint:types": "tsc",
     "lint:astro": "astro check",
     "fixlint": "concurrently -c 'auto' 'npm:fix:*'",
-    "fix:eslint": "yarn eslint src/ --fix;",
-    "fix:prettier": "yarn prettier --write .",
+    "fix:eslint": "pnpm eslint src/ --fix;",
+    "fix:prettier": "pnpm prettier --write --plugin-search-dir=. .",
     "build": "astro check && tsc && astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -73,17 +73,17 @@
     "postcss": "8.4.19",
     "prettier": "2.8.0",
     "prettier-plugin-astro": "0.7.0",
-    "prettier-plugin-tailwindcss": "0.1.13",
+    "prettier-plugin-tailwindcss": "0.2.0",
     "rollup": "3.4.0",
     "tailwindcss": "3.2.4",
     "typescript": "4.8.4"
   },
   "engines": {
     "node": ">=16.0.0 <18.0.0",
-    "yarn": ">=1.22.0"
+    "pnpm": ">=7.0.0"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write --plugin-search-dir=. --ignore-unknown"
   }
 }

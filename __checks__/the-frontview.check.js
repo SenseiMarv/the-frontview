@@ -137,19 +137,11 @@ test("post page", async ({ page }) => {
   expect(await page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();
 
   // Social Media Links
-  expect(await page.getByRole("link", { name: "Twitter" }).count()).toHaveCount(
-    2
-  );
-  expect(
-    await page.getByRole("link", { name: "Mastodon" }).count()
-  ).toHaveCount(2);
-  expect(
-    await page.getByRole("link", { name: "Facebook" }).count()
-  ).toHaveCount(2);
-  expect(
-    await page.getByRole("link", { name: "LinkedIn" }).count()
-  ).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Xing" }).count()).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Twitter" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Mastodon" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Facebook" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "LinkedIn" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Xing" })).toHaveCount(2);
 
   // Body
   expect(
@@ -188,19 +180,11 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByText("Photo by Daniel Álvasd")).toBeVisible();
 
   // Social Media Links
-  expect(await page.getByRole("link", { name: "Twitter" }).count()).toHaveCount(
-    2
-  );
-  expect(
-    await page.getByRole("link", { name: "Mastodon" }).count()
-  ).toHaveCount(2);
-  expect(
-    await page.getByRole("link", { name: "Facebook" }).count()
-  ).toHaveCount(2);
-  expect(
-    await page.getByRole("link", { name: "LinkedIn" }).count()
-  ).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Xing" }).count()).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Twitter" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Mastodon" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Facebook" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "LinkedIn" })).toHaveCount(2);
+  expect(await page.getByRole("link", { name: "Xing" })).toHaveCount(2);
 
   // Table of contents
   expect(
@@ -208,22 +192,22 @@ test("blog post components", async ({ page }) => {
   ).toBeVisible();
   expect(await page.getByRole("list").first()).toBeVisible();
   expect(
-    await page.getByRole("list").first().getByRole("listitem").count()
+    await page.getByRole("list").first().getByRole("listitem")
   ).toHaveCount(13);
 
   // List
   expect(await page.getByRole("heading", { name: "List" })).toBeVisible();
   expect(await page.getByRole("list").nth(1)).toBeVisible();
-  expect(
-    await page.getByRole("list").nth(1).getByRole("listitem").count()
-  ).toHaveCount(3);
+  expect(await page.getByRole("list").nth(1).getByRole("listitem")).toHaveCount(
+    3
+  );
 
   // Tasklist
   expect(await page.getByRole("heading", { name: "Tasklist" })).toBeVisible();
   expect(await page.getByRole("list").nth(2)).toBeVisible();
-  expect(
-    await page.getByRole("list").nth(2).getByRole("listitem").count()
-  ).toHaveCount(3);
+  expect(await page.getByRole("list").nth(2).getByRole("listitem")).toHaveCount(
+    3
+  );
 
   // Blockquote
   expect(await page.getByRole("heading", { name: "Blockquote" })).toBeVisible();
@@ -238,7 +222,7 @@ test("blog post components", async ({ page }) => {
   // Table
   expect(await page.getByRole("heading", { name: "Table" })).toBeVisible();
   expect(await page.getByRole("table")).toBeVisible();
-  expect(await page.getByRole("row").count()).toHaveCount(4);
+  expect(await page.getByRole("row")).toHaveCount(4);
 
   // Inline code
   expect(
@@ -291,18 +275,12 @@ test("blog post components", async ({ page }) => {
   ).toBeVisible();
 
   // Footnotes
-  expect(
-    await page.getByRole("heading", { name: "Footnotes" }).count()
-  ).toHaveCount(2);
+  expect(await page.getByRole("heading", { name: "Footnotes" })).toHaveCount(2);
   expect(await page.getByText("Note 11")).toBeVisible();
   expect(await page.getByText("Note 22")).toBeVisible();
   expect(await page.getByRole("section").getByRole("list")).toBeVisible();
   expect(
-    await page
-      .getByRole("section")
-      .getByRole("list")
-      .getByRole("listitem")
-      .count()
+    await page.getByRole("section").getByRole("list").getByRole("listitem")
   ).toHaveCount(2);
 
   // Divider

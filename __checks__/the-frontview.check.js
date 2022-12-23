@@ -258,6 +258,7 @@ test("blog post components", async ({ page }) => {
     await page
       .getByTitle("examples/index.ts")
       .getByText("export function absolute(num: number) {")
+      .first()
   ).toBeVisible();
   expect(
     await page.getByRole("heading", {

@@ -213,7 +213,9 @@ test("blog post components", async ({ page }) => {
 
   // Blockquote
   expect(await page.getByRole("heading", { name: "Blockquote" })).toBeVisible();
-  expect(await page.getByRole("blockquote")).toBeVisible();
+  expect(
+    await page.getByRole("blockquote").filter({ hasText: "Blockquote" })
+  ).toBeVisible();
 
   // Panel
   expect(await page.getByRole("heading", { name: "Panel" })).toBeVisible();

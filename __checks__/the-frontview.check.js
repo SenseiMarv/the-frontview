@@ -34,9 +34,7 @@ const checkHeader = async (page) => {
 
 const checkFooter = async (page) => {
   expect(
-    await page.getByText("Copyright (c) 2022 Marvin Stickel. MIT License.", {
-      exact: true,
-    })
+    await page.getByText("Copyright (c) 2022 Marvin Stickel. MIT License.")
   ).toBeVisible();
   expect(
     await page.getByRole("link", { name: "Privacy policy", exact: true })

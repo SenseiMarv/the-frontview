@@ -392,7 +392,7 @@ test("tag overview page", async ({ page }) => {
   const navigationPromise = page.waitForNavigation({
     waitUntil: "domcontentloaded",
   });
-  await page.getByRole("listitem").first().click();
+  await page.getByRole("listitem").first().getByRole("link").click();
   await navigationPromise;
 
   await checkHeader(page);

@@ -174,7 +174,7 @@ test("blog post components", async ({ page }) => {
   // Header
   expect(await page.getByRole("heading", { name: "Post Demo" })).toBeVisible();
   expect(
-    await page.getByText("03.11.2022 | 1 min read | astro , blog , programming")
+    await page.getByText("12/23/2022 | 2 min read | post , demo , components")
   ).toBeVisible();
   expect(await page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();
   expect(await page.getByText("Photo by Daniel Álvasd")).toBeVisible();

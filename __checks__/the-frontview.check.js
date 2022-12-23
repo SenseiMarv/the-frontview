@@ -137,11 +137,21 @@ test("post page", async ({ page }) => {
   expect(await page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();
 
   // Social Media Links
-  expect(await page.getByRole("link", { name: "Twitter" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Mastodon" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Facebook" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "LinkedIn" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Xing" })).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Twitter", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Mastodon", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Facebook", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "LinkedIn", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Xing", exact: true })
+  ).toHaveCount(2);
 
   // Body
   expect(
@@ -180,11 +190,21 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByText("Photo by Daniel Álvasd")).toBeVisible();
 
   // Social Media Links
-  expect(await page.getByRole("link", { name: "Twitter" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Mastodon" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Facebook" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "LinkedIn" })).toHaveCount(2);
-  expect(await page.getByRole("link", { name: "Xing" })).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Twitter", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Mastodon", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Facebook", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "LinkedIn", exact: true })
+  ).toHaveCount(2);
+  expect(
+    await page.getByRole("link", { name: "Xing", exact: true })
+  ).toHaveCount(2);
 
   // Table of contents
   expect(

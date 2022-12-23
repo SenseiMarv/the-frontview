@@ -35,10 +35,10 @@ import {
 
 const hostedSiteUrl = "https://the-frontview.vercel.app";
 
-const getSubdirectories = (source) =>
-  readdirSync(source, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => `${hostedSiteUrl}/posts/${dirent.name}`);
+const getPostUrls = (source) =>
+  readdirSync(source, { withFileTypes: true }).map(
+    (dirent) => `${hostedSiteUrl}/posts/${dirent.name.split(".")[0]}`
+  );
 
 export default defineConfig({
   output: "server",
@@ -88,7 +88,7 @@ export default defineConfig({
         `${hostedSiteUrl}/tags`,
         `${hostedSiteUrl}/privacy`,
         `${hostedSiteUrl}/rss.xml`,
-        ...getSubdirectories("./src/pages/posts"),
+        ...getPostUrls("./src/pages/posts"),
       ],
     }),
     robotsTxt(),

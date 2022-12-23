@@ -1,10 +1,10 @@
 ---
-import Overview from "../../components/posts/Overview.astro";
+import Overview from "../components/posts/Overview.astro";
 // eslint-disable-next-line import/no-unresolved
-import { sortPostsByDate } from "../../components/posts/sortPosts";
-import Layout from "../../layouts/Layout.astro";
+import { sortPostsByDate } from "../components/posts/sortPosts";
+import Layout from "../layouts/Layout.astro";
 
-const posts = sortPostsByDate(await Astro.glob("./**/*.mdx"));
+const posts = sortPostsByDate(await Astro.glob("./posts/*.mdx"));
 ---
 
 <Layout

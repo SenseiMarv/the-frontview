@@ -10,6 +10,6 @@ export const get = () =>
     title,
     description,
     site: import.meta.env.SITE,
-    items: import.meta.glob("./posts/**/*.mdx"),
+    items: import.meta.glob("./posts/*.mdx"),
     stylesheet: "/rss/styles.xsl",
   });

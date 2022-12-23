@@ -34,7 +34,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## Blog posts
 
-New blog posts can be created by adding a new directory in `./src/pages/posts` and then adding a `index.mdx` inside. The directory name will be the URL path to the new blog post.
+New blog posts can be created by adding a new file in `./src/pages/posts`. The file name will be the URL path to the new blog post.
 
 A blog post requires the following frontmatter:
 
@@ -50,16 +50,22 @@ imgAuthorUrl: "A URL leading to the source of the image used in the header of th
 ---
 ```
 
+Local images should be stored in `./public/images`. They can be referenced directly in the frontmatter:
+
+```mdx
+imgUrl: "/images/post-example/cover.png"
+```
+
 ### Blog components
 
-The following components can be used in MDX files:
+To see which components can be used in a blog post, open `./src/pages/post-demo.mdx`. To see those components in action, navigate to `/post-demo` in the browser on the live website or on the local dev server.
 
 <details><summary>How to use Twitter embedded content</summary>
 
 If you want to use the embedded Twitter card, a API token is required:
 
-1. Create a new file `.env` in the root of the project
-2. Add a valid Twitter API token to the newly created file:
+1. Create a new file `.env` as copy of `.env.example` in the root of the project
+2. Add a valid Twitter API token to `SECRET_TWITTER_TOKEN` in the new file:
 
 ```
 SECRET_TWITTER_TOKEN=bearer-token-for-the-twitter-api
@@ -67,167 +73,10 @@ SECRET_TWITTER_TOKEN=bearer-token-for-the-twitter-api
 
 </details>
 
-````mdx
-import { Tweet, YouTube } from "astro-embed";
-
-import Divider from "../../../components/utils/Divider.astro";
-import ExternalLink from "../../../components/utils/ExternalLink.astro";
-import Icon from "../../../components/utils/Icon.astro";
-import Image from "../../../components/utils/Image.astro";
-
-## Table of contents
-
-# List
-
-- Item 1
-  - Item 2
-- Item 3
-- Item 4
-
-# Tasklist
-
-- [x] List item 1
-- [x] List item 2
-- [ ] List item 3
-
-# Blockquote
-
-> Blockquote
-
-# Panel
-
-!> Here is a tip.
-
-?> And a warning.
-
-x> Or an error.
-
-# Table
-
-| a      |   b    | c      |      d |
-| ------ | :----: | :----- | -----: |
-| item a | item b | item c | item d |
-| item a | item b | item c | item d |
-| item a | item b | item c | item d |
-
-# Inline code
-
-Lorem, ipsum `const t = {}` consectetur adipisicing elit.
-
-# Code block
-
-## With language, title and highlighting
-
-```typescript title="examples/index.ts" {1-3,6}
-export function absolute(num: number) {
-if (num < 0) return num \* -1;
-return num;
-}
-const value = absolute(-1);
-
-export function absolute(num: number) {
-  if (num < 0) return num * -1;
-  return num;
-}
-const value = absolute(-1);
-```
-
-## With language, without title or highlighting
-
-```typescript
-export function absolute(num: number) {
-if (num < 0) return num \* -1;
-return num;
-}
-const value = absolute(-1);
-```
-
-## Without language, title or highlighting
-
-```
-export function absolute(num: number) {
-if (num < 0) return num \* -1;
-return num;
-}
-const value = absolute(-1);
-```
-
-# Footnotes
-
-Note 1[^1]
-
-Note 2[^2]
-
-# Divider
-
-<Divider />
-
-# External link with favicon
-
-<ExternalLink href="https://tailwindcss.com/" favicon>
-  TailwindCSS
-</ExternalLink>
-
-# Icon
-
-Lorem, ipsum <Icon name="smiling-face-with-smiling-eyes" /> consectetur adipisicing elit.
-
-# Embedded content
-
-## Image
-
-<Image src="https://source.unsplash.com/FCHlYvR5gJI" alt="Programmer">
-  Description with support for any `component`
-</Image>
-
-## Gif
-
-<Image
-  src="https://media.giphy.com/media/oYtVHSxngR3lC/giphy.gif"
-  alt="Wow"
-  gif
-/>
-
-## Youtube
-
-<YouTube id="https://www.youtube.com/watch?v=gxBkghlglTg" />
-
-## Twitter
-
-<Tweet id="https://twitter.com/astrodotbuild/status/1557049466401632256" />
-
-# H1
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
-
-## H2
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
-
-### H3
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
-
-#### H4
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
-
-##### H5
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
-
-###### H6
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo nesciunt ratione, esse odio quaerat praesentium mollitia et rem quidem id temporibus. Sed, in doloremque? Ea ullam voluptates sint est blanditiis.
-
-[^1]: Footnote 1
-[^2]: Footnote 2
-````
-
 ## Author
 
 - Marvin Stickel
 
-## Licence
+## License
 
-[MIT Licence](/LICENCE)
+[MIT License](/LICENSE)

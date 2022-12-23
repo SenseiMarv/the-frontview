@@ -7,7 +7,7 @@ import { getTags } from "../../components/tags/sortTags";
 import Button from "../../components/utils/Button.astro";
 import Layout from "../../layouts/Layout.astro";
 
-const posts = sortPostsByDate(await Astro.glob("../posts/**/*.mdx"));
+const posts = sortPostsByDate(await Astro.glob("../posts/*.mdx"));
 const pathnameMatch = Astro.url.pathname.match(/[^/]*$/);
 const currentTag = pathnameMatch !== null ? pathnameMatch[0] : "";
 const postsWithTag = posts.filter((post) => {

@@ -3,7 +3,11 @@ import getReadingTime from "reading-time";
 
 export function postFrontmatterPlugin() {
   return (tree, file) => {
-    file.data.astro.frontmatter.layout = "../../../layouts/Post.astro";
+    const relativeFileLocationFromSrc = file.history[0].split("src/").pop();
+    const parentFolderCount = relativeFileLocationFromSrc.match(/\//g).length;
+    file.data.astro.frontmatter.layout = `${"../".repeat(
+      parentFolderCount
+    )}layouts/Post.astro`;
   };
 }
 

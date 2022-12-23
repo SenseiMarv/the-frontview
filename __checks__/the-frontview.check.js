@@ -351,7 +351,6 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByRole("link", { name: "Twitter →" })).toBeVisible();
 
   // Headings
-  expect(await page.getByRole("heading", { name: "Headings" })).toBeVisible();
   expect(await page.getByRole("heading", { name: "H1" })).toBeVisible();
   expect(await page.getByRole("heading", { name: "H2" })).toBeVisible();
   expect(await page.getByRole("heading", { name: "H3" })).toBeVisible();

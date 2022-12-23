@@ -120,7 +120,7 @@ test("post page", async ({ page }) => {
   const navigationPromise = page.waitForNavigation({
     waitUntil: "domcontentloaded",
   });
-  await page.getByRole("list").first().click();
+  await page.getByRole("listitem").first().click();
   await navigationPromise;
 
   await checkHeader(page);

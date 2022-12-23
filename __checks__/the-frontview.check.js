@@ -10,7 +10,9 @@ const checkHeader = async (page) => {
     await page.getByRole("heading", { name: "The Frontview" })
   ).toBeVisible();
   expect(await page.getByRole("link", { name: "Home" })).toBeVisible();
-  expect(await page.getByRole("link", { name: "All Posts" })).toBeVisible();
+  expect(
+    await page.getByRole("link", { name: "All Posts", exact: true }).first()
+  ).toBeVisible();
   expect(await page.getByRole("link", { name: "Tags" })).toBeVisible();
   expect(
     await page.getByRole("button", { name: "Toggle light/dark theme" })

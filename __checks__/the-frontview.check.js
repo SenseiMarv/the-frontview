@@ -127,7 +127,7 @@ test("post page", async ({ page }) => {
   await checkFooter(page);
 
   // Scroll progress
-  expect(await page.locator("#scroll-progress")).toBeVisible();
+  expect(await page.locator("#scroll-progress")).toHaveClass("fixed");
 
   /* Post page content */
   // Header
@@ -168,7 +168,7 @@ test("blog post components", async ({ page }) => {
   await checkFooter(page);
 
   // Scroll progress
-  expect(await page.locator("#scroll-progress")).toBeVisible();
+  expect(await page.locator("#scroll-progress")).toHaveClass("fixed");
 
   /* Post demo page content */
   // Header

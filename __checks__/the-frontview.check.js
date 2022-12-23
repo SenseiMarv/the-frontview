@@ -196,7 +196,9 @@ test("blog post components", async ({ page }) => {
   ).toHaveCount(13);
 
   // List
-  expect(await page.getByRole("heading", { name: "List" })).toBeVisible();
+  expect(
+    await page.getByRole("heading", { name: "List", exact: true })
+  ).toBeVisible();
   expect(await page.getByRole("list").nth(1)).toBeVisible();
   expect(await page.getByRole("list").nth(1).getByRole("listitem")).toHaveCount(
     3

@@ -303,7 +303,9 @@ test("blog post components", async ({ page }) => {
   ).toBeVisible();
 
   // Icon
-  expect(await page.getByRole("heading", { name: "Icon" })).toBeVisible();
+  expect(
+    await page.getByRole("heading", { name: "Icon", exact: true })
+  ).toBeVisible();
   expect(
     await page
       .getByRole("paragraph")

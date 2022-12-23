@@ -305,10 +305,8 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByRole("heading", { name: "Footnotes" })).toHaveCount(2);
   expect(await page.getByText("Note 11")).toBeVisible();
   expect(await page.getByText("Note 22")).toBeVisible();
-  expect(await page.getByRole("section").getByRole("list")).toBeVisible();
-  expect(
-    await page.getByRole("section").getByRole("list").getByRole("listitem")
-  ).toHaveCount(2);
+  expect(await page.getByText("Footnote 1")).toBeVisible();
+  expect(await page.getByText("Footnote 2")).toBeVisible();
 
   // Divider
   expect(await page.getByRole("heading", { name: "Divider" })).toBeVisible();

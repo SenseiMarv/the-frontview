@@ -4,29 +4,42 @@ const targetUrl = process.env.ENVIRONMENT_URL || "https://the-frontview.dev";
 
 const checkHeader = async (page) => {
   expect(
-    await page.getByRole("img", { name: "The Frontview Icon" })
+    await page.getByRole("img", { name: "The Frontview Icon", exact: true })
   ).toBeVisible();
   expect(
-    await page.getByRole("heading", { name: "The Frontview" })
+    await page.getByRole("heading", { name: "The Frontview", exact: true })
   ).toBeVisible();
-  expect(await page.getByRole("link", { name: "Home" })).toBeVisible();
+  expect(
+    await page.getByRole("link", { name: "Home", exact: true })
+  ).toBeVisible();
   expect(
     await page.getByRole("link", { name: "All Posts", exact: true }).first()
   ).toBeVisible();
-  expect(await page.getByRole("link", { name: "Tags" })).toBeVisible();
   expect(
-    await page.getByRole("button", { name: "Toggle light/dark theme" })
+    await page.getByRole("link", { name: "Tags", exact: true })
   ).toBeVisible();
-  expect(await page.getByRole("link", { name: "RSS feed" })).toBeVisible();
-  expect(await page.getByRole("link", { name: "GitHub" })).toBeVisible();
+  expect(
+    await page.getByRole("button", {
+      name: "Toggle light/dark theme",
+      exact: true,
+    })
+  ).toBeVisible();
+  expect(
+    await page.getByRole("link", { name: "RSS feed", exact: true })
+  ).toBeVisible();
+  expect(
+    await page.getByRole("link", { name: "GitHub", exact: true })
+  ).toBeVisible();
 };
 
 const checkFooter = async (page) => {
   expect(
-    await page.getByText("Copyright (c) 2022 Marvin Stickel. MIT License.")
+    await page.getByText("Copyright (c) 2022 Marvin Stickel. MIT License.", {
+      exact: true,
+    })
   ).toBeVisible();
   expect(
-    await page.getByRole("link", { name: "Privacy policy" })
+    await page.getByRole("link", { name: "Privacy policy", exact: true })
   ).toBeVisible();
 };
 

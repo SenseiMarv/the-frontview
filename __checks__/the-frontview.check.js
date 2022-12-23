@@ -224,7 +224,9 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByText("Or an error.")).toBeVisible();
 
   // Table
-  expect(await page.getByRole("heading", { name: "Table" })).toBeVisible();
+  expect(
+    await page.getByRole("heading", { name: "Table", exact: true })
+  ).toBeVisible();
   expect(await page.getByRole("table")).toBeVisible();
   expect(await page.getByRole("row")).toHaveCount(4);
 

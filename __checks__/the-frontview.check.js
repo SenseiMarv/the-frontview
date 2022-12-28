@@ -46,6 +46,8 @@ test("home page", async ({ page }) => {
     waitUntil: "domcontentloaded",
   });
 
+  await page.screenshot({ path: "home.png", fullPage: true });
+
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
   }
@@ -79,14 +81,14 @@ test("home page", async ({ page }) => {
   ).toBeVisible();
   expect(await page.getByRole("list")).toBeVisible();
   expect(await page.getByRole("link", { name: "See all posts" })).toBeVisible();
-
-  await page.screenshot({ path: "home.png", fullPage: true });
 });
 
 test("all posts page", async ({ page }) => {
   const response = await page.goto(`${targetUrl}/posts`, {
     waitUntil: "domcontentloaded",
   });
+
+  await page.screenshot({ path: "allPosts.png", fullPage: true });
 
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
@@ -98,14 +100,14 @@ test("all posts page", async ({ page }) => {
   /* All posts page content */
   expect(await page.getByRole("heading", { name: "All posts" })).toBeVisible();
   expect(await page.getByRole("list")).toBeVisible();
-
-  await page.screenshot({ path: "allPosts.png", fullPage: true });
 });
 
 test("post page", async ({ page }) => {
   const response = await page.goto(targetUrl, {
     waitUntil: "domcontentloaded",
   });
+
+  await page.screenshot({ path: "post.png", fullPage: true });
 
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
@@ -161,14 +163,14 @@ test("post page", async ({ page }) => {
 
   // Comments
   expect(await page.getByTitle("Comments")).toBeVisible();
-
-  await page.screenshot({ path: "post.png", fullPage: true });
 });
 
 test("blog post components", async ({ page }) => {
   const response = await page.goto(`${targetUrl}/post-demo`, {
     waitUntil: "domcontentloaded",
   });
+
+  await page.screenshot({ path: "post-demo.png", fullPage: true });
 
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
@@ -360,14 +362,14 @@ test("blog post components", async ({ page }) => {
 
   // Comments
   expect(await page.getByTitle("Comments")).toBeVisible();
-
-  await page.screenshot({ path: "post-demo.png", fullPage: true });
 });
 
 test("tags page", async ({ page }) => {
   const response = await page.goto(`${targetUrl}/tags`, {
     waitUntil: "domcontentloaded",
   });
+
+  await page.screenshot({ path: "tags.png", fullPage: true });
 
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
@@ -379,12 +381,12 @@ test("tags page", async ({ page }) => {
   /* Tags page content */
   expect(await page.getByRole("heading", { name: "Tags" })).toBeVisible();
   expect(await page.getByRole("list")).toBeVisible();
-
-  await page.screenshot({ path: "tags.png", fullPage: true });
 });
 
 test("tag overview page", async ({ page }) => {
   await page.goto(`${targetUrl}/tags`, { waitUntil: "domcontentloaded" });
+
+  await page.screenshot({ path: "tagsFirst.png", fullPage: true });
 
   const firstTagName = (
     await page.getByRole("listitem").first().innerText()
@@ -403,14 +405,14 @@ test("tag overview page", async ({ page }) => {
     await page.getByRole("heading", { name: `Tag ${firstTagName}` })
   ).toBeVisible();
   expect(await page.getByRole("list")).toBeVisible();
-
-  await page.screenshot({ path: "tagsFirst.png", fullPage: true });
 });
 
 test("privacy policy page", async ({ page }) => {
   const response = await page.goto(`${targetUrl}/privacy`, {
     waitUntil: "domcontentloaded",
   });
+
+  await page.screenshot({ path: "privacy.png", fullPage: true });
 
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
@@ -429,8 +431,6 @@ test("privacy policy page", async ({ page }) => {
       "This website is using Plausible Analytics to collect tracking data. This tool is"
     )
   ).toBeVisible();
-
-  await page.screenshot({ path: "privacy.png", fullPage: true });
 });
 
 test("rss page", async ({ page }) => {
@@ -438,9 +438,9 @@ test("rss page", async ({ page }) => {
     waitUntil: "domcontentloaded",
   });
 
+  await page.screenshot({ path: "rss.png", fullPage: true });
+
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
   }
-
-  await page.screenshot({ path: "rss.png", fullPage: true });
 });

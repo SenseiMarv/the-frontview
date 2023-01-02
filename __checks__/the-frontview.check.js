@@ -121,12 +121,14 @@ test("post page", async ({ page }) => {
     waitUntil: "domcontentloaded",
   });
   await page.getByRole("listitem").first().click();
-  await navigationPromise;
+  const navigationPromiseResponse = await navigationPromise;
 
   await page.screenshot({ path: "post.png", fullPage: true });
 
-  if (navigationPromise.status() > 399) {
-    throw new Error(`Failed with response code ${navigationPromise.status()}`);
+  if (navigationPromiseResponse.status() > 399) {
+    throw new Error(
+      `Failed with response code ${navigationPromiseResponse.status()}`
+    );
   }
 
   await checkHeader(page);
@@ -403,12 +405,14 @@ test("tag overview page", async ({ page }) => {
     waitUntil: "domcontentloaded",
   });
   await page.getByRole("listitem").first().getByRole("link").click();
-  await navigationPromise;
+  const navigationPromiseResponse = await navigationPromise;
 
   await page.screenshot({ path: "tagsFirst.png", fullPage: true });
 
-  if (navigationPromise.status() > 399) {
-    throw new Error(`Failed with response code ${navigationPromise.status()}`);
+  if (navigationPromiseResponse.status() > 399) {
+    throw new Error(
+      `Failed with response code ${navigationPromiseResponse.status()}`
+    );
   }
 
   await checkHeader(page);

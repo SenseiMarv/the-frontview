@@ -107,8 +107,6 @@ test("post page", async ({ page }) => {
     waitUntil: "domcontentloaded",
   });
 
-  await page.screenshot({ path: "post.png", fullPage: true });
-
   if (response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
   }
@@ -124,6 +122,12 @@ test("post page", async ({ page }) => {
   });
   await page.getByRole("listitem").first().click();
   await navigationPromise;
+
+  await page.screenshot({ path: "post.png", fullPage: true });
+
+  if (navigationPromise.status() > 399) {
+    throw new Error(`Failed with response code ${navigationPromise.status()}`);
+  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -384,9 +388,13 @@ test("tags page", async ({ page }) => {
 });
 
 test("tag overview page", async ({ page }) => {
-  await page.goto(`${targetUrl}/tags`, { waitUntil: "domcontentloaded" });
+  const response = await page.goto(`${targetUrl}/tags`, {
+    waitUntil: "domcontentloaded",
+  });
 
-  await page.screenshot({ path: "tagsFirst.png", fullPage: true });
+  if (response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
 
   const firstTagName = (
     await page.getByRole("listitem").first().innerText()
@@ -396,6 +404,12 @@ test("tag overview page", async ({ page }) => {
   });
   await page.getByRole("listitem").first().getByRole("link").click();
   await navigationPromise;
+
+  await page.screenshot({ path: "tagsFirst.png", fullPage: true });
+
+  if (navigationPromise.status() > 399) {
+    throw new Error(`Failed with response code ${navigationPromise.status()}`);
+  }
 
   await checkHeader(page);
   await checkFooter(page);

@@ -24,7 +24,7 @@
     "@fontsource/inter": "4.5.14",
     "@fontsource/quicksand": "4.5.11",
     "@fontsource/source-code-pro": "4.5.12",
-    "astro": "1.7.2",
+    "astro": "1.8.0",
     "astro-embed": "0.2.0",
     "date-fns": "2.29.3",
     "hastscript": "7.1.0",

@@ -33,7 +33,7 @@ import {
   postReadingTimePlugin,
 } from "./plugins/remarkPlugins.mjs";
 
-const hostedSiteUrl = "https://the-frontview.vercel.app";
+const hostedSiteUrl = "https://www.the-frontview.dev";
 
 const getPostUrls = (source) =>
   readdirSync(source, { withFileTypes: true }).map(

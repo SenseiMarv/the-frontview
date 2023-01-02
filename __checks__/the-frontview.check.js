@@ -1,6 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
-const targetUrl = process.env.ENVIRONMENT_URL || "https://the-frontview.dev";
+const targetUrl =
+  process.env.ENVIRONMENT_URL || "https://www.the-frontview.dev";
 
 const checkHeader = async (page) => {
   expect(

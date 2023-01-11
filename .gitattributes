@@ -1,0 +1,2 @@
+# Ignore the stylesheet file for the RSS page
+*.xsl export-ignore

@@ -1,2 +1,2 @@
 # Ignore the stylesheet file for the RSS page
-*.xsl export-ignore
+styles.xsl linguist-vendored

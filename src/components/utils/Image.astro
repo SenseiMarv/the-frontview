@@ -1,17 +1,22 @@
 ---
 // eslint-disable-next-line import/no-unresolved
 import { Image } from "@astrojs/image/components";
+// eslint-disable-next-line import/namespace
+import type { OutputFormat } from "@astrojs/image/dist/loaders";
 
 export interface Props {
   src: string;
   alt: string;
   gif?: boolean;
   width?: number;
+  height?: number;
   aspectRatio?: number;
-  format?: string;
+  format?: OutputFormat;
 }
 
 const defaultWidth = 500;
+// Workaround for `height` becoming required even though it is technically still optional
+const defaultHeight = undefined as unknown as number;
 const defaultAspectRatio = 4 / 3;
 const defaultGifFormat = "webp";
 
@@ -20,6 +25,7 @@ const {
   alt,
   gif,
   width = defaultWidth,
+  height = defaultHeight,
   aspectRatio = defaultAspectRatio,
   format = gif ? defaultGifFormat : undefined,
 } = Astro.props;
@@ -30,6 +36,7 @@ const {
     src={src}
     alt={alt}
     width={width}
+    height={height}
     aspectRatio={aspectRatio}
     format={format}
     class="shadow-xl"

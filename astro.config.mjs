@@ -2,6 +2,7 @@ import { readdirSync } from "node:fs";
 
 // eslint-disable-next-line import/no-unresolved
 import image from "@astrojs/image";
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 // eslint-disable-next-line import/no-unresolved
 import mdx from "@astrojs/mdx";
 // eslint-disable-next-line import/no-unresolved
@@ -17,8 +18,6 @@ import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 // eslint-disable-next-line import/no-unresolved
-import embed from "astro-embed/integration";
-// eslint-disable-next-line import/no-unresolved
 import robotsTxt from "astro-robots-txt";
 import { s } from "hastscript";
 import rehypeAddClasses from "rehype-add-classes";
@@ -33,7 +32,7 @@ import {
   postReadingTimePlugin,
 } from "./plugins/remarkPlugins.mjs";
 
-const hostedSiteUrl = "https://www.the-frontview.dev";
+const hostedSiteUrl = "https://www.the-frontview.dev/";
 
 const getPostUrls = (source) =>
   readdirSync(source, { withFileTypes: true }).map(
@@ -44,37 +43,35 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   site: hostedSiteUrl,
-  markdown: {
-    syntaxHighlight: false,
-    rehypePlugins: [
-      [
-        rehypeAutolinkHeadings,
-        {
-          content: s(
-            `svg`,
-            { width: 30, height: 30, viewBox: `0 0 30 30` },
-            s(`use`, { href: `#link-icon` })
-          ),
-        },
-      ],
-      [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
-      [rehypeWrap, { selector: "table", wrapper: "div.table-container" }],
-    ],
-    remarkPlugins: [
-      postFrontmatterPlugin,
-      postReadingTimePlugin,
-      remarkToc,
-      [shikiTwoslash.default, { theme: "one-dark-pro" }],
-      remarkHint,
-    ],
-    extendDefaultPlugins: true,
-  },
   integrations: [
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
-    embed(),
-    mdx(),
+    mdx({
+      syntaxHighlight: false,
+      rehypePlugins: [
+        [
+          rehypeHeadingIds, // Has to be set before plugins that rely on added heading IDs!
+          rehypeAutolinkHeadings,
+          {
+            content: s(
+              `svg`,
+              { width: 30, height: 30, viewBox: `0 0 30 30` },
+              s(`use`, { href: `#link-icon` })
+            ),
+          },
+        ],
+        [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
+        [rehypeWrap, { selector: "table", wrapper: "div.table-container" }],
+      ],
+      remarkPlugins: [
+        postFrontmatterPlugin,
+        postReadingTimePlugin,
+        remarkToc,
+        [shikiTwoslash.default, { theme: "one-dark-pro" }],
+        remarkHint,
+      ],
+    }),
     tailwind(),
     compress(),
     prefetch(),

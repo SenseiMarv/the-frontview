@@ -222,7 +222,7 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByRole("list").first()).toBeVisible();
   expect(
     await page.getByRole("list").first().getByRole("listitem")
-  ).toHaveCount(25);
+  ).toHaveCount(23);
 
   // List
   expect(

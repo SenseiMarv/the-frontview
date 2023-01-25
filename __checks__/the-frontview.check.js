@@ -237,7 +237,7 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByRole("heading", { name: "Tasklist" })).toBeVisible();
   expect(await page.getByRole("list").nth(2)).toBeVisible();
   expect(await page.getByRole("list").nth(2).getByRole("listitem")).toHaveCount(
-    4
+    2
   );
 
   // Blockquote

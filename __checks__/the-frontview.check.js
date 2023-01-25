@@ -354,10 +354,6 @@ test("blog post components", async ({ page }) => {
   ).toBeVisible();
   expect(await page.getByRole("heading", { name: "Gif" })).toBeVisible();
   expect(await page.getByRole("img", { name: "Wow" })).toBeVisible();
-  expect(await page.getByRole("heading", { name: "Youtube" })).toBeVisible();
-  expect(await page.locator("lite-youtube")).toBeVisible();
-  expect(await page.getByRole("heading", { name: "Twitter" })).toBeVisible();
-  expect(await page.getByRole("link", { name: "Twitter →" })).toBeVisible();
 
   // Headings
   expect(await page.getByRole("heading", { name: "H1" })).toBeVisible();

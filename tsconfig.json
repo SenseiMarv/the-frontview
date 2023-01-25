@@ -1,5 +1,7 @@
 {
   "extends": "astro/tsconfigs/base",
+  "include": ["./src/", "./__checks__/"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",

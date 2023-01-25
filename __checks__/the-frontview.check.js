@@ -201,7 +201,7 @@ test("blog post components", async ({ page }) => {
   // Social Media Links
   expect(
     await page.getByRole("link", { name: "Twitter", exact: true })
-  ).toHaveCount(3);
+  ).toHaveCount(2);
   expect(
     await page.getByRole("link", { name: "Mastodon", exact: true })
   ).toHaveCount(2);

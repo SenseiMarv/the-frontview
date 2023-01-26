@@ -173,7 +173,7 @@ test("post page", async ({ page }) => {
 });
 
 test("blog post components", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/post-demo`, {
+  const response = await page.goto(`${targetUrl}/posts/demo`, {
     waitUntil: "domcontentloaded",
   });
 

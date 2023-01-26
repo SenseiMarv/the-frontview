@@ -12,6 +12,7 @@ const config = {
     "prettier", // Has to be set last!
   ],
   overrides: [],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -54,22 +55,6 @@ config.overrides.push({
   parserOptions: {
     parser: "@typescript-eslint/parser",
     extraFileExtensions: [".astro"],
-    project: "./tsconfig.json",
-  },
-});
-
-config.overrides.push({
-  files: ["**/*.astro/*.js", "*.astro/*.js"],
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  parserOptions: {
-    sourceType: "module",
-  },
-  rules: {
-    // No Prettier formatting needed inside <script> as it will be formatted as a `.astro` file.
-    "prettier/prettier": "off",
   },
 });
 

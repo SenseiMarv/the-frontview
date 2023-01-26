@@ -1,5 +1,5 @@
-import type { Post } from "../../typings/Post";
-import type { CountedTag, SortedTags } from "../../typings/Tag";
+import type { Post } from "../../typings/Post.js";
+import type { CountedTag, SortedTags } from "../../typings/Tag.js";
 
 export const getTags = (tags: string): string[] => tags.split(/,\s*/);
 

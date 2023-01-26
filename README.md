@@ -50,6 +50,8 @@ imgAuthorUrl: "A URL leading to the source of the image used in the header of th
 ---
 ```
 
+Posts can be set to draft status by adding `draft: true` to the frontmatter. A draft post will not be visible on the site (but can be accessed by calling its URL directly).
+
 Local images should be stored in `./public/images`. They can be referenced directly in the frontmatter:
 
 ```mdx
@@ -58,7 +60,7 @@ imgUrl: "/images/post-example/cover.png"
 
 ### Blog components
 
-To see which components can be used in a blog post, open `./src/pages/post-demo.mdx`. To see those components in action, navigate to `/post-demo` in the browser on the live website or on the local dev server.
+To see which components can be used in a blog post, open `./src/pages/posts/demo.mdx`. To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
 
 <details><summary>How to use Twitter embedded content</summary>
 

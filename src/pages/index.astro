@@ -1,13 +1,17 @@
 ---
 import Profile from "../components/home-page/Profile.astro";
+// eslint-disable-next-line import/no-unresolved
+import { getLivePosts } from "../components/posts/filterPosts.js";
 import Overview from "../components/posts/Overview.astro";
 // eslint-disable-next-line import/no-unresolved
-import { sortPostsByDate } from "../components/posts/sortPosts";
+import { sortPostsByDate } from "../components/posts/sortPosts.js";
 import Button from "../components/utils/Button.astro";
 import Divider from "../components/utils/Divider.astro";
 import Layout from "../layouts/Layout.astro";
 
-const posts = sortPostsByDate(await Astro.glob("./posts/*.mdx"));
+export const prerender = true;
+
+const posts = sortPostsByDate(getLivePosts(await Astro.glob("./posts/*.mdx")));
 ---
 
 <Layout

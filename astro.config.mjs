@@ -50,8 +50,8 @@ export default defineConfig({
     mdx({
       syntaxHighlight: false,
       rehypePlugins: [
+        rehypeHeadingIds, // Has to be set before plugins that rely on added heading IDs!
         [
-          rehypeHeadingIds, // Has to be set before plugins that rely on added heading IDs!
           rehypeAutolinkHeadings,
           {
             content: s(

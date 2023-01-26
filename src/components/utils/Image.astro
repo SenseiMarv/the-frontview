@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { Image } from "@astrojs/image/components";
 // eslint-disable-next-line import/namespace
-import type { OutputFormat } from "@astrojs/image/dist/loaders";
+import type { OutputFormat } from "@astrojs/image/dist/loaders/index.js";
 
 export interface Props {
   src: string;
@@ -32,15 +32,16 @@ const {
 ---
 
 <div class="image-component flex flex-col items-center">
-  <Image
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
-    aspectRatio={aspectRatio}
-    format={format}
-    class="shadow-xl"
-  />
+  <div class="shadow-xl">
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      aspectRatio={aspectRatio}
+      format={format}
+    />
+  </div>
   <div class="mt-4">
     <slot />
   </div>

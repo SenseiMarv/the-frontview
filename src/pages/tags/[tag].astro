@@ -1,18 +1,27 @@
 ---
+// eslint-disable-next-line import/no-unresolved
+import { getLivePosts } from "../../components/posts/filterPosts.js";
 import Overview from "../../components/posts/Overview.astro";
 // eslint-disable-next-line import/no-unresolved
-import { sortPostsByDate } from "../../components/posts/sortPosts";
+import { sortPostsByDate } from "../../components/posts/sortPosts.js";
 // eslint-disable-next-line import/no-unresolved
-import { getTags } from "../../components/tags/sortTags";
+import { getTags } from "../../components/tags/sortTags.js";
 import Button from "../../components/utils/Button.astro";
 import Layout from "../../layouts/Layout.astro";
 
-const posts = sortPostsByDate(await Astro.glob("../posts/*.mdx"));
-const pathnameMatch = Astro.url.pathname.match(/[^/]*$/);
-const currentTag = pathnameMatch !== null ? pathnameMatch[0] : "";
+export interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.params;
+
+const posts = sortPostsByDate(getLivePosts(await Astro.glob("../posts/*.mdx")));
 const postsWithTag = posts.filter((post) => {
+  if (tag === undefined) {
+    return false;
+  }
   const postTags = getTags(post.frontmatter.tags);
-  return postTags.includes(currentTag);
+  return postTags.includes(tag);
 });
 
 // Catch invalid URLs
@@ -22,10 +31,10 @@ if (postsWithTag.length === 0) {
 ---
 
 <Layout
-  title={`Tag ${currentTag} | The Frontview`}
-  description={`A list of all blog posts using the tag "${currentTag}" in my personal blog. Author: Marvin Stickel`}
+  title={`Tag ${tag} | The Frontview`}
+  description={`A list of all blog posts using the tag "${tag}" in my personal blog. Author: Marvin Stickel`}
 >
-  <h1 class="mt-12 mb-8 text-6xl md:mt-24 md:mb-16">Tag {currentTag}</h1>
+  <h1 class="mt-12 mb-8 text-6xl md:mt-24 md:mb-16">Tag {tag}</h1>
   <div class="mt-2 md:mt-4">
     <Overview posts={postsWithTag} prefetch />
   </div>

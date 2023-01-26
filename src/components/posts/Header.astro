@@ -4,7 +4,7 @@ import { Image } from "@astrojs/image/components";
 
 import ExternalLink from "../utils/ExternalLink.astro";
 // eslint-disable-next-line import/no-unresolved
-import { formatDateToLocaleDate } from "../utils/formatDates";
+import { formatDateToLocaleDate } from "../utils/formatDates.js";
 import Icon from "../utils/Icon.astro";
 import Share from "./Share.astro";
 import TagList from "./TagList.astro";
@@ -50,14 +50,9 @@ const formattedReadingTime = `${readingTime} min read`;
     />
     <TagList tags={tags} />
   </div>
-  <Image
-    src={imgUrl}
-    width={600}
-    height={337.5}
-    alt="Blogpost cover"
-    fetchpriority="high"
-    class="mt-8 shadow-xl md:mt-10"
-  />
+  <div class="mt-8 shadow-xl md:mt-10">
+    <Image src={imgUrl} width={600} height={337.5} alt="Blogpost cover" />
+  </div>
   <div class="mt-4 text-sm">
     Photo by <ExternalLink href={imgAuthorUrl}>{imgAuthor}</ExternalLink>
   </div>

@@ -13,19 +13,24 @@ import ExternalLink from "../utils/ExternalLink.astro";
       width={160}
       height={160}
       alt="Profile picture"
-      class="rounded-full shadow-lg"
     />
+    <style>
+      img {
+        @apply rounded-full shadow-lg;
+      }
+    </style>
   </div>
   <div>
     <div class="flex">
       Hi there<div class="w-6">
-        <Image
-          src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
-          width={50}
-          height={50}
-          alt="Waving hand"
-          class="mx-1"
-        />
+        <div class="mx-1">
+          <Image
+            src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
+            width={50}
+            height={50}
+            alt="Waving hand"
+          />
+        </div>
       </div>, I am Marvin Stickel.
     </div>
     <p>

@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/image': 0.13.0
-  '@astrojs/markdown-remark': 2.0.0
-  '@astrojs/mdx': 0.15.0
+  '@astrojs/markdown-remark': 2.0.1
+  '@astrojs/mdx': 0.15.1
   '@astrojs/partytown': 1.0.3
   '@astrojs/prefetch': 0.1.1
   '@astrojs/rss': 2.1.0
@@ -16,7 +16,7 @@ specifiers:
   '@tailwindcss/line-clamp': 0.4.2
   '@typescript-eslint/eslint-plugin': 5.49.0
   '@typescript-eslint/parser': 5.49.0
-  astro: 2.0.1
+  astro: 2.0.2
   astro-compress: 1.1.28
   astro-embed: 0.2.1
   astro-eslint-parser: 0.11.0
@@ -26,7 +26,7 @@ specifiers:
   date-fns: 2.29.3
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0
-  eslint-config-standard-with-typescript: 32.0.0
+  eslint-config-standard-with-typescript: 33.0.0
   eslint-plugin-astro: 0.23.0
   eslint-plugin-import: 2.27.5
   eslint-plugin-jsx-a11y: 6.7.1
@@ -61,8 +61,8 @@ dependencies:
   '@fontsource/inter': 4.5.15
   '@fontsource/quicksand': 4.5.12
   '@fontsource/source-code-pro': 4.5.14
-  astro: 2.0.1
-  astro-embed: 0.2.1_astro@2.0.1
+  astro: 2.0.2
+  astro-embed: 0.2.1_astro@2.0.2
   date-fns: 2.29.3
   hastscript: 7.2.0
   mdast-util-to-string: 3.1.1
@@ -77,14 +77,14 @@ dependencies:
   theme-change: 2.3.0
 
 devDependencies:
-  '@astrojs/image': 0.13.0_astro@2.0.1+sharp@0.31.3
-  '@astrojs/markdown-remark': 2.0.0_astro@2.0.1
-  '@astrojs/mdx': 0.15.0_astro@2.0.1+rollup@3.11.0
+  '@astrojs/image': 0.13.0_astro@2.0.2+sharp@0.31.3
+  '@astrojs/markdown-remark': 2.0.1_astro@2.0.2
+  '@astrojs/mdx': 0.15.1_astro@2.0.2+rollup@3.11.0
   '@astrojs/partytown': 1.0.3
   '@astrojs/prefetch': 0.1.1
   '@astrojs/sitemap': 1.0.0
-  '@astrojs/tailwind': 3.0.0_bgk6wvini4j5nfa7w2itosrqne
-  '@astrojs/vercel': 3.0.0_astro@2.0.1
+  '@astrojs/tailwind': 3.0.0_uhsc6pehih5huiqhsy5i7sy5um
+  '@astrojs/vercel': 3.0.0_astro@2.0.2
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
   '@typescript-eslint/eslint-plugin': 5.49.0_iu322prlnwsygkcra5kbpy22si
   '@typescript-eslint/parser': 5.49.0_7uibuqfxkfaozanbtbziikiqje
@@ -95,7 +95,7 @@ devDependencies:
   concurrently: 7.6.0
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0_eslint@8.32.0
-  eslint-config-standard-with-typescript: 32.0.0_3ozrqhxsq4rivumccwgffwbcbm
+  eslint-config-standard-with-typescript: 33.0.0_3ozrqhxsq4rivumccwgffwbcbm
   eslint-plugin-astro: 0.23.0_eslint@8.32.0
   eslint-plugin-import: 2.27.5_6savw6y3b7jng6f64kgkyoij64
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.32.0
@@ -143,27 +143,27 @@ packages:
       typescript: 4.9.4
     dev: true
 
-  /@astro-community/astro-embed-integration/0.2.1_astro@2.0.1:
+  /@astro-community/astro-embed-integration/0.2.1_astro@2.0.2:
     resolution: {integrity: sha512-jP9ixbF8iwpbSL/oYZ6vilaWcexAZP7sBm7xzaGkaEBQtnO75CRxYesMebVuIg+qpjThYKE0o4jeTzre3VVzaw==}
     peerDependencies:
       astro: ^1.0.0 || ^2.0.0-beta
     dependencies:
-      '@astro-community/astro-embed-twitter': 0.2.2_astro@2.0.1
-      '@astro-community/astro-embed-vimeo': 0.1.2_astro@2.0.1
-      '@astro-community/astro-embed-youtube': 0.2.2_astro@2.0.1
-      astro: 2.0.1
+      '@astro-community/astro-embed-twitter': 0.2.2_astro@2.0.2
+      '@astro-community/astro-embed-vimeo': 0.1.2_astro@2.0.2
+      '@astro-community/astro-embed-youtube': 0.2.2_astro@2.0.2
+      astro: 2.0.2
       unist-util-select: 4.0.3
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@astro-community/astro-embed-twitter/0.2.2_astro@2.0.1:
+  /@astro-community/astro-embed-twitter/0.2.2_astro@2.0.2:
     resolution: {integrity: sha512-kz3hmVoemIAwueRKUWhL3Qq85302AZwhRpryILxjHWUnsiHMIGMjmQA+V9/8YpKniYvZM5rGSNMpV6++3FB42A==}
     peerDependencies:
       astro: ^1.0.0 || ^2.0.0-beta
     dependencies:
       '@astro-community/astro-embed-utils': 0.0.3
-      astro: 2.0.1
+      astro: 2.0.2
       twitter-api-sdk: 1.2.1
     transitivePeerDependencies:
       - encoding
@@ -173,21 +173,21 @@ packages:
     resolution: {integrity: sha512-hXwSMtSAL3V9fnFHps+/CoDIJst26U/qSdI7srIQ8GPmFqdbcqJd/qOqYzGezAR/qTM8gmTjDCGOuVI0Z+xT3Q==}
     dev: false
 
-  /@astro-community/astro-embed-vimeo/0.1.2_astro@2.0.1:
+  /@astro-community/astro-embed-vimeo/0.1.2_astro@2.0.2:
     resolution: {integrity: sha512-ZycmSfhSupo5aAWg42Xr33wF3oMRK469CT5Foa5xeTpaTFXib+/vXOu2RvDIyG6kyhm2YuLNhNYIFfH27QVllA==}
     peerDependencies:
       astro: ^1.0.0 || ^2.0.0-beta
     dependencies:
-      astro: 2.0.1
+      astro: 2.0.2
       lite-vimeo-embed: 0.1.0
     dev: false
 
-  /@astro-community/astro-embed-youtube/0.2.2_astro@2.0.1:
+  /@astro-community/astro-embed-youtube/0.2.2_astro@2.0.2:
     resolution: {integrity: sha512-eGBVujUNOv6x2x/iXS7D/XWmlx69frLQKyYBW0zTFzzgDCeOuXkJ4TPMOdQHsttp2ZCvbqii8f27GoaTKHIa7g==}
     peerDependencies:
       astro: ^1.0.0 || ^2.0.0-beta
     dependencies:
-      astro: 2.0.1
+      astro: 2.0.2
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -197,7 +197,7 @@ packages:
   /@astrojs/compiler/1.0.1:
     resolution: {integrity: sha512-77aacobLKcL98NmhK3OBS5EHIrX9gs1ckB/vGSIdkVZuB7u51V4jh05I6W0tSvG7/86tALv6QtHTRZ8rLhFTbQ==}
 
-  /@astrojs/image/0.13.0_astro@2.0.1+sharp@0.31.3:
+  /@astrojs/image/0.13.0_astro@2.0.2+sharp@0.31.3:
     resolution: {integrity: sha512-18IlEsb/mau4ji9sR7+JVPFJHtgIk7Qh/Ol+Hh/JNcPn/oMrjP6FMU3VrNHPy5Ltvw1DyzkDV4wu+jYKU/V0Hw==}
     peerDependencies:
       astro: ^2.0.0
@@ -207,8 +207,8 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
-      astro: 2.0.1
-      http-cache-semantics: 4.1.0
+      astro: 2.0.2
+      http-cache-semantics: 4.1.1
       image-size: 1.0.2
       kleur: 4.1.5
       magic-string: 0.27.0
@@ -234,13 +234,13 @@ packages:
       vscode-languageserver-types: 3.17.2
       vscode-uri: 3.0.7
 
-  /@astrojs/markdown-remark/2.0.0_astro@2.0.1:
-    resolution: {integrity: sha512-PqDxi3L2jsxLWjsWRyn+BkaDtHKq2+ECI7PlW9NsEwu2jKKgl7sXj57s/Wjhyctr4efFdzewFArVFm1Gnb3rtw==}
+  /@astrojs/markdown-remark/2.0.1_astro@2.0.2:
+    resolution: {integrity: sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==}
     peerDependencies:
-      astro: ^2.0.0
+      astro: ^2.0.2
     dependencies:
       '@astrojs/prism': 2.0.0
-      astro: 2.0.1
+      astro: 2.0.2
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.1
       rehype-raw: 6.1.1
@@ -256,11 +256,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/mdx/0.15.0_astro@2.0.1+rollup@3.11.0:
-    resolution: {integrity: sha512-KABnoWZJdtmzlbTbCJKLHRfX6fM9PS+BjSUSq/OHlkkejPUlmrZvGbDdN0Yfw1/gY/KDP48L7BLy/9VAk5Y/Wg==}
+  /@astrojs/mdx/0.15.1_astro@2.0.2+rollup@3.11.0:
+    resolution: {integrity: sha512-RzrJ2vq+XnAtqvhRdIeONYBINFEWetXnfAqiB2V4s/FB/jd+8y9fSOtBtGpWCGpRZfidtMYPIiQ/damz0yJxVA==}
     engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/markdown-remark': 2.0.0_astro@2.0.1
+      '@astrojs/markdown-remark': 2.0.1_astro@2.0.2
       '@astrojs/prism': 2.0.0
       '@mdx-js/mdx': 2.2.1
       '@mdx-js/rollup': 2.2.1_rollup@3.11.0
@@ -316,14 +316,14 @@ packages:
       zod: 3.20.2
     dev: true
 
-  /@astrojs/tailwind/3.0.0_bgk6wvini4j5nfa7w2itosrqne:
+  /@astrojs/tailwind/3.0.0_uhsc6pehih5huiqhsy5i7sy5um:
     resolution: {integrity: sha512-Ul0LzTIW+QD/qXUaTDSDoe/uNOPSAX6Ce7yTMzl7v+9OlZ4vlgkj1CUq/WkhlKnJ2+SnJvLArEj6yYs/M2V8nA==}
     peerDependencies:
       astro: ^2.0.0
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      astro: 2.0.1
+      astro: 2.0.2
       autoprefixer: 10.4.13_postcss@8.4.21
       postcss: 8.4.21
       postcss-load-config: 4.0.1_postcss@8.4.21
@@ -347,14 +347,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/vercel/3.0.0_astro@2.0.1:
+  /@astrojs/vercel/3.0.0_astro@2.0.2:
     resolution: {integrity: sha512-fzoa8C0AbiLNkAkTZV4wIEdqaE/U99x0mFSHgA3SV2OwWszch29l8pQMnLUHXTXVy1OwmNba4QRm1B8hkPwo9g==}
     peerDependencies:
       astro: ^2.0.0
     dependencies:
       '@astrojs/webapi': 2.0.0
       '@vercel/nft': 0.22.6
-      astro: 2.0.1
+      astro: 2.0.2
       fast-glob: 3.2.12
       set-cookie-parser: 2.5.1
     transitivePeerDependencies:
@@ -893,7 +893,7 @@ packages:
       estree-walker: 3.0.3
       hast-util-to-estree: 2.2.1
       markdown-extensions: 1.1.1
-      periscopic: 3.0.4
+      periscopic: 3.1.0
       remark-mdx: 2.2.1
       remark-parse: 10.0.1
       remark-rehype: 10.1.0
@@ -947,7 +947,7 @@ packages:
       open: 8.4.0
       picocolors: 1.0.0
       tiny-glob: 0.2.9
-      tslib: 2.4.1
+      tslib: 2.5.0
 
   /@proload/core/0.3.3:
     resolution: {integrity: sha512-7dAFWsIK84C90AMl24+N/ProHKm4iw0akcnoKjRvbfHifJZBLhaDsDus1QJmhG12lXj4e/uB/8mB/0aduCW+NQ==}
@@ -1527,16 +1527,16 @@ packages:
       terser: 5.16.1
     dev: true
 
-  /astro-embed/0.2.1_astro@2.0.1:
+  /astro-embed/0.2.1_astro@2.0.2:
     resolution: {integrity: sha512-48BurfhG4rb0tcS1VstiCa1WX/e4sg5SP5EuIPoMHnK39Oog6TNf2VB4Mvrx6GfZ9YIrn8Z7tTd7J6x6IFl9xA==}
     peerDependencies:
       astro: ^1.0.0 || ^2.0.0-beta
     dependencies:
-      '@astro-community/astro-embed-integration': 0.2.1_astro@2.0.1
-      '@astro-community/astro-embed-twitter': 0.2.2_astro@2.0.1
-      '@astro-community/astro-embed-vimeo': 0.1.2_astro@2.0.1
-      '@astro-community/astro-embed-youtube': 0.2.2_astro@2.0.1
-      astro: 2.0.1
+      '@astro-community/astro-embed-integration': 0.2.1_astro@2.0.2
+      '@astro-community/astro-embed-twitter': 0.2.2_astro@2.0.2
+      '@astro-community/astro-embed-vimeo': 0.1.2_astro@2.0.2
+      '@astro-community/astro-embed-youtube': 0.2.2_astro@2.0.2
+      astro: 2.0.2
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -1568,14 +1568,14 @@ packages:
     resolution: {integrity: sha512-G7zJUr4lfKLeqfWx2g5rfuBsOsIOfqxIOqErQfrMsMchDFfLFxNKAuW8yAo8hynJJwBvtGyS/vOXgGdMVVCFrA==}
     dev: true
 
-  /astro/2.0.1:
-    resolution: {integrity: sha512-EXq1lks+ylmArhtUs99PQelK0bQ3VS+698OO9UYkjG08Bd02ficqihsRGBnhEor7U9989hZb+1p4y0rNpgKH8g==}
+  /astro/2.0.2:
+    resolution: {integrity: sha512-47N1jLWNxSri7kWfIfgcEnQJZWTvd0gXhNC3P2ZHiiurl4nOxFC5ULsW5MDDTjTzQ1S7y1RoaL9XxYm+Rury7w==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 1.0.1
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.0.0_astro@2.0.1
+      '@astrojs/markdown-remark': 2.0.1_astro@2.0.2
       '@astrojs/telemetry': 2.0.0
       '@astrojs/webapi': 2.0.0
       '@babel/core': 7.20.12
@@ -1656,7 +1656,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001448
+      caniuse-lite: 1.0.30001449
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1753,7 +1753,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001448
+      caniuse-lite: 1.0.30001449
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -1802,7 +1802,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /camelcase-css/2.0.1:
@@ -1819,8 +1819,8 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
 
-  /caniuse-lite/1.0.30001448:
-    resolution: {integrity: sha512-tq2YI+MJnooG96XpbTRYkBxLxklZPOdLmNIOdIhvf7SNJan6u5vCKum8iT7ZfCt70m1GPkuC7P3TtX6UuhupuA==}
+  /caniuse-lite/1.0.30001449:
+    resolution: {integrity: sha512-CPB+UL9XMT/Av+pJxCKGhdx+yg1hzplvFJQlJ2n68PyQGMz9L/E2zCyLdOL8uasbouTUgnPl+y0tccI/se+BEw==}
 
   /ccount/2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -2313,7 +2313,7 @@ packages:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /dset/3.1.2:
@@ -2493,8 +2493,8 @@ packages:
       eslint: 8.32.0
     dev: true
 
-  /eslint-config-standard-with-typescript/32.0.0_3ozrqhxsq4rivumccwgffwbcbm:
-    resolution: {integrity: sha512-SyfzLvyBbPfxr2K/zNphtl5CGIS7FHH7v0TZrpmuyEXe+S1LFgt8hdJcWZHNxFckAGVQqrCxe/8+9T6n8x0gEA==}
+  /eslint-config-standard-with-typescript/33.0.0_3ozrqhxsq4rivumccwgffwbcbm:
+    resolution: {integrity: sha512-HOLmCMF91yYizfEms00jkmEoKvCCEIUOO6ArGZ9BNYL8yczF23fz/orsG6pN84f97cfo8c0kdREHzEO+uMA2zw==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.0.0
       eslint: ^8.0.1
@@ -2555,7 +2555,7 @@ packages:
       remark-parse: 10.0.1
       remark-stringify: 10.0.2
       synckit: 0.8.4
-      tslib: 2.4.1
+      tslib: 2.5.0
       unified: 10.1.2
       unist-util-visit: 4.1.2
       uvu: 0.5.6
@@ -2703,7 +2703,7 @@ packages:
       remark-mdx: 2.2.1
       remark-parse: 10.0.1
       remark-stringify: 10.0.2
-      tslib: 2.4.1
+      tslib: 2.5.0
       unified: 10.1.2
       vfile: 5.3.6
     transitivePeerDependencies:
@@ -3526,8 +3526,8 @@ packages:
   /html-void-elements/2.0.1:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
 
-  /http-cache-semantics/4.1.0:
-    resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
+  /http-cache-semantics/4.1.1:
+    resolution: {integrity: sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==}
     dev: true
 
   /https-proxy-agent/5.0.1:
@@ -4074,7 +4074,7 @@ packages:
   /lower-case/2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /lru-cache/5.1.1:
@@ -4141,8 +4141,8 @@ packages:
       - supports-color
     dev: true
 
-  /mdast-util-from-markdown/1.2.0:
-    resolution: {integrity: sha512-iZJyyvKD1+K7QX1b5jXdE7Sc5dtoTry1vzV28UZZe8Z1xVnB/czKntJ7ZAkG0tANqRnBF6p3p7GpU1y19DTf2Q==}
+  /mdast-util-from-markdown/1.2.1:
+    resolution: {integrity: sha512-ohufjqey2anuMhR1u4XD5ZstR8UJEj5Hrih4pn7xEb79HViqtDKVjqSBcChcUBH5XuIbh07WyM5cnXuKYSUpRA==}
     dependencies:
       '@types/mdast': 3.0.10
       '@types/unist': 2.0.6
@@ -4159,9 +4159,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /mdast-util-frontmatter/1.0.0:
-    resolution: {integrity: sha512-7itKvp0arEVNpCktOET/eLFAYaZ+0cNjVtFtIPxgQ5tV+3i+D4SDDTjTzPWl44LT59PC+xdx+glNTawBdF98Mw==}
+  /mdast-util-frontmatter/1.0.1:
+    resolution: {integrity: sha512-JjA2OjxRqAa8wEG8hloD0uTU0kdn8kbtOWpPP94NBkfAlbxn4S8gCGf/9DwFtEeGPXrDcNXdiDjVaRdUFqYokw==}
     dependencies:
+      '@types/mdast': 3.0.10
+      mdast-util-to-markdown: 1.5.0
       micromark-extension-frontmatter: 1.0.0
     dev: true
 
@@ -4191,7 +4193,7 @@ packages:
     dependencies:
       '@types/mdast': 3.0.10
       markdown-table: 3.0.3
-      mdast-util-from-markdown: 1.2.0
+      mdast-util-from-markdown: 1.2.1
       mdast-util-to-markdown: 1.5.0
     transitivePeerDependencies:
       - supports-color
@@ -4205,7 +4207,7 @@ packages:
   /mdast-util-gfm/2.0.1:
     resolution: {integrity: sha512-42yHBbfWIFisaAfV1eixlabbsa6q7vHeSPY+cg+BBjX51M8xhgMacqH9g6TftB/9+YkcI0ooV4ncfrJslzm/RQ==}
     dependencies:
-      mdast-util-from-markdown: 1.2.0
+      mdast-util-from-markdown: 1.2.1
       mdast-util-gfm-autolink-literal: 1.0.2
       mdast-util-gfm-footnote: 1.0.1
       mdast-util-gfm-strikethrough: 1.0.2
@@ -4221,7 +4223,7 @@ packages:
       '@types/estree-jsx': 1.0.0
       '@types/hast': 2.3.4
       '@types/mdast': 3.0.10
-      mdast-util-from-markdown: 1.2.0
+      mdast-util-from-markdown: 1.2.1
       mdast-util-to-markdown: 1.5.0
     transitivePeerDependencies:
       - supports-color
@@ -4258,7 +4260,7 @@ packages:
       '@types/estree-jsx': 1.0.0
       '@types/hast': 2.3.4
       '@types/mdast': 3.0.10
-      mdast-util-from-markdown: 1.2.0
+      mdast-util-from-markdown: 1.2.1
       mdast-util-to-markdown: 1.5.0
     transitivePeerDependencies:
       - supports-color
@@ -4757,7 +4759,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /node-abi/3.31.0:
@@ -4990,7 +4992,7 @@ packages:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /parent-module/1.0.1:
@@ -5048,7 +5050,7 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /path-exists/4.0.0:
@@ -5079,9 +5081,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /periscopic/3.0.4:
-    resolution: {integrity: sha512-SFx68DxCv0Iyo6APZuw/AKewkkThGwssmU0QWtTlvov3VAtPX+QJ4CadwSaz8nrT5jPIuxdvJWB4PnD2KNDxQg==}
+  /periscopic/3.1.0:
+    resolution: {integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==}
     dependencies:
+      '@types/estree': 1.0.0
       estree-walker: 3.0.3
       is-reference: 3.0.1
     dev: true
@@ -5482,7 +5485,7 @@ packages:
     resolution: {integrity: sha512-38fJrB0KnmD3E33a5jZC/5+gGAC2WKNiPw1/fdXJvijBlhA7RCsvJklrYJakS0HedninvaCYW8lQGf9C918GfA==}
     dependencies:
       '@types/mdast': 3.0.10
-      mdast-util-frontmatter: 1.0.0
+      mdast-util-frontmatter: 1.0.1
       micromark-extension-frontmatter: 1.0.0
       unified: 10.1.2
     dev: true
@@ -5516,7 +5519,7 @@ packages:
     resolution: {integrity: sha512-1fUyHr2jLsVOkhbvPRBJ5zTKZZyD6yZzYaWCS6BPBdQ8vEMBCH+9zNCDA6tET/zHCi/jLqjCWtlJZUPk+DbnFw==}
     dependencies:
       '@types/mdast': 3.0.10
-      mdast-util-from-markdown: 1.2.0
+      mdast-util-from-markdown: 1.2.1
       unified: 10.1.2
     transitivePeerDependencies:
       - supports-color
@@ -5668,7 +5671,7 @@ packages:
   /rxjs/7.8.0:
     resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /s.color/0.0.15:
@@ -6049,7 +6052,7 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@pkgr/utils': 2.3.1
-      tslib: 2.4.1
+      tslib: 2.5.0
 
   /tailwindcss/3.2.4:
     resolution: {integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==}
@@ -6198,8 +6201,8 @@ packages:
     resolution: {integrity: sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==}
     dev: false
 
-  /tslib/2.4.1:
-    resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+  /tslib/2.5.0:
+    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
 
   /tsutils/3.21.0_typescript@4.9.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}

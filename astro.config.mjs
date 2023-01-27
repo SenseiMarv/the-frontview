@@ -40,11 +40,8 @@ const getPostUrls = (source) =>
     // Remove the demo blog post page, since it is for internal use only.
     .filter((url) => !url.match(/\/demo/));
 
-const getSitemapPages = () => [
-  hostedSiteUrl,
-  `${hostedSiteUrl}posts`,
-  `${hostedSiteUrl}tags`,
-  `${hostedSiteUrl}privacy`,
+const getSSRSitemapPages = () => [
+  `${hostedSiteUrl}tags/`,
   `${hostedSiteUrl}rss.xml`,
   ...getPostUrls("./src/pages/posts"),
 ];
@@ -87,9 +84,9 @@ export default defineConfig({
     prefetch(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
     sitemap({
-      // Custom sitemap generation currently doesn't work with SSR, so the pages have to be defined
+      // Custom sitemap generation currently doesn't work with SSR, so SSR rendered pages have to be defined
       // manually (tags pages are missing at the moment): https://github.com/withastro/astro/issues/3682
-      customPages: getSitemapPages(),
+      customPages: getSSRSitemapPages(),
     }),
     robotsTxt(),
   ],

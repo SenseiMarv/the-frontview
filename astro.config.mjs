@@ -35,9 +35,19 @@ import {
 const hostedSiteUrl = "https://www.the-frontview.dev/";
 
 const getPostUrls = (source) =>
-  readdirSync(source, { withFileTypes: true }).map(
-    (dirent) => `${hostedSiteUrl}/posts/${dirent.name.split(".")[0]}`
-  );
+  readdirSync(source, { withFileTypes: true })
+    .map((dirent) => `${hostedSiteUrl}posts/${dirent.name.split(".")[0]}`)
+    // Remove the demo blog post page, since it is for internal use only.
+    .filter((url) => !url.match(/\/demo/));
+
+const getSitemapPages = () => [
+  hostedSiteUrl,
+  `${hostedSiteUrl}posts`,
+  `${hostedSiteUrl}tags`,
+  `${hostedSiteUrl}privacy`,
+  `${hostedSiteUrl}rss.xml`,
+  ...getPostUrls("./src/pages/posts"),
+];
 
 export default defineConfig({
   output: "server",
@@ -79,14 +89,7 @@ export default defineConfig({
     sitemap({
       // Custom sitemap generation currently doesn't work with SSR, so the pages have to be defined
       // manually (tags pages are missing at the moment): https://github.com/withastro/astro/issues/3682
-      customPages: [
-        hostedSiteUrl,
-        `${hostedSiteUrl}/posts`,
-        `${hostedSiteUrl}/tags`,
-        `${hostedSiteUrl}/privacy`,
-        `${hostedSiteUrl}/rss.xml`,
-        ...getPostUrls("./src/pages/posts"),
-      ],
+      customPages: getSitemapPages(),
     }),
     robotsTxt(),
   ],

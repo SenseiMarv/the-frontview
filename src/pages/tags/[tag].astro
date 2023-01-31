@@ -1,5 +1,8 @@
 ---
 // eslint-disable-next-line import/no-unresolved
+import { getCollection } from "astro:content";
+
+// eslint-disable-next-line import/no-unresolved
 import { getLivePosts } from "../../components/posts/filterPosts.js";
 import Overview from "../../components/posts/Overview.astro";
 // eslint-disable-next-line import/no-unresolved
@@ -9,18 +12,14 @@ import { getTags } from "../../components/tags/sortTags.js";
 import Button from "../../components/utils/Button.astro";
 import Layout from "../../layouts/Layout.astro";
 
-export interface Props {
-  tag: string;
-}
-
 const { tag } = Astro.params;
 
-const posts = sortPostsByDate(getLivePosts(await Astro.glob("../posts/*.mdx")));
+const posts = sortPostsByDate(getLivePosts(await getCollection("posts")));
 const postsWithTag = posts.filter((post) => {
   if (tag === undefined) {
     return false;
   }
-  const postTags = getTags(post.frontmatter.tags);
+  const postTags = getTags(post.data.tags);
   return postTags.includes(tag);
 });
 

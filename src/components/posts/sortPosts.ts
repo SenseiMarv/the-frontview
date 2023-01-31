@@ -1,14 +1,14 @@
 import { compareDesc } from "date-fns";
 
-import type { Post } from "../../typings/Post.js";
+import type { PostsCollection } from "../../content/config.js";
 
-export const sortPostsByDate = (posts: Post[]) => {
+export const sortPostsByDate = (posts: PostsCollection[]) => {
   // `sort()` mutates the original array, so it should be called on a clone
   const arr = posts;
   return arr.sort((olderPost, newerPost) =>
     compareDesc(
-      new Date(olderPost.frontmatter.pubDate),
-      new Date(newerPost.frontmatter.pubDate)
+      new Date(olderPost.data.pubDate),
+      new Date(newerPost.data.pubDate)
     )
   );
 };

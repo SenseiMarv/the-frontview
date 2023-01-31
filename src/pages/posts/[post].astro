@@ -1,0 +1,38 @@
+---
+// eslint-disable-next-line import/no-unresolved
+import { getCollection, getEntryBySlug } from "astro:content";
+
+import type {
+  PostsCollection,
+  RenderedPostsCollection,
+} from "../../content/config.js";
+import Post from "../../layouts/Post.astro";
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const postsEntries: PostsCollection[] = await getCollection("posts");
+  return postsEntries.map((post) => ({
+    params: { post: post.slug },
+    props: { post },
+  }));
+}
+export interface Props {
+  post: PostsCollection["slug"];
+}
+
+// The static rendering ensures that only valid routes will be rendered.
+// Astro will automatically redirect to the 404 page if the given route parameter is invalid.
+const { post } = Astro.params as unknown as Props;
+
+const entry: PostsCollection = await getEntryBySlug("posts", post);
+
+const { Content, remarkPluginFrontmatter } =
+  (await entry.render()) as unknown as RenderedPostsCollection;
+---
+
+<Post
+  frontmatter={entry.data}
+  readingTime={remarkPluginFrontmatter.readingTime}
+>
+  <Content />
+</Post>

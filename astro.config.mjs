@@ -1,5 +1,3 @@
-import { readdirSync } from "node:fs";
-
 // eslint-disable-next-line import/no-unresolved
 import image from "@astrojs/image";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
@@ -27,23 +25,13 @@ import remarkHint from "remark-hint";
 import shikiTwoslash from "remark-shiki-twoslash";
 import remarkToc from "remark-toc";
 
-import {
-  postFrontmatterPlugin,
-  postReadingTimePlugin,
-} from "./plugins/remarkPlugins.mjs";
+import { postReadingTimePlugin } from "./plugins/remarkPlugins.mjs";
 
 const hostedSiteUrl = "https://www.the-frontview.dev/";
-
-const getPostUrls = (source) =>
-  readdirSync(source, { withFileTypes: true })
-    .map((dirent) => `${hostedSiteUrl}posts/${dirent.name.split(".")[0]}`)
-    // Remove the demo blog post page, since it is for internal use only.
-    .filter((url) => !url.match(/\/demo/));
 
 const getSSRSitemapPages = () => [
   `${hostedSiteUrl}tags/`,
   `${hostedSiteUrl}rss.xml`,
-  ...getPostUrls("./src/pages/posts"),
 ];
 
 export default defineConfig({
@@ -72,7 +60,6 @@ export default defineConfig({
         [rehypeWrap, { selector: "table", wrapper: "div.table-container" }],
       ],
       remarkPlugins: [
-        postFrontmatterPlugin,
         postReadingTimePlugin,
         remarkToc,
         [shikiTwoslash.default, { theme: "one-dark-pro" }],

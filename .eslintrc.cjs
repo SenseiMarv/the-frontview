@@ -1,7 +1,7 @@
 const config = {
   env: {
     browser: true,
-    es2021: true,
+    es2022: true,
   },
   extends: [
     "plugin:import/recommended",
@@ -17,6 +17,11 @@ const config = {
     ecmaVersion: "latest",
     sourceType: "module",
     project: "./tsconfig.json",
+  },
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
   },
   plugins: [
     "import",

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { rssSchema } from "@astrojs/rss";
 import type { MarkdownHeading, MarkdownInstance } from "astro";
 // eslint-disable-next-line import/no-unresolved

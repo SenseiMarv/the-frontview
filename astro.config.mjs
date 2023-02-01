@@ -1,21 +1,13 @@
-// eslint-disable-next-line import/no-unresolved
 import image from "@astrojs/image";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
-// eslint-disable-next-line import/no-unresolved
 import mdx from "@astrojs/mdx";
-// eslint-disable-next-line import/no-unresolved
 import partytown from "@astrojs/partytown";
-// eslint-disable-next-line import/no-unresolved
 import prefetch from "@astrojs/prefetch";
-// eslint-disable-next-line import/no-unresolved
 import sitemap from "@astrojs/sitemap";
-// eslint-disable-next-line import/no-unresolved
 import tailwind from "@astrojs/tailwind";
-// eslint-disable-next-line import/no-unresolved
 import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
-// eslint-disable-next-line import/no-unresolved
 import robotsTxt from "astro-robots-txt";
 import { s } from "hastscript";
 import rehypeAddClasses from "rehype-add-classes";

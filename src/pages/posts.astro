@@ -1,5 +1,8 @@
 ---
 // eslint-disable-next-line import/no-unresolved
+import { getCollection } from "astro:content";
+
+// eslint-disable-next-line import/no-unresolved
 import { getLivePosts } from "../components/posts/filterPosts.js";
 import Overview from "../components/posts/Overview.astro";
 // eslint-disable-next-line import/no-unresolved
@@ -8,7 +11,7 @@ import Layout from "../layouts/Layout.astro";
 
 export const prerender = true;
 
-const posts = sortPostsByDate(getLivePosts(await Astro.glob("./posts/*.mdx")));
+const posts = sortPostsByDate(getLivePosts(await getCollection("posts")));
 ---
 
 <Layout

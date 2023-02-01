@@ -1,26 +1,33 @@
 ---
-import type { Post } from "../../typings/Post.js";
+import type {
+  PostsCollection,
+  RenderedPostsCollection,
+} from "../../content/config.js";
 import Card from "./Card.astro";
 
 export interface Props {
-  posts: Post[];
+  posts: PostsCollection[];
   prefetch?: boolean;
 }
 
 const { posts, prefetch = false } = Astro.props;
+
+const renderedPosts = await Promise.all(
+  posts.map((post) => post.render() as unknown as RenderedPostsCollection)
+);
 ---
 
 <ul class="grid justify-items-center gap-8 p-4 md:grid-cols-3 lg:gap-16">
   {
-    posts.map((post) => (
+    renderedPosts.map((post, index) => (
       <>
         <li class="list-none">
           <Card
-            title={post.frontmatter.title}
-            imgUrl={post.frontmatter.imgUrl}
-            pubDate={post.frontmatter.pubDate}
-            readingTime={post.frontmatter.readingTime}
-            url={post.url || ""}
+            title={posts[index].data.title}
+            imgUrl={posts[index].data.imgUrl}
+            pubDate={posts[index].data.pubDate}
+            readingTime={post.remarkPluginFrontmatter.readingTime}
+            url={`/posts/${posts[index].slug}`}
             prefetch={prefetch}
           />
         </li>

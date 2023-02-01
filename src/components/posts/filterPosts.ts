@@ -1,4 +1,4 @@
-import type { Post } from "../../typings/Post.js";
+import type { PostsCollection } from "../../content/config.js";
 
-export const getLivePosts = (posts: Post[]) =>
-  posts.filter((post) => post.frontmatter.draft === undefined);
+export const getLivePosts = (posts: PostsCollection[]) =>
+  posts.filter((post) => post.data.draft === undefined);

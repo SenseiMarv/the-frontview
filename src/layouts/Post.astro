@@ -7,9 +7,15 @@ import { getTags } from "../components/tags/sortTags.js";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/Giscus.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
+import type { PostsCollection } from "../content/config.js";
 import Layout from "./Layout.astro";
 
-const { frontmatter } = Astro.props;
+export interface Props {
+  frontmatter: PostsCollection["data"];
+  readingTime: number;
+}
+
+const { frontmatter, readingTime } = Astro.props;
 
 const date = new Date(frontmatter.pubDate).toISOString();
 const tags = getTags(frontmatter.tags);
@@ -41,7 +47,7 @@ const defaultTwitterCard = "summary_large_image";
       imgAuthorUrl={frontmatter.imgAuthorUrl}
       pubDate={frontmatter.pubDate}
       tags={frontmatter.tags}
-      readingTime={frontmatter.readingTime}
+      readingTime={readingTime}
     />
   </div>
   <div class="my-4 md:my-8">

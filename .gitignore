@@ -12,3 +12,6 @@ node_modules/
 
 # macOS-specific files
 .DS_Store
+
+# Astro specific files
+.astro

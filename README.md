@@ -34,7 +34,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## Blog posts
 
-New blog posts can be created by adding a new file in `./src/pages/posts`. The file name will be the URL path to the new blog post.
+New blog posts can be created by adding a new file in `./src/content/posts`. The file name will be the URL path to the new blog post.
 
 A blog post requires the following frontmatter:
 
@@ -60,7 +60,7 @@ imgUrl: "/images/post-example/cover.png"
 
 ### Blog components
 
-To see which components can be used in a blog post, open `./src/pages/posts/demo.mdx`. To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
+To see which components can be used in a blog post, open `./src/content/posts/demo.mdx`. To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
 
 <details><summary>How to use Twitter embedded content</summary>
 

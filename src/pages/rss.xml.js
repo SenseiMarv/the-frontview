@@ -1,9 +1,7 @@
-// eslint-disable-next-line import/no-unresolved
 import rss from "@astrojs/rss";
 // eslint-disable-next-line import/no-unresolved
 import { getCollection } from "astro:content";
 
-// eslint-disable-next-line import/no-unresolved
 import { getLivePosts } from "../components/posts/filterPosts";
 
 const title = "The Frontview";

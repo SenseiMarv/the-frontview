@@ -15,7 +15,7 @@ const { tags, prefetch = false } = Astro.props;
     tags.map((tag) => (
       <li class="list-none">
         <NavLink
-          href={`/tags/${tag[0]}`}
+          href={`/tags/${tag[0]}/`}
           prefetch={prefetch}
           classString="!inline"
         >

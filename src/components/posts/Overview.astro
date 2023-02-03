@@ -27,7 +27,7 @@ const renderedPosts = await Promise.all(
             imgUrl={posts[index].data.imgUrl}
             pubDate={posts[index].data.pubDate}
             readingTime={post.remarkPluginFrontmatter.readingTime}
-            url={`/posts/${posts[index].slug}`}
+            url={`/posts/${posts[index].slug}/`}
             prefetch={prefetch}
           />
         </li>

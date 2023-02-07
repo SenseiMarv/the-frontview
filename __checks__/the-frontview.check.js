@@ -1,4 +1,6 @@
-const { test, expect } = require("@playwright/test");
+// @ts-ignore
+// eslint-disable-next-line import/no-unresolved
+import { expect, test } from "@playwright/test";
 
 const targetUrl =
   process.env.ENVIRONMENT_URL || "https://www.the-frontview.dev";

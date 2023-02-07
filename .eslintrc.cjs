@@ -11,7 +11,7 @@ const config = {
     "standard-with-typescript",
     "prettier", // Has to be set last!
   ],
-  overrides: [],
+  /** @type any[] */ overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",

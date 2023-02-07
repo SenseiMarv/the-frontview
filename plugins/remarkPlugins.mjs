@@ -6,6 +6,7 @@ export function postReadingTimePlugin() {
     const { frontmatter } = file.data.astro;
     if (!frontmatter.readingTime) {
       const textOnPage = toString(tree);
+      // @ts-ignore
       const readingTime = getReadingTime(textOnPage);
       frontmatter.readingTime = readingTime.minutes;
     }

@@ -50,7 +50,7 @@ imgAuthorUrl: "A URL leading to the source of the image used in the header of th
 ---
 ```
 
-Posts can be set to draft status by adding `draft: true` to the frontmatter. A draft post will not be visible on the site (but can be accessed by calling its URL directly).
+Posts can be set to draft status by adding `draft: true` to the frontmatter. A draft post, or a post with a `pubDate` set to a future date, will not be visible on the site (but can be accessed by calling its URL directly).
 
 Local images should be stored in `./public/images`. They can be referenced directly in the frontmatter:
 

@@ -1,12 +1,8 @@
 <script is:inline>
-  if (localStorage.getItem("theme") === null) {
-    document.documentElement.setAttribute("data-theme", "dark");
-  } else {
-    document.documentElement.setAttribute(
-      "data-theme",
-      localStorage.getItem("theme")
-    );
-  }
+  document.documentElement.setAttribute(
+    "data-theme",
+    localStorage.getItem("theme") ?? "dark"
+  );
 </script>
 <script>
   import { themeChange } from "theme-change";

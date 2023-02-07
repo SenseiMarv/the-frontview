@@ -2,6 +2,7 @@ import rss from "@astrojs/rss";
 // eslint-disable-next-line import/no-unresolved
 import { getCollection } from "astro:content";
 
+// @ts-ignore
 import { getLivePosts } from "../components/posts/filterPosts";
 
 const title = "The Frontview";
@@ -18,7 +19,7 @@ export const get = async (context) => {
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
-      pubDate: post.data.pubDate,
+      pubDate: new Date(post.data.pubDate),
       description: `${post.data.description}\n\n${postDescriptionAddition}`,
       customData: post.data.customData,
       link: `/posts/${post.slug}/`,

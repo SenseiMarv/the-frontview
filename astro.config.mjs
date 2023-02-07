@@ -26,7 +26,7 @@ const getSSRSitemapPages = () => [
   `${hostedSiteUrl}rss.xml`,
 ];
 
-export default defineConfig({
+const config = defineConfig({
   output: "server",
   adapter: vercel(),
   site: hostedSiteUrl,
@@ -72,3 +72,5 @@ export default defineConfig({
     robotsTxt(),
   ],
 });
+
+export default config;

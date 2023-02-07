@@ -30,6 +30,7 @@
     "strictNullChecks": true,
     "sourceMap": true,
     "types": ["@astrojs/image/client"],
+    "checkJs": true,
     "importsNotUsedAsValues": "error"
   }
 }

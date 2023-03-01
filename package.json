@@ -46,7 +46,7 @@
     "@astrojs/mdx": "0.16.0",
     "@astrojs/partytown": "1.0.3",
     "@astrojs/prefetch": "0.1.2",
-    "@astrojs/sitemap": "1.0.1",
+    "@astrojs/sitemap": "1.1.0",
     "@astrojs/tailwind": "3.0.1",
     "@astrojs/vercel": "3.0.1",
     "@tailwindcss/line-clamp": "0.4.2",

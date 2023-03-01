@@ -52,7 +52,7 @@
     "@tailwindcss/line-clamp": "0.4.2",
     "@typescript-eslint/eslint-plugin": "5.51.0",
     "@typescript-eslint/parser": "5.51.0",
-    "astro-compress": "1.1.29",
+    "astro-compress": "1.1.35",
     "astro-eslint-parser": "0.11.0",
     "astro-robots-txt": "0.3.11",
     "astro-seo": "0.7.0",

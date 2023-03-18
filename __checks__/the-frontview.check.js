@@ -335,7 +335,12 @@ test("blog post components", async ({ page }) => {
   expect(
     await page.getByRole("heading", { name: "Icon", exact: true })
   ).toBeVisible();
-  expect(await page.locator("iconify-icon > svg")).toBeVisible();
+  expect(
+    await page
+      .getByRole("paragraph")
+      .filter({ hasText: "Lorem, ipsumconsectetur adipisicing elit." })
+      .locator("svg")
+  ).toBeVisible();
 
   // Embedded content
   expect(

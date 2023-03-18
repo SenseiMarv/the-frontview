@@ -199,8 +199,8 @@ test("blog post components", async ({ page }) => {
   expect(
     await page.getByRole("main").getByRole("link", { name: "post" })
   ).toBeVisible();
-  expect(await page.getByText("link", { name: "demo" })).toBeVisible();
-  expect(await page.getByText("link", { name: "components" })).toBeVisible();
+  expect(await page.getByRole("link", { name: "demo" })).toBeVisible();
+  expect(await page.getByRole("link", { name: "components" })).toBeVisible();
   expect(await page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();
   expect(await page.getByText("Photo by Daniel Álvasd")).toBeVisible();
 

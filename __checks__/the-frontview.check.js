@@ -343,7 +343,6 @@ test("blog post components", async ({ page }) => {
     await page
       .getByRole("paragraph")
       .filter({ hasText: "Lorem, ipsum consectetur adipisicing elit." })
-      .locator("svg")
   ).toBeVisible();
 
   // Embedded content

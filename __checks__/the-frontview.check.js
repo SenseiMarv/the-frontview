@@ -196,7 +196,9 @@ test("blog post components", async ({ page }) => {
   expect(await page.getByRole("heading", { name: "Post Demo" })).toBeVisible();
   expect(await page.getByText("Dec 23, 2022 |")).toBeVisible();
   expect(await page.getByText("2 min read |")).toBeVisible();
-  expect(await page.getByRole("link", { name: "post" })).toBeVisible();
+  expect(
+    await page.getByRole("main").getByRole("link", { name: "post" })
+  ).toBeVisible();
   expect(await page.getByText("link", { name: "demo" })).toBeVisible();
   expect(await page.getByText("link", { name: "components" })).toBeVisible();
   expect(await page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();

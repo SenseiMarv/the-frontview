@@ -269,11 +269,7 @@ test("blog post components", async ({ page }) => {
   expect(
     await page.getByRole("heading", { name: "Inline code" })
   ).toBeVisible();
-  expect(
-    await page.getByText(
-      "Lorem, ipsum const t = {} consectetur adipisicing elit."
-    )
-  ).toBeVisible();
+  expect(await page.getByText("const t = {}")).toBeVisible();
 
   // Code block
   expect(await page.getByRole("heading", { name: "Code block" })).toBeVisible();
@@ -339,14 +335,7 @@ test("blog post components", async ({ page }) => {
   expect(
     await page.getByRole("heading", { name: "Icon", exact: true })
   ).toBeVisible();
-  expect(
-    await page.getByRole("paragraph").filter({ hasText: "Lorem, ipsum" })
-  ).toBeVisible();
-  expect(
-    await page
-      .getByRole("paragraph")
-      .filter({ hasText: "consectetur adipisicing elit." })
-  ).toBeVisible();
+  expect(await page.locator("iconify-icon > svg")).toBeVisible();
 
   // Embedded content
   expect(

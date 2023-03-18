@@ -194,9 +194,9 @@ test("blog post components", async ({ page }) => {
   /* Post demo page content */
   // Header
   expect(await page.getByRole("heading", { name: "Post Demo" })).toBeVisible();
-  expect(
-    await page.getByText("12/23/2022 | 2 min read | post , demo , components")
-  ).toBeVisible();
+  expect(await page.getByText("Dec 23, 2022 |")).toBeVisible();
+  expect(await page.getByText("2 min read |")).toBeVisible();
+  expect(await page.getByText("post, demo, components")).toBeVisible();
   expect(await page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();
   expect(await page.getByText("Photo by Daniel Álvasd")).toBeVisible();
 

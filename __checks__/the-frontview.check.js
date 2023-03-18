@@ -340,9 +340,12 @@ test("blog post components", async ({ page }) => {
     await page.getByRole("heading", { name: "Icon", exact: true })
   ).toBeVisible();
   expect(
+    await page.getByRole("paragraph").filter({ hasText: "Lorem, ipsum" })
+  ).toBeVisible();
+  expect(
     await page
       .getByRole("paragraph")
-      .filter({ hasText: "Lorem, ipsum consectetur adipisicing elit." })
+      .filter({ hasText: "consectetur adipisicing elit." })
   ).toBeVisible();
 
   // Embedded content

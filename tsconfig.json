@@ -23,7 +23,6 @@
     "jsx": "react-jsx",
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
@@ -31,6 +30,6 @@
     "sourceMap": true,
     "types": ["@astrojs/image/client"],
     "checkJs": true,
-    "importsNotUsedAsValues": "error"
+    "verbatimModuleSyntax": true
   }
 }

@@ -7,18 +7,24 @@ import ExternalLink from "../utils/ExternalLink.astro";
 ---
 
 <div class="flex flex-col items-center justify-center gap-8 md:flex-row">
-  <div class="w-40">
-    <Image
-      src={ProfilePictureIcon}
-      width={160}
-      height={160}
-      alt="Profile picture"
-    />
-    <style>
-      img {
-        @apply rounded-full shadow-lg;
-      }
-    </style>
+  <div class="grid grid-cols-1">
+    <div class="z-10 col-start-1 row-start-1">
+      <Image
+        src={ProfilePictureIcon}
+        width={160}
+        height={160}
+        alt="Profile picture"
+      />
+      <style>
+        img {
+          @apply rounded-full;
+        }
+      </style>
+    </div>
+    <div
+      class="z-0 col-start-1 row-start-1 animate-pulse rounded-full bg-gray-300 shadow-lg dark:bg-gray-600"
+    >
+    </div>
   </div>
   <div>
     <div class="flex">

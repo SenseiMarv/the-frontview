@@ -30,27 +30,35 @@ const formattedReadingTime = `${readingTime} min read`;
     {title}
   </h1>
   <div
-    class="mt-4 text-lg leading-snug text-gray-500 dark:text-gray-400 md:mt-6 md:text-xl"
+    class="mt-4 flex gap-1 whitespace-nowrap text-lg leading-snug text-gray-500 dark:text-gray-400 md:mt-6 md:text-xl"
   >
     <Icon
       iconSet="fluent-emoji-high-contrast"
       name="tear-off-calendar"
-      classString="align-text-top w-5 h-5"
+      classString="mt-[0.05rem] w-5 h-5"
     />
-    {formattedDate} | <Icon
+    {formattedDate} |<Icon
       iconSet="fluent-emoji-high-contrast"
       name="eight-oclock"
-      classString="align-text-top w-5 h-5"
+      classString="mt-[0.125rem] w-5 h-5"
     />
-    {formattedReadingTime} | <Icon
+    {formattedReadingTime} |<Icon
       iconSet="fluent-emoji-high-contrast"
       name="keycap-hashtag"
-      classString="align-text-top w-5 h-5"
+      classString="mt-[0.2rem] w-5 h-5"
     />
-    <TagList tags={tags} />
+    <div class="gap-0">
+      <TagList tags={tags} />
+    </div>
   </div>
-  <div class="mt-8 shadow-xl md:mt-10">
-    <Image src={imgUrl} width={600} height={337.5} alt="Blogpost cover" />
+  <div class="mt-8 grid grid-cols-1 shadow-xl md:mt-10">
+    <div class="z-10 col-start-1 row-start-1">
+      <Image src={imgUrl} width={600} height={337.5} alt="Blogpost cover" />
+    </div>
+    <div
+      class="z-0 col-start-1 row-start-1 animate-pulse bg-gray-300 dark:bg-gray-600"
+    >
+    </div>
   </div>
   <div class="mt-4 text-sm">
     Photo by <ExternalLink href={imgAuthorUrl}>{imgAuthor}</ExternalLink>

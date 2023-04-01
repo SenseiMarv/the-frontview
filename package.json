@@ -57,7 +57,7 @@
     "astro-robots-txt": "0.4.0",
     "astro-seo": "0.7.1",
     "concurrently": "7.6.0",
-    "eslint": "8.36.0",
+    "eslint": "8.37.0",
     "eslint-config-prettier": "8.7.0",
     "eslint-config-standard-with-typescript": "34.0.1",
     "eslint-import-resolver-typescript": "3.5.3",

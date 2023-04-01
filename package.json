@@ -43,7 +43,7 @@
   "devDependencies": {
     "@astrojs/image": "0.16.1",
     "@astrojs/markdown-remark": "2.1.0",
-    "@astrojs/mdx": "0.18.1",
+    "@astrojs/mdx": "0.18.2",
     "@astrojs/partytown": "1.1.1",
     "@astrojs/prefetch": "0.2.1",
     "@astrojs/sitemap": "1.2.1",

@@ -31,15 +31,21 @@ const {
 ---
 
 <div class="image-component flex flex-col items-center">
-  <div class="shadow-xl">
-    <Image
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      aspectRatio={aspectRatio}
-      format={format}
-    />
+  <div class="grid grid-cols-1">
+    <div class="z-10 col-start-1 row-start-1">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        aspectRatio={aspectRatio}
+        format={format}
+      />
+    </div>
+    <div
+      class="z-0 col-start-1 row-start-1 animate-pulse bg-gray-300 shadow-xl dark:bg-gray-600"
+    >
+    </div>
   </div>
   <div class="mt-4">
     <slot />

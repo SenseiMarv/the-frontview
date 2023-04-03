@@ -7,7 +7,6 @@ export interface Props {
 
 const { href, favicon, classString = "" } = Astro.props;
 
-const faviconSize = 18;
 const faviconHostname =
   /^((http[s]?|ftp):\/)?\/?([^:/\s]+)((\/\w+)*\/)([\w\-.]+[^#?\s]+)(.*)?(#[\w-]+)?$/.exec(
     href
@@ -25,17 +24,19 @@ const faviconUrl = faviconHostname
 >
   {
     favicon && (
-      <>
-        <img
-          src={faviconUrl}
-          alt="Favicon"
-          width={faviconSize}
-          height={faviconSize}
-          loading="lazy"
-          decoding="async"
-          class="relative top-1"
-        />
-      </>
+      <div class="relative top-1 grid grid-cols-1">
+        <div class="z-10 col-start-1 row-start-1">
+          <img
+            src={faviconUrl}
+            alt="Favicon"
+            width={18}
+            height={18}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="z-0 col-start-1 row-start-1 animate-pulse rounded-full bg-gray-300 dark:bg-gray-600" />
+      </div>
     )
   }
   <slot />

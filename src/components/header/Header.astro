@@ -18,13 +18,19 @@ import GitHubIcon from "./GitHubIcon.astro";
       rel="prefetch"
       class="flex items-center text-4xl font-bold md:text-6xl"
     >
-      <div class="mr-2 w-10 md:mr-4 md:w-16">
-        <Image
-          src={TheFrontviewIcon}
-          width={64}
-          height={64}
-          alt="The Frontview Icon"
-        />
+      <div class="mr-2 grid w-10 grid-cols-1 md:mr-4 md:w-16">
+        <div class="z-10 col-start-1 row-start-1">
+          <Image
+            src={TheFrontviewIcon}
+            width={64}
+            height={64}
+            alt="The Frontview Icon"
+          />
+        </div>
+        <div
+          class="z-0 col-start-1 row-start-1 ml-1 mt-1 h-8 w-8 animate-pulse rounded-full bg-gray-300 dark:bg-gray-600 md:ml-2 md:mt-2 md:h-12 md:w-12"
+        >
+        </div>
       </div><h1>The Frontview</h1>
     </a>
   </div>

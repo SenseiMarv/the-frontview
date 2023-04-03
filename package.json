@@ -53,7 +53,6 @@
     "@typescript-eslint/eslint-plugin": "5.57.0",
     "@typescript-eslint/parser": "5.57.0",
     "astro-compress": "1.1.35",
-    "astro-critters": "1.1.31",
     "astro-eslint-parser": "0.13.2",
     "astro-robots-txt": "0.4.1",
     "astro-seo": "0.7.2",

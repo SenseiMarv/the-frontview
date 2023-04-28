@@ -23,14 +23,14 @@ From the root of the project, from a terminal:
 
 All commands are run from the root of the project, from a terminal:
 
-| Command        | Action                                                               |
-| :------------- | :------------------------------------------------------------------- |
-| `pnpm start`   | Starts local dev server at [`localhost:3000`](http://localhost:3000) |
-| `pnpm lint`    | Runs all linters, showing problems                                   |
-| `pnpm fixlint` | Runs all linters, trying to fix auto-solvable problems               |
-| `pnpm build`   | Builds the production site                                           |
-| `pnpm preview` | Previews the build locally, before deploying                         |
-| `pnpm prepare` | Installs git hooks                                                   |
+| Command         | Action                                                               |
+| :-------------- | :------------------------------------------------------------------- |
+| `pnpm start`    | Starts local dev server at [`localhost:3000`](http://localhost:3000) |
+| `pnpm lint`     | Runs all linters, showing problems                                   |
+| `pnpm lint:fix` | Runs all linters, trying to fix auto-solvable problems               |
+| `pnpm build`    | Builds the production site                                           |
+| `pnpm preview`  | Previews the build locally, before deploying                         |
+| `pnpm prepare`  | Installs git hooks                                                   |
 
 ## Blog posts
 

@@ -4,11 +4,12 @@ import getReadingTime from "reading-time";
 export function postReadingTimePlugin() {
   return (tree, file) => {
     const { frontmatter } = file.data.astro;
-    if (!frontmatter.readingTime) {
-      const textOnPage = toString(tree);
-      // @ts-ignore
-      const readingTime = getReadingTime(textOnPage);
-      frontmatter.readingTime = readingTime.minutes;
+    if (frontmatter.readingTime) {
+      return;
     }
+    const textOnPage = toString(tree);
+    // @ts-ignore
+    const readingTime = getReadingTime(textOnPage);
+    frontmatter.readingTime = readingTime.minutes;
   };
 }

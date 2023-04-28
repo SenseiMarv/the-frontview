@@ -29,7 +29,6 @@ const config = {
     "jsx-a11y",
     "tailwindcss",
     "simple-import-sort",
-    "prettier",
   ],
   rules: {
     "tailwindcss/no-custom-classname": "off", // Has to be disabled because the usage of tailwindcss plugins triggers this rule
@@ -40,12 +39,6 @@ const config = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-      },
-    ],
   },
 };
 

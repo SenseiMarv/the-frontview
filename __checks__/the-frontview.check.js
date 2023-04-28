@@ -338,7 +338,7 @@ test("blog post components", async ({ page }) => {
   await expect(
     page
       .getByRole("paragraph")
-      .filter({ hasText: "Lorem, ipsum consectetur adipisicing elit." })
+      .filter({ hasText: "Lorem, ipsum" })
       .locator("svg")
   ).toBeVisible();
 

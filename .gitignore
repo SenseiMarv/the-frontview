@@ -15,3 +15,6 @@ node_modules/
 
 # Astro specific files
 .astro
+
+# Playwright test artifacts
+playwright/

@@ -4,6 +4,7 @@
     ".eslintrc.cjs",
     "tailwind.config.cjs",
     "astro.config.mjs",
+    "playwright.config.ts",
     "./src",
     "./src/**/*.js",
     "./src/**/*.ts",

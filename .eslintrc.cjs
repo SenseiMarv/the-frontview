@@ -62,8 +62,6 @@ config.overrides.push({
   rules: {
     // Not all imported components are always used in the posts
     "no-unused-vars": "off",
-    // Disable a false-positive error in the astro-embed plugin
-    "import/namespace": "off",
   },
 });
 

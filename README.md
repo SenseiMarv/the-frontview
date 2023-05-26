@@ -23,16 +23,18 @@ From the root of the project, from a terminal:
 
 All commands are run from the root of the project, from a terminal:
 
-| Command         | Action                                                               |
-| :-------------- | :------------------------------------------------------------------- |
-| `pnpm start`    | Starts local dev server at [`localhost:3000`](http://localhost:3000) |
-| `pnpm lint`     | Runs all linters, showing problems                                   |
-| `pnpm lint:fix` | Runs all linters, trying to fix auto-solvable problems               |
-| `pnpm test`     | Runs all tests                                                       |
-| `pnpm test:ui`  | Runs all tests in interactive UI mode                                |
-| `pnpm build`    | Builds the production site                                           |
-| `pnpm preview`  | Previews the build locally, before deploying                         |
-| `pnpm prepare`  | Installs git hooks                                                   |
+| Command             | Action                                                               |
+| :------------------ | :------------------------------------------------------------------- |
+| `pnpm start`        | Starts local dev server at [`localhost:3000`](http://localhost:3000) |
+| `pnpm lint`         | Runs all linters, showing problems                                   |
+| `pnpm lint:fix`     | Runs all linters, trying to fix auto-solvable problems               |
+| `pnpm test`         | Runs all tests                                                       |
+| `pnpm test:ui`      | Runs all tests in interactive UI mode                                |
+| `pnpm test:cleanup` | Deletes images in the root folder created by the tests               |
+| `pnpm test:quick`   | Runs all tests and performs the cleanup command afterwards           |
+| `pnpm build`        | Builds the production site                                           |
+| `pnpm preview`      | Previews the build locally, before deploying                         |
+| `pnpm prepare`      | Installs git hooks                                                   |
 
 ## Blog posts
 
@@ -63,19 +65,6 @@ imgUrl: "/images/post-example/cover.png"
 ### Blog components
 
 To see which components can be used in a blog post, open `./src/content/posts/demo.mdx`. To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
-
-<details><summary>How to use Twitter embedded content</summary>
-
-If you want to use the embedded Twitter card, a API token is required:
-
-1. Create a new file `.env` as copy of `.env.example` in the root of the project
-2. Add a valid Twitter API token to `SECRET_TWITTER_TOKEN` in the new file:
-
-```
-SECRET_TWITTER_TOKEN=bearer-token-for-the-twitter-api
-```
-
-</details>
 
 ## Author
 

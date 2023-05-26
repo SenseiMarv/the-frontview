@@ -14,6 +14,8 @@ const postsCollectionSchema = rssSchema.merge(
   })
 );
 
+export type PostData = z.infer<typeof postsCollectionSchema>;
+
 export type PostsCollection = Omit<CollectionEntry<"posts">, "data"> & {
   data: z.infer<typeof postsCollectionSchema>;
 };

@@ -8,6 +8,7 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
+import compressor from "astro-compressor";
 import robotsTxt from "astro-robots-txt";
 import { s } from "hastscript";
 import rehypeAddClasses from "rehype-add-classes";
@@ -69,7 +70,8 @@ const config = defineConfig({
       filter: (page) => page !== "https://www.the-frontview.dev/posts/demo/",
     }),
     robotsTxt(),
-    compress(), // Should be set last for best results
+    compress(), // Should be set one before the last for best results
+    compressor(), // Should be set last for best results
   ],
 });
 

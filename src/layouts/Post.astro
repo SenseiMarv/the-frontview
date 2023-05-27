@@ -95,7 +95,7 @@ const defaultTwitterCard = "summary_large_image";
       /* Styling of heading links */
 
       .heading {
-        @apply flex items-center;
+        @apply flex items-center active:text-teal-400 active:duration-100 dark:active:text-teal-700;
       }
       .heading a svg {
         @apply invisible w-4 sm:visible;
@@ -107,7 +107,7 @@ const defaultTwitterCard = "summary_large_image";
       /* Styling of toc links */
 
       #table-of-contents + ul a {
-        @apply text-teal-700 transition-colors duration-300 hover:text-teal-500 hover:underline hover:underline-offset-2 dark:text-teal-300 dark:hover:text-teal-500;
+        @apply text-teal-700 transition-colors duration-300 hover:text-teal-500 hover:underline hover:underline-offset-2 active:!text-teal-400 active:duration-100 dark:text-teal-300 dark:hover:text-teal-500 dark:active:!text-teal-700;
       }
 
       /* Styling of ul components */
@@ -219,7 +219,10 @@ const defaultTwitterCard = "summary_large_image";
       /* Styling of footnote components */
 
       sup > a {
-        @apply p-1 text-teal-700 transition-colors duration-300 hover:text-teal-500 dark:text-teal-300 dark:hover:text-teal-500;
+        @apply p-1 text-teal-700 transition-colors duration-300 hover:text-teal-500 active:!text-teal-400 active:duration-100 dark:text-teal-300 dark:hover:text-teal-500 dark:active:!text-teal-700;
+      }
+      .data-footnote-backref {
+        @apply text-teal-700 transition-colors duration-300 hover:text-teal-500 active:!text-teal-400 active:duration-100 dark:text-teal-300 dark:hover:text-teal-500 dark:active:!text-teal-700;
       }
 
       /* Styling of image components */

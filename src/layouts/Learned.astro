@@ -1,16 +1,16 @@
 ---
-import Header from "../components/posts/Header.astro";
-import HeadingLinkSvg from "../components/posts/HeadingLinkSvg.astro";
+import Header from "../components/learned/Header.astro";
+import HeadingLinkSvg from "../components/learned/HeadingLinkSvg.astro";
 import { getTags } from "../components/tags/sortTags.js";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/Giscus.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
 import Share from "../components/utils/Share.astro";
-import type { PostsCollection } from "../content/config.js";
+import type { LearnedCollection } from "../content/config.js";
 import Layout from "./Layout.astro";
 
 export interface Props {
-  frontmatter: PostsCollection["data"];
+  frontmatter: LearnedCollection["data"];
   readingTime: number;
 }
 
@@ -19,7 +19,7 @@ const { frontmatter, readingTime } = Astro.props;
 const date = new Date(frontmatter.pubDate).toISOString();
 const tags = getTags(frontmatter.tags);
 const defaultOpenGraphType = "article";
-const defaultOpenGraphImageAlt = "Blogpost cover";
+const defaultOpenGraphImageAlt = "Today I Learned article cover";
 const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
 const defaultTwitterCard = "summary_large_image";
 ---
@@ -29,7 +29,6 @@ const defaultTwitterCard = "summary_large_image";
   description={frontmatter.description}
   openGraphTitle={frontmatter.title}
   openGraphType={defaultOpenGraphType}
-  openGraphImage={frontmatter.imgUrl}
   openGraphImageAlt={defaultOpenGraphImageAlt}
   openGraphArticlePublishedTime={date}
   openGraphArticleAuthor={defaultOpenGraphArticleAuthor}
@@ -41,9 +40,6 @@ const defaultTwitterCard = "summary_large_image";
   <div class="mt-12 md:mt-24">
     <Header
       title={frontmatter.title}
-      imgUrl={frontmatter.imgUrl}
-      imgAuthor={frontmatter.imgAuthor}
-      imgAuthorUrl={frontmatter.imgAuthorUrl}
       pubDate={frontmatter.pubDate}
       tags={frontmatter.tags}
       readingTime={readingTime}

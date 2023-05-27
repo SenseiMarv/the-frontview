@@ -1,0 +1,38 @@
+---
+import type {
+  LearnedCollection,
+  RenderedLearnedCollection,
+} from "../../content/config.js";
+import Card from "./Card.astro";
+
+export interface Props {
+  learned: LearnedCollection[];
+  prefetch?: boolean;
+}
+
+const { learned, prefetch = false } = Astro.props;
+
+const renderedLearned = await Promise.all(
+  learned.map(
+    (learning) => learning.render() as unknown as RenderedLearnedCollection
+  )
+);
+---
+
+<ul class="flex flex-col justify-items-center gap-6 p-4 lg:gap-8">
+  {
+    renderedLearned.map((learning, index) => (
+      <>
+        <li class="list-none">
+          <Card
+            title={learned[index].data.title}
+            pubDate={learned[index].data.pubDate}
+            readingTime={learning.remarkPluginFrontmatter.readingTime}
+            url={`/learned/${learned[index].slug}/`}
+            prefetch={prefetch}
+          />
+        </li>
+      </>
+    ))
+  }
+</ul>

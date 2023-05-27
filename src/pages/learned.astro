@@ -1,0 +1,25 @@
+---
+// eslint-disable-next-line import/no-unresolved
+import { getCollection } from "astro:content";
+
+import { getLiveLearned } from "../components/learned/filterLearned.js";
+import Overview from "../components/learned/Overview.astro";
+import { sortLearnedByDate } from "../components/learned/sortLearned.js";
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+
+const learned = sortLearnedByDate(
+  getLiveLearned(await getCollection("learned"))
+);
+---
+
+<Layout
+  title="Today I Learned | The Frontview"
+  description="Overview page of all Today I Learned articles, sorted by date from the most recent to the oldest article."
+>
+  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">Today I Learned</h1>
+  <div class="mt-4">
+    <Overview learned={learned} />
+  </div>
+</Layout>

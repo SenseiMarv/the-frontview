@@ -2,17 +2,21 @@
 // eslint-disable-next-line import/no-unresolved
 import { getCollection } from "astro:content";
 
+import { getLiveLearned } from "../components/learned/filterLearned.js";
 import { getLivePosts } from "../components/posts/filterPosts.js";
 import Overview from "../components/tags/Overview.astro";
 import { sortTagsByUsage } from "../components/tags/sortTags.js";
 import Layout from "../layouts/Layout.astro";
 
-const sortedTags = sortTagsByUsage(getLivePosts(await getCollection("posts")));
+const sortedTags = sortTagsByUsage(
+  getLivePosts(await getCollection("posts")),
+  getLiveLearned(await getCollection("learned"))
+);
 ---
 
 <Layout
   title="Tags | The Frontview"
-  description="A list of all the different tags used in the posts on my blog, in descending order of usage. Author: Marvin Stickel"
+  description="A list of all the different tags used in the posts and Today I Learned articles on my blog, in descending order of usage."
 >
   <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">Tags</h1>
   <div class="mt-4">

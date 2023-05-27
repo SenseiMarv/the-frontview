@@ -14,7 +14,10 @@ const checkHeader = async (page) => {
     page.getByRole("link", { name: "Home", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "All Posts", exact: true }).first()
+    page.getByRole("link", { name: "Posts", exact: true }).first()
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Today I Learned", exact: true })
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Tags", exact: true })
@@ -36,6 +39,9 @@ const checkHeader = async (page) => {
 const checkFooter = async (page) => {
   await expect(
     page.getByText("Copyright (c) 2022 Marvin Stickel. MIT License.")
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Buy Me a Coffee", exact: true })
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Privacy policy", exact: true })
@@ -80,16 +86,25 @@ test("home page", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "Recent posts" })
   ).toBeVisible();
-  await expect(page.getByRole("list")).toBeVisible();
+  await expect(page.getByRole("list").first()).toBeVisible();
   await expect(page.getByRole("link", { name: "See all posts" })).toBeVisible();
+
+  // Recent Today I Learned articles
+  await expect(
+    page.getByRole("heading", { name: "Recent Today I Learned articles" })
+  ).toBeVisible();
+  await expect(page.getByRole("list").nth(1)).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "See all Today I Learned articles" })
+  ).toBeVisible();
 });
 
-test("all posts page", async ({ page }) => {
+test("posts page", async ({ page }) => {
   const response = await page.goto(`${targetUrl}/posts`, {
     waitUntil: "domcontentloaded",
   });
 
-  await page.screenshot({ path: "allPosts.png", fullPage: true });
+  await page.screenshot({ path: "posts.png", fullPage: true });
 
   if (response && response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
@@ -99,7 +114,7 @@ test("all posts page", async ({ page }) => {
   await checkFooter(page);
 
   /* All posts page content */
-  await expect(page.getByRole("heading", { name: "All posts" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Posts" })).toBeVisible();
   await expect(page.getByRole("list")).toBeVisible();
 });
 
@@ -144,6 +159,76 @@ test("post page", async ({ page }) => {
     page.getByRole("heading", { name: firstPostTitle })
   ).toBeVisible();
   await expect(page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();
+
+  // Social Media Links
+  await expect(
+    page.getByRole("link").filter({ hasText: "Twitter" })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole("link").filter({ hasText: "Mastodon" })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole("link").filter({ hasText: "Facebook" })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole("link").filter({ hasText: "LinkedIn" })
+  ).toHaveCount(2);
+  await expect(page.getByRole("link").filter({ hasText: "Xing" })).toHaveCount(
+    2
+  );
+
+  // Body
+  await expect(
+    page.getByRole("heading", { name: "Table of contents" })
+  ).toBeVisible();
+  await expect(page.getByRole("list")).toBeVisible();
+
+  // Comments
+  await expect(page.getByTitle("Comments")).toBeVisible();
+});
+
+test("learned page", async ({ page }) => {
+  const response = await page.goto(targetUrl, {
+    waitUntil: "domcontentloaded",
+  });
+
+  if (response && response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
+
+  const firstLearnedTitle = await page
+    .getByRole("list")
+    .nth(1)
+    .getByRole("listitem")
+    .first()
+    .getByRole("heading")
+    .nth(1)
+    .innerText();
+  const navigationPromise = page.waitForNavigation({
+    waitUntil: "domcontentloaded",
+  });
+  await page.getByRole("list").nth(1).getByRole("listitem").first().click();
+  const navigationPromiseResponse = await navigationPromise;
+
+  await page.screenshot({ path: "learned.png", fullPage: true });
+
+  if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
+    throw new Error(
+      `Failed with response code ${navigationPromiseResponse.status()}`
+    );
+  }
+
+  await checkHeader(page);
+  await checkFooter(page);
+
+  // Scroll progress
+  await expect(page.locator("#scroll-progress")).toHaveClass(/fixed/);
+
+  /* Post page content */
+  // Header
+  await expect(
+    page.getByRole("heading", { name: firstLearnedTitle })
+  ).toBeVisible();
 
   // Social Media Links
   await expect(
@@ -421,7 +506,26 @@ test("tag overview page", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: `Tag ${firstTagName}` })
   ).toBeVisible();
-  await expect(page.getByRole("list")).toBeVisible();
+
+  if ((await page.getByRole("list").count()) > 0) {
+    // Posts and Today I Learned articles exist for this tag
+    await expect(
+      page.getByRole("heading", { name: "Posts", exact: true })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        name: "Today I Learned articles",
+        exact: true,
+      })
+    ).toBeVisible();
+    expect(await page.getByRole("list").count()).toBe(2);
+  } else {
+    // Only either posts or Today I Learned articles exist for this tag
+    await expect(
+      page.getByRole("heading", { name: /(Posts)|(Today I Learned articles)/ })
+    ).toBeVisible();
+    await expect(page.getByRole("list")).toBeVisible();
+  }
 });
 
 test("privacy policy page", async ({ page }) => {

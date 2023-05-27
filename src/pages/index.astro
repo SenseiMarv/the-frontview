@@ -3,8 +3,11 @@
 import { getCollection } from "astro:content";
 
 import Profile from "../components/home-page/Profile.astro";
+import { getLiveLearned } from "../components/learned/filterLearned.js";
+import LearnedOverview from "../components/learned/Overview.astro";
+import { sortLearnedByDate } from "../components/learned/sortLearned.js";
 import { getLivePosts } from "../components/posts/filterPosts.js";
-import Overview from "../components/posts/Overview.astro";
+import PostOverview from "../components/posts/Overview.astro";
 import { sortPostsByDate } from "../components/posts/sortPosts.js";
 import Button from "../components/utils/Button.astro";
 import Divider from "../components/utils/Divider.astro";
@@ -13,23 +16,54 @@ import Layout from "../layouts/Layout.astro";
 export const prerender = true;
 
 const posts = sortPostsByDate(getLivePosts(await getCollection("posts")));
+const learned = sortLearnedByDate(
+  getLiveLearned(await getCollection("learned"))
+);
 ---
 
 <Layout
   title="The Frontview | Personal Blog"
-  description="A small personal blog about everything around tech and programming. Home page with recent posts and a description about me. Author: Marvin Stickel"
+  description="A small personal blog about everything around tech and programming. Home page with a description about me, recent posts and recent Today I Learned articles."
 >
   <div class="mt-12 md:mt-24">
     <Profile />
-    <h2 class="mt-12 text-2xl md:mt-24 md:text-4xl">Recent posts</h2>
-    <div class="mt-2 md:mt-4">
-      <Divider noSpacing />
-    </div>
-    <div class="mt-2 md:mt-4">
-      <Overview posts={posts.slice(undefined, 9)} prefetch />
-    </div>
-    <div class="mt-4 flex justify-center md:mt-8 lg:mt-16">
-      <Button href="/posts" prefetch>See all posts</Button>
-    </div>
+    {
+      posts.length > 0 && (
+        <>
+          <h2 class="mt-12 text-2xl md:mt-24 md:text-4xl">Recent posts</h2>
+          <div class="mt-2 md:mt-4">
+            <Divider noSpacing />
+          </div>
+          <div class="mt-2 md:mt-4">
+            <PostOverview posts={posts.slice(undefined, 9)} prefetch />
+          </div>
+          <div class="mt-4 flex justify-center md:mt-8 lg:mt-16">
+            <Button href="/posts" prefetch>
+              See all posts
+            </Button>
+          </div>
+        </>
+      )
+    }
+    {
+      learned.length > 0 && (
+        <>
+          <h2 class="mt-12 text-2xl md:mt-24 md:text-4xl">
+            Recent Today I Learned articles
+          </h2>
+          <div class="mt-2 md:mt-4">
+            <Divider noSpacing />
+          </div>
+          <div class="mt-2 md:mt-4">
+            <LearnedOverview learned={learned.slice(undefined, 9)} prefetch />
+          </div>
+          <div class="mt-4 flex justify-center md:mt-8 lg:mt-16">
+            <Button href="/learned" prefetch>
+              See all Today I Learned articles
+            </Button>
+          </div>
+        </>
+      )
+    }
   </div>
 </Layout>

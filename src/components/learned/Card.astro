@@ -1,0 +1,46 @@
+---
+import { formatDateToLocaleDate } from "../utils/formatDates.js";
+import Icon from "../utils/Icon.astro";
+
+export interface Props {
+  title: string;
+  pubDate: string;
+  readingTime?: number;
+  url: string;
+  prefetch: boolean;
+}
+
+const { title, pubDate, readingTime, url, prefetch } = Astro.props;
+
+const formattedDate = formatDateToLocaleDate(new Date(pubDate));
+const formattedReadingTime = `${readingTime} min read`;
+---
+
+<a href={url} rel={prefetch ? "prefetch" : ""}>
+  <div
+    class="min-h-[6rem] overflow-hidden rounded-xl shadow-lg outline outline-2 outline-gray-500 duration-200 hover:scale-105 hover:shadow-xl hover:outline-4 hover:outline-offset-2 hover:outline-teal-700 active:scale-95 active:outline-offset-0 active:duration-100 dark:outline-gray-600 dark:hover:outline-teal-500"
+  >
+    <div class="grid grid-cols-1">
+      <div
+        class="z-0 col-start-1 row-start-1 animate-pulse bg-gray-300 dark:bg-gray-600"
+      >
+      </div>
+    </div>
+    <div class="p-5">
+      <h3 class="flex gap-1 whitespace-nowrap text-gray-500 dark:text-gray-400">
+        <Icon
+          iconSet="fluent-emoji-high-contrast"
+          name="tear-off-calendar"
+          classString="!align-top !w-4 !h-4"
+        />
+        {formattedDate} |<Icon
+          iconSet="fluent-emoji-high-contrast"
+          name="eight-oclock"
+          classString="!align-top !w-4 !h-4"
+        />
+        {formattedReadingTime}
+      </h3>
+      <h2 class="mt-1 text-xl line-clamp-1">{title}</h2>
+    </div>
+  </div>
+</a>

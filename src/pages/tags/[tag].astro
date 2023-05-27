@@ -2,11 +2,15 @@
 // eslint-disable-next-line import/no-unresolved
 import { getCollection } from "astro:content";
 
+import { getLiveLearned } from "../../components/learned/filterLearned.js";
+import LearnedOverview from "../../components/learned/Overview.astro";
+import { sortLearnedByDate } from "../../components/learned/sortLearned.js";
 import { getLivePosts } from "../../components/posts/filterPosts.js";
-import Overview from "../../components/posts/Overview.astro";
+import PostOverview from "../../components/posts/Overview.astro";
 import { sortPostsByDate } from "../../components/posts/sortPosts.js";
 import { getTags } from "../../components/tags/sortTags.js";
 import Button from "../../components/utils/Button.astro";
+import Divider from "../../components/utils/Divider.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const { tag } = Astro.params;
@@ -20,20 +24,54 @@ const postsWithTag = posts.filter((post) => {
   return postTags.includes(tag);
 });
 
+const learned = sortLearnedByDate(
+  getLiveLearned(await getCollection("learned"))
+);
+const learnedWithTag = learned.filter((learning) => {
+  if (tag === undefined) {
+    return false;
+  }
+  const learnedTags = getTags(learning.data.tags);
+  return learnedTags.includes(tag);
+});
+
 // Catch invalid URLs
-if (postsWithTag.length === 0) {
+if (postsWithTag.length === 0 && learnedWithTag.length === 0) {
   return Astro.redirect("/404");
 }
 ---
 
 <Layout
   title={`Tag ${tag} | The Frontview`}
-  description={`Overview page of all the posts with the tag "${tag}" on my blog, sorted by date from the most recent to the oldest posts. Author: Marvin Stickel`}
+  description={`Overview page of all the posts and Today I Learned articles with the tag "${tag}" on my blog, sorted by date from most recent to oldest.`}
 >
   <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">Tag {tag}</h1>
-  <div class="mt-2 md:mt-4">
-    <Overview posts={postsWithTag} prefetch />
-  </div>
+  {
+    postsWithTag.length > 0 && (
+      <>
+        <h2 class="text-4xl">Posts</h2>
+        <div class="mt-2 md:mt-4">
+          <Divider noSpacing />
+        </div>
+        <div class="mt-2 md:mt-4">
+          <PostOverview posts={postsWithTag} prefetch />
+        </div>
+      </>
+    )
+  }
+  {
+    learnedWithTag.length > 0 && (
+      <>
+        <h2 class="mt-6 text-4xl md:mt-12">Today I Learned articles</h2>
+        <div class="mt-2 md:mt-4">
+          <Divider noSpacing />
+        </div>
+        <div class="mt-2 md:mt-4">
+          <LearnedOverview learned={learnedWithTag} prefetch />
+        </div>
+      </>
+    )
+  }
   <div class="mt-4 flex justify-center md:mt-8 lg:mt-16">
     <Button href="/tags" prefetch>Back to tags</Button>
   </div>

@@ -6,9 +6,9 @@ import TheFrontviewIcon from "../../../assets/icons/TheFrontview-Icon.png";
 import Divider from "../utils/Divider.astro";
 import ExternalLink from "../utils/ExternalLink.astro";
 import Icon from "../utils/Icon.astro";
+import GitHubIcon from "../utils/icons/GitHubIcon.astro";
 import NavLink from "../utils/NavLink.astro";
 import ThemeToggle from "../utils/ThemeToggle.astro";
-import GitHubIcon from "./GitHubIcon.astro";
 ---
 
 <header class="p-3 pt-4 md:px-6 md:pt-8">
@@ -34,10 +34,11 @@ import GitHubIcon from "./GitHubIcon.astro";
       </div><h1>The Frontview</h1>
     </a>
   </div>
-  <div class="flex">
+  <div class="flex flex-col gap-2 sm:flex-row sm:gap-0">
     <div class="flex gap-4 text-lg">
       <NavLink href="/" prefetch>Home</NavLink>
-      <NavLink href="/posts/" prefetch>All Posts</NavLink>
+      <NavLink href="/posts/" prefetch>Posts</NavLink>
+      <NavLink href="/learned/" prefetch>Today I Learned</NavLink>
       <NavLink href="/tags/" prefetch>Tags</NavLink>
     </div>
     <div class="ml-auto flex gap-4 text-lg">

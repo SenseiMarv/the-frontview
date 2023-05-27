@@ -30,6 +30,31 @@ const postsCollection = defineCollection({
   schema: postsCollectionSchema,
 });
 
+const learnedCollectionSchema = rssSchema.merge(
+  z.object({
+    description: z.string(),
+    pubDate: z.string(),
+    tags: z.string(),
+  })
+);
+
+export type LearnedCollection = Omit<CollectionEntry<"learned">, "data"> & {
+  data: z.infer<typeof learnedCollectionSchema>;
+};
+
+export interface RenderedLearnedCollection {
+  Content: MarkdownInstance<Record<string, unknown>>["Content"];
+  headings: MarkdownHeading[];
+  remarkPluginFrontmatter: {
+    readingTime: number;
+  };
+}
+
+const learnedCollection = defineCollection({
+  schema: learnedCollectionSchema,
+});
+
 export const collections = {
   posts: postsCollection,
+  learned: learnedCollection,
 };

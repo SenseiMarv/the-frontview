@@ -13,10 +13,10 @@ const posts = sortPostsByDate(getLivePosts(await getCollection("posts")));
 ---
 
 <Layout
-  title="All Posts | The Frontview"
-  description="Overview page of all the posts on my blog, sorted by date from the most recent to the oldest posts. Author: Marvin Stickel"
+  title="Posts | The Frontview"
+  description="Overview page of all the posts on my blog, sorted by date from the most recent to the oldest posts."
 >
-  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">All posts</h1>
+  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">Posts</h1>
   <div class="mt-4">
     <Overview posts={posts} />
   </div>

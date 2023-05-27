@@ -62,9 +62,26 @@ Local images should be stored in `./public/images`. They can be referenced direc
 imgUrl: "/images/post-example/cover.png"
 ```
 
-### Blog components
+## Today I Learned articles
 
-To see which components can be used in a blog post, open `./src/content/posts/demo.mdx`. To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
+New Today I Learned articles can be created by adding a new file in `./src/content/learned`. The file name will be the URL path to the new Today I Learned article.
+
+A Today I Learned article requires the following frontmatter:
+
+```mdx
+---
+title: "The title of the blog post"
+description: "A description of the content of the blog post."
+pubDate: "The date the blog post was created (in the format YYYY-MM-DD)"
+tags: "A comma-separated list of tags that describe the content of the blog post (preferably 3)"
+---
+```
+
+Today I Learned articles can be set to draft status by adding `draft: true` to the frontmatter. A draft Today I Learned article, or a Today I Learned article with a `pubDate` set to a future date, will not be visible on the site (but can be accessed by calling its URL directly).
+
+## Components
+
+To see which components can be used in a blog post or Today I Learned article, open `./src/content/posts/demo.mdx`. To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
 
 ## Author
 

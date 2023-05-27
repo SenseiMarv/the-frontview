@@ -257,7 +257,7 @@ test("learned page", async ({ page }) => {
   await expect(page.getByTitle("Comments")).toBeVisible();
 });
 
-test("blog post components", async ({ page }) => {
+test("components", async ({ page }) => {
   const response = await page.goto(`${targetUrl}/posts/demo`, {
     waitUntil: "domcontentloaded",
   });
@@ -277,8 +277,8 @@ test("blog post components", async ({ page }) => {
   /* Post demo page content */
   // Header
   await expect(page.getByRole("heading", { name: "Post Demo" })).toBeVisible();
-  await expect(page.getByText("Dec 23, 2022 |")).toBeVisible();
-  await expect(page.getByText("2 min read |")).toBeVisible();
+  await expect(page.getByText("Dec 23, 2022")).toBeVisible();
+  await expect(page.getByText("2 min read")).toBeVisible();
   await expect(
     page.getByRole("main").getByRole("link", { name: "post" })
   ).toBeVisible();

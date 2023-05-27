@@ -118,7 +118,7 @@ test("posts page", async ({ page }) => {
   await expect(page.getByRole("list")).toBeVisible();
 });
 
-test("post page", async ({ page }) => {
+test("first post page", async ({ page }) => {
   const response = await page.goto(targetUrl, {
     waitUntil: "domcontentloaded",
   });
@@ -139,7 +139,7 @@ test("post page", async ({ page }) => {
   await page.getByRole("listitem").first().click();
   const navigationPromiseResponse = await navigationPromise;
 
-  await page.screenshot({ path: "post.png", fullPage: true });
+  await page.screenshot({ path: "postFirst.png", fullPage: true });
 
   if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
     throw new Error(
@@ -153,7 +153,7 @@ test("post page", async ({ page }) => {
   // Scroll progress
   await expect(page.locator("#scroll-progress")).toHaveClass(/fixed/);
 
-  /* Post page content */
+  /* First post page content */
   // Header
   await expect(
     page.getByRole("heading", { name: firstPostTitle })
@@ -188,6 +188,27 @@ test("post page", async ({ page }) => {
 });
 
 test("learned page", async ({ page }) => {
+  const response = await page.goto(`${targetUrl}/learned`, {
+    waitUntil: "domcontentloaded",
+  });
+
+  await page.screenshot({ path: "learned.png", fullPage: true });
+
+  if (response && response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
+
+  await checkHeader(page);
+  await checkFooter(page);
+
+  /* Today I Learned page content */
+  await expect(
+    page.getByRole("heading", { name: "Today I Learned" })
+  ).toBeVisible();
+  await expect(page.getByRole("list")).toBeVisible();
+});
+
+test("first learned page", async ({ page }) => {
   const response = await page.goto(targetUrl, {
     waitUntil: "domcontentloaded",
   });
@@ -210,7 +231,7 @@ test("learned page", async ({ page }) => {
   await page.getByRole("list").nth(1).getByRole("listitem").first().click();
   const navigationPromiseResponse = await navigationPromise;
 
-  await page.screenshot({ path: "learned.png", fullPage: true });
+  await page.screenshot({ path: "learnedFirst.png", fullPage: true });
 
   if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
     throw new Error(
@@ -224,7 +245,7 @@ test("learned page", async ({ page }) => {
   // Scroll progress
   await expect(page.locator("#scroll-progress")).toHaveClass(/fixed/);
 
-  /* Post page content */
+  /* First Today I Learned page content */
   // Header
   await expect(
     page.getByRole("heading", { name: firstLearnedTitle })
@@ -262,7 +283,7 @@ test("components", async ({ page }) => {
     waitUntil: "domcontentloaded",
   });
 
-  await page.screenshot({ path: "post-demo.png", fullPage: true });
+  await page.screenshot({ path: "components.png", fullPage: true });
 
   if (response && response.status() > 399) {
     throw new Error(`Failed with response code ${response.status()}`);
@@ -473,7 +494,7 @@ test("tags page", async ({ page }) => {
   await expect(page.getByRole("list")).toBeVisible();
 });
 
-test("tag overview page", async ({ page }) => {
+test("first tag page", async ({ page }) => {
   const response = await page.goto(`${targetUrl}/tags`, {
     waitUntil: "domcontentloaded",
   });
@@ -502,12 +523,16 @@ test("tag overview page", async ({ page }) => {
   await checkHeader(page);
   await checkFooter(page);
 
-  /* Tag posts page content */
+  /* First tag page content */
   await expect(
     page.getByRole("heading", { name: `Tag ${firstTagName}` })
   ).toBeVisible();
 
-  if ((await page.getByRole("list").count()) > 0) {
+  if (
+    (await page.getByRole("list").count()) > 0 &&
+    (await page.getByRole("list").first().getByRole("listitem").count()) > 0 &&
+    (await page.getByRole("list").nth(1).getByRole("listitem").count()) > 0
+  ) {
     // Posts and Today I Learned articles exist for this tag
     await expect(
       page.getByRole("heading", { name: "Posts", exact: true })

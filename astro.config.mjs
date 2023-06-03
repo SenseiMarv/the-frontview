@@ -22,11 +22,6 @@ import { postReadingTimePlugin } from "./plugins/remarkPlugins.mjs";
 
 const hostedSiteUrl = "https://www.the-frontview.dev/";
 
-const getSSRSitemapPages = () => [
-  `${hostedSiteUrl}tags/`,
-  `${hostedSiteUrl}rss.xml`,
-];
-
 const config = defineConfig({
   output: "server",
   adapter: vercel(),
@@ -63,11 +58,18 @@ const config = defineConfig({
     prefetch(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
     sitemap({
-      // Custom sitemap generation currently doesn't work with SSR, so SSR rendered pages have to be defined
-      // manually (tags pages are missing at the moment): https://github.com/withastro/astro/issues/3682
-      customPages: getSSRSitemapPages(),
+      // Include the RSS feed page URL as it must appear, without the trailing slash
+      customPages: [`${hostedSiteUrl}rss.xml`],
       // Exclude the demo blog post page, as it should not be exposed
-      filter: (page) => page !== "https://www.the-frontview.dev/posts/demo/",
+      filter: (page) =>
+        ![
+          // Exclude the demo blog post page, as it should not be exposed
+          "https://www.the-frontview.dev/posts/demo/",
+          // Exclude the injected internal route from @astrojs/image that leads to the 404 page in the browser
+          "https://www.the-frontview.dev/_image/",
+          // Exclude the auto generated RSS feed page URL, as it must not have a trailing slash
+          "https://www.the-frontview.dev/rss.xml/",
+        ].includes(page),
     }),
     robotsTxt(),
     compress(), // Should be set one before the last for best results

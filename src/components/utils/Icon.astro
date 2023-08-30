@@ -1,4 +1,6 @@
 ---
+import { twJoin } from "../utils/twJoin.js";
+
 export interface Props {
   iconSet?: string;
   name: string;
@@ -10,4 +12,5 @@ const { iconSet = "fluent-emoji", name, classString = "" } = Astro.props;
 
 <iconify-icon
   icon={`${iconSet}:${name}`}
-  class={`${classString} inline-flex align-bottom text-2xl`}></iconify-icon>
+  class={twJoin("inline-flex align-bottom text-2xl", classString)}
+></iconify-icon>

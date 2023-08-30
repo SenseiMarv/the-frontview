@@ -1,5 +1,4 @@
 ---
-import TagList from "../tags/TagList.astro";
 import { formatDateToLocaleDate } from "../utils/formatDates.js";
 import Icon from "../utils/Icon.astro";
 import Share from "../utils/Share.astro";
@@ -8,11 +7,10 @@ export interface Props {
   title: string;
   pubDate: string;
   upDate?: string;
-  tags: string;
   readingTime: number;
 }
 
-const { title, pubDate, upDate, tags, readingTime } = Astro.props;
+const { title, pubDate, upDate, readingTime } = Astro.props;
 
 const formattedPubDate = formatDateToLocaleDate(new Date(pubDate));
 const formattedUpDate = upDate
@@ -22,13 +20,13 @@ const formattedReadingTime = `${readingTime} min read`;
 ---
 
 <div class="flex flex-col items-center">
-  <h2 class="text-3xl leading-snug md:text-4xl">Today I Learned</h2>
+  <h2 class="text-3xl leading-snug md:text-4xl">My Setup</h2>
   <h1 class="text-5xl leading-snug md:text-6xl">
     {title}
   </h1>
   <div
     class={`mt-4 flex flex-col items-center gap-1 whitespace-nowrap text-lg leading-snug text-gray-500 dark:text-gray-400 md:mt-6 md:text-xl ${
-      formattedUpDate ? "lg:flex-row" : "sm:flex-row"
+      formattedUpDate ? "md:flex-row" : "sm:flex-row"
     }`}
   >
     <div class="flex items-center gap-1 whitespace-normal">
@@ -41,7 +39,7 @@ const formattedReadingTime = `${readingTime} min read`;
       {formattedUpDate && <> (Updated: {formattedUpDate})</>}
       <div
         class={`hidden ${
-          formattedUpDate ? "lg:inline-block" : "sm:inline-block"
+          formattedUpDate ? "md:inline-block" : "sm:inline-block"
         }`}
       >
         |
@@ -54,23 +52,6 @@ const formattedReadingTime = `${readingTime} min read`;
         classString="w-5 h-5"
       />
       {formattedReadingTime}
-      <div
-        class={`hidden ${
-          formattedUpDate ? "lg:inline-block" : "sm:inline-block"
-        }`}
-      >
-        |
-      </div>
-    </div>
-    <div class="flex gap-1">
-      <Icon
-        iconSet="fluent-emoji-high-contrast"
-        name="keycap-hashtag"
-        classString="align-sub w-5 h-5"
-      />
-      <div class="flex flex-wrap">
-        <TagList tags={tags} />
-      </div>
     </div>
   </div>
   <div class="mt-4 md:mt-8">

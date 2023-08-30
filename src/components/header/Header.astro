@@ -35,11 +35,12 @@ import ThemeToggle from "../utils/ThemeToggle.astro";
     </a>
   </div>
   <div class="flex flex-col gap-2 sm:flex-row sm:gap-0">
-    <div class="flex gap-4 text-lg">
+    <div class="flex flex-col gap-4 text-lg min-[350px]:flex-row">
       <NavLink href="/" prefetch>Home</NavLink>
       <NavLink href="/posts/" prefetch>Posts</NavLink>
       <NavLink href="/learned/" prefetch>Today I Learned</NavLink>
       <NavLink href="/tags/" prefetch>Tags</NavLink>
+      <NavLink href="/setup/" prefetch>My Setup</NavLink>
     </div>
     <div class="ml-auto flex gap-4 text-lg">
       <ThemeToggle />

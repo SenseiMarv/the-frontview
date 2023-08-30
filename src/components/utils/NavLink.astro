@@ -1,4 +1,6 @@
 ---
+import { twJoin } from "./twJoin.js";
+
 export interface Props {
   href: string;
   prefetch?: boolean;
@@ -27,7 +29,10 @@ const {
     ? "noopener, noreferrer"
     : undefined}
   aria-label={ariaLabel}
-  class={`${classString} inline-flex transition-colors duration-300 hover:text-teal-700 hover:underline hover:underline-offset-2 active:!text-teal-400 active:duration-100 dark:hover:text-teal-500 dark:active:!text-teal-700`}
+  class={twJoin(
+    "inline-flex transition-colors duration-300 hover:text-teal-700 hover:underline hover:underline-offset-2 active:!text-teal-400 active:duration-100 dark:hover:text-teal-500 dark:active:!text-teal-700",
+    classString
+  )}
 >
   <slot />
 </a>

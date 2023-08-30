@@ -38,7 +38,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## Blog posts
 
-New blog posts can be created by adding a new file in `./src/content/posts`. The file name will be the URL path to the new blog post.
+New blog posts can be created by adding a new file in [`./src/content/posts`](./src/content/posts). The file name will be the URL path to the new blog post.
 
 A blog post requires the following frontmatter:
 
@@ -56,7 +56,9 @@ imgAuthorUrl: "A URL leading to the source of the image used in the header of th
 
 Posts can be set to draft status by adding `draft: true` to the frontmatter. A draft post, or a post with a `pubDate` set to a future date, will not be visible on the site (but can be accessed by calling its URL directly).
 
-Local images should be stored in `./public/images`. They can be referenced directly in the frontmatter:
+When updating a post, the `upDate` frontmatter should be added with the current date (in the format YYYY-MM-DD).
+
+Local images should be stored in [`./public/images`](./public/images). They can be referenced directly in the frontmatter:
 
 ```mdx
 imgUrl: "/images/post-example/cover.png"
@@ -64,24 +66,47 @@ imgUrl: "/images/post-example/cover.png"
 
 ## Today I Learned articles
 
-New Today I Learned articles can be created by adding a new file in `./src/content/learned`. The file name will be the URL path to the new Today I Learned article.
+New Today I Learned articles can be created by adding a new file in [`./src/content/learned`](./src/content/learned). The file name will be the URL path to the new Today I Learned article.
 
 A Today I Learned article requires the following frontmatter:
 
 ```mdx
 ---
-title: "The title of the blog post"
-description: "A description of the content of the blog post."
-pubDate: "The date the blog post was created (in the format YYYY-MM-DD)"
-tags: "A comma-separated list of tags that describe the content of the blog post (preferably 3)"
+title: "The title of the Today I Learned article"
+description: "A description of the content of the Today I Learned article."
+pubDate: "The date the Today I Learned article was created (in the format YYYY-MM-DD)"
+upDate: "The date the blog post was last updated (in the format YYYY-MM-DD)"
+tags: "A comma-separated list of tags that describe the content of the Today I Learned article (preferably 3)"
 ---
 ```
 
 Today I Learned articles can be set to draft status by adding `draft: true` to the frontmatter. A draft Today I Learned article, or a Today I Learned article with a `pubDate` set to a future date, will not be visible on the site (but can be accessed by calling its URL directly).
 
+When updating a Today I Learned article, the `upDate` frontmatter should be added with the current date (in the format YYYY-MM-DD).
+
+## My Setup articles
+
+New My Setup articles can be created by adding a new file in [`./src/content/setup`](./src/content/setup). The file name will be the URL path to the new My Setup article.
+
+A My Setup article requires the following frontmatter:
+
+```mdx
+---
+title: "The title of the My Setup article"
+description: "A description of the content of the My Setup article."
+pubDate: "The date the My Setup article was created (in the format YYYY-MM-DD)"
+---
+```
+
+All My Setup articles are sorted with a custom order, defined by the content slug (the file name). The order is defined in [`./src/components/setup/sortSetup.ts`](./src/components/setup/sortSetup.ts). When a new My Setup article is added, the order should be updated. If the order is not updated, the new My Setup article will be added to the beginning of the list.
+
+My Setup articles can be set to draft status by adding `draft: true` to the frontmatter. A draft My Setup article, or a My Setup article with a `pubDate` set to a future date, will not be visible on the site (but can be accessed by calling its URL directly).
+
+When updating a My Setup article, the `upDate` frontmatter should be added with the current date (in the format YYYY-MM-DD).
+
 ## Components
 
-To see which components can be used in a blog post or Today I Learned article, open `./src/content/posts/demo.mdx`. To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
+To see which components can be used in a blog post, Today I Learned article or My Setup article, open [`./src/content/posts/demo.mdx`](./src/content/posts/demo.mdx). To see those components in action, navigate to `/posts/demo` in the browser on the live website or on the local dev server.
 
 ## Author
 

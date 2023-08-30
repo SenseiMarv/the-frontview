@@ -1,25 +1,23 @@
 ---
-import Header from "../components/learned/Header.astro";
-import HeadingLinkSvg from "../components/learned/HeadingLinkSvg.astro";
-import { getTags } from "../components/tags/sortTags.js";
+import Header from "../components/setup/Header.astro";
+import HeadingLinkSvg from "../components/setup/HeadingLinkSvg.astro";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/Giscus.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
 import Share from "../components/utils/Share.astro";
-import type { LearnedCollection } from "../content/config.js";
+import type { SetupCollection } from "../content/config.js";
 import Layout from "./Layout.astro";
 
 export interface Props {
-  frontmatter: LearnedCollection["data"];
+  frontmatter: SetupCollection["data"];
   readingTime: number;
 }
 
 const { frontmatter, readingTime } = Astro.props;
 
 const date = new Date(frontmatter.pubDate).toISOString();
-const tags = getTags(frontmatter.tags);
 const defaultOpenGraphType = "article";
-const defaultOpenGraphImageAlt = "Today I Learned article cover";
+const defaultOpenGraphImageAlt = "Setup article cover";
 const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
 const defaultTwitterCard = "summary_large_image";
 ---
@@ -32,8 +30,6 @@ const defaultTwitterCard = "summary_large_image";
   openGraphImageAlt={defaultOpenGraphImageAlt}
   openGraphArticlePublishedTime={date}
   openGraphArticleAuthor={defaultOpenGraphArticleAuthor}
-  openGraphArticleSection={tags[0]}
-  openGraphArticleTags={tags}
   twitterCard={defaultTwitterCard}
 >
   <ScrollBar />
@@ -42,7 +38,6 @@ const defaultTwitterCard = "summary_large_image";
       title={frontmatter.title}
       pubDate={frontmatter.pubDate}
       upDate={frontmatter.upDate}
-      tags={frontmatter.tags}
       readingTime={readingTime}
     />
   </div>

@@ -5,31 +5,44 @@ const targetUrl =
 
 const checkHeader = async (page) => {
   await expect(
-    page.getByRole("img", { name: "The Frontview Icon", exact: true })
+    page
+      .getByRole("banner")
+      .getByRole("img", { name: "The Frontview Icon", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "The Frontview", exact: true })
+    page
+      .getByRole("banner")
+      .getByRole("heading", { name: "The Frontview", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Home", exact: true })
+    page.getByRole("banner").getByRole("link", { name: "Home", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Posts", exact: true }).first()
+    page.getByRole("banner").getByRole("link", { name: "Posts", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Today I Learned", exact: true })
+    page
+      .getByRole("banner")
+      .getByRole("link", { name: "Today I Learned", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Tags", exact: true })
+    page.getByRole("banner").getByRole("link", { name: "Tags", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("button", {
+    page
+      .getByRole("banner")
+      .getByRole("link", { name: "My Setup", exact: true })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("banner").getByRole("button", {
       name: "Toggle light/dark theme",
       exact: true,
     })
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "RSS feed", exact: true })
+    page
+      .getByRole("banner")
+      .getByRole("link", { name: "RSS feed", exact: true })
   ).toBeVisible();
   await expect(
     page.getByRole("banner").getByRole("link").filter({ hasText: "GitHub" })
@@ -97,6 +110,10 @@ test("home page", async ({ page }) => {
   await expect(
     page.getByRole("link", { name: "See all Today I Learned articles" })
   ).toBeVisible();
+
+  // My Setup articles
+  await expect(page.getByRole("heading", { name: "My Setup" })).toBeVisible();
+  await expect(page.getByRole("list").nth(2)).toBeVisible();
 });
 
 test("posts page", async ({ page }) => {
@@ -176,12 +193,6 @@ test("first post page", async ({ page }) => {
   await expect(page.getByRole("link").filter({ hasText: "Xing" })).toHaveCount(
     2
   );
-
-  // Body
-  await expect(
-    page.getByRole("heading", { name: "Table of contents" })
-  ).toBeVisible();
-  await expect(page.getByRole("list")).toBeVisible();
 
   // Comments
   await expect(page.getByTitle("Comments")).toBeVisible();
@@ -268,11 +279,88 @@ test("first learned page", async ({ page }) => {
     2
   );
 
-  // Body
-  await expect(
-    page.getByRole("heading", { name: "Table of contents" })
-  ).toBeVisible();
+  // Comments
+  await expect(page.getByTitle("Comments")).toBeVisible();
+});
+
+test("setup page", async ({ page }) => {
+  const response = await page.goto(`${targetUrl}/setup`, {
+    waitUntil: "domcontentloaded",
+  });
+
+  await page.screenshot({ path: "setup.png", fullPage: true });
+
+  if (response && response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
+
+  await checkHeader(page);
+  await checkFooter(page);
+
+  /* My Setup page content */
+  await expect(page.getByRole("heading", { name: "My Setup" })).toBeVisible();
   await expect(page.getByRole("list")).toBeVisible();
+});
+
+test("first setup page", async ({ page }) => {
+  const response = await page.goto(targetUrl, {
+    waitUntil: "domcontentloaded",
+  });
+
+  if (response && response.status() > 399) {
+    throw new Error(`Failed with response code ${response.status()}`);
+  }
+
+  const firstSetupTitle = await page
+    .getByRole("list")
+    .nth(2)
+    .getByRole("listitem")
+    .first()
+    .getByRole("heading")
+    .nth(1)
+    .innerText();
+  const navigationPromise = page.waitForNavigation({
+    waitUntil: "domcontentloaded",
+  });
+  await page.getByRole("list").nth(1).getByRole("listitem").first().click();
+  const navigationPromiseResponse = await navigationPromise;
+
+  await page.screenshot({ path: "setupFirst.png", fullPage: true });
+
+  if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
+    throw new Error(
+      `Failed with response code ${navigationPromiseResponse.status()}`
+    );
+  }
+
+  await checkHeader(page);
+  await checkFooter(page);
+
+  // Scroll progress
+  await expect(page.locator("#scroll-progress")).toHaveClass(/fixed/);
+
+  /* First My Setup page content */
+  // Header
+  await expect(
+    page.getByRole("heading", { name: firstSetupTitle })
+  ).toBeVisible();
+
+  // Social Media Links
+  await expect(
+    page.getByRole("link").filter({ hasText: "Twitter" })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole("link").filter({ hasText: "Mastodon" })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole("link").filter({ hasText: "Facebook" })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole("link").filter({ hasText: "LinkedIn" })
+  ).toHaveCount(2);
+  await expect(page.getByRole("link").filter({ hasText: "Xing" })).toHaveCount(
+    2
+  );
 
   // Comments
   await expect(page.getByTitle("Comments")).toBeVisible();
@@ -299,6 +387,7 @@ test("components", async ({ page }) => {
   // Header
   await expect(page.getByRole("heading", { name: "Post Demo" })).toBeVisible();
   await expect(page.getByText("Dec 23, 2022")).toBeVisible();
+  await expect(page.getByText("(Updated: Dec 24, 2022)")).toBeVisible();
   await expect(page.getByText("2 min read")).toBeVisible();
   await expect(
     page.getByRole("main").getByRole("link", { name: "post" })
@@ -543,7 +632,8 @@ test("first tag page", async ({ page }) => {
         exact: true,
       })
     ).toBeVisible();
-    expect(await page.getByRole("list").count()).toBe(2);
+    await expect(page.getByRole("list").first()).toBeVisible();
+    await expect(page.getByRole("list").nth(1)).toBeVisible();
   } else {
     // Only either posts or Today I Learned articles exist for this tag
     await expect(

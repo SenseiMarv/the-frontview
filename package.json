@@ -17,7 +17,7 @@
     "lint:fix:prettier": "pnpm prettier --write --plugin-search-dir=. .",
     "test": "export ENVIRONMENT_URL=http://localhost:3000 && concurrently -k -s 'command-test' -c 'auto' -n start,test 'pnpm start' 'pnpm run playwright'",
     "test:ui": "export ENVIRONMENT_URL=http://localhost:3000 && concurrently -k -s 'command-test' -c 'auto' -n start,test 'pnpm start' 'pnpm run playwright:ui'",
-    "test:cleanup": "rm *.png",
+    "test:cleanup": "rm *.png || rm -rf test-results/*",
     "test:quick": "pnpm test && pnpm test:cleanup",
     "playwright": "wait-on http://localhost:3000 && playwright test",
     "playwright:ui": "wait-on http://localhost:3000 && playwright test --ui",

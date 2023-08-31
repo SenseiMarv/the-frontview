@@ -60,9 +60,9 @@ let openGraph: any = {
   },
 };
 if (
-  openGraphArticlePublishedTime ||
-  openGraphArticleAuthor ||
-  openGraphArticleSection ||
+  openGraphArticlePublishedTime ??
+  openGraphArticleAuthor ??
+  openGraphArticleSection ??
   openGraphArticleTags
 ) {
   openGraph = {
@@ -91,7 +91,7 @@ const headingFontFamily = [
 ].toString();
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth motion-reduce:scroll-auto">
   <head>
     <meta charset="UTF-8" />

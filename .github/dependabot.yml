@@ -4,3 +4,29 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    ignore:
+      - dependency-name: "@playwright/test" # The version needs to be in sync with the Checkly runtime
+    groups:
+      astro:
+        patterns:
+          - "*astro*"
+        exclude-patterns:
+          - "astro-eslint-parser" # Will be updated in the eslint group
+      fonts:
+        patterns:
+          - "@fontsource/*"
+      rehype:
+        patterns:
+          - "rehype*"
+      remark:
+        patterns:
+          - "remark*"
+      types:
+        patterns:
+          - "@types/*"
+      eslint:
+        patterns:
+          - "*eslint*"
+      prettier:
+        patterns:
+          - "prettier*"

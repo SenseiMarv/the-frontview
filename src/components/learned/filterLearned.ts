@@ -9,5 +9,5 @@ export const getLiveLearned = (learned: LearnedCollection[]) =>
   learned.filter(
     (learning) =>
       learning.data.draft === undefined &&
-      isBefore(new Date(learning.data.pubDate), new Date())
+      isBefore(new Date(learning.data.pubDate), new Date()),
   );

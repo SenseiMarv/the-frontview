@@ -24,7 +24,7 @@ const renderedPosts = await Promise.all(
         <li class="list-none">
           <Card
             title={posts[index].data.title}
-            imgUrl={posts[index].data.imgUrl}
+            cover={posts[index].data.cover}
             pubDate={posts[index].data.pubDate}
             readingTime={post.remarkPluginFrontmatter.readingTime}
             url={`/posts/${posts[index].slug}/`}

@@ -8,7 +8,7 @@ export const sortLearnedByDate = (learned: LearnedCollection[]) => {
   return arr.sort((olderLearning, newerLearning) =>
     compareDesc(
       new Date(olderLearning.data.pubDate),
-      new Date(newerLearning.data.pubDate)
-    )
+      new Date(newerLearning.data.pubDate),
+    ),
   );
 };

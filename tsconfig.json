@@ -29,8 +29,6 @@
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "types": ["@astrojs/image/client"],
-    "checkJs": true,
-    "verbatimModuleSyntax": true
+    "checkJs": true
   }
 }

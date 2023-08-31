@@ -8,7 +8,6 @@ const config = {
     "plugin:promise/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:tailwindcss/recommended",
-    "standard-with-typescript",
     "prettier", // Has to be set last!
   ],
   /** @type any[] */ overrides: [],
@@ -35,30 +34,44 @@ const config = {
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "@typescript-eslint/triple-slash-reference": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
   },
 };
 
 config.overrides.push({
+  files: ["*.js", "*.jsx", "*.ts", "*.tsx"],
+  extends: ["standard-with-typescript", ...config.extends],
+  rules: {
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+  },
+});
+
+config.overrides.push({
   files: ["*.astro"],
   extends: [
-    ...config.extends,
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
+    "standard-with-typescript",
+    ...config.extends,
   ],
   parser: "astro-eslint-parser",
   parserOptions: {
     parser: "@typescript-eslint/parser",
     extraFileExtensions: [".astro"],
   },
+  rules: {
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+  },
 });
 
 config.overrides.push({
   files: ["*.mdx"],
-  extends: [...config.extends, "plugin:mdx/recommended"],
+  extends: ["plugin:mdx/recommended", ...config.extends],
   rules: {
     // Not all imported components are always used in the posts
     "no-unused-vars": "off",

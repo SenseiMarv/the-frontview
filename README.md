@@ -48,9 +48,9 @@ title: "The title of the blog post"
 description: "A description of the content of the blog post."
 pubDate: "The date the blog post was created (in the format YYYY-MM-DD)"
 tags: "A comma-separated list of tags that describe the content of the blog post (preferably 3)"
-imgUrl: "A URL leading to an image to be used as the cover of the blog post (can also be a local file)"
-imgAuthor: "The name of the author of the image used in the header of the blog post"
-imgAuthorUrl: "A URL leading to the source of the image used in the header of the blog post"
+cover: "A URL leading to an image to be used as the cover of the blog post (can also be a local file)"
+coverAuthor: "The name of the author of the image used in the header of the blog post"
+coverAuthorUrl: "A URL leading to the source of the image used in the header of the blog post"
 ---
 ```
 
@@ -58,10 +58,10 @@ Posts can be set to draft status by adding `draft: true` to the frontmatter. A d
 
 When updating a post, the `upDate` frontmatter should be added with the current date (in the format YYYY-MM-DD).
 
-Local images should be stored in [`./public/images`](./public/images). They can be referenced directly in the frontmatter:
+Local images should be stored in [`./public/images/posts`](./public/images/posts). They can be referenced directly in the frontmatter:
 
 ```mdx
-imgUrl: "/images/post-example/cover.png"
+cover: "/images/posts/post-example/cover.png"
 ```
 
 ## Today I Learned articles

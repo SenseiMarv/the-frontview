@@ -8,7 +8,7 @@ export const sortPostsByDate = (posts: PostsCollection[]) => {
   return arr.sort((olderPost, newerPost) =>
     compareDesc(
       new Date(olderPost.data.pubDate),
-      new Date(newerPost.data.pubDate)
-    )
+      new Date(newerPost.data.pubDate),
+    ),
   );
 };

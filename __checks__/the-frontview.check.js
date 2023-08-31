@@ -322,7 +322,7 @@ test("first setup page", async ({ page }) => {
   const navigationPromise = page.waitForNavigation({
     waitUntil: "domcontentloaded",
   });
-  await page.getByRole("list").nth(1).getByRole("listitem").first().click();
+  await page.getByRole("list").nth(2).getByRole("listitem").first().click();
   const navigationPromiseResponse = await navigationPromise;
 
   await page.screenshot({ path: "setupFirst.png", fullPage: true });
@@ -465,9 +465,7 @@ test("components", async ({ page }) => {
   await expect(page.getByText("const t = {}")).toBeVisible();
 
   // Code block
-  await expect(
-    await page.getByRole("heading", { name: "Code block" })
-  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Code block" })).toBeVisible();
   await expect(
     page.getByRole("heading", {
       name: "With language, title and highlighting",

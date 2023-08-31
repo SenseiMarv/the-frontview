@@ -17,4 +17,4 @@ node_modules/
 .astro
 
 # Playwright test artifacts
-playwright/
+test-results/

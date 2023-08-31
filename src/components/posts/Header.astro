@@ -14,14 +14,26 @@ export interface Props {
   imgAuthor: string;
   imgAuthorUrl: string;
   pubDate: string;
+  upDate?: string;
   tags: string;
   readingTime: number;
 }
 
-const { title, imgUrl, imgAuthor, imgAuthorUrl, pubDate, tags, readingTime } =
-  Astro.props;
+const {
+  title,
+  imgUrl,
+  imgAuthor,
+  imgAuthorUrl,
+  pubDate,
+  upDate,
+  tags,
+  readingTime,
+} = Astro.props;
 
-const formattedDate = formatDateToLocaleDate(new Date(pubDate));
+const formattedPubDate = formatDateToLocaleDate(new Date(pubDate));
+const formattedUpDate = upDate
+  ? formatDateToLocaleDate(new Date(upDate))
+  : undefined;
 const formattedReadingTime = `${readingTime} min read`;
 ---
 
@@ -30,25 +42,40 @@ const formattedReadingTime = `${readingTime} min read`;
     {title}
   </h1>
   <div
-    class="mt-4 flex flex-col items-center gap-1 whitespace-nowrap text-lg leading-snug text-gray-500 dark:text-gray-400 sm:flex-row md:mt-6 md:text-xl"
+    class={`mt-4 flex flex-col items-center gap-1 whitespace-nowrap text-lg leading-snug text-gray-500 dark:text-gray-400 md:mt-6 md:text-xl ${
+      formattedUpDate ? "lg:flex-row" : "sm:flex-row"
+    }`}
   >
-    <div class="flex gap-1">
+    <div class="flex items-center gap-1 whitespace-normal">
       <Icon
         iconSet="fluent-emoji-high-contrast"
         name="tear-off-calendar"
-        classString="align-sub w-5 h-5"
+        classString="w-5 h-5"
       />
-      {formattedDate}
-      <div class="hidden sm:inline-block">|</div>
+      {formattedPubDate}
+      {formattedUpDate && <> (Updated: {formattedUpDate})</>}
+      <div
+        class={`hidden ${
+          formattedUpDate ? "lg:inline-block" : "sm:inline-block"
+        }`}
+      >
+        |
+      </div>
     </div>
     <div class="flex gap-1">
       <Icon
         iconSet="fluent-emoji-high-contrast"
         name="eight-oclock"
-        classString="align-sub w-5 h-5"
+        classString="w-5 h-5"
       />
       {formattedReadingTime}
-      <div class="hidden sm:inline-block">|</div>
+      <div
+        class={`hidden ${
+          formattedUpDate ? "lg:inline-block" : "sm:inline-block"
+        }`}
+      >
+        |
+      </div>
     </div>
     <div class="flex gap-1">
       <Icon

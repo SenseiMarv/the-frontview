@@ -7,6 +7,7 @@ const postsCollectionSchema = rssSchema.merge(
   z.object({
     description: z.string(),
     pubDate: z.string(),
+    upDate: z.string().optional(),
     tags: z.string(),
     imgUrl: z.string(),
     imgAuthor: z.string(),
@@ -34,6 +35,7 @@ const learnedCollectionSchema = rssSchema.merge(
   z.object({
     description: z.string(),
     pubDate: z.string(),
+    upDate: z.string().optional(),
     tags: z.string(),
   })
 );
@@ -54,7 +56,32 @@ const learnedCollection = defineCollection({
   schema: learnedCollectionSchema,
 });
 
+const setupCollectionSchema = rssSchema.merge(
+  z.object({
+    description: z.string(),
+    pubDate: z.string(),
+    upDate: z.string().optional(),
+  })
+);
+
+export type SetupCollection = Omit<CollectionEntry<"setup">, "data"> & {
+  data: z.infer<typeof setupCollectionSchema>;
+};
+
+export interface RenderedSetupCollection {
+  Content: MarkdownInstance<Record<string, unknown>>["Content"];
+  headings: MarkdownHeading[];
+  remarkPluginFrontmatter: {
+    readingTime: number;
+  };
+}
+
+const setupCollection = defineCollection({
+  schema: setupCollectionSchema,
+});
+
 export const collections = {
   posts: postsCollection,
   learned: learnedCollection,
+  setup: setupCollection,
 };

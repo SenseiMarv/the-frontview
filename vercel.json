@@ -1,3 +1,13 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/data/js/script.js",
+      "destination": "https://analytics.the-frontview.dev/js/script.js"
+    },
+    {
+      "source": "/data/api/event",
+      "destination": "https://analytics.the-frontview.dev/api/event"
+    }
+  ]
 }

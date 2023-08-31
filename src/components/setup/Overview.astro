@@ -1,0 +1,36 @@
+---
+import type {
+  RenderedSetupCollection,
+  SetupCollection,
+} from "../../content/config.js";
+import Card from "./Card.astro";
+
+export interface Props {
+  setup: SetupCollection[];
+  prefetch?: boolean;
+}
+
+const { setup, prefetch = false } = Astro.props;
+
+const renderedSetup = await Promise.all(
+  setup.map((s) => s.render() as unknown as RenderedSetupCollection)
+);
+---
+
+<ul class="flex flex-col justify-items-center gap-6 p-4 lg:gap-8">
+  {
+    renderedSetup.map((s, index) => (
+      <>
+        <li class="list-none">
+          <Card
+            title={setup[index].data.title}
+            pubDate={setup[index].data.pubDate}
+            readingTime={s.remarkPluginFrontmatter.readingTime}
+            url={`/setup/${setup[index].slug}/`}
+            prefetch={prefetch}
+          />
+        </li>
+      </>
+    ))
+  }
+</ul>

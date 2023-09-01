@@ -10,7 +10,7 @@ import Layout from "../layouts/Layout.astro";
 export const prerender = true;
 
 const learned = sortLearnedByDate(
-  getLiveLearned(await getCollection("learned"))
+  getLiveLearned(await getCollection("learned")),
 );
 ---
 
@@ -18,7 +18,9 @@ const learned = sortLearnedByDate(
   title="Today I Learned | The Frontview"
   description="Overview page of all Today I Learned articles, sorted by date from the most recent to the oldest article."
 >
-  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">Today I Learned</h1>
+  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24" transition:name="learned">
+    Today I Learned
+  </h1>
   <div class="mt-4">
     <Overview learned={learned} />
   </div>

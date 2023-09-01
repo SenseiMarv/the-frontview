@@ -26,7 +26,13 @@ const formattedReadingTime = `${readingTime} min read`;
   >
     <div class="grid grid-cols-1">
       <div class="z-10 col-start-1 row-start-1">
-        <Image src={cover} width={272} height={153} alt="Blogpost cover" />
+        <Image
+          src={cover}
+          width={272}
+          height={153}
+          alt="Blogpost cover"
+          transition:name="post-cover"
+        />
       </div>
       <div
         class="z-0 col-start-1 row-start-1 animate-pulse bg-gray-300 dark:bg-gray-600"
@@ -47,7 +53,9 @@ const formattedReadingTime = `${readingTime} min read`;
         />
         {formattedReadingTime}
       </h3>
-      <h2 class="mt-1 line-clamp-2 text-xl">{title}</h2>
+      <h2 class="mt-1 line-clamp-2 text-xl" transition:name="post-title">
+        {title}
+      </h2>
     </div>
   </div>
 </a>

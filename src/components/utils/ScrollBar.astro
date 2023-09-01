@@ -4,19 +4,24 @@
 >
 </div>
 <script>
-  const scrollProgress = document.getElementById("scroll-progress");
+  const setScrollProgress = () => {
+    const scrollProgress = document.getElementById("scroll-progress");
 
-  if (scrollProgress) {
-    const height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
+    if (scrollProgress) {
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
 
-    window.addEventListener("scroll", () => {
-      const scrollTop =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      const scrollAmount =
-        (scrollTop / height) * 100 > 100 ? 100 : (scrollTop / height) * 100;
-      scrollProgress.style.width = `${scrollAmount}%`;
-    });
-  }
+      window.addEventListener("scroll", () => {
+        const scrollTop =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const scrollAmount =
+          (scrollTop / height) * 100 > 100 ? 100 : (scrollTop / height) * 100;
+        scrollProgress.style.width = `${scrollAmount}%`;
+      });
+    }
+  };
+
+  setScrollProgress();
+  document.addEventListener("astro:page-load", setScrollProgress);
 </script>

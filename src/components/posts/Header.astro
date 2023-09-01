@@ -38,7 +38,7 @@ const formattedReadingTime = `${readingTime} min read`;
 ---
 
 <div class="flex flex-col items-center">
-  <h1 class="text-5xl leading-snug md:text-6xl">
+  <h1 class="text-5xl leading-snug md:text-6xl" transition:name="post-title">
     {title}
   </h1>
   <div
@@ -90,7 +90,13 @@ const formattedReadingTime = `${readingTime} min read`;
   </div>
   <div class="mt-8 grid grid-cols-1 shadow-xl md:mt-10">
     <div class="z-10 col-start-1 row-start-1">
-      <Image src={cover} width={600} height={337.5} alt="Blogpost cover" />
+      <Image
+        src={cover}
+        width={600}
+        height={337.5}
+        alt="Blogpost cover"
+        transition:name="post-cover"
+      />
     </div>
     <div
       class="z-0 col-start-1 row-start-1 animate-pulse bg-gray-300 dark:bg-gray-600"

@@ -3,6 +3,8 @@ import "@fontsource/quicksand";
 import "@fontsource/inter";
 import "@fontsource/source-code-pro";
 
+// eslint-disable-next-line import/no-unresolved
+import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
 import defaultTheme from "tailwindcss/defaultTheme.js";
 
@@ -115,6 +117,7 @@ const headingFontFamily = [
       twitter={twitter}
     />
     <Analytics />
+    <ViewTransitions />
   </head>
   <body
     class="container mx-auto max-w-2xl bg-gray-50 dark:bg-gray-800 dark:text-white md:max-w-5xl xl:max-w-5xl 2xl:max-w-5xl"

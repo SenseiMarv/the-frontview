@@ -1,11 +1,11 @@
 <script is:inline>
-  document.documentElement.setAttribute(
-    "data-theme",
-    localStorage.getItem("theme") ?? "dark"
-  );
-</script>
-<script>
-  import { themeChange } from "theme-change";
+  const setDarkMode = () => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      localStorage.getItem("theme") ?? "dark",
+    );
+  };
 
-  themeChange();
+  setDarkMode();
+  document.addEventListener("astro:after-swap", setDarkMode);
 </script>

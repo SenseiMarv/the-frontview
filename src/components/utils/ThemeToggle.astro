@@ -3,8 +3,7 @@ import Icon from "./Icon.astro";
 ---
 
 <button
-  data-toggle-theme="light,dark"
-  data-act-class="ACTIVECLASS"
+  id="theme-toggle"
   class="transition-colors duration-300 hover:text-teal-700 active:!text-teal-400 active:duration-100 dark:hover:text-teal-500 dark:active:!text-teal-700"
   aria-label="Toggle light/dark theme"
 >
@@ -14,3 +13,17 @@ import Icon from "./Icon.astro";
     classString="hover:fill-teal-500 !align-top"
   />
 </button>
+<script>
+  const setTheme = () => {
+    const button = document.getElementById("theme-toggle");
+
+    button?.addEventListener("click", function () {
+      document.documentElement.dataset.theme =
+        document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", document.documentElement.dataset.theme);
+    });
+  };
+
+  setTheme();
+  document.addEventListener("astro:after-swap", setTheme);
+</script>

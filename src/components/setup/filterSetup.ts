@@ -9,5 +9,5 @@ export const getLiveSetup = (setup: SetupCollection[]) =>
   setup.filter(
     (s) =>
       s.data.draft === undefined &&
-      isBefore(new Date(s.data.pubDate), new Date())
+      isBefore(new Date(s.data.pubDate), new Date()),
   );

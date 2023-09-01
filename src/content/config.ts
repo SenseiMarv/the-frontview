@@ -9,10 +9,10 @@ const postsCollectionSchema = rssSchema.merge(
     pubDate: z.string(),
     upDate: z.string().optional(),
     tags: z.string(),
-    imgUrl: z.string(),
-    imgAuthor: z.string(),
-    imgAuthorUrl: z.string(),
-  })
+    cover: z.string(),
+    coverAuthor: z.string(),
+    coverAuthorUrl: z.string(),
+  }),
 );
 
 export type PostsCollection = Omit<CollectionEntry<"posts">, "data"> & {
@@ -37,7 +37,7 @@ const learnedCollectionSchema = rssSchema.merge(
     pubDate: z.string(),
     upDate: z.string().optional(),
     tags: z.string(),
-  })
+  }),
 );
 
 export type LearnedCollection = Omit<CollectionEntry<"learned">, "data"> & {
@@ -61,7 +61,7 @@ const setupCollectionSchema = rssSchema.merge(
     description: z.string(),
     pubDate: z.string(),
     upDate: z.string().optional(),
-  })
+  }),
 );
 
 export type SetupCollection = Omit<CollectionEntry<"setup">, "data"> & {

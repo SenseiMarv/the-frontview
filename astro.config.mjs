@@ -1,4 +1,3 @@
-import image from "@astrojs/image";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
@@ -24,12 +23,11 @@ const hostedSiteUrl = "https://www.the-frontview.dev/";
 
 const config = defineConfig({
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    functionPerRoute: false, // Has to be set to false because more than 12 functions would be generated otherwise, which exceeds the Vercel limit
+  }),
   site: hostedSiteUrl,
   integrations: [
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
     mdx({
       syntaxHighlight: false,
       rehypePlugins: [
@@ -40,7 +38,7 @@ const config = defineConfig({
             content: s(
               `svg`,
               { width: 30, height: 30, viewBox: `0 0 30 30` },
-              s(`use`, { href: `#link-icon` })
+              s(`use`, { href: `#link-icon` }),
             ),
           },
         ],
@@ -65,8 +63,6 @@ const config = defineConfig({
         ![
           // Exclude the demo blog post page, as it should not be exposed
           "https://www.the-frontview.dev/posts/demo/",
-          // Exclude the injected internal route from @astrojs/image that leads to the 404 page in the browser
-          "https://www.the-frontview.dev/_image/",
           // Exclude the auto generated RSS feed page URL, as it must not have a trailing slash
           "https://www.the-frontview.dev/rss.xml/",
         ].includes(page),

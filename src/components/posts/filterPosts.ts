@@ -9,5 +9,5 @@ export const getLivePosts = (posts: PostsCollection[]) =>
   posts.filter(
     (post) =>
       post.data.draft === undefined &&
-      isBefore(new Date(post.data.pubDate), new Date())
+      isBefore(new Date(post.data.pubDate), new Date()),
   );

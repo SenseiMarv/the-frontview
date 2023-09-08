@@ -24,7 +24,6 @@ const hostedSiteUrl = "https://www.the-frontview.dev/";
 const config = defineConfig({
   output: "server",
   adapter: vercel({
-    analytics: true,
     functionPerRoute: false, // Has to be set to false because more than 12 functions would be generated otherwise, which exceeds the Vercel limit
   }),
   site: hostedSiteUrl,
@@ -59,7 +58,6 @@ const config = defineConfig({
     sitemap({
       // Include the RSS feed page URL as it must appear, without the trailing slash
       customPages: [`${hostedSiteUrl}rss.xml`],
-      // Exclude the demo blog post page, as it should not be exposed
       filter: (page) =>
         ![
           // Exclude the demo blog post page, as it should not be exposed

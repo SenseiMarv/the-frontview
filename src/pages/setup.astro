@@ -10,7 +10,7 @@ import Layout from "../layouts/Layout.astro";
 export const prerender = true;
 
 const setup = sortSetupByCustomOrder(
-  getLiveSetup(await getCollection("setup"))
+  getLiveSetup(await getCollection("setup")),
 );
 ---
 
@@ -18,7 +18,9 @@ const setup = sortSetupByCustomOrder(
   title="My Setup | The Frontview"
   description="Overview page of all My Setup articles, sorted by date from the most recent to the oldest article."
 >
-  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">My Setup</h1>
+  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24" transition:name="setup">
+    My Setup
+  </h1>
   <div class="mt-4">
     <Overview setup={setup} />
   </div>

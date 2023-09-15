@@ -38,7 +38,7 @@ const formattedReadingTime = `${readingTime} min read`;
 ---
 
 <div class="flex flex-col items-center">
-  <h1 class="text-5xl leading-snug md:text-6xl" transition:name="post-title">
+  <h1 class="text-5xl leading-snug md:text-6xl">
     {title}
   </h1>
   <div
@@ -95,7 +95,7 @@ const formattedReadingTime = `${readingTime} min read`;
         width={600}
         height={337.5}
         alt="Blogpost cover"
-        transition:name="post-cover"
+        transition:name={`post-cover-${title}`}
       />
     </div>
     <div

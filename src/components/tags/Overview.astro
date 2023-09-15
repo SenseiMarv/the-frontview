@@ -19,7 +19,7 @@ const { tags, prefetch = false } = Astro.props;
           prefetch={prefetch}
           classString="!inline"
         >
-          {tag[0]}
+          <span transition:name={`tag-${tag[0]}`}>{tag[0]}</span>
           <div class="ml-2 inline-block text-gray-500 dark:text-gray-400">
             ({tag[1]})
           </div>

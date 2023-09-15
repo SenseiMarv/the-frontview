@@ -25,7 +25,10 @@ const formattedReadingTime = `${readingTime} min read`;
   <h2 class="text-3xl leading-snug md:text-4xl" transition:name="learned">
     Today I Learned
   </h2>
-  <h1 class="text-5xl leading-snug md:text-6xl" transition:name="learned-title">
+  <h1
+    class="text-5xl leading-snug md:text-6xl"
+    transition:name={`learned-title-${title}`}
+  >
     {title}
   </h1>
   <div

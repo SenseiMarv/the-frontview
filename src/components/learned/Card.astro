@@ -40,7 +40,10 @@ const formattedReadingTime = `${readingTime} min read`;
         />
         {formattedReadingTime}
       </h3>
-      <h2 class="mt-1 line-clamp-1 text-xl" transition:name="learned-title">
+      <h2
+        class="mt-1 line-clamp-1 text-xl"
+        transition:name={`learned-title-${title}`}
+      >
         {title}
       </h2>
     </div>

@@ -14,7 +14,9 @@ const tagList = getTags(tags);
 {
   tagList.map((tag: string, index: number) => (
     <span class="mr-1 inline-flex">
-      <NavLink href={`/tags/${tag}/`}>{tag}</NavLink>
+      <NavLink href={`/tags/${tag}/`}>
+        <span transition:name={`tag-${tag}`}>{tag}</span>
+      </NavLink>
       {tagList[index + 1] !== undefined && ","}
     </span>
   ))

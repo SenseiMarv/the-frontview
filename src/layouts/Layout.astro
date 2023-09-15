@@ -98,6 +98,18 @@ const headingFontFamily = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <Theme />
+    <script
+      src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
+    ></script>
+    <Analytics />
+    <ViewTransitions />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={openGraph}
+      twitter={twitter}
+    />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -106,18 +118,6 @@ const headingFontFamily = [
     <meta name="msapplication-TileColor" content="#00aba9" />
     <meta name="theme-color" content="#1f2937" />
     <meta name="generator" content={Astro.generator} />
-    <script
-      src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"
-    ></script>
-    <Theme />
-    <SEO
-      title={title}
-      description={description}
-      openGraph={openGraph}
-      twitter={twitter}
-    />
-    <Analytics />
-    <ViewTransitions />
   </head>
   <body
     class="container mx-auto max-w-2xl bg-gray-50 dark:bg-gray-800 dark:text-white md:max-w-5xl xl:max-w-5xl 2xl:max-w-5xl"

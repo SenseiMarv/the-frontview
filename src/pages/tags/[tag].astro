@@ -25,7 +25,7 @@ const postsWithTag = posts.filter((post) => {
 });
 
 const learned = sortLearnedByDate(
-  getLiveLearned(await getCollection("learned"))
+  getLiveLearned(await getCollection("learned")),
 );
 const learnedWithTag = learned.filter((learning) => {
   if (tag === undefined) {
@@ -45,7 +45,9 @@ if (postsWithTag.length === 0 && learnedWithTag.length === 0) {
   title={`Tag ${tag} | The Frontview`}
   description={`Overview page of all the posts and Today I Learned articles with the tag "${tag}" on my blog, sorted by date from most recent to oldest.`}
 >
-  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">Tag {tag}</h1>
+  <h1 class="mb-8 mt-12 text-6xl md:mb-16 md:mt-24">
+    Tag <span transition:name={`tag-${tag}`}>{tag}</span>
+  </h1>
   {
     postsWithTag.length > 0 && (
       <>

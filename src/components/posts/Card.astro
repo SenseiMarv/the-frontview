@@ -31,7 +31,7 @@ const formattedReadingTime = `${readingTime} min read`;
           width={272}
           height={153}
           alt="Blogpost cover"
-          transition:name="post-cover"
+          transition:name={`post-cover-${title}`}
         />
       </div>
       <div
@@ -53,7 +53,7 @@ const formattedReadingTime = `${readingTime} min read`;
         />
         {formattedReadingTime}
       </h3>
-      <h2 class="mt-1 line-clamp-2 text-xl" transition:name="post-title">
+      <h2 class="mt-1 line-clamp-2 text-xl">
         {title}
       </h2>
     </div>

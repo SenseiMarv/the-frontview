@@ -1,0 +1,153 @@
+---
+title: "Migrating to Antidote from Antigen"
+description: "Still using Antigen to manage your ZSH plugins? It's time to migrate to Antidote! This blog post will guide you through the (actually simple) migration process."
+pubDate: "2023-09-19"
+tags: "terminal, migration, antidote"
+cover: "/images/posts/migrating-to-antidote-from-antigen/cover.png"
+---
+
+import Divider from "../../components/utils/Divider.astro";
+import ExternalLink from "../../components/utils/ExternalLink.astro";
+import Icon from "../../components/utils/Icon.astro";
+import Image from "../../components/utils/Image.astro";
+
+## Table of contents
+
+## Antigen is dead
+
+Antigen was the quasi-standard plugin manager for ZSH. It's been around for a long time, provided a nice user experience and helped me build a solid, effortless ZSH plugin config. But it's kind of abandoned now. The last commit was in 2019, and the last release was in 2018. While this is not a problem per se, as once set up everything still works fine, the competition has long since surpassed Antigen in terms of features and usability. Other solutions have become more popular and faster, and Antigen is no longer the solution of choice when building a new ZSH config.
+
+## Long live Antidote
+
+There is a long list of alternatives to Antigen, as discussed in the <ExternalLink href="https://github.com/zsh-users/antigen/issues/725">Is this project dead?</ExternalLink> issue in Antigen's GitHub repository. Antidote stands out here because it was explicitly created as a successor to Antibody (a derivative of Antigen), as the author also states in <ExternalLink href="https://github.com/mattmc3/antidote/blob/main/README.md">Antidote's README</ExternalLink>:
+
+> [Antidote](https://getantidote.github.io/) is a feature-complete Zsh implementation of the legacy [Antibody](https://github.com/getantibody/antibody) plugin manager, which in turn was derived from [Antigen](https://github.com/zsh-users/antigen) Antigen.
+
+This gave me high hopes that a migration could be done with minimal effort. And indeed, it was a piece of cake. Here's how I did it.
+
+## The migration
+
+Before I start with the migration steps, I need to tell you how I configured and used Antigen, as the plugin manager was quite open to different setups. Depending on this, the migration may require more or less work than in my case. However, it should still be pretty straightforward - I mean, we are talking about a plugin manager that pulls Git repos here.
+
+### My Antigen setup
+
+I installed Antigen via Homebrew and added the following configuration to my `.zshrc`:
+
+```zsh title=".zshrc"
+# Enable Antigen
+source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
+
+# Load Antigen configuration
+# ´antigen init´ command doesn't look into bundle configuration changes,
+# thus ´antigen reset´ is needed to reload plugins
+antigen init ~/.antigenrc
+```
+
+As you can see, I used the init command to speed up load times by improving the cache performance. It had some drawbacks, like having to call `antigen reset` after changing the bundle configuration, but since I didn't change my plugin setup that often, it was fine for me. To use this command, a separate configuration file had to be created to hold the actual plugin configuration:
+
+```zsh title=".antigenrc"
+# ´antigen init´ command doesn't look into bundle configuration changes,
+# thus ´antigen reset´ is needed to reload plugins
+
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+  fzf
+  autojump
+  dirhistory
+  bgnotify
+  git
+  sudo
+  sdk
+  gradle
+  npm
+  yarn
+  docker
+  docker-compose
+  docker-machine
+  gcloud
+
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+
+  grigorii-zander/zsh-npm-scripts-autocomplete@main
+  redxtech/zsh-yup
+  ntnyq/omz-plugin-pnpm --branch=main
+EOBUNDLES
+
+antigen theme romkatv/powerlevel10k
+
+antigen apply
+```
+
+If your configuration is similar, you can follow the steps below to migrate to Antidote.
+
+### Antigen out, Antidote in
+
+First, remove Antigen from your system. If you installed it via Homebrew, you can do this with the following command:
+
+```zsh
+brew rm antigen
+```
+
+Then you can <ExternalLink href="https://getantidote.github.io/install">install Antidote</ExternalLink>:
+
+```zsh
+brew install antidote
+```
+
+### Migrate the zsh configuration
+
+Remove the sourcing of Antigen and the `antigen init` command from your `.zshrc`. Instead, we now need to source Antidote and initialise the Antidote plugins.
+
+```zsh title=".zshrc"
+# Enable Antidote
+source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+
+# Initialize Antidote plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
+```
+
+### Migrate the plugin configuration
+
+The plugin configuration is now stored in a file called `.zsh_plugins.txt`. This file should be created either in your home directory or in the directory specified by the `ZDOTDIR` environment variable, if it's set. A few things work differently here than in Antigen:
+
+- It's a simple text file with plugins listed on each line
+- You can use comments by prefixing a line with `#`
+- Empty lines are skipped
+- You can use annotations, which I will explain below
+- Antidote uses the file to generate a static `.zsh_plugins.zsh` file, which is then sourced in the `.zshrc`
+
+```txt title=".zsh_plugins.txt"
+romkatv/powerlevel10k
+
+zsh-users/zsh-completions
+belak/zsh-utils path:completion
+
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/autojump
+ohmyzsh/ohmyzsh path:plugins/dirhistory
+ohmyzsh/ohmyzsh path:plugins/bgnotify
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/sudo
+ohmyzsh/ohmyzsh path:plugins/sdk
+ohmyzsh/ohmyzsh path:plugins/gradle
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/yarn
+ohmyzsh/ohmyzsh path:plugins/gcloud
+
+grigorii-zander/zsh-npm-scripts-autocomplete
+redxtech/zsh-yup
+ntnyq/omz-plugin-pnpm
+
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+```
+
+Antidote doesn't support Antigen's commands, but you can use annotations to achieve the same result. Annotations are added at the end of a plugin line, separated by a space. The annotation `path` allows you to specify the subdirectory where the plugin is located, which is particularly useful for frameworks, and is used here for `belak/zsh-utils` and `ohmyzsh/ohmyzsh`. There are also other annotations which can be found in the <ExternalLink href="https://getantidote.github.io/options">Antidote documentation</ExternalLink>.
+
+?> It is important to think about the order of the listed plugins when creating the plugin configuration. Antidote will source plugins in the order they are listed in the file, so if a plugin depends on another plugin, it must be listed after it. In my case, I had to move the zsh-users plugins to the bottom of the list.
+
+There are a lot of helpful comments in the <ExternalLink href="https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt">sample Zsh config</ExternalLink>, which I recommend you take a look at. They can help you with the migration and also give you an idea of what else you can do with Antidote and ZSH plugins in general.

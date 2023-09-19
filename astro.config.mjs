@@ -46,7 +46,14 @@ const config = defineConfig({
           },
         ],
         [rehypeAddClasses, { "h1,h2,h3,h4,h5,h6": "heading" }],
-        [rehypeWrap, { selector: "table", wrapper: "div.table-container" }],
+        [
+          rehypeWrap,
+          {
+            selector: "table",
+            wrapper: "div.table-container",
+            fallback: false,
+          },
+        ],
       ],
       remarkPlugins: [
         postReadingTimePlugin,

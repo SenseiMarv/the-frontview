@@ -51,13 +51,19 @@ const checkHeader = async (page) => {
 
 const checkFooter = async (page) => {
   await expect(
-    page.getByText("Copyright (c) 2022 Marvin Stickel. MIT License."),
+    page
+      .getByRole("contentinfo")
+      .getByText("Copyright (c) 2022 Marvin Stickel. MIT License."),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Buy Me a Coffee", exact: true }),
+    page
+      .getByRole("contentinfo")
+      .getByRole("link", { name: "Buy Me a Coffee", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Privacy policy", exact: true }),
+    page
+      .getByRole("contentinfo")
+      .getByRole("link", { name: "Privacy policy", exact: true }),
   ).toBeVisible();
 };
 
@@ -151,7 +157,7 @@ test("first post page", async ({ page }) => {
     .nth(1)
     .innerText();
   const navigationPromise = page.waitForNavigation({
-    waitUntil: "domcontentloaded",
+    waitUntil: "load",
   });
   await page.getByRole("listitem").first().click();
   const navigationPromiseResponse = await navigationPromise;
@@ -193,6 +199,9 @@ test("first post page", async ({ page }) => {
   await expect(page.getByRole("link").filter({ hasText: "Xing" })).toHaveCount(
     2,
   );
+
+  // Article
+  await expect(page.getByRole("article")).toBeVisible();
 
   // Comments
   await expect(page.getByTitle("Comments")).toBeVisible();
@@ -237,7 +246,7 @@ test("first learned page", async ({ page }) => {
     .nth(1)
     .innerText();
   const navigationPromise = page.waitForNavigation({
-    waitUntil: "domcontentloaded",
+    waitUntil: "load",
   });
   await page.getByRole("list").nth(1).getByRole("listitem").first().click();
   const navigationPromiseResponse = await navigationPromise;
@@ -278,6 +287,9 @@ test("first learned page", async ({ page }) => {
   await expect(page.getByRole("link").filter({ hasText: "Xing" })).toHaveCount(
     2,
   );
+
+  // Article
+  await expect(page.getByRole("article")).toBeVisible();
 
   // Comments
   await expect(page.getByTitle("Comments")).toBeVisible();
@@ -320,7 +332,7 @@ test("first setup page", async ({ page }) => {
     .nth(1)
     .innerText();
   const navigationPromise = page.waitForNavigation({
-    waitUntil: "domcontentloaded",
+    waitUntil: "load",
   });
   await page.getByRole("list").nth(2).getByRole("listitem").first().click();
   const navigationPromiseResponse = await navigationPromise;
@@ -361,6 +373,9 @@ test("first setup page", async ({ page }) => {
   await expect(page.getByRole("link").filter({ hasText: "Xing" })).toHaveCount(
     2,
   );
+
+  // Article
+  await expect(page.getByRole("article")).toBeVisible();
 
   // Comments
   await expect(page.getByTitle("Comments")).toBeVisible();
@@ -416,120 +431,175 @@ test("components", async ({ page }) => {
 
   // Table of contents
   await expect(
-    page.getByRole("heading", { name: "Table of contents" }),
+    page
+      .getByRole("article")
+      .getByRole("heading", { name: "Table of contents" }),
   ).toBeVisible();
-  await expect(page.getByRole("list").first()).toBeVisible();
   await expect(
-    page.getByRole("list").first().getByRole("listitem"),
-  ).toHaveCount(23);
+    page.getByRole("article").getByRole("list").first(),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("list").first().getByRole("listitem"),
+  ).toHaveCount(24);
 
   // List
   await expect(
-    page.getByRole("heading", { name: "List", exact: true }),
+    page
+      .getByRole("article")
+      .getByRole("heading", { name: "List", exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("list").nth(1)).toBeVisible();
-  await expect(page.getByRole("list").nth(1).getByRole("listitem")).toHaveCount(
-    3,
-  );
+  await expect(
+    page.getByRole("article").getByRole("list").nth(2),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("list").nth(2).getByRole("listitem"),
+  ).toHaveCount(3);
 
   // Tasklist
-  await expect(page.getByRole("heading", { name: "Tasklist" })).toBeVisible();
-  await expect(page.getByRole("list").nth(2)).toBeVisible();
-  await expect(page.getByRole("list").nth(2).getByRole("listitem")).toHaveCount(
-    2,
-  );
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "Tasklist" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("list").nth(3),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("list").nth(3).getByRole("listitem"),
+  ).toHaveCount(2);
 
   // Blockquote
-  await expect(page.getByRole("heading", { name: "Blockquote" })).toBeVisible();
   await expect(
-    page.getByRole("blockquote").filter({ hasText: "Blockquote" }),
-  ).toBeVisible();
-
-  // Panel
-  await expect(page.getByRole("heading", { name: "Panel" })).toBeVisible();
-  await expect(page.getByText("Here is a tip.")).toBeVisible();
-  await expect(page.getByText("And a warning.")).toBeVisible();
-  await expect(page.getByText("Or an error.")).toBeVisible();
-
-  // Table
-  await expect(
-    page.getByRole("heading", { name: "Table", exact: true }),
-  ).toBeVisible();
-  await expect(page.getByRole("table")).toBeVisible();
-  await expect(page.getByRole("row")).toHaveCount(4);
-
-  // Inline code
-  await expect(
-    page.getByRole("heading", { name: "Inline code" }),
-  ).toBeVisible();
-  await expect(page.getByText("const t = {}")).toBeVisible();
-
-  // Code block
-  await expect(page.getByRole("heading", { name: "Code block" })).toBeVisible();
-  await expect(
-    page.getByRole("heading", {
-      name: "With language, title and highlighting",
-    }),
-  ).toBeVisible();
-  await expect(page.getByTitle("examples/index.ts")).toBeVisible();
-  await expect(
-    page.getByTitle("examples/index.ts").getByText("typescript"),
-  ).toBeVisible();
-  await expect(
-    page.getByTitle("examples/index.ts").getByText("examples/index.ts"),
+    page.getByRole("article").getByRole("heading", { name: "Blockquote" }),
   ).toBeVisible();
   await expect(
     page
+      .getByRole("article")
+      .getByRole("blockquote")
+      .filter({ hasText: "Blockquote" }),
+  ).toBeVisible();
+
+  // Panel
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "Panel" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByText("Here is a tip."),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByText("And a warning."),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByText("Or an error."),
+  ).toBeVisible();
+
+  // Table
+  await expect(
+    page
+      .getByRole("article")
+      .getByRole("heading", { name: "Table", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("article").getByRole("table")).toBeVisible();
+  await expect(page.getByRole("article").getByRole("row")).toHaveCount(4);
+
+  // Inline code
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "Inline code" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByText("const t = {}"),
+  ).toBeVisible();
+
+  // Code block
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "Code block" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", {
+      name: "With language, title and highlighting",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByTitle("examples/index.ts"),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("article")
+      .getByTitle("examples/index.ts")
+      .getByText("typescript"),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("article")
+      .getByTitle("examples/index.ts")
+      .getByText("examples/index.ts"),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("article")
       .getByTitle("examples/index.ts")
       .getByText("export function absolute(num: number) {")
       .first(),
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", {
+    page.getByRole("article").getByRole("heading", {
       name: "With language, without title or highlighting",
     }),
   ).toBeVisible();
   await expect(
     page
+      .getByRole("article")
       .getByText(
         "typescriptexport function absolute(num: number) {if (num < 0) return num \\* -1;r",
       )
       .nth(1),
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", {
+    page.getByRole("article").getByRole("heading", {
       name: "Without language, title or highlighting",
     }),
   ).toBeVisible();
   await expect(
-    page.getByText("export function absolute(num: number) {").nth(2),
+    page
+      .getByRole("article")
+      .getByText("export function absolute(num: number) {")
+      .nth(2),
   ).toBeVisible();
 
   // Footnotes
-  await expect(page.getByRole("heading", { name: "Footnotes" })).toHaveCount(2);
-  await expect(page.getByText("Note 11")).toBeVisible();
-  await expect(page.getByText("Note 22")).toBeVisible();
-  await expect(page.getByText("Footnote 1")).toBeVisible();
-  await expect(page.getByText("Footnote 2")).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "Footnotes" }),
+  ).toHaveCount(2);
+  await expect(page.getByRole("article").getByText("Note 11")).toBeVisible();
+  await expect(page.getByRole("article").getByText("Note 22")).toBeVisible();
+  await expect(page.getByRole("article").getByText("Footnote 1")).toBeVisible();
+  await expect(page.getByRole("article").getByText("Footnote 2")).toBeVisible();
 
   // Divider
-  await expect(page.getByRole("heading", { name: "Divider" })).toBeVisible();
-  await expect(page.locator(".my-8")).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "Divider" }),
+  ).toBeVisible();
+  await expect(page.getByRole("article").locator(".my-8")).toBeVisible();
 
   // External link with favicon
   await expect(
-    page.getByRole("heading", { name: "External link with favicon" }),
+    page
+      .getByRole("article")
+      .getByRole("heading", { name: "External link with favicon" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Favicon TailwindCSS" }),
+    page
+      .getByRole("article")
+      .getByRole("link", { name: "Favicon TailwindCSS" }),
   ).toBeVisible();
 
   // Icon
   await expect(
-    page.getByRole("heading", { name: "Icon", exact: true }),
+    page
+      .getByRole("article")
+      .getByRole("heading", { name: "Icon", exact: true }),
   ).toBeVisible();
   await expect(
     page
+      .getByRole("article")
       .getByRole("paragraph")
       .filter({ hasText: "Lorem, ipsum" })
       .locator("svg"),
@@ -537,26 +607,53 @@ test("components", async ({ page }) => {
 
   // Embedded content
   await expect(
-    page.getByRole("heading", { name: "Embedded content" }),
-  ).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Image" })).toBeVisible();
-  await expect(page.getByRole("img", { name: "Programmer" })).toBeVisible();
-  await expect(
-    page.getByText("Description with support for any component"),
+    page
+      .getByRole("article")
+      .getByRole("heading", { name: "Embedded content" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("code").filter({ hasText: "component" }),
+    page.getByRole("article").getByRole("heading", { name: "Image" }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Gif" })).toBeVisible();
-  await expect(page.getByRole("img", { name: "Wow" })).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("img", { name: "Programmer" }),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("article")
+      .getByText("Description with support for any component"),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("article")
+      .getByRole("code")
+      .filter({ hasText: "component" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "Gif" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("img", { name: "Wow" }),
+  ).toBeVisible();
 
   // Headings
-  await expect(page.getByRole("heading", { name: "H1" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "H2" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "H3" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "H4" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "H5" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "H6" })).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "H1" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "H2" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "H3" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "H4" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "H5" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("article").getByRole("heading", { name: "H6" }),
+  ).toBeVisible();
 
   // Comments
   await expect(page.getByTitle("Comments")).toBeVisible();
@@ -594,7 +691,7 @@ test("first tag page", async ({ page }) => {
     await page.getByRole("listitem").first().innerText()
   ).replace(/\(.*\)/, "");
   const navigationPromise = page.waitForNavigation({
-    waitUntil: "domcontentloaded",
+    waitUntil: "load",
   });
   await page.getByRole("listitem").first().getByRole("link").click();
   const navigationPromiseResponse = await navigationPromise;

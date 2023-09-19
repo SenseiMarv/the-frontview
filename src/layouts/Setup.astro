@@ -15,7 +15,10 @@ export interface Props {
 
 const { frontmatter, readingTime } = Astro.props;
 
-const date = new Date(frontmatter.pubDate).toISOString();
+const pubDate = new Date(frontmatter.pubDate).toISOString();
+const upDate = frontmatter.upDate
+  ? new Date(frontmatter.upDate).toISOString()
+  : undefined;
 const defaultOpenGraphType = "article";
 const defaultOpenGraphImageAlt = "Setup article cover";
 const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
@@ -28,7 +31,8 @@ const defaultTwitterCard = "summary_large_image";
   openGraphTitle={frontmatter.title}
   openGraphType={defaultOpenGraphType}
   openGraphImageAlt={defaultOpenGraphImageAlt}
-  openGraphArticlePublishedTime={date}
+  openGraphArticlePublishedTime={pubDate}
+  openGraphArticleModifiedTime={upDate}
   openGraphArticleAuthor={defaultOpenGraphArticleAuthor}
   twitterCard={defaultTwitterCard}
 >
@@ -44,7 +48,9 @@ const defaultTwitterCard = "summary_large_image";
   <div class="my-4 md:my-8">
     <Divider noSpacing />
   </div>
-  <slot />
+  <article>
+    <slot />
+  </article>
   <div class="mb-4 mt-8 md:mb-8 md:mt-16">
     <Divider noSpacing />
   </div>

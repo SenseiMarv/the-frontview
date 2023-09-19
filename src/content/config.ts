@@ -10,8 +10,8 @@ const postsCollectionSchema = rssSchema.merge(
     upDate: z.string().optional(),
     tags: z.string(),
     cover: z.string(),
-    coverAuthor: z.string(),
-    coverAuthorUrl: z.string(),
+    coverAuthor: z.string().optional(),
+    coverAuthorUrl: z.string().optional(),
   }),
 );
 

@@ -16,7 +16,10 @@ export interface Props {
 
 const { frontmatter, readingTime } = Astro.props;
 
-const date = new Date(frontmatter.pubDate).toISOString();
+const pubDate = new Date(frontmatter.pubDate).toISOString();
+const upDate = frontmatter.upDate
+  ? new Date(frontmatter.upDate).toISOString()
+  : undefined;
 const tags = getTags(frontmatter.tags);
 const defaultOpenGraphType = "article";
 const defaultOpenGraphImageAlt = "Blogpost cover";
@@ -31,7 +34,8 @@ const defaultTwitterCard = "summary_large_image";
   openGraphType={defaultOpenGraphType}
   openGraphImage={frontmatter.cover}
   openGraphImageAlt={defaultOpenGraphImageAlt}
-  openGraphArticlePublishedTime={date}
+  openGraphArticlePublishedTime={pubDate}
+  openGraphArticleModifiedTime={upDate}
   openGraphArticleAuthor={defaultOpenGraphArticleAuthor}
   openGraphArticleSection={tags[0]}
   openGraphArticleTags={tags}
@@ -53,7 +57,9 @@ const defaultTwitterCard = "summary_large_image";
   <div class="my-4 md:my-8">
     <Divider noSpacing />
   </div>
-  <slot />
+  <article>
+    <slot />
+  </article>
   <div class="mb-4 mt-8 md:mb-8 md:mt-16">
     <Divider noSpacing />
   </div>

@@ -49,20 +49,25 @@ description: "A description of the content of the blog post."
 pubDate: "The date the blog post was created (in the format YYYY-MM-DD)"
 tags: "A comma-separated list of tags that describe the content of the blog post (preferably 3)"
 cover: "A URL leading to an image to be used as the cover of the blog post (can also be a local file)"
-coverAuthor: "The name of the author of the image used in the header of the blog post"
-coverAuthorUrl: "A URL leading to the source of the image used in the header of the blog post"
 ---
 ```
 
-Posts can be set to draft status by adding `draft: true` to the frontmatter. A draft post, or a post with a `pubDate` set to a future date, will not be visible on the site (but can be accessed by calling its URL directly).
+When using an image from a third-party source, the `coverAuthor` or `coverAuthor` and `coverAuthorUrl` frontmatter should be added to give credit to the author of the image:
 
-When updating a post, the `upDate` frontmatter should be added with the current date (in the format YYYY-MM-DD).
+```mdx
+coverAuthor: "The name of the author of the image used in the header of the blog post"
+coverAuthorUrl: "A URL leading to the source of the image used in the header of the blog post"
+```
 
 Local images should be stored in [`./public/images/posts`](./public/images/posts). They can be referenced directly in the frontmatter:
 
 ```mdx
 cover: "/images/posts/post-example/cover.png"
 ```
+
+Posts can be set to draft status by adding `draft: true` to the frontmatter. A draft post, or a post with a `pubDate` set to a future date, will not be visible on the site (but can be accessed by calling its URL directly).
+
+When updating a post, the `upDate` frontmatter should be added with the current date (in the format YYYY-MM-DD).
 
 ## Today I Learned articles
 
@@ -75,7 +80,6 @@ A Today I Learned article requires the following frontmatter:
 title: "The title of the Today I Learned article"
 description: "A description of the content of the Today I Learned article."
 pubDate: "The date the Today I Learned article was created (in the format YYYY-MM-DD)"
-upDate: "The date the blog post was last updated (in the format YYYY-MM-DD)"
 tags: "A comma-separated list of tags that describe the content of the Today I Learned article (preferably 3)"
 ---
 ```

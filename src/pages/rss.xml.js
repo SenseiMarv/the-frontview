@@ -28,21 +28,27 @@ export const get = async (context) => {
     title: post.data.title,
     pubDate: new Date(post.data.pubDate),
     description: `${post.data.description}\n\n${postDescriptionAddition}`,
+    categories: post.data.tags.split(", "),
     customData: post.data.customData,
+    author: "marv.stickel@gmail.com (Marvin Stickel)",
     link: `/posts/${post.slug}/`,
   }));
   const learnedItems = learned.map((learning) => ({
     title: `Today I Learned: ${learning.data.title}`,
     pubDate: new Date(learning.data.pubDate),
     description: `${learning.data.description}\n\n${learnedDescriptionAddition}`,
+    categories: learning.data.tags.split(", "),
     customData: learning.data.customData,
+    author: "marv.stickel@gmail.com (Marvin Stickel)",
     link: `/learned/${learning.slug}/`,
   }));
   const setupItems = setup.map((setup) => ({
     title: `My Setup: ${setup.data.title}`,
     pubDate: new Date(setup.data.pubDate),
     description: `${setup.data.description}\n\n${setupDescriptionAddition}`,
+    categories: ["setup"],
     customData: setup.data.customData,
+    author: "marv.stickel@gmail.com (Marvin Stickel)",
     link: `/setup/${setup.slug}/`,
   }));
   const items = [...postItems, ...learnedItems, ...setupItems];

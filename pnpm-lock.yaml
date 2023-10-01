@@ -164,8 +164,8 @@ devDependencies:
     specifier: 0.5.4
     version: 0.5.4(prettier-plugin-astro@0.12.0)(prettier@3.0.3)
   rollup:
-    specifier: 3.29.1
-    version: 3.29.1
+    specifier: 3.29.4
+    version: 3.29.4
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
@@ -6345,8 +6345,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup@3.29.1:
-    resolution: {integrity: sha512-c+ebvQz0VIH4KhhCpDsI+Bik0eT8ZFEVZEYw0cGMVqIP8zc+gnwl7iXCamTw7vzv2MeuZFZfdx5JJIq+ehzDlg==}
+  /rollup@3.29.4:
+    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -7415,7 +7415,7 @@ packages:
     dependencies:
       esbuild: 0.18.20
       postcss: 8.4.29
-      rollup: 3.29.1
+      rollup: 3.29.4
     optionalDependencies:
       fsevents: 2.3.3
 

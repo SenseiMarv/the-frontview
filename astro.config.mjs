@@ -9,6 +9,7 @@ import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 import compressor from "astro-compressor";
 import robotsTxt from "astro-robots-txt";
+import { isBefore } from "date-fns";
 import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import { s } from "hastscript";
@@ -52,9 +53,22 @@ const getTagPages = () => {
       const { data } = matter(fileContent);
 
       /** @type string | undefined */
+      const dataDraft = data.draft;
+      /** @type string | undefined */
+      const dataPubDate = data.pubDate;
+      /** @type string | undefined */
       const dataTags = data.tags;
 
-      if (dataTags) {
+      if (
+        // Exclude draft articles
+        dataDraft === undefined &&
+        dataPubDate &&
+        dataTags &&
+        // Exclude the demo blog post page, as it should not be exposed
+        dataTags !== "demo" &&
+        // Exclude articles that are published past the current date
+        isBefore(new Date(dataPubDate), new Date())
+      ) {
         const tags = dataTags.split(/,\s*/);
 
         tags.forEach((tag) => tagPages.add(`${hostedSiteUrl}tags/${tag}/`));

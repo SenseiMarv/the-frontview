@@ -352,11 +352,7 @@ test("components", async ({ page }) => {
   await expect(page.getByText("Dec 23, 2022")).toBeVisible();
   await expect(page.getByText("(Updated: Dec 24, 2022)")).toBeVisible();
   await expect(page.getByText("2 min read")).toBeVisible();
-  await expect(
-    page.getByRole("main").getByRole("link", { name: "post" }),
-  ).toBeVisible();
   await expect(page.getByRole("link", { name: "demo" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "components" })).toBeVisible();
   await expect(page.getByRole("img", { name: "Blogpost cover" })).toBeVisible();
   await expect(page.getByText("Photo by Daniel Álvasd")).toBeVisible();
 

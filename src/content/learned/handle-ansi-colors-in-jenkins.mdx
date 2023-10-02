@@ -1,0 +1,49 @@
+---
+title: "How to handle ANSI colors in Jenkins"
+description: "When using Jenkins, you may encounter some problems with ANSI colors. Uninterpreted escape codes clutter the console output. Today I learned how to fix it."
+pubDate: "2023-10-02"
+tags: "terminal, jenkins"
+---
+
+import Divider from "../../components/utils/Divider.astro";
+import ExternalLink from "../../components/utils/ExternalLink.astro";
+import Icon from "../../components/utils/Icon.astro";
+import Image from "../../components/utils/Image.astro";
+
+## Uninterpreted ANSI Escape Codes
+
+I wrote some JavaScript code to run Cypress on a Jenkins server. Inspecting the console output of the Jenkins job that executed my code revealed a mess of uninterpreted ANSI escape codes:
+
+<Image
+  src="/images/learned/handle-ansi-colors-in-jenkins/uninterpreted-ansi-colors.png"
+  alt="Uninterpreted ANSI escape codes in Jenkins console output"
+  width={800}
+/>
+
+With this amount of junk, it is almost impossible to understand what is actually being printed to the console. Searching for a solution, I found <ExternalLink href="https://github.com/jenkinsci/ansicolor-plugin/issues/193">this GitHub issue</ExternalLink> which pointed me in the right direction.
+
+## Fixing the problem
+
+In order for Jenkins to interpret the color codes correctly, the <ExternalLink href="https://plugins.jenkins.io/ansicolor/">AnsiColor plugin</ExternalLink> needs to be installed. However, it does not work by default. It also needs to be enabled. There are two ways to do this, documented in the plugin's README, but you will probably want to use the method that enables the plugin for the entire pipeline job:
+
+```diff
+pipeline {
+
+     // ...
+
++    options {
++      ansiColor('xterm')
++    }
+
+     // ...
+
+}
+```
+
+Adding this little snippet to the pipeline configuration will make Jenkins interpret ANSI escape codes correctly. The console output now looks much better and can actually be read:
+
+<Image
+  src="/images/learned/handle-ansi-colors-in-jenkins/interpreted-ansi-colors.png"
+  alt="Interpreted ANSI escape codes in Jenkins console output"
+  width={800}
+/>

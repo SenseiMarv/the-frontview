@@ -148,6 +148,9 @@ devDependencies:
   eslint-plugin-tailwindcss:
     specifier: 3.13.0
     version: 3.13.0(tailwindcss@3.3.3)
+  gray-matter:
+    specifier: 4.0.3
+    version: 4.0.3
   husky:
     specifier: 8.0.3
     version: 8.0.3

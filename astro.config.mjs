@@ -9,7 +9,10 @@ import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 import compressor from "astro-compressor";
 import robotsTxt from "astro-robots-txt";
+import { readdirSync, readFileSync } from "fs";
+import matter from "gray-matter";
 import { s } from "hastscript";
+import { extname, join } from "path";
 import rehypeAddClasses from "rehype-add-classes";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeWrap from "rehype-wrap";
@@ -20,6 +23,47 @@ import remarkToc from "remark-toc";
 import { postReadingTimePlugin } from "./plugins/remarkPlugins.mjs";
 
 const hostedSiteUrl = "https://www.the-frontview.dev/";
+
+/**
+ * Returns the URLs of all tag pages by reading the content directory and extracting the tags from the frontmatter of each MDX file.
+ */
+const getTagPages = () => {
+  const contentDir = join(process.cwd(), "src", "content");
+  const subDirs = readdirSync(contentDir, { withFileTypes: true })
+    .filter((dir) => dir.isDirectory())
+    .map((dir) => dir.name);
+
+  /** @type Set<string> */
+  const tagPages = new Set();
+
+  subDirs.forEach((subDir) => {
+    const files = readdirSync(join(contentDir, subDir), {
+      withFileTypes: true,
+    });
+    const mdxFiles = files.filter(
+      (file) => file.isFile() && extname(file.name) === ".mdx",
+    );
+
+    mdxFiles.forEach((file) => {
+      const fileContent = readFileSync(
+        join(contentDir, subDir, file.name),
+        "utf-8",
+      );
+      const { data } = matter(fileContent);
+
+      /** @type string | undefined */
+      const dataTags = data.tags;
+
+      if (dataTags) {
+        const tags = dataTags.split(/,\s*/);
+
+        tags.forEach((tag) => tagPages.add(`${hostedSiteUrl}tags/${tag}/`));
+      }
+    });
+  });
+
+  return tagPages;
+};
 
 const config = defineConfig({
   output: "server",
@@ -66,8 +110,11 @@ const config = defineConfig({
     prefetch(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
     sitemap({
-      // Include the RSS feed page URL as it must appear, without the trailing slash
-      customPages: [`${hostedSiteUrl}rss.xml`],
+      customPages: [
+        // Include the RSS feed page URL as it must appear, without the trailing slash
+        `${hostedSiteUrl}rss.xml`,
+        ...getTagPages(),
+      ],
       filter: (page) =>
         ![
           // Exclude the demo blog post page, as it should not be exposed

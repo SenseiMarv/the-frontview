@@ -56,9 +56,10 @@ const checkFooter = async (page) => {
       .getByText("Copyright (c) 2022 Marvin Stickel. MIT License."),
   ).toBeVisible();
   await expect(
-    page
-      .getByRole("contentinfo")
-      .getByRole("link", { name: "Buy Me a Coffee", exact: true }),
+    page.getByRole("contentinfo").getByRole("link", {
+      name: "Buy Me a Coffee Icon Buy Me a Coffee",
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
     page
@@ -68,15 +69,11 @@ const checkFooter = async (page) => {
 };
 
 test("home page", async ({ page }) => {
-  const response = await page.goto(targetUrl, {
-    waitUntil: "domcontentloaded",
+  await page.goto(targetUrl, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "home.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -123,15 +120,11 @@ test("home page", async ({ page }) => {
 });
 
 test("posts page", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/posts`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/posts`, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "posts.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -142,13 +135,9 @@ test("posts page", async ({ page }) => {
 });
 
 test("first post page", async ({ page }) => {
-  const response = await page.goto(targetUrl, {
-    waitUntil: "domcontentloaded",
+  await page.goto(targetUrl, {
+    waitUntil: "load",
   });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   const firstPostTitle = await page
     .getByRole("listitem")
@@ -156,19 +145,12 @@ test("first post page", async ({ page }) => {
     .getByRole("heading")
     .nth(1)
     .innerText();
-  const navigationPromise = page.waitForNavigation({
+  await page.getByRole("listitem").first().click();
+  await page.waitForURL(`${targetUrl}/posts/**`, {
     waitUntil: "load",
   });
-  await page.getByRole("listitem").first().click();
-  const navigationPromiseResponse = await navigationPromise;
 
   await page.screenshot({ path: "postFirst.png", fullPage: true });
-
-  if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
-    throw new Error(
-      `Failed with response code ${navigationPromiseResponse.status()}`,
-    );
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -208,15 +190,11 @@ test("first post page", async ({ page }) => {
 });
 
 test("learned page", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/learned`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/learned`, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "learned.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -229,13 +207,9 @@ test("learned page", async ({ page }) => {
 });
 
 test("first learned page", async ({ page }) => {
-  const response = await page.goto(targetUrl, {
-    waitUntil: "domcontentloaded",
+  await page.goto(targetUrl, {
+    waitUntil: "load",
   });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   const firstLearnedTitle = await page
     .getByRole("list")
@@ -245,19 +219,12 @@ test("first learned page", async ({ page }) => {
     .getByRole("heading")
     .nth(1)
     .innerText();
-  const navigationPromise = page.waitForNavigation({
+  await page.getByRole("list").nth(1).getByRole("listitem").first().click();
+  await page.waitForURL(`${targetUrl}/learned/**`, {
     waitUntil: "load",
   });
-  await page.getByRole("list").nth(1).getByRole("listitem").first().click();
-  const navigationPromiseResponse = await navigationPromise;
 
   await page.screenshot({ path: "learnedFirst.png", fullPage: true });
-
-  if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
-    throw new Error(
-      `Failed with response code ${navigationPromiseResponse.status()}`,
-    );
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -296,15 +263,11 @@ test("first learned page", async ({ page }) => {
 });
 
 test("setup page", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/setup`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/setup`, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "setup.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -315,13 +278,9 @@ test("setup page", async ({ page }) => {
 });
 
 test("first setup page", async ({ page }) => {
-  const response = await page.goto(targetUrl, {
-    waitUntil: "domcontentloaded",
+  await page.goto(targetUrl, {
+    waitUntil: "load",
   });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   const firstSetupTitle = await page
     .getByRole("list")
@@ -331,19 +290,12 @@ test("first setup page", async ({ page }) => {
     .getByRole("heading")
     .nth(1)
     .innerText();
-  const navigationPromise = page.waitForNavigation({
+  await page.getByRole("list").nth(2).getByRole("listitem").first().click();
+  await page.waitForURL(`${targetUrl}/setup/**`, {
     waitUntil: "load",
   });
-  await page.getByRole("list").nth(2).getByRole("listitem").first().click();
-  const navigationPromiseResponse = await navigationPromise;
 
   await page.screenshot({ path: "setupFirst.png", fullPage: true });
-
-  if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
-    throw new Error(
-      `Failed with response code ${navigationPromiseResponse.status()}`,
-    );
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -382,15 +334,11 @@ test("first setup page", async ({ page }) => {
 });
 
 test("components", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/posts/demo`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/posts/demo`, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "components.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -660,15 +608,11 @@ test("components", async ({ page }) => {
 });
 
 test("tags page", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/tags`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/tags`, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "tags.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -679,30 +623,19 @@ test("tags page", async ({ page }) => {
 });
 
 test("first tag page", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/tags`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/tags`, {
+    waitUntil: "load",
   });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   const firstTagName = (
     await page.getByRole("listitem").first().innerText()
   ).replace(/\(.*\)/, "");
-  const navigationPromise = page.waitForNavigation({
+  await page.getByRole("listitem").first().getByRole("link").click();
+  await page.waitForURL(`${targetUrl}/tags/**`, {
     waitUntil: "load",
   });
-  await page.getByRole("listitem").first().getByRole("link").click();
-  const navigationPromiseResponse = await navigationPromise;
 
   await page.screenshot({ path: "tagsFirst.png", fullPage: true });
-
-  if (navigationPromiseResponse && navigationPromiseResponse.status() > 399) {
-    throw new Error(
-      `Failed with response code ${navigationPromiseResponse.status()}`,
-    );
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -739,15 +672,11 @@ test("first tag page", async ({ page }) => {
 });
 
 test("privacy policy page", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/privacy`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/privacy`, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "privacy.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 
   await checkHeader(page);
   await checkFooter(page);
@@ -765,13 +694,9 @@ test("privacy policy page", async ({ page }) => {
 });
 
 test("rss page", async ({ page }) => {
-  const response = await page.goto(`${targetUrl}/rss.xml`, {
-    waitUntil: "domcontentloaded",
+  await page.goto(`${targetUrl}/rss.xml`, {
+    waitUntil: "load",
   });
 
   await page.screenshot({ path: "rss.png", fullPage: true });
-
-  if (response && response.status() > 399) {
-    throw new Error(`Failed with response code ${response.status()}`);
-  }
 });

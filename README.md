@@ -19,6 +19,8 @@ From the root of the project, from a terminal:
 2. Run `pnpm start` to start a local dev server
 3. Access the local dev server at http://localhost:3000
 
+To run the test commands, like `pnpm test`, you need to have the correct version of the Playwright browsers installed. You can install them by running `pnpm exec playwright install`.
+
 ## Commands
 
 All commands are run from the root of the project, from a terminal:

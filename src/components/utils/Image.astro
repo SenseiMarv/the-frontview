@@ -20,10 +20,11 @@ const { src, alt, width = defaultWidth, height = defaultHeight } = Astro.props;
     <div class="z-10 col-start-1 row-start-1">
       <a
         href={src}
+        aria-label={`Enlarge image ${alt}`}
         data-pswp-width={width}
         data-pswp-height={height}
         target="_blank"
-        class="pswp-children"
+        class="pswp-children cursor-zoom-in"
       >
         <AstroImage src={src} alt={alt} width={width} height={height} />
       </a>

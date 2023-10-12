@@ -4,6 +4,7 @@ import HeadingLinkSvg from "../components/learned/HeadingLinkSvg.astro";
 import { getTags } from "../components/tags/sortTags.js";
 import Divider from "../components/utils/Divider.astro";
 import Giscus from "../components/utils/Giscus.astro";
+import PhotoSwipe from "../components/utils/PhotoSwipe.astro";
 import ScrollBar from "../components/utils/ScrollBar.astro";
 import Share from "../components/utils/Share.astro";
 import type { LearnedCollection } from "../content/config.js";
@@ -66,4 +67,5 @@ const defaultTwitterCard = "summary_large_image";
     <Giscus />
   </div>
   <HeadingLinkSvg />
+  <PhotoSwipe />
 </Layout>

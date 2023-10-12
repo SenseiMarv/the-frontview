@@ -1,0 +1,31 @@
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  const setLightbox = () => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "article",
+      children: ".pswp-children",
+      pswpModule: () => import("photoswipe"),
+    });
+    lightbox.init();
+  };
+
+  setLightbox();
+  document.addEventListener("astro:page-load", setLightbox);
+</script>
+<style is:inline>
+  .pswp {
+    --pswp-bg: #030712;
+    --pswp-icon-color: #9ca3af;
+    --pswp-icon-stroke-width: 0;
+  }
+  .pswp__button svg {
+    transition-property: fill;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  .pswp__button:hover svg {
+    fill: #14b8a6;
+  }
+</style>

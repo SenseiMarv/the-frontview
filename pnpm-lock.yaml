@@ -32,6 +32,9 @@ dependencies:
   mdast-util-to-string:
     specifier: 4.0.0
     version: 4.0.0
+  photoswipe:
+    specifier: 5.4.2
+    version: 5.4.2
   reading-time:
     specifier: 2.0.0-1
     version: 2.0.0-1
@@ -5769,6 +5772,11 @@ packages:
       estree-walker: 3.0.3
       is-reference: 3.0.2
     dev: true
+
+  /photoswipe@5.4.2:
+    resolution: {integrity: sha512-z5hr36nAIPOZbHJPbCJ/mQ3+ZlizttF9za5gKXKH/us1k4KNHaRbC63K1Px5sVVKUtGb/2+ixHpKqtwl0WAwvA==}
+    engines: {node: '>= 0.12.0'}
+    dev: false
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}

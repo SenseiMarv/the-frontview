@@ -2,7 +2,7 @@
 import type {
   LearnedCollection,
   RenderedLearnedCollection,
-} from "../../content/config.js";
+} from "../../content/config";
 import Card from "./Card.astro";
 
 export interface Props {
@@ -14,8 +14,8 @@ const { learned, prefetch = false } = Astro.props;
 
 const renderedLearned = await Promise.all(
   learned.map(
-    (learning) => learning.render() as unknown as RenderedLearnedCollection
-  )
+    (learning) => learning.render() as unknown as RenderedLearnedCollection,
+  ),
 );
 ---
 
@@ -25,10 +25,10 @@ const renderedLearned = await Promise.all(
       <>
         <li class="list-none">
           <Card
-            title={learned[index].data.title}
-            pubDate={learned[index].data.pubDate}
+            title={learned[index]?.data.title ?? ""}
+            pubDate={learned[index]?.data.pubDate ?? ""}
             readingTime={learning.remarkPluginFrontmatter.readingTime}
-            url={`/learned/${learned[index].slug}/`}
+            url={`/learned/${learned[index]?.slug}/`}
             prefetch={prefetch}
           />
         </li>

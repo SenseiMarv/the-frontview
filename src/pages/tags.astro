@@ -2,15 +2,15 @@
 // eslint-disable-next-line import/no-unresolved
 import { getCollection } from "astro:content";
 
-import { getLiveLearned } from "../components/learned/filterLearned.js";
-import { getLivePosts } from "../components/posts/filterPosts.js";
+import { getLiveLearned } from "../components/learned/filterLearned";
+import { getLivePosts } from "../components/posts/filterPosts";
 import Overview from "../components/tags/Overview.astro";
-import { sortTagsByUsage } from "../components/tags/sortTags.js";
+import { sortTagsByUsage } from "../components/tags/sortTags";
 import Layout from "../layouts/Layout.astro";
 
 const sortedTags = sortTagsByUsage(
   getLivePosts(await getCollection("posts")),
-  getLiveLearned(await getCollection("learned"))
+  getLiveLearned(await getCollection("learned")),
 );
 ---
 

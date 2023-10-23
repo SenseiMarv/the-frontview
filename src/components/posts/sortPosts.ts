@@ -1,6 +1,6 @@
 import { compareDesc } from "date-fns";
 
-import type { PostsCollection } from "../../content/config.js";
+import type { PostsCollection } from "../../content/config";
 
 export const sortPostsByDate = (posts: PostsCollection[]) => {
   // `sort()` mutates the original array, so it should be called on a clone

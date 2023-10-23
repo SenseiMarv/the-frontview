@@ -2,7 +2,7 @@
 import type {
   PostsCollection,
   RenderedPostsCollection,
-} from "../../content/config.js";
+} from "../../content/config";
 import Card from "./Card.astro";
 
 export interface Props {
@@ -13,7 +13,7 @@ export interface Props {
 const { posts, prefetch = false } = Astro.props;
 
 const renderedPosts = await Promise.all(
-  posts.map((post) => post.render() as unknown as RenderedPostsCollection)
+  posts.map((post) => post.render() as unknown as RenderedPostsCollection),
 );
 ---
 
@@ -23,11 +23,11 @@ const renderedPosts = await Promise.all(
       <>
         <li class="list-none">
           <Card
-            title={posts[index].data.title}
-            cover={posts[index].data.cover}
-            pubDate={posts[index].data.pubDate}
+            title={posts[index]?.data.title ?? ""}
+            cover={posts[index]?.data.cover ?? ""}
+            pubDate={posts[index]?.data.pubDate ?? ""}
             readingTime={post.remarkPluginFrontmatter.readingTime}
-            url={`/posts/${posts[index].slug}/`}
+            url={`/posts/${posts[index]?.slug}/`}
             prefetch={prefetch}
           />
         </li>

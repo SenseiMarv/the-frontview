@@ -2,7 +2,7 @@
 import type {
   RenderedSetupCollection,
   SetupCollection,
-} from "../../content/config.js";
+} from "../../content/config";
 import Card from "./Card.astro";
 
 export interface Props {
@@ -13,7 +13,7 @@ export interface Props {
 const { setup, prefetch = false } = Astro.props;
 
 const renderedSetup = await Promise.all(
-  setup.map((s) => s.render() as unknown as RenderedSetupCollection)
+  setup.map((s) => s.render() as unknown as RenderedSetupCollection),
 );
 ---
 
@@ -23,10 +23,10 @@ const renderedSetup = await Promise.all(
       <>
         <li class="list-none">
           <Card
-            title={setup[index].data.title}
-            pubDate={setup[index].data.pubDate}
+            title={setup[index]?.data.title ?? ""}
+            pubDate={setup[index]?.data.pubDate ?? ""}
             readingTime={s.remarkPluginFrontmatter.readingTime}
-            url={`/setup/${setup[index].slug}/`}
+            url={`/setup/${setup[index]?.slug}/`}
             prefetch={prefetch}
           />
         </li>

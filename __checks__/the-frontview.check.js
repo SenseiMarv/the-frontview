@@ -3,7 +3,9 @@ import { expect, test } from "@playwright/test";
 const targetUrl =
   process.env.ENVIRONMENT_URL ?? "https://www.the-frontview.dev";
 
-const checkHeader = async (page) => {
+const checkHeader = async (
+  /** @type {import("@playwright/test").Page} */ page,
+) => {
   await expect(
     page
       .getByRole("banner")
@@ -49,7 +51,9 @@ const checkHeader = async (page) => {
   ).toBeVisible();
 };
 
-const checkFooter = async (page) => {
+const checkFooter = async (
+  /** @type {import("@playwright/test").Page} */ page,
+) => {
   await expect(
     page
       .getByRole("contentinfo")

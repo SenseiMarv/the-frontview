@@ -3,11 +3,8 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import { compareDesc } from "date-fns";
 
-// @ts-expect-error Ignore 'Relative import paths need explicit file extensions in EcmaScript imports' to avoid getting a 'Could not import' error
 import { getLiveLearned } from "../components/learned/filterLearned";
-// @ts-expect-error Ignore 'Relative import paths need explicit file extensions in EcmaScript imports' to avoid getting a 'Could not import' error
 import { getLivePosts } from "../components/posts/filterPosts";
-// @ts-expect-error Ignore 'Relative import paths need explicit file extensions in EcmaScript imports' to avoid getting a 'Could not import' error
 import { getLiveSetup } from "../components/setup/filterSetup";
 
 const title = "The Frontview";
@@ -19,7 +16,9 @@ const learnedDescriptionAddition =
 const setupDescriptionAddition =
   "Read the full My Setup article on the website.";
 
-export const get = async (context) => {
+export const get = async (
+  /** @type {import("astro").APIContext} */ context,
+) => {
   const posts = getLivePosts(await getCollection("posts"));
   const learned = getLiveLearned(await getCollection("learned"));
   const setup = getLiveSetup(await getCollection("setup"));
@@ -63,7 +62,7 @@ export const get = async (context) => {
   return await rss({
     title,
     description,
-    site: context.site,
+    site: context.site ?? "https://www.the-frontview.dev",
     items: sortedItems,
     stylesheet: "/rss/styles.xsl",
   });

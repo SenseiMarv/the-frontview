@@ -1,8 +1,5 @@
-import type {
-  LearnedCollection,
-  PostsCollection,
-} from "../../content/config.js";
-import type { CountedTag, SortedTags } from "../../typings/Tag.js";
+import type { LearnedCollection, PostsCollection } from "../../content/config";
+import type { SortedTags } from "../../typings/Tag";
 
 export const getTags = (tags: string): string[] => tags.split(/,\s*/);
 
@@ -16,7 +13,7 @@ export const sortTagsByUsage = (
   );
   const rawTags = postTags.concat(learnedTags);
 
-  let tags = {};
+  let tags: Record<string, number> = {};
   rawTags.forEach((tag) => {
     if (tags[tag] === undefined) {
       tags = { ...tags, [tag]: 1 };
@@ -26,7 +23,6 @@ export const sortTagsByUsage = (
   });
 
   return Object.entries(tags).sort(
-    (lessUsedTag: CountedTag, moreUsedTag: CountedTag) =>
-      moreUsedTag[1] - lessUsedTag[1],
-  ) as SortedTags;
+    (lessUsedTag, moreUsedTag) => moreUsedTag[1] - lessUsedTag[1],
+  );
 };

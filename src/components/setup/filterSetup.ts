@@ -1,6 +1,6 @@
 import { isBefore } from "date-fns";
 
-import type { SetupCollection } from "../../content/config.js";
+import type { SetupCollection } from "../../content/config";
 
 /**
  * Filter setup to show only setup that are not in draft status and have a pubDate before the current date

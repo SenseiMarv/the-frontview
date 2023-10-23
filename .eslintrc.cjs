@@ -10,7 +10,7 @@ const config = {
     "plugin:tailwindcss/recommended",
     "prettier", // Has to be set last!
   ],
-  /** @type any[] */ overrides: [],
+  /** @type Record<string, unknown>[] */ overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",

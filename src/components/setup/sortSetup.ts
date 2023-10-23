@@ -1,4 +1,4 @@
-import type { SetupCollection } from "../../content/config.js";
+import type { SetupCollection } from "../../content/config";
 
 export const sortSetupByCustomOrder = (setup: SetupCollection[]) => {
   const sortingOrder = [

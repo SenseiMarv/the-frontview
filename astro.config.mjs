@@ -14,14 +14,16 @@ import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import { s } from "hastscript";
 import { extname, join } from "path";
+// @ts-ignore
 import rehypeAddClasses from "rehype-add-classes";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+// @ts-ignore
 import rehypeWrap from "rehype-wrap";
 import remarkHint from "remark-hint";
 import shikiTwoslash from "remark-shiki-twoslash";
 import remarkToc from "remark-toc";
 
-import { postReadingTimePlugin } from "./plugins/remarkPlugins.mjs";
+import { readingTimePlugin } from "./plugins/remarkPlugins.mjs";
 
 const hostedSiteUrl = "https://www.the-frontview.dev/";
 
@@ -114,8 +116,9 @@ const config = defineConfig({
         ],
       ],
       remarkPlugins: [
-        postReadingTimePlugin,
+        readingTimePlugin,
         remarkToc,
+        // @ts-ignore
         [shikiTwoslash.default, { theme: "one-dark-pro" }],
         remarkHint,
       ],

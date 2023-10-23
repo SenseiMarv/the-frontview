@@ -2,13 +2,13 @@
 // eslint-disable-next-line import/no-unresolved
 import { getCollection } from "astro:content";
 
-import { getLiveLearned } from "../../components/learned/filterLearned.js";
+import { getLiveLearned } from "../../components/learned/filterLearned";
 import LearnedOverview from "../../components/learned/Overview.astro";
-import { sortLearnedByDate } from "../../components/learned/sortLearned.js";
-import { getLivePosts } from "../../components/posts/filterPosts.js";
+import { sortLearnedByDate } from "../../components/learned/sortLearned";
+import { getLivePosts } from "../../components/posts/filterPosts";
 import PostOverview from "../../components/posts/Overview.astro";
-import { sortPostsByDate } from "../../components/posts/sortPosts.js";
-import { getTags } from "../../components/tags/sortTags.js";
+import { sortPostsByDate } from "../../components/posts/sortPosts";
+import { getTags } from "../../components/tags/sortTags";
 import Button from "../../components/utils/Button.astro";
 import Divider from "../../components/utils/Divider.astro";
 import Layout from "../../layouts/Layout.astro";

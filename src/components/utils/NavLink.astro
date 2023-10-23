@@ -1,5 +1,5 @@
 ---
-import { twJoin } from "./twJoin.js";
+import { twJoin } from "./twJoin";
 
 export interface Props {
   href: string;
@@ -31,7 +31,7 @@ const {
   aria-label={ariaLabel}
   class={twJoin(
     "inline-flex transition-colors duration-300 hover:text-teal-700 hover:underline hover:underline-offset-2 active:!text-teal-400 active:duration-100 dark:hover:text-teal-500 dark:active:!text-teal-700",
-    classString
+    classString,
   )}
 >
   <slot />

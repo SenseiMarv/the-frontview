@@ -1,6 +1,6 @@
 import { compareDesc } from "date-fns";
 
-import type { LearnedCollection } from "../../content/config.js";
+import type { LearnedCollection } from "../../content/config";
 
 export const sortLearnedByDate = (learned: LearnedCollection[]) => {
   // `sort()` mutates the original array, so it should be called on a clone

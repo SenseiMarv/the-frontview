@@ -12,14 +12,14 @@ dependencies:
     specifier: 3.0.0
     version: 3.0.0
   '@fontsource/inter':
-    specifier: 5.0.8
-    version: 5.0.8
+    specifier: 5.0.15
+    version: 5.0.15
   '@fontsource/quicksand':
-    specifier: 5.0.8
-    version: 5.0.8
+    specifier: 5.0.15
+    version: 5.0.15
   '@fontsource/source-code-pro':
-    specifier: 5.0.8
-    version: 5.0.8
+    specifier: 5.0.15
+    version: 5.0.15
   astro:
     specifier: 3.2.1
     version: 3.2.1
@@ -1020,16 +1020,16 @@ packages:
     resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
     engines: {node: '>=14'}
 
-  /@fontsource/inter@5.0.8:
-    resolution: {integrity: sha512-28knWH1BfOiRalfLs90U4sge5mpQ8ZH6FS0PTT+IZMKrZ7wNHDHRuKa1kQJg+uHcc6axBppnxll+HXM4c7zo/Q==}
+  /@fontsource/inter@5.0.15:
+    resolution: {integrity: sha512-/IoWYEXl8lqJEx50JqNPT+bI4VNwxb/bg2oOfvG8PiEsDsmHRFvWBVHlohBNn1+QdBf+KbAjU/gb4vlGOSsVWw==}
     dev: false
 
-  /@fontsource/quicksand@5.0.8:
-    resolution: {integrity: sha512-yckyBMWMerElcJq23yBZ8MOYLN3cJQFbb+bVQOhRrt68qRMDpselnF+/IYR078eHHmYOzNAfQaopFEeHaXrGyw==}
+  /@fontsource/quicksand@5.0.15:
+    resolution: {integrity: sha512-NM6r8vs5nR3TWZgkkXm4s8q+GVhHzE3i7fRzkYE0ixBkCt8Q54QLZ+Hlh2dTgrPi43W+8skVwzDP+Nq+e5Ne6w==}
     dev: false
 
-  /@fontsource/source-code-pro@5.0.8:
-    resolution: {integrity: sha512-2RtauxYX8gMBZr3kO97M/M0jNeE2pItqTLofpJWxsIiZKY+ir8xXmxz0Bxg3XttHadjJu9lP8gQpmBKRSn0dXQ==}
+  /@fontsource/source-code-pro@5.0.15:
+    resolution: {integrity: sha512-G+kD+5Ba2mgqsOpwZQetQi5aAOaMw0SiY73VpmycSeL17WKl2GmyTP6mIc95d+r+HJJazmg9yYYBp3qeHNNG1w==}
     dev: false
 
   /@hapi/hoek@9.3.0:

@@ -90,6 +90,9 @@ const config = defineConfig({
     },
   }),
   site: hostedSiteUrl,
+  experimental: {
+    devOverlay: true,
+  },
   integrations: [
     mdx({
       syntaxHighlight: false,

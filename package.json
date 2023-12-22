@@ -32,6 +32,8 @@
     "@fontsource/inter": "5.0.16",
     "@fontsource/quicksand": "5.0.16",
     "@fontsource/source-code-pro": "5.0.16",
+    "@sentry/astro": "7.91.0",
+    "@spotlightjs/astro": "1.0.9",
     "astro": "4.0.7",
     "date-fns": "3.0.6",
     "hastscript": "8.0.0",

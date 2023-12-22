@@ -4,6 +4,8 @@ import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
+import sentry from "@sentry/astro";
+import spotlightjs from "@spotlightjs/astro";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 import compressor from "astro-compressor";
@@ -87,6 +89,8 @@ const config = defineConfig({
         ].includes(page),
     }),
     robotsTxt(),
+    sentry(), // Has to be set before spotlightjs!
+    spotlightjs(),
     compress(), // Should be set one before the last for best results
     compressor(), // Should be set last for best results
   ],

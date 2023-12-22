@@ -15,8 +15,9 @@ const learnedDescriptionAddition =
   "Read the full Today I Learned article on the website.";
 const setupDescriptionAddition =
   "Read the full My Setup article on the website.";
+const author = "marv.stickel@gmail.com (Marvin Stickel)";
 
-export const get = async (
+export const GET = async (
   /** @type {import("astro").APIContext} */ context,
 ) => {
   const posts = getLivePosts(await getCollection("posts"));
@@ -29,7 +30,7 @@ export const get = async (
     description: `${post.data.description}\n\n${postDescriptionAddition}`,
     categories: post.data.tags.split(", "),
     customData: post.data.customData,
-    author: "marv.stickel@gmail.com (Marvin Stickel)",
+    author,
     link: `/posts/${post.slug}/`,
   }));
   const learnedItems = learned.map((learning) => ({
@@ -38,7 +39,7 @@ export const get = async (
     description: `${learning.data.description}\n\n${learnedDescriptionAddition}`,
     categories: learning.data.tags.split(", "),
     customData: learning.data.customData,
-    author: "marv.stickel@gmail.com (Marvin Stickel)",
+    author,
     link: `/learned/${learning.slug}/`,
   }));
   const setupItems = setup.map((setup) => ({
@@ -47,7 +48,7 @@ export const get = async (
     description: `${setup.data.description}\n\n${setupDescriptionAddition}`,
     categories: ["setup"],
     customData: setup.data.customData,
-    author: "marv.stickel@gmail.com (Marvin Stickel)",
+    author,
     link: `/setup/${setup.slug}/`,
   }));
   const items = [...postItems, ...learnedItems, ...setupItems];

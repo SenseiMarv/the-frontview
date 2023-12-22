@@ -1,9 +1,10 @@
 ---
+import type { PrefetchStrategy } from "../../typings/Astro";
 import { twJoin } from "./twJoin";
 
 export interface Props {
   href: string;
-  prefetch?: boolean;
+  prefetch?: boolean | PrefetchStrategy;
   newTab?: boolean;
   ariaLabel?: string;
   classString?: string;
@@ -20,14 +21,13 @@ const {
 
 <a
   href={href}
+  data-astro-prefetch={typeof prefetch === "boolean"
+    ? prefetch
+      ? ""
+      : undefined
+    : prefetch}
   target={newTab ? "_blank" : undefined}
-  rel={prefetch && newTab
-    ? "prefetch, noopener, noreferrer"
-    : prefetch
-    ? "prefetch"
-    : newTab
-    ? "noopener, noreferrer"
-    : undefined}
+  rel={newTab ? "noopener, noreferrer" : undefined}
   aria-label={ariaLabel}
   class={twJoin(
     "inline-flex transition-colors duration-300 hover:text-teal-700 hover:underline hover:underline-offset-2 active:!text-teal-400 active:duration-100 dark:hover:text-teal-500 dark:active:!text-teal-700",

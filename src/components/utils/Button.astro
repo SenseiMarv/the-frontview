@@ -1,9 +1,10 @@
 ---
+import type { PrefetchStrategy } from "../../typings/Astro";
 import { twJoin } from "../utils/twJoin";
 
 export interface Props {
   href: string;
-  prefetch?: boolean;
+  prefetch?: boolean | PrefetchStrategy;
   external?: boolean;
   classString?: string;
 }
@@ -13,7 +14,11 @@ const { href, prefetch, external, classString = "" } = Astro.props;
 
 <a
   href={href}
-  rel={prefetch ? "prefetch" : undefined}
+  data-astro-prefetch={typeof prefetch === "boolean"
+    ? prefetch
+      ? ""
+      : undefined
+    : prefetch}
   target={external ? "_blank" : undefined}
   rel={external ? "noopener noreferrer" : undefined}
   class={twJoin(

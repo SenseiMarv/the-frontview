@@ -1,13 +1,14 @@
 ---
+import type { PrefetchStrategy } from "../../typings/Astro";
 import type { SortedTags } from "../../typings/Tag";
 import NavLink from "../utils/NavLink.astro";
 
 export interface Props {
   tags: SortedTags;
-  prefetch?: boolean;
+  prefetch?: boolean | PrefetchStrategy;
 }
 
-const { tags, prefetch = false } = Astro.props;
+const { tags, prefetch } = Astro.props;
 ---
 
 <ul class="flex flex-col gap-3 pl-0 text-xl">

@@ -14,7 +14,7 @@ const tagList = getTags(tags);
 {
   tagList.map((tag: string, index: number) => (
     <span class="mr-1 inline-flex">
-      <NavLink href={`/tags/${tag}/`}>
+      <NavLink href={`/tags/${tag}/`} prefetch="hover">
         <span transition:name={`tag-${tag}`}>{tag}</span>
       </NavLink>
       {tagList[index + 1] !== undefined && ","}

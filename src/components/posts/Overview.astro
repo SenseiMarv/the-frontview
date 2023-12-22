@@ -3,14 +3,15 @@ import type {
   PostsCollection,
   RenderedPostsCollection,
 } from "../../content/config";
+import type { PrefetchStrategy } from "../../typings/Astro";
 import Card from "./Card.astro";
 
 export interface Props {
   posts: PostsCollection[];
-  prefetch?: boolean;
+  prefetch?: boolean | PrefetchStrategy;
 }
 
-const { posts, prefetch = false } = Astro.props;
+const { posts, prefetch } = Astro.props;
 
 const renderedPosts = await Promise.all(
   posts.map((post) => post.render() as unknown as RenderedPostsCollection),

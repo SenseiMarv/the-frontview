@@ -3,14 +3,15 @@ import type {
   RenderedSetupCollection,
   SetupCollection,
 } from "../../content/config";
+import type { PrefetchStrategy } from "../../typings/Astro";
 import Card from "./Card.astro";
 
 export interface Props {
   setup: SetupCollection[];
-  prefetch?: boolean;
+  prefetch?: boolean | PrefetchStrategy;
 }
 
-const { setup, prefetch = false } = Astro.props;
+const { setup, prefetch } = Astro.props;
 
 const renderedSetup = await Promise.all(
   setup.map((s) => s.render() as unknown as RenderedSetupCollection),

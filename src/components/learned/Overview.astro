@@ -3,14 +3,15 @@ import type {
   LearnedCollection,
   RenderedLearnedCollection,
 } from "../../content/config";
+import type { PrefetchStrategy } from "../../typings/Astro";
 import Card from "./Card.astro";
 
 export interface Props {
   learned: LearnedCollection[];
-  prefetch?: boolean;
+  prefetch?: boolean | PrefetchStrategy;
 }
 
-const { learned, prefetch = false } = Astro.props;
+const { learned, prefetch } = Astro.props;
 
 const renderedLearned = await Promise.all(
   learned.map(

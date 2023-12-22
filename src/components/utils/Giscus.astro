@@ -4,7 +4,7 @@
     if (!iframe || !(iframe instanceof HTMLIFrameElement)) return;
     iframe.contentWindow?.postMessage(
       { giscus: message },
-      "https://giscus.app"
+      "https://giscus.app",
     );
   };
 

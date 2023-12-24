@@ -8,7 +8,7 @@
 
 ## Requirements
 
-- [Node.js 18](https://nodejs.org/)
+- [Node.js 20](https://nodejs.org/)
 - [pnpm](https://pnpm.io/)
 
 ## Getting started

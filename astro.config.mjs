@@ -5,7 +5,8 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
-import compress from "astro-compress";
+// TODO: Has to be disabled temporarily due to deployment issues with Vercel and Sharp. Can hopefully be added back with the next major Astro release. See: https://github.com/withastro/astro/issues/9345
+// import compress from "astro-compress";
 import compressor from "astro-compressor";
 import robotsTxt from "astro-robots-txt";
 import { isBefore } from "date-fns";
@@ -87,7 +88,8 @@ const config = defineConfig({
         ].includes(page),
     }),
     robotsTxt(),
-    compress(), // Should be set one before the last for best results
+    // TODO: Has to be disabled temporarily due to deployment issues with Vercel and Sharp. Can hopefully be added back with the next major Astro release. See: https://github.com/withastro/astro/issues/9345
+    // compress(), // Should be set one before the last for best results
     compressor(), // Should be set last for best results
   ],
 });

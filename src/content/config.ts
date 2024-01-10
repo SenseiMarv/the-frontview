@@ -1,24 +1,23 @@
-import { rssSchema } from "@astrojs/rss";
 import type { MarkdownHeading, MarkdownInstance } from "astro";
 // eslint-disable-next-line import/no-unresolved
 import { type CollectionEntry, defineCollection, z } from "astro:content";
 
 const sharedCollectionSchema = z.object({
   draft: z.boolean().optional(),
+  title: z.string(),
   description: z.string(),
   pubDate: z.string(),
   upDate: z.string().optional(),
+  customData: z.string().optional(),
 });
 
-const postsCollectionSchema = rssSchema.merge(
-  sharedCollectionSchema.merge(
-    z.object({
-      tags: z.string(),
-      cover: z.string(),
-      coverAuthor: z.string().optional(),
-      coverAuthorUrl: z.string().optional(),
-    }),
-  ),
+const postsCollectionSchema = sharedCollectionSchema.merge(
+  z.object({
+    tags: z.string(),
+    cover: z.string(),
+    coverAuthor: z.string().optional(),
+    coverAuthorUrl: z.string().optional(),
+  }),
 );
 
 export type PostsCollection = Omit<CollectionEntry<"posts">, "data"> & {
@@ -37,12 +36,10 @@ const postsCollection = defineCollection({
   schema: postsCollectionSchema,
 });
 
-const learnedCollectionSchema = rssSchema.merge(
-  sharedCollectionSchema.merge(
-    z.object({
-      tags: z.string(),
-    }),
-  ),
+const learnedCollectionSchema = sharedCollectionSchema.merge(
+  z.object({
+    tags: z.string(),
+  }),
 );
 
 export type LearnedCollection = Omit<CollectionEntry<"learned">, "data"> & {
@@ -61,7 +58,7 @@ const learnedCollection = defineCollection({
   schema: learnedCollectionSchema,
 });
 
-const setupCollectionSchema = rssSchema.merge(sharedCollectionSchema);
+const setupCollectionSchema = sharedCollectionSchema;
 
 export type SetupCollection = Omit<CollectionEntry<"setup">, "data"> & {
   data: z.infer<typeof setupCollectionSchema>;

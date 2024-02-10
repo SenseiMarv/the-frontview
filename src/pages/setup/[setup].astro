@@ -6,7 +6,7 @@ import type {
   RenderedSetupCollection,
   SetupCollection,
 } from "../../content/config";
-import Setup from "../../layouts/Setup.astro";
+import SetupLayout from "../../layouts/Setup.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -30,9 +30,9 @@ const { Content, remarkPluginFrontmatter } =
   (await entry.render()) as unknown as RenderedSetupCollection;
 ---
 
-<Setup
+<SetupLayout
   frontmatter={entry.data}
   readingTime={remarkPluginFrontmatter.readingTime}
 >
   <Content />
-</Setup>
+</SetupLayout>

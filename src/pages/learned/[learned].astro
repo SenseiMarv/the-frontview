@@ -6,7 +6,7 @@ import type {
   LearnedCollection,
   RenderedLearnedCollection,
 } from "../../content/config";
-import Learned from "../../layouts/Learned.astro";
+import LearnedLayout from "../../layouts/Learned.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -30,9 +30,9 @@ const { Content, remarkPluginFrontmatter } =
   (await entry.render()) as unknown as RenderedLearnedCollection;
 ---
 
-<Learned
+<LearnedLayout
   frontmatter={entry.data}
   readingTime={remarkPluginFrontmatter.readingTime}
 >
   <Content />
-</Learned>
+</LearnedLayout>

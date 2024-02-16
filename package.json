@@ -32,6 +32,7 @@
     "@fontsource/inter": "5.0.16",
     "@fontsource/quicksand": "5.0.16",
     "@fontsource/source-code-pro": "5.0.16",
+    "@vercel/speed-insights": "1.0.10",
     "astro": "4.4.0",
     "date-fns": "3.3.1",
     "hastscript": "9.0.0",

@@ -3,6 +3,7 @@ import '@fontsource/quicksand';
 import '@fontsource/inter';
 import '@fontsource/source-code-pro';
 
+import SpeedInsights from '@vercel/speed-insights/astro';
 // eslint-disable-next-line import/no-unresolved
 import { ViewTransitions } from 'astro:transitions';
 import { SEO } from 'astro-seo';
@@ -328,5 +329,6 @@ const headingFontFamily = [
         }
       }
     </style>
+    <SpeedInsights />
   </body>
 </html>

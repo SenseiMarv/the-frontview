@@ -29,10 +29,7 @@ const hostedSiteUrl = 'https://www.the-frontview.dev/';
 const config = defineConfig({
   output: 'server',
   adapter: vercel({
-    functionPerRoute: false, // Has to be set to false because more than 12 functions would be generated otherwise, which exceeds the Vercel limit
-    speedInsights: {
-      enabled: true
-    }
+    functionPerRoute: false // Has to be set to false because more than 12 functions would be generated otherwise, which exceeds the Vercel limit
   }),
   site: hostedSiteUrl,
   prefetch: {

@@ -1,6 +1,6 @@
-import { compareDesc } from "date-fns";
+import { compareDesc } from 'date-fns';
 
-import type { LearnedCollection } from "../../content/config";
+import type { LearnedCollection } from '../../content/config';
 
 export const sortLearnedByDate = (learned: LearnedCollection[]) => {
   // `sort()` mutates the original array, so it should be called on a clone
@@ -8,7 +8,7 @@ export const sortLearnedByDate = (learned: LearnedCollection[]) => {
   return arr.sort((olderLearning, newerLearning) =>
     compareDesc(
       new Date(olderLearning.data.pubDate),
-      new Date(newerLearning.data.pubDate),
-    ),
+      new Date(newerLearning.data.pubDate)
+    )
   );
 };

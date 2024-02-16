@@ -1,21 +1,21 @@
 ---
 // eslint-disable-next-line import/no-unresolved
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-import { getLiveLearned } from "../../components/learned/filterLearned";
-import LearnedOverview from "../../components/learned/Overview.astro";
-import { sortLearnedByDate } from "../../components/learned/sortLearned";
-import { getLivePosts } from "../../components/posts/filterPosts";
-import PostOverview from "../../components/posts/Overview.astro";
-import { sortPostsByDate } from "../../components/posts/sortPosts";
-import { getTags } from "../../components/tags/sortTags";
-import Button from "../../components/utils/Button.astro";
-import Divider from "../../components/utils/Divider.astro";
-import Layout from "../../layouts/Layout.astro";
+import { getLiveLearned } from '../../components/learned/filterLearned';
+import LearnedOverview from '../../components/learned/Overview.astro';
+import { sortLearnedByDate } from '../../components/learned/sortLearned';
+import { getLivePosts } from '../../components/posts/filterPosts';
+import PostOverview from '../../components/posts/Overview.astro';
+import { sortPostsByDate } from '../../components/posts/sortPosts';
+import { getTags } from '../../components/tags/sortTags';
+import Button from '../../components/utils/Button.astro';
+import Divider from '../../components/utils/Divider.astro';
+import Layout from '../../layouts/Layout.astro';
 
 const { tag } = Astro.params;
 
-const posts = sortPostsByDate(getLivePosts(await getCollection("posts")));
+const posts = sortPostsByDate(getLivePosts(await getCollection('posts')));
 const postsWithTag = posts.filter((post) => {
   if (tag === undefined) {
     return false;
@@ -25,7 +25,7 @@ const postsWithTag = posts.filter((post) => {
 });
 
 const learned = sortLearnedByDate(
-  getLiveLearned(await getCollection("learned")),
+  getLiveLearned(await getCollection('learned'))
 );
 const learnedWithTag = learned.filter((learning) => {
   if (tag === undefined) {
@@ -37,7 +37,7 @@ const learnedWithTag = learned.filter((learning) => {
 
 // Catch invalid URLs
 if (postsWithTag.length === 0 && learnedWithTag.length === 0) {
-  return Astro.redirect("/404");
+  return Astro.redirect('/404');
 }
 ---
 

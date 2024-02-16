@@ -1,29 +1,29 @@
 ---
 // eslint-disable-next-line import/no-unresolved
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-import Profile from "../components/home-page/Profile.astro";
-import { getLiveLearned } from "../components/learned/filterLearned";
-import LearnedOverview from "../components/learned/Overview.astro";
-import { sortLearnedByDate } from "../components/learned/sortLearned";
-import { getLivePosts } from "../components/posts/filterPosts";
-import PostOverview from "../components/posts/Overview.astro";
-import { sortPostsByDate } from "../components/posts/sortPosts";
-import { getLiveSetup } from "../components/setup/filterSetup";
-import SetupOverview from "../components/setup/Overview.astro";
-import { sortSetupByCustomOrder } from "../components/setup/sortSetup";
-import Button from "../components/utils/Button.astro";
-import Divider from "../components/utils/Divider.astro";
-import Layout from "../layouts/Layout.astro";
+import Profile from '../components/home-page/Profile.astro';
+import { getLiveLearned } from '../components/learned/filterLearned';
+import LearnedOverview from '../components/learned/Overview.astro';
+import { sortLearnedByDate } from '../components/learned/sortLearned';
+import { getLivePosts } from '../components/posts/filterPosts';
+import PostOverview from '../components/posts/Overview.astro';
+import { sortPostsByDate } from '../components/posts/sortPosts';
+import { getLiveSetup } from '../components/setup/filterSetup';
+import SetupOverview from '../components/setup/Overview.astro';
+import { sortSetupByCustomOrder } from '../components/setup/sortSetup';
+import Button from '../components/utils/Button.astro';
+import Divider from '../components/utils/Divider.astro';
+import Layout from '../layouts/Layout.astro';
 
 export const prerender = true;
 
-const posts = sortPostsByDate(getLivePosts(await getCollection("posts")));
+const posts = sortPostsByDate(getLivePosts(await getCollection('posts')));
 const learned = sortLearnedByDate(
-  getLiveLearned(await getCollection("learned")),
+  getLiveLearned(await getCollection('learned'))
 );
 const setup = sortSetupByCustomOrder(
-  getLiveSetup(await getCollection("setup")),
+  getLiveSetup(await getCollection('setup'))
 );
 ---
 

@@ -1,19 +1,19 @@
 <script>
-  import PhotoSwipeLightbox from "photoswipe/lightbox";
-  import "photoswipe/style.css";
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
 
   const setLightbox = () => {
     const lightbox = new PhotoSwipeLightbox({
-      gallery: "article",
-      children: ".pswp-children",
-      pswpModule: () => import("photoswipe"),
-      wheelToZoom: true,
+      gallery: 'article',
+      children: '.pswp-children',
+      pswpModule: () => import('photoswipe'),
+      wheelToZoom: true
     });
     lightbox.init();
   };
 
   setLightbox();
-  document.addEventListener("astro:page-load", setLightbox);
+  document.addEventListener('astro:page-load', setLightbox);
 </script>
 <style is:inline>
   .pswp {

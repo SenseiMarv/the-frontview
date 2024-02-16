@@ -1,29 +1,29 @@
 <script is:inline>
   const sendGiscusMessage = (/** @type any */ message) => {
-    const iframe = document.querySelector("iframe.giscus-frame");
+    const iframe = document.querySelector('iframe.giscus-frame');
     if (!iframe || !(iframe instanceof HTMLIFrameElement)) return;
     iframe.contentWindow?.postMessage(
       { giscus: message },
-      "https://giscus.app",
+      'https://giscus.app'
     );
   };
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (
-        mutation.type === "attributes" &&
-        mutation.attributeName === "data-theme" &&
+        mutation.type === 'attributes' &&
+        mutation.attributeName === 'data-theme' &&
         mutation.target instanceof HTMLElement
       ) {
         const theme =
-          mutation.target.dataset.theme === "light"
-            ? "light"
-            : "transparent_dark";
+          mutation.target.dataset.theme === 'light'
+            ? 'light'
+            : 'transparent_dark';
 
         sendGiscusMessage({
           setConfig: {
-            theme,
-          },
+            theme
+          }
         });
       }
     });

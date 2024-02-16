@@ -5,14 +5,14 @@
 </div>
 <script>
   const setScrollProgress = () => {
-    const scrollProgress = document.getElementById("scroll-progress");
+    const scrollProgress = document.getElementById('scroll-progress');
 
     if (scrollProgress) {
       const height =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
 
-      window.addEventListener("scroll", () => {
+      window.addEventListener('scroll', () => {
         const scrollTop =
           document.body.scrollTop || document.documentElement.scrollTop;
         const scrollAmount =
@@ -23,5 +23,5 @@
   };
 
   setScrollProgress();
-  document.addEventListener("astro:page-load", setScrollProgress);
+  document.addEventListener('astro:page-load', setScrollProgress);
 </script>

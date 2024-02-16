@@ -1,12 +1,12 @@
-import type { SetupCollection } from "../../content/config";
+import type { SetupCollection } from '../../content/config';
 
 export const sortSetupByCustomOrder = (setup: SetupCollection[]) => {
   const sortingOrder = [
-    "system",
-    "editor",
-    "terminal",
-    "version-control",
-    "task-management",
+    'system',
+    'editor',
+    'terminal',
+    'version-control',
+    'task-management'
   ];
 
   // `sort()` mutates the original array, so it should be called on a clone

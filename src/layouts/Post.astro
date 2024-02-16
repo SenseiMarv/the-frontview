@@ -1,17 +1,17 @@
 ---
-import Header from "../components/posts/Header.astro";
-import HeadingLinkSvg from "../components/posts/HeadingLinkSvg.astro";
-import { getTags } from "../components/tags/sortTags";
-import Divider from "../components/utils/Divider.astro";
-import Giscus from "../components/utils/Giscus.astro";
-import PhotoSwipe from "../components/utils/PhotoSwipe.astro";
-import ScrollBar from "../components/utils/ScrollBar.astro";
-import Share from "../components/utils/Share.astro";
-import type { PostsCollection } from "../content/config";
-import Layout from "./Layout.astro";
+import Header from '../components/posts/Header.astro';
+import HeadingLinkSvg from '../components/posts/HeadingLinkSvg.astro';
+import { getTags } from '../components/tags/sortTags';
+import Divider from '../components/utils/Divider.astro';
+import Giscus from '../components/utils/Giscus.astro';
+import PhotoSwipe from '../components/utils/PhotoSwipe.astro';
+import ScrollBar from '../components/utils/ScrollBar.astro';
+import Share from '../components/utils/Share.astro';
+import type { PostsCollection } from '../content/config';
+import Layout from './Layout.astro';
 
 export interface Props {
-  frontmatter: PostsCollection["data"];
+  frontmatter: PostsCollection['data'];
   readingTime: number;
 }
 
@@ -22,10 +22,10 @@ const upDate = frontmatter.upDate
   ? new Date(frontmatter.upDate).toISOString()
   : undefined;
 const tags = getTags(frontmatter.tags);
-const defaultOpenGraphType = "article";
-const defaultOpenGraphImageAlt = "Blogpost cover";
-const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
-const defaultTwitterCard = "summary_large_image";
+const defaultOpenGraphType = 'article';
+const defaultOpenGraphImageAlt = 'Blogpost cover';
+const defaultOpenGraphArticleAuthor = ['Marvin Stickel'];
+const defaultTwitterCard = 'summary_large_image';
 ---
 
 <Layout

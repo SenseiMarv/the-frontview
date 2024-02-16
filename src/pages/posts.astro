@@ -1,15 +1,15 @@
 ---
 // eslint-disable-next-line import/no-unresolved
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-import { getLivePosts } from "../components/posts/filterPosts";
-import Overview from "../components/posts/Overview.astro";
-import { sortPostsByDate } from "../components/posts/sortPosts";
-import Layout from "../layouts/Layout.astro";
+import { getLivePosts } from '../components/posts/filterPosts';
+import Overview from '../components/posts/Overview.astro';
+import { sortPostsByDate } from '../components/posts/sortPosts';
+import Layout from '../layouts/Layout.astro';
 
 export const prerender = true;
 
-const posts = sortPostsByDate(getLivePosts(await getCollection("posts")));
+const posts = sortPostsByDate(getLivePosts(await getCollection('posts')));
 ---
 
 <Layout

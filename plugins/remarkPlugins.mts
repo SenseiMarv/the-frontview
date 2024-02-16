@@ -1,12 +1,12 @@
-import { toString } from "mdast-util-to-string";
-import getReadingTime from "reading-time";
-import type { Node, Parent } from "unist";
-import { visit } from "unist-util-visit";
+import { toString } from 'mdast-util-to-string';
+import getReadingTime from 'reading-time';
+import type { Node, Parent } from 'unist';
+import { visit } from 'unist-util-visit';
 
 export function readingTimePlugin() {
   return (tree: Node, { data }: { data: any }) => {
     const {
-      frontmatter,
+      frontmatter
     }: { frontmatter: Record<string, unknown> & { readingTime?: number } } =
       data.astro;
     if (frontmatter.readingTime) {
@@ -29,16 +29,16 @@ interface HintNode extends Node {
 }
 
 const classNames = {
-  "hint tip": /^!>|!>\s/,
-  "hint warn": /^\?>|\?>\s/,
-  "hint error": /^x>|x>\s/,
+  'hint tip': /^!>|!>\s/,
+  'hint warn': /^\?>|\?>\s/,
+  'hint error': /^x>|x>\s/
 };
 
 export function hintPlugin() {
   return (tree: Node) => {
     visit(
       tree,
-      "paragraph",
+      'paragraph',
       (node: HintNode, index: number | null, parent: Parent) => {
         if (!parent || !Array.isArray(parent.children) || index === null) {
           return;
@@ -48,7 +48,7 @@ export function hintPlugin() {
         if (
           children.length === 0 ||
           children[0] === undefined ||
-          children[0].type !== "text"
+          children[0].type !== 'text'
         ) {
           return;
         }
@@ -61,7 +61,7 @@ export function hintPlugin() {
         }
 
         const classNameResult = Object.entries(classNames).find(([, r]) =>
-          r.test(value),
+          r.test(value)
         );
 
         if (!classNameResult) {
@@ -72,17 +72,17 @@ export function hintPlugin() {
         const data = node.data ?? (node.data = {});
         const hProperties = data.hProperties ?? (data.hProperties = {});
 
-        textNode.value = value.replace(r, "");
+        textNode.value = value.replace(r, '');
         hProperties.class = className;
         parent.children[index] = {
           ...node,
-          type: "div",
+          type: 'div',
           data: {
             ...data,
-            hName: "div",
-          },
+            hName: 'div'
+          }
         };
-      },
+      }
     );
   };
 }

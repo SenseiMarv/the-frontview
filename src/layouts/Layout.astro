@@ -1,17 +1,17 @@
 ---
-import "@fontsource/quicksand";
-import "@fontsource/inter";
-import "@fontsource/source-code-pro";
+import '@fontsource/quicksand';
+import '@fontsource/inter';
+import '@fontsource/source-code-pro';
 
 // eslint-disable-next-line import/no-unresolved
-import { ViewTransitions } from "astro:transitions";
-import { SEO } from "astro-seo";
-import defaultTheme from "tailwindcss/defaultTheme";
+import { ViewTransitions } from 'astro:transitions';
+import { SEO } from 'astro-seo';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
-import Footer from "../components/footer/Footer.astro";
-import Header from "../components/header/Header.astro";
-import Analytics from "../components/utils/Analytics.astro";
-import Theme from "../components/utils/Theme.astro";
+import Footer from '../components/footer/Footer.astro';
+import Header from '../components/header/Header.astro';
+import Analytics from '../components/utils/Analytics.astro';
+import Theme from '../components/utils/Theme.astro';
 
 export interface Props {
   title: string;
@@ -28,11 +28,11 @@ export interface Props {
   twitterCard?: string;
 }
 
-const defaultOpenGraphType = "website";
-const defaultOpenGraphImage = "/android-chrome-512x512.png";
-const defaultOpenGraphImageAlt = "Website Icon";
-const defaultOpenGraphSiteName = "The Frontview";
-const defaultTwitterCard = "summary";
+const defaultOpenGraphType = 'website';
+const defaultOpenGraphImage = '/android-chrome-512x512.png';
+const defaultOpenGraphImageAlt = 'Website Icon';
+const defaultOpenGraphSiteName = 'The Frontview';
+const defaultTwitterCard = 'summary';
 
 const {
   title,
@@ -46,22 +46,22 @@ const {
   openGraphArticleAuthor,
   openGraphArticleSection,
   openGraphArticleTags,
-  twitterCard = defaultTwitterCard,
+  twitterCard = defaultTwitterCard
 } = Astro.props;
 
 let openGraph: any = {
   basic: {
     title: openGraphTitle,
     type: openGraphType,
-    image: openGraphImage,
+    image: openGraphImage
   },
   optional: {
     description,
-    siteName: defaultOpenGraphSiteName,
+    siteName: defaultOpenGraphSiteName
   },
   image: {
-    alt: openGraphImageAlt,
-  },
+    alt: openGraphImageAlt
+  }
 };
 if (
   openGraphArticlePublishedTime ??
@@ -77,23 +77,23 @@ if (
       modifiedTime: openGraphArticleModifiedTime,
       author: openGraphArticleAuthor,
       section: openGraphArticleSection,
-      tags: openGraphArticleTags,
-    },
+      tags: openGraphArticleTags
+    }
   };
 }
 let twitter: any = {
-  card: defaultTwitterCard,
+  card: defaultTwitterCard
 };
 if (twitterCard) {
   twitter = {
     ...twitter,
-    card: twitterCard,
+    card: twitterCard
   };
 }
 
 const headingFontFamily = [
-  "Quicksand",
-  ...defaultTheme.fontFamily.sans,
+  'Quicksand',
+  ...defaultTheme.fontFamily.sans
 ].toString();
 ---
 
@@ -246,8 +246,8 @@ const headingFontFamily = [
         article pre {
           @apply my-4 grid grid-cols-1 content-around rounded-xl !bg-gray-800 dark:!bg-gray-900 md:grid-cols-2;
           grid-template-areas:
-            "column-language-id"
-            "column-code-title";
+            'column-language-id'
+            'column-code-title';
         }
         article .code-title {
           @apply mt-2 justify-self-start rounded-r-lg bg-gray-500 p-1 px-3 text-white dark:bg-gray-700 md:mr-4 md:mt-0 md:justify-self-end md:rounded-b-lg md:rounded-tr-none;
@@ -275,7 +275,7 @@ const headingFontFamily = [
         /* md */
         @media (min-width: 768px) {
           article pre {
-            grid-template-areas: "column-language-id column-code-title";
+            grid-template-areas: 'column-language-id column-code-title';
           }
         }
 

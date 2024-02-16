@@ -1,5 +1,5 @@
 ---
-import Icon from "./Icon.astro";
+import Icon from './Icon.astro';
 ---
 
 <button
@@ -15,15 +15,15 @@ import Icon from "./Icon.astro";
 </button>
 <script>
   const setTheme = () => {
-    const button = document.getElementById("theme-toggle");
+    const button = document.getElementById('theme-toggle');
 
-    button?.addEventListener("click", function () {
+    button?.addEventListener('click', function () {
       document.documentElement.dataset.theme =
-        document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      localStorage.setItem("theme", document.documentElement.dataset.theme);
+        document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', document.documentElement.dataset.theme);
     });
   };
 
   setTheme();
-  document.addEventListener("astro:after-swap", setTheme);
+  document.addEventListener('astro:after-swap', setTheme);
 </script>

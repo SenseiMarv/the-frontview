@@ -1,8 +1,8 @@
 ---
-import TagList from "../tags/TagList.astro";
-import { formatDateToLocaleDate } from "../utils/formatDates";
-import Icon from "../utils/Icon.astro";
-import Share from "../utils/Share.astro";
+import TagList from '../tags/TagList.astro';
+import { formatDateToLocaleDate } from '../utils/formatDates';
+import Icon from '../utils/Icon.astro';
+import Share from '../utils/Share.astro';
 
 export interface Props {
   title: string;
@@ -33,7 +33,7 @@ const formattedReadingTime = `${readingTime} min read`;
   </h1>
   <div
     class={`mt-4 flex flex-col items-center gap-1 whitespace-nowrap text-lg leading-snug text-gray-500 dark:text-gray-400 md:mt-6 md:text-xl ${
-      formattedUpDate ? "lg:flex-row" : "sm:flex-row"
+      formattedUpDate ? 'lg:flex-row' : 'sm:flex-row'
     }`}
   >
     <div class="flex items-center gap-1 whitespace-normal">
@@ -46,7 +46,7 @@ const formattedReadingTime = `${readingTime} min read`;
       {formattedUpDate && <> (Updated: {formattedUpDate})</>}
       <div
         class={`hidden ${
-          formattedUpDate ? "lg:inline-block" : "sm:inline-block"
+          formattedUpDate ? 'lg:inline-block' : 'sm:inline-block'
         }`}
       >
         |
@@ -61,7 +61,7 @@ const formattedReadingTime = `${readingTime} min read`;
       {formattedReadingTime}
       <div
         class={`hidden ${
-          formattedUpDate ? "lg:inline-block" : "sm:inline-block"
+          formattedUpDate ? 'lg:inline-block' : 'sm:inline-block'
         }`}
       >
         |

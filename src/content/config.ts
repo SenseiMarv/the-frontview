@@ -1,6 +1,6 @@
-import type { MarkdownHeading, MarkdownInstance } from "astro";
+import type { MarkdownHeading, MarkdownInstance } from 'astro';
 // eslint-disable-next-line import/no-unresolved
-import { type CollectionEntry, defineCollection, z } from "astro:content";
+import { type CollectionEntry, defineCollection, z } from 'astro:content';
 
 const sharedCollectionSchema = z.object({
   draft: z.boolean().optional(),
@@ -8,7 +8,7 @@ const sharedCollectionSchema = z.object({
   description: z.string(),
   pubDate: z.string(),
   upDate: z.string().optional(),
-  customData: z.string().optional(),
+  customData: z.string().optional()
 });
 
 const postsCollectionSchema = sharedCollectionSchema.merge(
@@ -16,16 +16,16 @@ const postsCollectionSchema = sharedCollectionSchema.merge(
     tags: z.string(),
     cover: z.string(),
     coverAuthor: z.string().optional(),
-    coverAuthorUrl: z.string().optional(),
-  }),
+    coverAuthorUrl: z.string().optional()
+  })
 );
 
-export type PostsCollection = Omit<CollectionEntry<"posts">, "data"> & {
+export type PostsCollection = Omit<CollectionEntry<'posts'>, 'data'> & {
   data: z.infer<typeof postsCollectionSchema>;
 };
 
 export interface RenderedPostsCollection {
-  Content: MarkdownInstance<Record<string, unknown>>["Content"];
+  Content: MarkdownInstance<Record<string, unknown>>['Content'];
   headings: MarkdownHeading[];
   remarkPluginFrontmatter: {
     readingTime: number;
@@ -33,21 +33,21 @@ export interface RenderedPostsCollection {
 }
 
 const postsCollection = defineCollection({
-  schema: postsCollectionSchema,
+  schema: postsCollectionSchema
 });
 
 const learnedCollectionSchema = sharedCollectionSchema.merge(
   z.object({
-    tags: z.string(),
-  }),
+    tags: z.string()
+  })
 );
 
-export type LearnedCollection = Omit<CollectionEntry<"learned">, "data"> & {
+export type LearnedCollection = Omit<CollectionEntry<'learned'>, 'data'> & {
   data: z.infer<typeof learnedCollectionSchema>;
 };
 
 export interface RenderedLearnedCollection {
-  Content: MarkdownInstance<Record<string, unknown>>["Content"];
+  Content: MarkdownInstance<Record<string, unknown>>['Content'];
   headings: MarkdownHeading[];
   remarkPluginFrontmatter: {
     readingTime: number;
@@ -55,17 +55,17 @@ export interface RenderedLearnedCollection {
 }
 
 const learnedCollection = defineCollection({
-  schema: learnedCollectionSchema,
+  schema: learnedCollectionSchema
 });
 
 const setupCollectionSchema = sharedCollectionSchema;
 
-export type SetupCollection = Omit<CollectionEntry<"setup">, "data"> & {
+export type SetupCollection = Omit<CollectionEntry<'setup'>, 'data'> & {
   data: z.infer<typeof setupCollectionSchema>;
 };
 
 export interface RenderedSetupCollection {
-  Content: MarkdownInstance<Record<string, unknown>>["Content"];
+  Content: MarkdownInstance<Record<string, unknown>>['Content'];
   headings: MarkdownHeading[];
   remarkPluginFrontmatter: {
     readingTime: number;
@@ -73,11 +73,11 @@ export interface RenderedSetupCollection {
 }
 
 const setupCollection = defineCollection({
-  schema: setupCollectionSchema,
+  schema: setupCollectionSchema
 });
 
 export const collections = {
   posts: postsCollection,
   learned: learnedCollection,
-  setup: setupCollection,
+  setup: setupCollection
 };

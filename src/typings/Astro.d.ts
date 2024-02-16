@@ -1,1 +1,1 @@
-export declare type PrefetchStrategy = "tap" | "hover" | "viewport";
+export declare type PrefetchStrategy = 'tap' | 'hover' | 'viewport';

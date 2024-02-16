@@ -1,5 +1,5 @@
 ---
-import { twJoin } from "../utils/twJoin";
+import { twJoin } from '../utils/twJoin';
 
 export interface Props {
   iconSet?: string;
@@ -7,10 +7,10 @@ export interface Props {
   classString?: string;
 }
 
-const { iconSet = "fluent-emoji", name, classString = "" } = Astro.props;
+const { iconSet = 'fluent-emoji', name, classString = '' } = Astro.props;
 ---
 
 <iconify-icon
   icon={`${iconSet}:${name}`}
-  class={twJoin("inline-flex align-bottom text-2xl", classString)}
+  class={twJoin('inline-flex align-bottom text-2xl', classString)}
 ></iconify-icon>

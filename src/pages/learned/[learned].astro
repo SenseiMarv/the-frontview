@@ -1,30 +1,30 @@
 ---
 // eslint-disable-next-line import/no-unresolved
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, getEntry } from 'astro:content';
 
 import type {
   LearnedCollection,
-  RenderedLearnedCollection,
-} from "../../content/config";
-import LearnedLayout from "../../layouts/Learned.astro";
+  RenderedLearnedCollection
+} from '../../content/config';
+import LearnedLayout from '../../layouts/Learned.astro';
 
 export const prerender = true;
 export async function getStaticPaths() {
-  const learnedEntries: LearnedCollection[] = await getCollection("learned");
+  const learnedEntries: LearnedCollection[] = await getCollection('learned');
   return learnedEntries.map((learning) => ({
     params: { learned: learning.slug },
-    props: { learned: learning },
+    props: { learned: learning }
   }));
 }
 export interface Props {
-  learned: LearnedCollection["slug"];
+  learned: LearnedCollection['slug'];
 }
 
 // The static rendering ensures that only valid routes will be rendered.
 // Astro will automatically redirect to the 404 page if the given route parameter is invalid.
 const { learned } = Astro.params as unknown as Props;
 
-const entry: LearnedCollection = await getEntry("learned", learned);
+const entry: LearnedCollection = await getEntry('learned', learned);
 
 const { Content, remarkPluginFrontmatter } =
   (await entry.render()) as unknown as RenderedLearnedCollection;

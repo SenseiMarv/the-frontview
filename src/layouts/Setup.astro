@@ -1,16 +1,16 @@
 ---
-import Header from "../components/setup/Header.astro";
-import HeadingLinkSvg from "../components/setup/HeadingLinkSvg.astro";
-import Divider from "../components/utils/Divider.astro";
-import Giscus from "../components/utils/Giscus.astro";
-import PhotoSwipe from "../components/utils/PhotoSwipe.astro";
-import ScrollBar from "../components/utils/ScrollBar.astro";
-import Share from "../components/utils/Share.astro";
-import type { SetupCollection } from "../content/config";
-import Layout from "./Layout.astro";
+import Header from '../components/setup/Header.astro';
+import HeadingLinkSvg from '../components/setup/HeadingLinkSvg.astro';
+import Divider from '../components/utils/Divider.astro';
+import Giscus from '../components/utils/Giscus.astro';
+import PhotoSwipe from '../components/utils/PhotoSwipe.astro';
+import ScrollBar from '../components/utils/ScrollBar.astro';
+import Share from '../components/utils/Share.astro';
+import type { SetupCollection } from '../content/config';
+import Layout from './Layout.astro';
 
 export interface Props {
-  frontmatter: SetupCollection["data"];
+  frontmatter: SetupCollection['data'];
   readingTime: number;
 }
 
@@ -20,10 +20,10 @@ const pubDate = new Date(frontmatter.pubDate).toISOString();
 const upDate = frontmatter.upDate
   ? new Date(frontmatter.upDate).toISOString()
   : undefined;
-const defaultOpenGraphType = "article";
-const defaultOpenGraphImageAlt = "Setup article cover";
-const defaultOpenGraphArticleAuthor = ["Marvin Stickel"];
-const defaultTwitterCard = "summary_large_image";
+const defaultOpenGraphType = 'article';
+const defaultOpenGraphImageAlt = 'Setup article cover';
+const defaultOpenGraphArticleAuthor = ['Marvin Stickel'];
+const defaultTwitterCard = 'summary_large_image';
 ---
 
 <Layout

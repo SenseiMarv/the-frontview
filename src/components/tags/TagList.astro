@@ -1,6 +1,6 @@
 ---
-import { getTags } from "../tags/sortTags";
-import NavLink from "../utils/NavLink.astro";
+import { getTags } from '../tags/sortTags';
+import NavLink from '../utils/NavLink.astro';
 
 export interface Props {
   tags: string;
@@ -17,7 +17,7 @@ const tagList = getTags(tags);
       <NavLink href={`/tags/${tag}/`} prefetch="hover">
         <span transition:name={`tag-${tag}`}>{tag}</span>
       </NavLink>
-      {tagList[index + 1] !== undefined && ","}
+      {tagList[index + 1] !== undefined && ','}
     </span>
   ))
 }

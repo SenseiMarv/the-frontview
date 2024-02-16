@@ -1,15 +1,15 @@
-import type { LearnedCollection, PostsCollection } from "../../content/config";
-import type { SortedTags } from "../../typings/Tag";
+import type { LearnedCollection, PostsCollection } from '../../content/config';
+import type { SortedTags } from '../../typings/Tag';
 
 export const getTags = (tags: string): string[] => tags.split(/,\s*/);
 
 export const sortTagsByUsage = (
   posts: PostsCollection[],
-  learned: LearnedCollection[],
+  learned: LearnedCollection[]
 ): SortedTags => {
   const postTags = posts.flatMap((post) => getTags(post.data.tags));
   const learnedTags = learned.flatMap((learning) =>
-    getTags(learning.data.tags),
+    getTags(learning.data.tags)
   );
   const rawTags = postTags.concat(learnedTags);
 
@@ -23,6 +23,6 @@ export const sortTagsByUsage = (
   });
 
   return Object.entries(tags).sort(
-    (lessUsedTag, moreUsedTag) => moreUsedTag[1] - lessUsedTag[1],
+    (lessUsedTag, moreUsedTag) => moreUsedTag[1] - lessUsedTag[1]
   );
 };

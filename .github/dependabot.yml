@@ -1,32 +1,32 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
     ignore:
-      - dependency-name: "@playwright/test" # The version needs to be in sync with the Checkly runtime
+      - dependency-name: '@playwright/test' # The version needs to be in sync with the Checkly runtime
     groups:
       astro:
         patterns:
-          - "*astro*"
+          - '*astro*'
         exclude-patterns:
-          - "astro-eslint-parser" # Will be updated in the eslint group
+          - 'astro-eslint-parser' # Will be updated in the eslint group
       fonts:
         patterns:
-          - "@fontsource/*"
+          - '@fontsource/*'
       rehype:
         patterns:
-          - "rehype*"
+          - 'rehype*'
       remark:
         patterns:
-          - "remark*"
+          - 'remark*'
       types:
         patterns:
-          - "@types/*"
+          - '@types/*'
       eslint:
         patterns:
-          - "*eslint*"
+          - '*eslint*'
       prettier:
         patterns:
-          - "prettier*"
+          - 'prettier*'

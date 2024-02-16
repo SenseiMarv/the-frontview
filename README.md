@@ -46,11 +46,11 @@ A blog post requires the following frontmatter:
 
 ```mdx
 ---
-title: "The title of the blog post"
-description: "A description of the content of the blog post."
-pubDate: "The date the blog post was created (in the format YYYY-MM-DD)"
-tags: "A comma-separated list of tags that describe the content of the blog post (preferably 3)"
-cover: "A URL leading to an image to be used as the cover of the blog post (can also be a local file)"
+title: 'The title of the blog post'
+description: 'A description of the content of the blog post.'
+pubDate: 'The date the blog post was created (in the format YYYY-MM-DD)'
+tags: 'A comma-separated list of tags that describe the content of the blog post (preferably 3)'
+cover: 'A URL leading to an image to be used as the cover of the blog post (can also be a local file)'
 ---
 ```
 
@@ -79,10 +79,10 @@ A Today I Learned article requires the following frontmatter:
 
 ```mdx
 ---
-title: "The title of the Today I Learned article"
-description: "A description of the content of the Today I Learned article."
-pubDate: "The date the Today I Learned article was created (in the format YYYY-MM-DD)"
-tags: "A comma-separated list of tags that describe the content of the Today I Learned article (preferably 3)"
+title: 'The title of the Today I Learned article'
+description: 'A description of the content of the Today I Learned article.'
+pubDate: 'The date the Today I Learned article was created (in the format YYYY-MM-DD)'
+tags: 'A comma-separated list of tags that describe the content of the Today I Learned article (preferably 3)'
 ---
 ```
 
@@ -98,9 +98,9 @@ A My Setup article requires the following frontmatter:
 
 ```mdx
 ---
-title: "The title of the My Setup article"
-description: "A description of the content of the My Setup article."
-pubDate: "The date the My Setup article was created (in the format YYYY-MM-DD)"
+title: 'The title of the My Setup article'
+description: 'A description of the content of the My Setup article.'
+pubDate: 'The date the My Setup article was created (in the format YYYY-MM-DD)'
 ---
 ```
 

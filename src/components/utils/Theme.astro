@@ -1,11 +1,11 @@
 <script is:inline>
   const setDarkMode = () => {
     document.documentElement.setAttribute(
-      "data-theme",
-      localStorage.getItem("theme") ?? "dark",
+      'data-theme',
+      localStorage.getItem('theme') ?? 'dark'
     );
   };
 
   setDarkMode();
-  document.addEventListener("astro:after-swap", setDarkMode);
+  document.addEventListener('astro:after-swap', setDarkMode);
 </script>

@@ -6,7 +6,7 @@ import type {
   PostsCollection,
   RenderedPostsCollection,
 } from "../../content/config";
-import Post from "../../layouts/Post.astro";
+import PostLayout from "../../layouts/Post.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -30,9 +30,9 @@ const { Content, remarkPluginFrontmatter } =
   (await entry.render()) as unknown as RenderedPostsCollection;
 ---
 
-<Post
+<PostLayout
   frontmatter={entry.data}
   readingTime={remarkPluginFrontmatter.readingTime}
 >
   <Content />
-</Post>
+</PostLayout>

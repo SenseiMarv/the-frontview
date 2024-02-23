@@ -15,11 +15,25 @@
 
 From the root of the project, from a terminal:
 
-1. Run `pnpm i` to install the required dependencies
-2. Run `pnpm start` to start a local dev server
-3. Access the local dev server at http://localhost:3000
+1. Install the required dependencies:
 
-To run the test commands, like `pnpm test`, you need to have the correct version of the Playwright browsers installed. You can install them by running `pnpm exec playwright install`.
+   ```bash
+   pnpm i
+   ```
+
+2. Start a local dev server:
+
+   ```bash
+   pnpm start
+   ```
+
+3. Access the local dev server at http://localhost:4321
+
+To run the test commands like `pnpm test`, you need to have the correct version of the Playwright browsers installed. You can install them by running:
+
+```bash
+pnpm exec playwright install
+```
 
 ## Commands
 
@@ -27,7 +41,7 @@ All commands are run from the root of the project, from a terminal:
 
 | Command             | Action                                                               |
 | :------------------ | :------------------------------------------------------------------- |
-| `pnpm start`        | Starts local dev server at [`localhost:3000`](http://localhost:3000) |
+| `pnpm start`        | Starts local dev server at [`localhost:4321`](http://localhost:4321) |
 | `pnpm lint`         | Runs all linters, showing problems                                   |
 | `pnpm lint:fix`     | Runs all linters, trying to fix auto-solvable problems               |
 | `pnpm test`         | Runs all tests                                                       |

@@ -23,7 +23,7 @@ const upDate = frontmatter.upDate
   : undefined;
 const tags = getTags(frontmatter.tags);
 const defaultOpenGraphType = 'article';
-const defaultOpenGraphImageAlt = 'Blogpost cover';
+const defaultOpenGraphImageAlt = 'Post - Open Graph Image';
 const defaultOpenGraphArticleAuthor = ['Marvin Stickel'];
 const defaultTwitterCard = 'summary_large_image';
 ---
@@ -33,7 +33,6 @@ const defaultTwitterCard = 'summary_large_image';
   description={frontmatter.description}
   openGraphTitle={frontmatter.title}
   openGraphType={defaultOpenGraphType}
-  openGraphImage={frontmatter.cover}
   openGraphImageAlt={defaultOpenGraphImageAlt}
   openGraphArticlePublishedTime={pubDate}
   openGraphArticleModifiedTime={upDate}

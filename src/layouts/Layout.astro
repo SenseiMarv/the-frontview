@@ -29,9 +29,15 @@ export interface Props {
   twitterCard?: string;
 }
 
+const formattedPathname =
+  Astro.url.pathname.replaceAll(/^\/|\/$/g, '') || 'index';
+
 const defaultOpenGraphType = 'website';
-const defaultOpenGraphImage = '/android-chrome-512x512.png';
-const defaultOpenGraphImageAlt = 'Website Icon';
+const defaultOpenGraphImage = new URL(
+  `/og/${formattedPathname}.png`,
+  Astro.url
+);
+const defaultOpenGraphImageAlt = 'The Frontview - Open Graph Image';
 const defaultOpenGraphSiteName = 'The Frontview';
 const defaultTwitterCard = 'summary';
 

@@ -72,6 +72,26 @@ const checkFooter = async (
   ).toBeVisible();
 };
 
+const checkSocialMediaLinks = async (
+  /** @type {import("@playwright/test").Page} */ page
+) => {
+  await expect(
+    page.getByRole('link').filter({ has: page.locator('text="X"') })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole('link').filter({ hasText: 'Mastodon' })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole('link').filter({ hasText: 'Facebook' })
+  ).toHaveCount(2);
+  await expect(
+    page.getByRole('link').filter({ hasText: 'LinkedIn' })
+  ).toHaveCount(2);
+  await expect(page.getByRole('link').filter({ hasText: 'Xing' })).toHaveCount(
+    2
+  );
+};
+
 test('home page', async ({ page }) => {
   await page.goto(targetUrl, {
     waitUntil: 'load'
@@ -170,21 +190,7 @@ test('first post page', async ({ page }) => {
   await expect(page.getByRole('img', { name: 'Blogpost cover' })).toBeVisible();
 
   // Social Media Links
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Twitter' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Mastodon' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Facebook' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'LinkedIn' })
-  ).toHaveCount(2);
-  await expect(page.getByRole('link').filter({ hasText: 'Xing' })).toHaveCount(
-    2
-  );
+  await checkSocialMediaLinks(page);
 
   // Article
   await expect(page.getByRole('article')).toBeVisible();
@@ -243,21 +249,7 @@ test('first learned page', async ({ page }) => {
   ).toBeVisible();
 
   // Social Media Links
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Twitter' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Mastodon' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Facebook' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'LinkedIn' })
-  ).toHaveCount(2);
-  await expect(page.getByRole('link').filter({ hasText: 'Xing' })).toHaveCount(
-    2
-  );
+  await checkSocialMediaLinks(page);
 
   // Article
   await expect(page.getByRole('article')).toBeVisible();
@@ -314,21 +306,7 @@ test('first setup page', async ({ page }) => {
   ).toBeVisible();
 
   // Social Media Links
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Twitter' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Mastodon' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Facebook' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'LinkedIn' })
-  ).toHaveCount(2);
-  await expect(page.getByRole('link').filter({ hasText: 'Xing' })).toHaveCount(
-    2
-  );
+  await checkSocialMediaLinks(page);
 
   // Article
   await expect(page.getByRole('article')).toBeVisible();
@@ -361,21 +339,7 @@ test('components', async ({ page }) => {
   await expect(page.getByText('Photo by Daniel Álvasd')).toBeVisible();
 
   // Social Media Links
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Twitter' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Mastodon' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'Facebook' })
-  ).toHaveCount(2);
-  await expect(
-    page.getByRole('link').filter({ hasText: 'LinkedIn' })
-  ).toHaveCount(2);
-  await expect(page.getByRole('link').filter({ hasText: 'Xing' })).toHaveCount(
-    2
-  );
+  await checkSocialMediaLinks(page);
 
   // Table of contents
   await expect(

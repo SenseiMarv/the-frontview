@@ -24,6 +24,7 @@ const formattedReadingTime = `${readingTime} min read`;
       ? ''
       : undefined
     : prefetch}
+  data-umami-event={`Learned ${title} card link`}
 >
   <div
     class="min-h-[6rem] overflow-hidden rounded-xl shadow-lg outline outline-2 outline-gray-500 duration-200 hover:scale-105 hover:shadow-xl hover:outline-4 hover:outline-offset-2 hover:outline-teal-700 active:scale-95 active:outline-offset-0 active:duration-100 dark:outline-gray-600 dark:hover:outline-teal-500"

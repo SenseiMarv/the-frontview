@@ -2,16 +2,12 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/data/script.js",
-      "destination": "https://umami.the-frontview.dev/script.js"
+      "source": "/data/:path*",
+      "destination": "https://umami.the-frontview.dev/:path*"
     },
     {
-      "source": "/data2/js/script.js",
-      "destination": "https://analytics.the-frontview.dev/js/script.js"
-    },
-    {
-      "source": "/data2/api/event",
-      "destination": "https://analytics.the-frontview.dev/api/event"
+      "source": "/data2/:path*",
+      "destination": "https://analytics.the-frontview.dev/:path*"
     }
   ]
 }

@@ -25,7 +25,7 @@ const { src, alt, width = defaultWidth, height = defaultHeight } = Astro.props;
         data-pswp-height={height}
         target="_blank"
         class="pswp-children cursor-zoom-in"
-        data-umami-event={`Image ${src} (${alt}) enlarge link`}
+        data-umami-event={`Image ${src} (${alt}) enlarge link click (${Astro.url.pathname})`}
       >
         <AstroImage src={src} alt={alt} width={width} height={height} />
       </a>

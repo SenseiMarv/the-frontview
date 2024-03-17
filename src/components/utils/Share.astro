@@ -21,7 +21,7 @@ const iconStyle =
     target="_blank"
     rel="noopener, noreferrer"
     class={iconStyle}
-    data-umami-event="X share link"
+    data-umami-event={`X share link click (${Astro.url.pathname})`}
   >
     <XIcon />
   </a>
@@ -30,7 +30,7 @@ const iconStyle =
     target="_blank"
     rel="noopener, noreferrer"
     class={`${iconStyle} w-6`}
-    data-umami-event="Mastodon share link"
+    data-umami-event={`Mastodon share link click (${Astro.url.pathname})`}
   >
     <MastodonIcon />
   </a>
@@ -39,7 +39,7 @@ const iconStyle =
     target="_blank"
     rel="noopener, noreferrer"
     class={iconStyle}
-    data-umami-event="Facebook share link"
+    data-umami-event={`Facebook share link click (${Astro.url.pathname})`}
   >
     <FacebookIcon />
   </a>
@@ -48,7 +48,7 @@ const iconStyle =
     target="_blank"
     rel="noopener, noreferrer"
     class={iconStyle}
-    data-umami-event="LinkedIn share link"
+    data-umami-event={`LinkedIn share link click (${Astro.url.pathname})`}
   >
     <LinkedInIcon />
   </a>
@@ -57,7 +57,7 @@ const iconStyle =
     target="_blank"
     rel="noopener, noreferrer"
     class={iconStyle}
-    data-umami-event="Xing share link"
+    data-umami-event={`Xing share link click (${Astro.url.pathname})`}
   >
     <XingIcon />
   </a>

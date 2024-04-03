@@ -5,10 +5,9 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
-// TODO: Has to be disabled temporarily due to deployment issues with Vercel and Sharp. Can hopefully be added back with the next major Astro release. See: https://github.com/withastro/astro/issues/9345
-// import compress from "astro-compress";
+import compress from 'astro-compress';
 import compressor from 'astro-compressor';
-import astroMetaTags from 'astro-meta-tags';
+import metaTags from 'astro-meta-tags';
 import pageInsight from 'astro-page-insight';
 import robotsTxt from 'astro-robots-txt';
 import { isBefore } from 'date-fns';
@@ -24,7 +23,11 @@ import rehypeWrap from 'rehype-wrap';
 import shikiTwoslash from 'remark-shiki-twoslash';
 import remarkToc from 'remark-toc';
 
-import { hintPlugin, readingTimePlugin } from './plugins/remarkPlugins.mts';
+import {
+  hintPlugin,
+  importsPlugin,
+  readingTimePlugin
+} from './plugins/remarkPlugins.mts';
 
 const hostedSiteUrl = 'https://www.the-frontview.dev/';
 
@@ -64,6 +67,7 @@ const config = defineConfig({
         ]
       ],
       remarkPlugins: [
+        importsPlugin,
         readingTimePlugin,
         remarkToc,
         // @ts-ignore
@@ -73,7 +77,7 @@ const config = defineConfig({
     }),
     tailwind(),
     partytown({ config: { forward: ['dataLayer.push'] } }),
-    astroMetaTags(),
+    metaTags(),
     pageInsight(),
     sitemap({
       customPages: [
@@ -90,8 +94,7 @@ const config = defineConfig({
         ].includes(page)
     }),
     robotsTxt(),
-    // TODO: Has to be disabled temporarily due to deployment issues with Vercel and Sharp. Can hopefully be added back with the next major Astro release. See: https://github.com/withastro/astro/issues/9345
-    // compress(), // Should be set one before the last for best results
+    compress(), // Should be set one before the last for best results
     compressor() // Should be set last for best results
   ]
 });

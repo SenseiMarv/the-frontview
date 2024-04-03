@@ -1,0 +1,181 @@
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer components {
+    /* Some MDX components cannot be overridden at the time because they would then lose remark/rehype additions or modifications (e.g. automatic addition of links to headings no longer works). */
+
+    /* Styling of headings */
+
+    article h1.heading {
+      @apply mb-6 mt-12 text-4xl;
+    }
+    article h2.heading {
+      @apply mb-4 mt-10 text-3xl;
+    }
+    article h3.heading {
+      @apply mb-2 mt-8 text-2xl;
+    }
+    article h4.heading {
+      @apply mb-1 mt-6 text-xl;
+    }
+    article h5.heading {
+      @apply mt-4 text-lg;
+    }
+    article h6.heading {
+      @apply mt-2 text-lg;
+    }
+
+    /* Styling of heading links */
+
+    article .heading {
+      @apply flex items-center active:text-teal-400 active:duration-100 dark:active:text-teal-700;
+    }
+    article .heading a svg {
+      @apply invisible w-4 sm:visible;
+    }
+    article .heading a {
+      @apply absolute -ml-[1.2rem] w-full max-w-xl cursor-pointer no-underline opacity-0 hover:opacity-100 md:max-w-5xl lg:-ml-6;
+    }
+
+    /* Styling of toc links */
+
+    article #table-of-contents + ul a {
+      @apply text-teal-700 transition-colors duration-300 hover:text-teal-500 hover:underline hover:underline-offset-2 active:!text-teal-400 active:duration-100 dark:text-teal-300 dark:hover:text-teal-500 dark:active:!text-teal-700;
+    }
+
+    /* Styling of p components */
+
+    article > p {
+      @apply my-4;
+    }
+
+    /* Styling of a components */
+
+    article a {
+      @apply text-teal-700 transition-colors duration-300 hover:text-teal-500 active:!text-teal-400 active:duration-100 dark:text-teal-300 dark:hover:text-teal-500 dark:active:!text-teal-700;
+    }
+
+    /* Styling of ul components */
+
+    article ul {
+      @apply !list-disc !px-6;
+    }
+
+    /* Styling of blockquote components */
+
+    article blockquote:not(.tweet-card) {
+      @apply my-4 flex flex-col rounded-xl bg-gray-300 p-4 dark:bg-gray-900 sm:flex-row;
+    }
+    article blockquote:not(.tweet-card) > p {
+      @apply sm:mt-2;
+    }
+    article blockquote:not(.tweet-card) {
+      @apply before:ml-1 before:text-4xl before:text-gray-600 before:content-['“'] before:dark:text-gray-500 sm:before:mr-4;
+    }
+
+    /* Styling of tasklist components */
+    article ul.contains-task-list {
+      @apply my-4 list-none p-0;
+    }
+    article li.task-list-item {
+      @apply flex items-center gap-3;
+    }
+    article li.task-list-item > input {
+      @apply h-4 w-4 appearance-none rounded bg-gray-400 checked:bg-teal-700 dark:checked:bg-teal-500;
+    }
+
+    /* Styling of code components (specific to shiki twoslash) */
+
+    article :not(.code-container) > code {
+      @apply rounded-md bg-gray-800 px-2 py-1 text-white dark:bg-gray-900;
+    }
+
+    /* Styling of code block components (specific to shiki twoslash) */
+
+    article pre {
+      @apply my-4 grid grid-cols-1 content-around rounded-xl !bg-gray-800 dark:!bg-gray-900 md:grid-cols-2;
+      grid-template-areas:
+        'column-language-id'
+        'column-code-title';
+    }
+    article .code-title {
+      @apply mt-2 justify-self-start rounded-r-lg bg-gray-500 p-1 px-3 text-white dark:bg-gray-700 md:mr-4 md:mt-0 md:justify-self-end md:rounded-b-lg md:rounded-tr-none;
+      grid-area: column-code-title;
+    }
+    article .language-id {
+      @apply col-span-2 mt-4 justify-self-start rounded-r-lg bg-teal-700 p-1 px-3 text-white md:ml-4 md:mt-0 md:rounded-b-lg md:rounded-tr-none;
+      grid-area: column-language-id;
+    }
+    article .code-title + .language-id {
+      @apply col-span-1;
+    }
+    article .code-container {
+      @apply col-span-2 overflow-auto py-4;
+    }
+    article .code-container > code {
+      @apply flex flex-col flex-wrap;
+    }
+    article .line {
+      @apply min-h-[1.5rem] px-4;
+    }
+    article .line.highlight {
+      @apply min-h-[1.6rem] border-l-4 border-teal-500 bg-gray-700 dark:border-teal-700 dark:bg-gray-800;
+    }
+    /* md */
+    @media (min-width: 768px) {
+      article pre {
+        grid-template-areas: 'column-language-id column-code-title';
+      }
+    }
+
+    /* Styling of panel components */
+
+    article .hint {
+      @apply my-4 flex flex-col rounded-xl p-4 sm:flex-row;
+    }
+    article .hint {
+      @apply before:mb-2 before:ml-1 sm:before:mb-0 sm:before:mr-4;
+    }
+    article .hint.tip {
+      @apply bg-sky-300 before:content-['ℹ️'] dark:bg-sky-900;
+    }
+    article .hint.warn {
+      @apply bg-yellow-300 before:content-['❗'] dark:bg-yellow-900;
+    }
+    article .hint.error {
+      @apply bg-red-300 before:content-['❌'] dark:bg-red-900;
+    }
+
+    /* Styling of table components */
+
+    article .table-container {
+      @apply my-4 max-w-fit overflow-x-auto rounded-xl;
+    }
+    article th {
+      @apply bg-gray-400 px-3 py-2 uppercase dark:bg-gray-700;
+    }
+    article tr {
+      @apply odd:bg-gray-300 even:bg-gray-200  dark:odd:bg-gray-900 dark:even:bg-gray-800;
+    }
+    article td {
+      @apply min-w-[7rem] whitespace-nowrap px-3 py-2;
+    }
+
+    /* Styling of footnote components */
+
+    article sup > a {
+      @apply p-1 text-teal-700 transition-colors duration-300 hover:text-teal-500 active:!text-teal-400 active:duration-100 dark:text-teal-300 dark:hover:text-teal-500 dark:active:!text-teal-700;
+    }
+    article .data-footnote-backref {
+      @apply text-teal-700 transition-colors duration-300 hover:text-teal-500 active:!text-teal-400 active:duration-100 dark:text-teal-300 dark:hover:text-teal-500 dark:active:!text-teal-700;
+    }
+
+    /* Styling of image components */
+
+    article .image-component {
+      @apply my-4;
+    }
+  }
+</style>

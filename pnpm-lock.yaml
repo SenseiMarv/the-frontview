@@ -115,9 +115,6 @@ devDependencies:
   astro-eslint-parser:
     specifier: 0.16.3
     version: 0.16.3
-  astro-font:
-    specifier: 0.0.78
-    version: 0.0.78
   astro-loading-indicator:
     specifier: 0.3.0
     version: 0.3.0(astro@4.5.15)(swup@4.6.1)
@@ -2580,10 +2577,6 @@ packages:
       semver: 7.6.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /astro-font@0.0.78:
-    resolution: {integrity: sha512-4Wz1aTZRUsae1C6hbS/6eahsVlSlq8pNa6sbPUJLjU3XEf1pTBVuk+VRwtxE4uI4D1M7YgG8vYMC+HYXtarbyw==}
     dev: true
 
   /astro-integration-kit@0.8.0(astro@4.5.15):

@@ -11,21 +11,21 @@ dependencies:
   '@astrojs/rss':
     specifier: 4.0.5
     version: 4.0.5
-  '@fontsource/inter':
-    specifier: 5.0.17
-    version: 5.0.17
-  '@fontsource/quicksand':
-    specifier: 5.0.17
-    version: 5.0.17
-  '@fontsource/source-code-pro':
-    specifier: 5.0.17
-    version: 5.0.17
   '@vercel/speed-insights':
     specifier: 1.0.10
     version: 1.0.10
+  acorn:
+    specifier: 8.11.3
+    version: 8.11.3
   astro:
     specifier: 4.5.15
     version: 4.5.15(typescript@5.4.3)
+  astro-font:
+    specifier: 0.0.78
+    version: 0.0.78
+  astro-loading-indicator:
+    specifier: 0.3.0
+    version: 0.3.0(astro@4.5.15)(swup@4.6.1)
   astro-og-canvas:
     specifier: 0.4.2
     version: 0.4.2(astro@4.5.15)
@@ -103,9 +103,6 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: 7.5.0
     version: 7.5.0(eslint@8.57.0)(typescript@5.4.3)
-  acorn:
-    specifier: 8.11.3
-    version: 8.11.3
   astro-compress:
     specifier: 2.2.21
     version: 2.2.21(typescript@5.4.3)
@@ -115,9 +112,6 @@ devDependencies:
   astro-eslint-parser:
     specifier: 0.16.3
     version: 0.16.3
-  astro-loading-indicator:
-    specifier: 0.3.0
-    version: 0.3.0(astro@4.5.15)(swup@4.6.1)
   astro-meta-tags:
     specifier: 0.2.2
     version: 0.2.2(astro@4.5.15)
@@ -1049,18 +1043,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/inter@5.0.17:
-    resolution: {integrity: sha512-2meBGx1kt7u5LwzGc5Sz5rka6ZDrydg6nT3x6Wkt310vHXUchIywrO8pooWMzZdHYcyFY/cv4lEpJZgMD94bCg==}
-    dev: false
-
-  /@fontsource/quicksand@5.0.17:
-    resolution: {integrity: sha512-09AIwswP3pT4MJ2aLTAt/+nys6yb02MAOCfHhrAIRQP33iB2aWAVgsU5SmK6D2K6tOUG3iaEs6AghT5r/w8zKA==}
-    dev: false
-
-  /@fontsource/source-code-pro@5.0.17:
-    resolution: {integrity: sha512-Q5GfthInOTW+Ek5k97/LH6FWLmD+IwHwBEEXF+KStvsyPwSZz+0ssdWJfz/ZRaTZxOk7FwlRgysXAWo41fq6bQ==}
-    dev: false
-
   /@formatjs/ecma402-abstract@1.18.2:
     resolution: {integrity: sha512-+QoPW4csYALsQIl8GbN14igZzDbuwzcpWrku9nyMXlaqAlwRBgl5V+p0vWMGFqHOw37czNXaP/lEk4wbLgcmtA==}
     dependencies:
@@ -1716,7 +1698,7 @@ packages:
     resolution: {integrity: sha512-3Kq31BJxnzoPg643YxGoWQggoU6VPKZpdE5CqqmP7wwkpCYTzkRmrfcQ29mGhsSS7xfS7D33iZoBiwY+wPoo2A==}
     dependencies:
       swup: 4.6.1
-    dev: true
+    dev: false
 
   /@swup/progress-plugin@3.1.2(swup@4.6.1):
     resolution: {integrity: sha512-cYLY5cPP9xIBzlf4X/KpjerZmzKfje3y9r/b4/bqwMsPLmViu0v94icXmIFte55GkhPWEuP1v1stooMLxgkDrg==}
@@ -1725,7 +1707,7 @@ packages:
     dependencies:
       '@swup/plugin': 4.0.0
       swup: 4.6.1
-    dev: true
+    dev: false
 
   /@tootallnate/quickjs-emscripten@0.23.0:
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
@@ -2579,6 +2561,10 @@ packages:
       - supports-color
     dev: true
 
+  /astro-font@0.0.78:
+    resolution: {integrity: sha512-4Wz1aTZRUsae1C6hbS/6eahsVlSlq8pNa6sbPUJLjU3XEf1pTBVuk+VRwtxE4uI4D1M7YgG8vYMC+HYXtarbyw==}
+    dev: false
+
   /astro-integration-kit@0.8.0(astro@4.5.15):
     resolution: {integrity: sha512-YTdSYrE6xrYpYWZghUUhsTs6Mt1H+/Mucv2VUPfhHoeY8IS9XbpA2adFEBRMd4n+sFd8W490gCUtjmWxnhEs9Q==}
     peerDependencies:
@@ -2623,7 +2609,7 @@ packages:
       astro: 4.5.15(typescript@5.4.3)
     transitivePeerDependencies:
       - swup
-    dev: true
+    dev: false
 
   /astro-meta-tags@0.2.2(astro@4.5.15):
     resolution: {integrity: sha512-7wl4AlklzDJqKU8BIhNVyLvgMKlKk6hJX2auYb2lFujJ4/zu2u1W7VKTx3wZ7WuGsRsZMUj6BvXz17e0KZ3jgw==}
@@ -2852,12 +2838,11 @@ packages:
     requiresBuild: true
     optional: true
 
-  /bare-fs@2.2.2:
-    resolution: {integrity: sha512-X9IqgvyB0/VA5OZJyb5ZstoN62AzD7YxVGog13kkfYWYqJYcK0kcqLZ6TrmH5qr4/8//ejVcX4x/a0UvaogXmA==}
+  /bare-fs@2.2.3:
+    resolution: {integrity: sha512-amG72llr9pstfXOBOHve1WjiuKKAMnebcmMbPWDZ7BCevAoJLpugjuAPRsDINEyjT0a6tbaVx3DctkXIRbLuJw==}
     requiresBuild: true
     dependencies:
       bare-events: 2.2.2
-      bare-os: 2.2.1
       bare-path: 2.1.0
       streamx: 2.16.1
     optional: true
@@ -3547,7 +3532,7 @@ packages:
     resolution: {integrity: sha512-sPgBvzO3GVViT1qKiuMLKnZs2HokFwCg304kv2bbG08Tm3qi9u5y5jEC7u2dR0js22i+17JTfqK0XpWop9c67w==}
     dependencies:
       typed-query-selector: 2.11.2
-    dev: true
+    dev: false
 
   /delegates@1.0.0:
     resolution: {integrity: sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==}
@@ -7173,7 +7158,7 @@ packages:
   /opencollective-postinstall@2.0.3:
     resolution: {integrity: sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==}
     hasBin: true
-    dev: true
+    dev: false
 
   /optionator@0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
@@ -8648,7 +8633,7 @@ packages:
       delegate-it: 6.1.0
       opencollective-postinstall: 2.0.3
       path-to-regexp: 6.2.1
-    dev: true
+    dev: false
 
   /synckit@0.9.0:
     resolution: {integrity: sha512-7RnqIMq572L8PeEzKeBINYEJDDxpcH8JEgLwUqBd3TkofhFRbkq4QLR0u+36avGAhCRbk2nnmjcW9SE531hPDg==}
@@ -8708,7 +8693,7 @@ packages:
       pump: 3.0.0
       tar-stream: 3.1.7
     optionalDependencies:
-      bare-fs: 2.2.2
+      bare-fs: 2.2.3
       bare-path: 2.1.0
 
   /tar-stream@2.2.0:
@@ -8938,7 +8923,7 @@ packages:
 
   /typed-query-selector@2.11.2:
     resolution: {integrity: sha512-6rZP+cG3wPg2w1Zqv2VCOsSqlkGElrLSGeEkyrIU9mHG+JfQZE/6lE3oyQouz42sTS9n8fQXvwQBaVWz6dzpfQ==}
-    dev: true
+    dev: false
 
   /typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}

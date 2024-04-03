@@ -8,6 +8,8 @@ import { defineConfig } from 'astro/config';
 // TODO: Has to be disabled temporarily due to deployment issues with Vercel and Sharp. Can hopefully be added back with the next major Astro release. See: https://github.com/withastro/astro/issues/9345
 // import compress from "astro-compress";
 import compressor from 'astro-compressor';
+import astroMetaTags from 'astro-meta-tags';
+import pageInsight from 'astro-page-insight';
 import robotsTxt from 'astro-robots-txt';
 import { isBefore } from 'date-fns';
 import { readdirSync, readFileSync } from 'fs';
@@ -71,6 +73,8 @@ const config = defineConfig({
     }),
     tailwind(),
     partytown({ config: { forward: ['dataLayer.push'] } }),
+    astroMetaTags(),
+    pageInsight(),
     sitemap({
       customPages: [
         // Include the RSS feed page URL as it must appear, without the trailing slash

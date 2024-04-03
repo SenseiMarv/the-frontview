@@ -29,6 +29,9 @@
   "dependencies": {
     "@astrojs/check": "0.5.10",
     "@astrojs/rss": "4.0.5",
+    "@fontsource/inter": "5.0.17",
+    "@fontsource/quicksand": "5.0.17",
+    "@fontsource/source-code-pro": "5.0.17",
     "@vercel/speed-insights": "1.0.10",
     "astro": "4.5.15",
     "astro-og-canvas": "0.4.2",
@@ -62,7 +65,6 @@
     "astro-compress": "2.2.21",
     "astro-compressor": "0.4.1",
     "astro-eslint-parser": "0.16.3",
-    "astro-font": "0.0.78",
     "astro-loading-indicator": "0.3.0",
     "astro-meta-tags": "0.2.2",
     "astro-page-insight": "0.5.4",

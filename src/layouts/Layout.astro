@@ -1,8 +1,11 @@
 ---
+import '@fontsource/quicksand';
+import '@fontsource/inter';
+import '@fontsource/source-code-pro';
+
 import SpeedInsights from '@vercel/speed-insights/astro';
 // eslint-disable-next-line import/no-unresolved
 import { ViewTransitions } from 'astro:transitions';
-import { AstroFont } from 'astro-font';
 import LoadingIndicator from 'astro-loading-indicator/component';
 import { SEO } from 'astro-seo';
 import defaultTheme from 'tailwindcss/defaultTheme';
@@ -114,49 +117,6 @@ const headingFontFamily = [
     <script
       src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
     ></script>
-    <AstroFont
-      config={[
-        {
-          name: 'Quicksand',
-          src: [
-            {
-              style: 'normal',
-              path: '/fonts/Quicksand.woff2'
-            }
-          ],
-          preload: true,
-          display: 'swap',
-          fallback: 'sans-serif',
-          fallbackName: 'Geneva'
-        },
-        {
-          name: 'Inter',
-          src: [
-            {
-              style: 'normal',
-              path: '/fonts/Inter.woff2'
-            }
-          ],
-          preload: true,
-          display: 'swap',
-          fallback: 'sans-serif',
-          fallbackName: 'Geneva'
-        },
-        {
-          name: 'Source Code Pro',
-          src: [
-            {
-              style: 'normal',
-              path: '/fonts/SourceCodePro.woff2'
-            }
-          ],
-          preload: true,
-          display: 'swap',
-          fallback: 'monospace',
-          fallbackName: 'Courier New'
-        }
-      ]}
-    />
     <Analytics />
     <ViewTransitions />
     <SEO

@@ -4,10 +4,6 @@
     {
       "source": "/data/:path*",
       "destination": "https://umami.the-frontview.dev/:path*"
-    },
-    {
-      "source": "/data2/:path*",
-      "destination": "https://analytics.the-frontview.dev/:path*"
     }
   ]
 }

@@ -11,6 +11,15 @@ dependencies:
   '@astrojs/rss':
     specifier: 4.0.5
     version: 4.0.5
+  '@fontsource/inter':
+    specifier: 5.0.17
+    version: 5.0.17
+  '@fontsource/quicksand':
+    specifier: 5.0.17
+    version: 5.0.17
+  '@fontsource/source-code-pro':
+    specifier: 5.0.17
+    version: 5.0.17
   '@vercel/speed-insights':
     specifier: 1.0.10
     version: 1.0.10
@@ -1042,6 +1051,18 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/inter@5.0.17:
+    resolution: {integrity: sha512-2meBGx1kt7u5LwzGc5Sz5rka6ZDrydg6nT3x6Wkt310vHXUchIywrO8pooWMzZdHYcyFY/cv4lEpJZgMD94bCg==}
+    dev: false
+
+  /@fontsource/quicksand@5.0.17:
+    resolution: {integrity: sha512-09AIwswP3pT4MJ2aLTAt/+nys6yb02MAOCfHhrAIRQP33iB2aWAVgsU5SmK6D2K6tOUG3iaEs6AghT5r/w8zKA==}
+    dev: false
+
+  /@fontsource/source-code-pro@5.0.17:
+    resolution: {integrity: sha512-Q5GfthInOTW+Ek5k97/LH6FWLmD+IwHwBEEXF+KStvsyPwSZz+0ssdWJfz/ZRaTZxOk7FwlRgysXAWo41fq6bQ==}
+    dev: false
 
   /@formatjs/ecma402-abstract@1.18.2:
     resolution: {integrity: sha512-+QoPW4csYALsQIl8GbN14igZzDbuwzcpWrku9nyMXlaqAlwRBgl5V+p0vWMGFqHOw37czNXaP/lEk4wbLgcmtA==}

@@ -29,6 +29,9 @@
   "dependencies": {
     "@astrojs/check": "0.5.10",
     "@astrojs/rss": "4.0.5",
+    "@fontsource/inter": "5.0.17",
+    "@fontsource/quicksand": "5.0.17",
+    "@fontsource/source-code-pro": "5.0.17",
     "@vercel/speed-insights": "1.0.10",
     "astro": "4.5.15",
     "astro-og-canvas": "0.4.2",

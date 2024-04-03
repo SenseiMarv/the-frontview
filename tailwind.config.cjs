@@ -6,7 +6,7 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', 'Geneva', ...defaultTheme.fontFamily.sans],
         mono: ['Source Code Pro', ...defaultTheme.fontFamily.mono]
       }
     }

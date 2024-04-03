@@ -91,13 +91,13 @@ export const { getStaticPaths, GET } = OGImageRoute({
       },
       font: {
         title: {
-          families: ['Quicksand', ...defaultTheme.fontFamily.sans]
+          families: ['Quicksand', 'Geneva', ...defaultTheme.fontFamily.sans]
         },
         description: {
-          families: ['Inter', ...defaultTheme.fontFamily.sans]
+          families: ['Inter', 'Geneva', ...defaultTheme.fontFamily.sans]
         }
       },
-      fonts: ['./fonts/Quicksand-Regular.ttf', './fonts/Inter-Regular.ttf']
+      fonts: ['./fonts/Quicksand.woff2', './fonts/Inter.woff2']
     };
   }
 });

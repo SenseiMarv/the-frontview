@@ -644,9 +644,7 @@ test('privacy policy page', async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Tracking' })).toBeVisible();
   await expect(
-    page.getByText(
-      'This website is using Plausible Analytics and Umami to collect tracking data.'
-    )
+    page.getByText('This website is using Umami to collect tracking data.')
   ).toBeVisible();
 });
 

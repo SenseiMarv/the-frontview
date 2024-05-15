@@ -5,7 +5,6 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
-import compress from 'astro-compress';
 import compressor from 'astro-compressor';
 import metaTags from 'astro-meta-tags';
 import pageInsight from 'astro-page-insight';
@@ -94,7 +93,8 @@ const config = defineConfig({
         ].includes(page)
     }),
     robotsTxt(),
-    compress(), // Should be set one before the last for best results
+    // @ts-ignore https://github.com/PlayForm/Compress/issues/355
+    (await import('@playform/compress')).default(), // Should be set one before the last for best results
     compressor() // Should be set last for best results
   ]
 });

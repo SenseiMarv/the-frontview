@@ -33,7 +33,7 @@
     "@fontsource/quicksand": "5.0.18",
     "@fontsource/source-code-pro": "5.0.18",
     "@vercel/speed-insights": "1.0.12",
-    "astro": "4.11.1",
+    "astro": "4.11.3",
     "astro-og-canvas": "0.5.1",
     "canvaskit-wasm": "0.39.1",
     "date-fns": "3.6.0",

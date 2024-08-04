@@ -4,7 +4,7 @@
 
 > A small personal blog about everything around tech and programming.
 
-[The Frontview](https://the-frontview.dev) | [Umami](https://umami.the-frontview.dev/websites/09b73606-91e7-4e8b-b37b-48bde6a64aba) | [Google Search Insights](https://search.google.com/search-console/insights/?resource_id=sc-domain%3Athe-frontview.dev&hl=de) | [Google Search Console](https://search.google.com/search-console?resource_id=sc-domain:the-frontview.dev) | [Bing Webmaster Tools](https://www.bing.com/webmasters) | [Ahref Webmaster Tools](https://app.ahrefs.com/dashboard) | [Vercel](https://vercel.com/senseimarv/the-frontview) | [Checkly](https://app.checklyhq.com/checks/00dcc340-7a1f-4591-8b0f-a0887a26437a/) | [Axiom](https://cloud.axiom.co/the-frontview-njlg) | [Squarespace Domains](https://account.squarespace.com/domains/managed/the-frontview.dev)
+[The Frontview](https://the-frontview.dev)
 
 ## Requirements
 

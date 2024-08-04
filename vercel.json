@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/data/:path*",
-      "destination": "https://umami.the-frontview.dev/:path*"
+      "destination": "https://umami.the-vault.dev/:path*"
     }
   ]
 }

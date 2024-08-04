@@ -15,7 +15,7 @@ const learnedDescriptionAddition =
   'Read the full Today I Learned article on the website.';
 const setupDescriptionAddition =
   'Read the full My Setup article on the website.';
-const author = 'marv.stickel@gmail.com (Marvin Stickel)';
+const author = 'mstickel@the-frontview.dev (Marvin Stickel)';
 
 export const GET = async (
   /** @type {import("astro").APIContext} */ context
